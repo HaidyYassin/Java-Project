@@ -1,0 +1,96 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 24, 2022, 7:33:24 PM
+    Author     : DELL
+*/
+
+#logInBtn{
+    -fx-background-size: 255.00000000000023 40.999999999999886px;
+    -fx-font-family: Britannic Bold;
+    -fx-font-size: 10.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #6E3071;
+    -fx-background-color: #FFFFFF;
+    -fx-border-top-left-radius: 4.729999999999982px;
+    -fx-border-top-right-radius: 4.729999999999982px;
+    -fx-border-bottom-left-radius: 4.729999999999982px;
+    -fx-border-bottom-right-radius: 4.729999999999982px;
+    
+
+}
+
+#backGrd{
+    -fx-background-size:  600 400;
+    -fx-background-image: url("bg.jpg");
+}
+
+#emailTF{
+    -fx-background-size: 373.00000000000034 48.64999999999998;
+    -fx-opacity: 0.9;
+    -fx-font-family: Britannic Bold;
+    -fx-font-size: 10.0px;
+    -fx-font-weight: 700;
+    -fx-color: #FFFFFF;
+    -fx-background-color: #000000;
+  
+    
+    -fx-border-top-left-radius: 5.571499999999997px;
+    -fx-border-top-right-radius: 5.571499999999997px;
+    -fx-border-bottom-left-radius: 5.571499999999997px;
+    -fx-border-bottom-right-radius: 5.571499999999997px;
+    -fx-padding-right: 15px;
+    -fx-padding-left: 15px;
+
+}
+
+#signinPane{
+   -fx-background-size: 622.0426829268312 582.7399320016118;
+    -fx-opacity: 0.82;
+    -fx-font-family: Arial;
+    -fx-font-size: 15.0px;
+    -fx-font-weight: 400;
+    -fx-text-align: center;
+    -fx-color: #000000;
+    -fx-background-color: #000E0F;
+    
+    -fx-border-top-left-radius: 35.08439592009671px;
+    -fx-border-top-right-radius: 35.08439592009671px;
+    -fx-border-bottom-left-radius: 35.08439592009671px;
+    -fx-border-bottom-right-radius: 35.08439592009671px;
+
+}
+
+#signintxt{
+    -fx-background-size: 150 100;
+    
+    -fx-font-size: 25.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #FFFFFF;
+
+}
+#donthave{
+    -fx-background-size: 177.9872592680539 17.000000000000114px;
+    -fx-font-family: Britannic Bold;
+    -fx-font-size: 9.0px;
+    -fx-font-weight: 700;
+    -fx-color: #FFFFFF;
+
+}
+#signuptxt{
+    -fx-background-size: 88.23046875000068 24.0;
+    -fx-font-family: Britannic Bold;
+    -fx-font-size: 12.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #1BDAF1;
+
+}
+
+
+
