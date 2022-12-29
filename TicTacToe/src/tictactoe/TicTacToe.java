@@ -8,10 +8,13 @@ package tictactoe;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import tictactoe.JavaFiles.RecordedHistoryTable;
+import tictactoe.JavaFiles.RecordedMatchScreenBase;
 import tictactoe.JavaFiles.SignInBase;
 import tictactoe.JavaFiles.SplashScreenBase;
 
@@ -28,8 +31,12 @@ public class TicTacToe extends Application {
         
         Parent root = new  SignInBase( stage);
         
+        
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setOnCloseRequest((event) -> {
+            RecordedMatchScreenBase.th.stop();
+        });
         stage.show();
         
         Thread.sleep(1000);

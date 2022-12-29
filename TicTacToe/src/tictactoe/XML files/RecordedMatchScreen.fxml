@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="APane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../../resorces/historyTableStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView id="player1" fitHeight="156.0" fitWidth="160.0" layoutX="1140.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resorces/player1.png" />
+         </image>
+         <effect>
+            <Blend />
+         </effect>
+      </ImageView>
+      <ImageView id="player2" fitHeight="131.0" fitWidth="101.0" layoutX="69.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resorces/player2.png" />
+         </image>
+      </ImageView>
+      <Pane id="paneX" blendMode="HARD_LIGHT" layoutX="1156.0" layoutY="413.0" opacity="0.85" prefHeight="146.99999999999997" prefWidth="123.02623191958844" style="-fx-background-radius: 7;" stylesheets="@../../../resorces/historyTableStyle.css">
+         <effect>
+            <Blend mode="MULTIPLY" />
+         </effect>
+         <children>
+            <Text fill="WHITE" layoutX="19.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="67.0" fitWidth="110.0" layoutX="7.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resorces/xxx.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="47.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You">
+               <font>
+                  <Font name="Britannic Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane id="paneX" blendMode="HARD_LIGHT" cache="true" layoutX="69.0" layoutY="419.0" opacity="0.85" prefHeight="146.99999999999997" prefWidth="123.02623191958844" style="-fx-background-radius: 7;" stylesheets="@../../../resorces/historyTableStyle.css">
+         <effect>
+            <Blend />
+         </effect>
+         <children>
+            <Text blendMode="SCREEN" fill="WHITE" layoutX="18.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2" textAlignment="CENTER" wrappingWidth="88.0">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="40.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Omar">
+               <font>
+                  <Font name="Britannic Bold" size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="62.0" fitWidth="117.0" layoutX="7.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resorces/ooo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label layoutX="413.0" layoutY="441.0" prefHeight="44.0" prefWidth="110.0" />
+      <Pane id="gameBox" blendMode="HARD_LIGHT" layoutX="410.0" layoutY="127.0" prefHeight="462.0" prefWidth="548.0" stylesheets="@../../../resorces/historyTableStyle.css">
+         <children>
+            <Line endX="291.0" layoutX="257.0" layoutY="156.0" startX="-257.0" />
+            <Line endX="291.0" layoutX="258.0" layoutY="318.0" startX="-257.0" />
+            <Line endX="289.0" endY="141.0" layoutX="82.0" layoutY="320.0" startX="289.0" startY="-321.0" />
+            <Line endX="289.0" endY="141.0" layoutX="-119.0" layoutY="321.0" startX="289.0" startY="-321.0" />
+            <Button id="gameBoardCell3Id_btn" fx:id="gameBoardCell3Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="372.0" layoutY="1.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="172.0" />
+            <Button id="gameBoardCell2Id_btn" fx:id="gameBoardCell2Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="170.0" layoutY="6.0" mnemonicParsing="false" prefHeight="147.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button id="gameBoardCell4Id_btn" fx:id="gameBoardCell4Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="4.0" layoutY="158.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button id="gameBoardCell7Id_btn" fx:id="gameBoardCell7Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="4.0" layoutY="319.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button id="gameBoardCell5Id_btn" fx:id="gameBoardCell5Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="174.0" layoutY="163.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="192.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button id="gameBoardCell8Id_btn" fx:id="gameBoardCell8Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="172.0" layoutY="317.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button id="gameBoardCell9Id_btn" fx:id="gameBoardCell9Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="375.0" layoutY="319.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="172.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button id="gameBoardCell6Id_btn" fx:id="gameBoardCell6Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="375.0" layoutY="158.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="172.0" />
+            <Button id="gameBoardCell1Id_btn" fx:id="gameBoardCell1Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="4.0" layoutY="1.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
+         </children>
+      </Pane>
+      <Text fill="#07ee41fa" layoutX="588.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Win">
+         <font>
+            <Font name="Curlz MT" size="62.0" />
+         </font>
+      </Text>
+      <HBox id="RecordedMovementBox" alignment="CENTER" layoutX="271.0" layoutY="656.0" maxWidth="1.7976931348623157E308" opacity="0.84" prefHeight="44.0" style="-fx-background-radius: 7;" stylesheets="@../../../resorces/historyTableStyle.css">
+         <children>
+            <Text id="RecoededMovementId_txv" fx:id="RecoededMovementId_txv" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1.You: X5 , 2.Omar: O2 , 3.You: X9 , 4.Omar: O1 , 5.You: X3 , 6.Omar: O7 , 7.You: X6 " textAlignment="CENTER" wrappingWidth="913.6875">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </children>
+   <effect>
+      <Blend />
+   </effect>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>
