@@ -5,6 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -197,8 +201,19 @@ public  class SignUpBase extends Pane {
                 }
             
            }});
-                
-          
+               
+        signUpBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
+        {
+            @Override
+            public void handle(ActionEvent event) 
+            {         
+                HomeScreenBase homeScreen = new HomeScreenBase(stage);
+        
+                Scene scene = new Scene(homeScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
 
         pane.getChildren().add(text);
         pane.getChildren().add(nameTFSignUp);

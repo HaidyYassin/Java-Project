@@ -76,7 +76,6 @@ public  class SignInBase extends Pane {
         emailTFSignIn.setStyle("-fx-background-radius: 22;");
         emailTFSignIn.getStylesheets().add("/resources/cssFiles/CSS.css");
         emailTFSignIn.setPadding(new Insets(0.0, 0.0, 0.0, 25.0));
-        
 
         passTFSignIn.setId("emailTF");
         passTFSignIn.setLayoutX(43.0);
@@ -97,10 +96,19 @@ public  class SignInBase extends Pane {
         signInBtn.setStyle("-fx-background-color: white; -fx-text-fill: #6E3071; -fx-background-radius: 22;");
         signInBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         signInBtn.setText("Sign in");
+        signInBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
+        {
+            @Override
+            public void handle(ActionEvent event) 
+            {         
+                HomeScreenBase homeScreen = new HomeScreenBase(stage);
         
+                Scene scene = new Scene(homeScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
         
-       
-
         imageView.setFitHeight(16.0);
         imageView.setFitWidth(19.0);
         imageView.setLayoutX(48.0);
