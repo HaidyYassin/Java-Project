@@ -5,12 +5,15 @@
  */
 package tictactoe;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import tictactoe.JavaFiles.FXMLDocumentBase;
+import tictactoe.JavaFiles.SignInBase;
+import tictactoe.JavaFiles.SplashScreenBase;
 
 /**
  *
@@ -20,13 +23,21 @@ public class TicTacToe extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        
-        Parent root = new  FXMLDocumentBase( stage);
-        
+         
+        Parent root = new SplashScreenBase( stage);
         Scene scene = new Scene(root);
-        
         stage.setScene(scene);
         stage.show();
+        
+        Thread.sleep(1000);
+        
+        stage.hide();
+        scene = new Scene(new SignInBase(stage));
+        stage.setScene(scene);
+        stage.show(); 
+            
+         
+        
     }
 
     /**
@@ -35,5 +46,7 @@ public class TicTacToe extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
+   
+   
 }

@@ -13,6 +13,9 @@ public class PlayerData {
     
     private int id;
     private String name;
+
+    public PlayerData() {
+    }
     private String email;
     private String pass;
     private int avatar;

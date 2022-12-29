@@ -1,6 +1,10 @@
 package tictactoe.JavaFiles;
 
+import Models.PlayerData;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -8,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.util.regex.Pattern;
 
 public  class SignUpBase extends Pane {
 
@@ -22,6 +27,8 @@ public  class SignUpBase extends Pane {
     protected final ImageView imageView1;
     protected final ImageView imageView2;
     protected final Button signUpBtn;
+    
+     PlayerData playerData = new PlayerData();
 
     public SignUpBase(Stage stage) {
 
@@ -71,6 +78,7 @@ public  class SignUpBase extends Pane {
         nameTFSignUp.setStyle("-fx-background-radius: 22;");
         nameTFSignUp.getStylesheets().add("/resources/cssFiles/CSS.css");
         nameTFSignUp.setPadding(new Insets(0.0, 0.0, 0.0, 25.0));
+        
 
         mailTFSignUp.setId("emailTF");
         mailTFSignUp.setLayoutX(43.0);
@@ -141,6 +149,56 @@ public  class SignUpBase extends Pane {
         signUpBtn.setPrefWidth(112.0);
         signUpBtn.setStyle("-fx-background-color: white; -fx-text-fill: #6E3071; -fx-background-radius: 22;");
         signUpBtn.setText("Sign Up");
+        signUpBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                
+                if (nameTFSignUp.getText().equals("") ||  
+                    mailTFSignUp.getText().equals("") || passTFSignUp.getText().equals("")||
+                    confirmPassTFSignUp.getText().equals("") ){
+                     
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText("Incomplete Data !!");
+                        alert.showAndWait();     
+               }else{
+                 //check name validation   
+                    if(Pattern.matches("^[a-zA-Z][a-zA-Z0-9_]{7,29}$", nameTFSignUp.getText())){
+                             playerData.setName(nameTFSignUp.getText());
+                     }else{
+                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                             alert.setHeaderText("Invalid Name!");
+                             alert.showAndWait();
+                         }
+                     //chec mail pattern    
+                     if(Pattern.matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", 
+                             mailTFSignUp.getText())){
+                             playerData.setEmail(mailTFSignUp.getText());
+                     }else{
+                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                             alert.setHeaderText("Invalid mail!");
+                             alert.showAndWait();
+                         }
+//                     if(Pattern.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$",
+//                             passTFSignUp.getText())){
+//                             playerData.setPass(passTFSignUp.getText());
+//                     }else{
+//                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                             alert.setHeaderText("choose strong pass!");
+//                             alert.showAndWait();
+//                         }
+                         playerData.setPass(passTFSignUp.getText());
+                     if(confirmPassTFSignUp.getText() == passTFSignUp.getText()){
+                             //second screen 
+                     }else{
+                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                             alert.setHeaderText("wrong pass!");
+                             alert.showAndWait();
+                         }
+                }
+            
+           }});
+                
+          
 
         pane.getChildren().add(text);
         pane.getChildren().add(nameTFSignUp);

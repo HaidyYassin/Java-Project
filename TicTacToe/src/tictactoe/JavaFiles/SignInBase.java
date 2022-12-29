@@ -1,5 +1,6 @@
 package tictactoe.JavaFiles;
 
+import Models.PlayerData;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -13,7 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public  class FXMLDocumentBase extends Pane {
+public  class SignInBase extends Pane {
 
     protected final Pane pane;
     protected final Text text;
@@ -24,8 +25,10 @@ public  class FXMLDocumentBase extends Pane {
     protected final ImageView imageView0;
     protected final Text text0;
     protected final Text SignUpText;
+    
+    PlayerData playerData = new PlayerData();
 
-    public FXMLDocumentBase(Stage stage) {
+    public SignInBase(Stage stage) {
 
         pane = new Pane();
         text = new Text();
@@ -73,6 +76,7 @@ public  class FXMLDocumentBase extends Pane {
         emailTFSignIn.setStyle("-fx-background-radius: 22;");
         emailTFSignIn.getStylesheets().add("/resources/cssFiles/CSS.css");
         emailTFSignIn.setPadding(new Insets(0.0, 0.0, 0.0, 25.0));
+        
 
         passTFSignIn.setId("emailTF");
         passTFSignIn.setLayoutX(43.0);
