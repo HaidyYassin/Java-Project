@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
 
@@ -53,13 +54,13 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
   
     String s;
     String [] split;
-    public static Thread th ;
+    Thread th ;
     
     
    
     
  
-    public RecordedMatchScreenBase(String gameState,String gameContender) {
+    public RecordedMatchScreenBase(String gameState,String gameContender,Stage stage) {
         
         
         //imgO = new Image("/resorces/ooo.png");
@@ -418,8 +419,13 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         
         th= new Thread(this);
         th.start();
+        stage.setOnCloseRequest((event) -> {
+            th.stop();
+        });
 
     }
+    
+    
     
     public  void closeThread() {
 
