@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public  class FXMLDocumentBase extends Pane {
+public  class SignInBase extends Pane {
 
     protected final Pane pane;
     protected final Text text;
@@ -25,7 +25,7 @@ public  class FXMLDocumentBase extends Pane {
     protected final Text text0;
     protected final Text SignUpText;
 
-    public FXMLDocumentBase(Stage stage) {
+    public SignInBase(Stage stage) {
 
         pane = new Pane();
         text = new Text();
@@ -93,10 +93,19 @@ public  class FXMLDocumentBase extends Pane {
         signInBtn.setStyle("-fx-background-color: white; -fx-text-fill: #6E3071; -fx-background-radius: 22;");
         signInBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         signInBtn.setText("Sign in");
+        signInBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
+        {
+            @Override
+            public void handle(ActionEvent event) 
+            {         
+                HomeScreenBase homeScreen = new HomeScreenBase(stage);
         
+                Scene scene = new Scene(homeScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
         
-       
-
         imageView.setFitHeight(16.0);
         imageView.setFitWidth(19.0);
         imageView.setLayoutX(48.0);
