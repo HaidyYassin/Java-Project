@@ -420,7 +420,7 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         th= new Thread(this);
         th.start();
         stage.setOnCloseRequest((event) -> {
-            th.stop();
+           closeThread();
         });
 
     }
