@@ -1,12 +1,3 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Dec 24, 2022, 7:33:24 PM
-    Author     : DELL
-*/
 
 #logInBtn{
     -fx-background-size: 255.00000000000023 40.999999999999886px;
@@ -294,3 +285,283 @@ and open the template in the editor.
     -fx-border-bottom-right-radius: 28.44px;
     -fx-mix-blend-mode: darken;
 }
+
+
+#but_ClearAll{
+    -fx-width: 205.89843749999977px;
+    -fx-height: 40.0px;
+    -fx-font-family: arial;
+    -fx-font-size: 22.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #6E5071;
+    -fx-background-color: #F82FFF;
+    -fx-opacity: 0.92;
+    -fx-border-top-left-radius: 3px;
+    -fx-border-top-right-radius: 3px;
+    -fx-border-bottom-left-radius: 3px;
+    -fx-border-bottom-right-radius: 3px;
+}
+#historyTable{
+    -fx-width: 1176.4633333333331px;
+    -fx-height: 347.66666666666686px;
+    -fx-background-color: rgba(0,0,0,0.48);
+    -fx-mix-blend-mode: darken;
+
+
+}
+#pageBG{
+
+    -fx-background-image: url("bg.jpg");
+    -fx-background-size: 1360 768;
+
+}
+#idTxvRecordedMatches{
+
+    -fx-width: 480.146484375px;
+    -fx-height: 62.0px;
+    -fx-font-family: Arial;
+    -fx-font-size: 54.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #F119F2;
+
+
+}
+
+#table_view  {
+
+    -fx-width: 1176.4633333333331px;
+    -fx-height: 347.66666666666686px;
+    -fx-background-color: rgba(0,0,0,0.48);
+    -fx-mix-blend-mode: darken;
+    -fx-text-align: center;
+}
+#table_view .column-header .label{
+    -fx-width: 183.22070312500023px;
+    -fx-height: 48.0px;
+    -fx-font-family: Algerian;
+    -fx-font-size: 36.0px;
+    -fx-font-weight: 400;
+    -fx-text-align: center;
+    -fx-color: #F119F2;
+
+
+}
+
+#table_view .table-column {
+    -fx-alignment: center;
+    /* -fx-color: #F119F2;*/
+    -fxd-background-color: #F119F2
+
+
+}
+#player1{
+    -fx-width: 180.0px;
+    -fx-height: 126.00000000000006px;
+}
+#player2{
+    -fx-width: 168.0px;
+    -fx-height: 156.00000000000006px;
+}
+
+#UserPane{
+    -fx-background-size:800 500;
+    -fx-border-top: 3.0px;
+    -fx-border-top-color:solid #000000;
+    -fx-border-right: 3.0px;
+    -fx-border-right-color:solid #000000;
+    -fx-border-bottom: 3.0px; 
+    -fx-border-bottom-color:solid #000000;
+    -fx-border-left: 3.0px; 
+    -fx-border-left-color: solid #000000; 
+    -fx-background-image:url("bg.jpg");
+}
+
+#ProfilePan{
+    -fx-size:622.0426829268312 582.7399320016118 ;
+    -fx-opacity: 0.9;
+    -fx-font-family: Arial;
+    -fx-font-size: 15.0px;
+    -fx-font-weight: 400;
+    -fx-text-align: center;
+    -fx-color: #000000;
+    -fx-background-color: #000E0F;
+    -fx-border-top: 1.0px;
+    -fx-border-top-color-:solid #000000;
+    -fx-border-right: 1.0px;
+    -fx-border-right-color:solid #000000;
+    -fx-border-bottom: 1.0px;
+    -fx-border-bottom-color:solid #000000;
+    -fx-border-left: 1.0px;
+    -fx-border-left-color:solid #000000;
+    -fx-border-top-left-radius: 35.08439592009671px;
+    -fx-border-top-right-radius: 35.08439592009671px;
+    -fx-border-bottom-left-radius: 35.08439592009671px;
+    -fx-border-bottom-right-radius: 35.08439592009671px;
+    -fx-background-image:url("bg.jpg");
+}
+#ProfileTxt{
+    -fx-size:373.00000000000034 48.64999999999998; 
+    -fx-opacity: 0.4;
+    -fx-font-family: Britannic Bold;
+    -fx-font-size: 15.0px;
+    -fx-font-weight: 700;
+    -fx-color: #FFFFFF;
+    -fx-background-color: #D9D9D9;
+    -fx-border-top: 1.0px;
+    -fx-border-top-color:solid #000000;
+    -fx-border-right: 1.0px;
+    -fx-border-right-color:solid #000000;
+    -fx-border-bottom: 1.0px;
+    -fx-border-bottom-color:solid #000000;
+    -fx-border-left: 1.0px;
+    -fx-border-left-color:solid #000000;
+    -fx-border-top-left-radius: 5.571499999999997px;
+    -fx-border-top-right-radius: 5.571499999999997px;
+    -fx-border-bottom-left-radius: 5.571499999999997px;
+    -fx-border-bottom-right-radius: 5.571499999999997px;
+    -fx-padding-right: 15px;
+    -fx-padding-left: 15px;
+    -fx-text-fill:#D9D9D9; 
+    
+}
+#LogoutBtn{
+    -fx-size:255.00000000000023 23.0;
+    -fx-font-family: Britannic Bold;
+    -fx-font-size: 22.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-text-color:#6E3071;
+    -fx-background-color:#ECC216;
+    -fx-border-top:1.0px;
+    -fx-border-top-color:solid #000000;
+    -fx-border-right: 1.0px;
+    -fx-border-right-color:solid #000000;
+    -fx-border-bottom: 1.0px;
+    -fx-border-bottom-color:solid #000000;
+    -fx-border-left: 1.0px;
+    -fx-border-left-color:solid #000000;
+    -fx-border-top-left-radius:5.499999999999993px;
+    -fx-border-top-right-radius:5.499999999999993px;
+    -fx-border-bottom-left-radius:5.499999999999993px;
+    -fx-order-bottom-right-radius:5.499999999999993px;
+
+
+}
+#ProfileTxt{
+
+    -fx-width: 373.00000000000034px;
+    -fx-height: 48.64999999999998px;
+    -fx-opacity: 0.9;
+    -fx-font-family: Britannic Bold;
+    -fx-font-size: 15.0px;
+    -fx-font-weight: 700;
+    -fx-color: #000000;
+    -fx-background-color: #18021C;
+    -fx-border-top: 1.0px;
+    -fx-border-top-color:solid #000000;
+    -fx-border-right: 1.0px;
+    -fx-border-right-color:solid #000000;
+    -fx-border-bottom: 1.0px;
+    -fx-border-bottom-color:solid #000000;
+    -fx-border-left: 1.0px;
+    -fx-border-left-color:solid #000000;
+    -fx-border-top-left-radius: 5.571499999999997px;
+    -fx-border-top-right-radius: 5.571499999999997px;
+    -fx-border-bottom-left-radius: 5.571499999999997px;
+    -fx-border-bottom-right-radius: 5.571499999999997px;
+    -fx-padding-right: 15px;
+    -fx-padding-left: 15px;  
+}
+#gameBox{
+    -fx-size:548 462;
+    -fx-opacity: 0.95;
+    -fx-background-color: #4D0DA5;
+    -fx-border-top: 2.0px;
+    -fx-border-top-color:solid #DC7A25;
+    -fx-border-right: 2.0px;
+    -fx-border-right-color:solid #DC7A25;
+    -fx-border-bottom: 2.0px;
+    -fx-border-bottom-color:solid #DC7A25;
+    -fx-border-left: 2.0px;
+    -fx-border-left-color:solid #DC7A25 ;   
+}
+
+#paneX{
+    -fx-size:123.02623191958844 146.99999999999996;
+    -fx-font-family: Arial;
+    -fx-font-size: 15.0px;
+    -fx-font-weight: 400;
+    -fx-text-align: center;
+    -fx-background-color:#673FB4;
+    -fx-color: #FCF7F6;
+    -fx-border-top: 2.0px;
+    -fx-border-top-color: solid #DC7A25;
+    -fx-border-right: 2.0px; 
+    -fx-border-right-color:solid #DC7A25;
+    -fx-border-bottom: 2.0px;
+    -fx-border-bottom-color: solid #DC7A25;
+    -fx-border-left: 2.0px; 
+    -fx-border-left-color: solid #DC7A25;
+    -fx-border-top-left-radius:6.351311595979422px;
+    -fx-border-top-right-radius:6.351311595979422px;
+    -fx-border-bottom-left-radius:6.351311595979422px;
+    -fx-border-bottom-right-radius:6.351311595979422px;  
+}
+#APane{
+    -fx-background-size:1366 768;
+    -fx-border-top: 3.0px;
+    -fx-border-top-color:solid #000000;
+    -fx-border-right: 3.0px;
+    -fx-border-right-color:solid #000000;
+    -fx-border-bottom: 3.0px; 
+    -fx-border-bottom-color:solid #000000;
+    -fx-border-left: 3.0px; 
+    -fx-border-left-color: solid #000000; 
+    -fx-background-image:url("bg.jpg");
+}
+#RecordedMovementBox{
+    -fx-size:123.02623191958844 146.99999999999996;
+    -fx-font-weight: 400;
+    -fx-text-align: center;
+    -fx-background-color:#512DA8;
+    -fx-color: #FCF7F6;
+    -fx-border-top: 2.0px;
+    -fx-border-top-color: solid #DC7A25;
+    -fx-border-right: 2.0px; 
+    -fx-border-right-color:solid #DC7A25;
+    -fx-border-bottom: 2.0px;
+    -fx-border-bottom-color: solid #DC7A25;
+    -fx-border-left: 2.0px; 
+    -fx-border-left-color: solid #DC7A25;
+    -fx-border-top-left-radius:6.351311595979422px;
+    -fx-border-top-right-radius:6.351311595979422px;
+    -fx-border-bottom-left-radius:6.351311595979422px;
+    -fx-border-bottom-right-radius:6.351311595979422px; 
+    -fx-spacing: 8;
+}
+
+
+
+#willPayRow
+{
+    -fx-text-fill:red;
+    -fx-background-color:pink;
+}
+.wontPayRow
+{
+    -fx-text-fill:black;
+}
+
+.willPayRow .cell
+{
+    -fx-text-fill:red;
+}
+.wontPayRow .cell
+{
+    -fx-text-fill:black;
+}
+
+
+

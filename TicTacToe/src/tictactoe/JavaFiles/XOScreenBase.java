@@ -1,7 +1,12 @@
 package tictactoe.JavaFiles;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -13,9 +18,10 @@ public class XOScreenBase extends AnchorPane {
     protected final Text SelectYourSymbolleTxt;
     protected final ImageView XImg;
     protected final ImageView OImg;
+    Stage stage;
 
     public XOScreenBase(Stage stage) {
-
+        this.stage=stage;
         pane = new Pane();
         SelectYourSymbolleTxt = new Text();
         XImg = new ImageView();
@@ -50,7 +56,8 @@ public class XOScreenBase extends AnchorPane {
         XImg.setPickOnBounds(true);
         XImg.setPreserveRatio(true);
         XImg.setImage(new Image(getClass().getResource("/resources/images/xImage.png").toExternalForm()));
-
+        setXImgAction();
+        
         OImg.setFitHeight(150.0);
         OImg.setFitWidth(150.0);
         OImg.setLayoutX(270.0);
@@ -64,5 +71,21 @@ public class XOScreenBase extends AnchorPane {
         pane.getChildren().add(OImg);
         getChildren().add(pane);
 
+    }
+    
+    public void setXImgAction() {
+        XImg.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                GameFxmlBase gameScreen = new GameFxmlBase(stage);
+        
+                Scene scene = new Scene(gameScreen);
+                stage.setScene(scene);
+                stage.show();
+                
+            }
+            
+            
+        });
     }
 }
