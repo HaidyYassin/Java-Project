@@ -80,6 +80,15 @@ public  class ProfileBase extends AnchorPane {
         History_Btn.setStyle("-fx-background-radius: 22; -fx-text-fill: #6E3071; -fx-background-color: white; -fx-font-size: 18;");
         History_Btn.getStylesheets().add("/resources/cssFiles/CSS.css");
         History_Btn.setText("History");
+        History_Btn.setOnAction( (event) -> {
+            
+            RecordedHistoryTable recordedHistoryTable = new RecordedHistoryTable(stage);
+
+                Scene scene = new Scene(recordedHistoryTable);
+                stage.setScene(scene);
+                stage.show();
+            
+        });
 
         line.setEndX(172.0);
         line.setLayoutX(212.0);
@@ -158,4 +167,6 @@ public  class ProfileBase extends AnchorPane {
         });
 
     }
+    
+    
 }

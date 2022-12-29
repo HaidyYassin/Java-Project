@@ -6,10 +6,13 @@
 package tictactoe;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import tictactoe.JavaFiles.RecordedHistoryTable;
+import tictactoe.JavaFiles.RecordedMatchScreenBase;
 import tictactoe.JavaFiles.SignInBase;
 
 /**
@@ -23,9 +26,13 @@ public class TicTacToe extends Application {
         
         Parent root = new  SignInBase( stage);
         
+        
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        stage.setOnCloseRequest((event) -> {
+            RecordedMatchScreenBase.th.stop();
+        });
         stage.show();
     }
 
