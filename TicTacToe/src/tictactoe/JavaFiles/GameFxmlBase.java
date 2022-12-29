@@ -45,9 +45,9 @@ public class GameFxmlBase extends AnchorPane {
     protected final Button button7;
     protected final Button button8;
     protected final Blend blend2;
-
+    Stage stage;
     public GameFxmlBase(Stage stage) {
-
+        this.stage=stage;
         imageView = new ImageView();
         blend = new Blend();
         imageView0 = new ImageView();
@@ -95,6 +95,7 @@ public class GameFxmlBase extends AnchorPane {
         imageView.setLayoutY(266.0);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
+        imageView.setCache(true);
         imageView.setImage(new Image(getClass().getResource("/resources/images/player1.png").toExternalForm()));
 
         imageView.setEffect(blend);
@@ -106,7 +107,8 @@ public class GameFxmlBase extends AnchorPane {
         imageView0.setLayoutY(288.0);
         imageView0.setPickOnBounds(true);
         imageView0.setPreserveRatio(true);
-        imageView0.setImage(new Image(getClass().getResource("/tictactoe/XML files/../../resources/images/player2.png").toExternalForm()));
+        imageView0.setCache(true);
+        imageView0.setImage(new Image(getClass().getResource("/resources/images/player2.png").toExternalForm()));
 
         pane.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
         pane.setId("paneX");
@@ -116,7 +118,7 @@ public class GameFxmlBase extends AnchorPane {
         pane.setPrefHeight(146.99999999999997);
         pane.setPrefWidth(123.02623191958844);
         pane.setStyle("-fx-background-radius: 7;");
-        pane.getStylesheets().add("/tictactoe/XML files/../../resources/cssFiles/CSS.css");
+        pane.getStylesheets().add("/resources/cssFiles/CSS.css");
 
         blend0.setMode(javafx.scene.effect.BlendMode.MULTIPLY);
         pane.setEffect(blend0);
@@ -135,7 +137,7 @@ public class GameFxmlBase extends AnchorPane {
         imageView1.setLayoutY(74.0);
         imageView1.setPickOnBounds(true);
         imageView1.setPreserveRatio(true);
-        imageView1.setImage(new Image(getClass().getResource("/tictactoe/XML files/../../resources/images/xImage.png").toExternalForm()));
+        imageView1.setImage(new Image(getClass().getResource("/resources/images/xImage.png").toExternalForm()));
 
         text0.setFill(javafx.scene.paint.Color.WHITE);
         text0.setLayoutX(47.0);
@@ -154,7 +156,7 @@ public class GameFxmlBase extends AnchorPane {
         pane0.setPrefHeight(146.99999999999997);
         pane0.setPrefWidth(123.02623191958844);
         pane0.setStyle("-fx-background-radius: 7;");
-        pane0.getStylesheets().add("/tictactoe/XML files/../../resources/cssFiles/CSS.css");
+        pane0.getStylesheets().add("/resources/cssFiles/CSS.css");
 
         pane0.setEffect(blend1);
 
@@ -183,7 +185,7 @@ public class GameFxmlBase extends AnchorPane {
         imageView2.setLayoutY(74.0);
         imageView2.setPickOnBounds(true);
         imageView2.setPreserveRatio(true);
-        imageView2.setImage(new Image(getClass().getResource("/tictactoe/XML files/../../resources/images/oImage.png").toExternalForm()));
+        imageView2.setImage(new Image(getClass().getResource("/resources/images/oImage.png").toExternalForm()));
 
         label.setLayoutX(413.0);
         label.setLayoutY(441.0);
@@ -195,7 +197,7 @@ public class GameFxmlBase extends AnchorPane {
         pane1.setLayoutY(136.0);
         pane1.setPrefHeight(462.0);
         pane1.setPrefWidth(548.0);
-        pane1.getStylesheets().add("/tictactoe/XML files/../../resources/cssFiles/CSS.css");
+        pane1.getStylesheets().add("/resources/cssFiles/CSS.css");
 
         line.setEndX(291.0);
         line.setLayoutX(257.0);
