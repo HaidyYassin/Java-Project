@@ -1,13 +1,23 @@
-package tictactoe;
+package tictactoe.JavaFiles;
 
+import com.sun.javaws.ui.SplashScreen;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+
 public class SplashScreenBase extends Pane {
 
     protected final ImageView imageView;
+       
 
     public SplashScreenBase(Stage stage) {
 
@@ -30,11 +40,10 @@ public class SplashScreenBase extends Pane {
         imageView.setPreserveRatio(true);
         imageView.setImage(new Image(getClass().getResource("/resources/images/splash_icon.png").toExternalForm()));
 
-        
-        
+   
         getChildren().add(imageView);
 
     }
-    
-    
+
+   
 }

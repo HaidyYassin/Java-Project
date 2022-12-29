@@ -1,5 +1,6 @@
 package tictactoe.JavaFiles;
 
+import Models.PlayerData;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -24,6 +25,8 @@ public  class SignInBase extends Pane {
     protected final ImageView imageView0;
     protected final Text text0;
     protected final Text SignUpText;
+    
+    PlayerData playerData = new PlayerData();
 
     public SignInBase(Stage stage) {
 
