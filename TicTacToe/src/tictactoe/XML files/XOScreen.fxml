@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="backGrd" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../resources/cssFiles/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane id="XOpane" layoutX="70.0" layoutY="55.0" prefHeight="291.0" prefWidth="460.0" style="-fx-background-radius: 12;" stylesheets="@../CSS/CSS.css">
+         <children>
+            <Text fx:id="SelectYourSymbolleTxt" fill="WHITE" layoutX="67.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 35;" text="Select Your Symbole" textAlignment="CENTER" />
+            <ImageView fx:id="XImg" fitHeight="128.0" fitWidth="210.0" layoutX="20.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/xImage.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="OImg" fitHeight="166.0" fitWidth="210.0" layoutX="230.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/oImage.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -92,5 +92,205 @@ and open the template in the editor.
 
 }
 
+#panal{
+    -fx-size: 200 200;
+    -fx-opacity: 0.82;
+    -fx-font-family: Arial;
+    -fx-font-size: 15.0px;
+    -fx-font-weight: 400;
+    -fx-text-align: center;
+    -fx-color: #000000;
+    -fx-background-color: #000E0F;
+    -fx-border-top: 1.0px;
+    -fx-border-top-color: solid #000000;
+    -fx-border-right: 1.0px;
+    -fx-border-right-color: solid #000000;
+    -fx-border-bottom: 1.0px;
+    -fx-border-bottom-color: solid #000000;
+    -fx-border-left: 1.0px;
+    -fx-border-left-color: solid #000000;
+    -fx-border-top-left-radius: 40.00439592009671px;
+    -fx-border-top-right-radius: 40.00439592009671px;
+    -fx-border-bottom-left-radius: 40.00439592009671px;
+    -fx-border-bottom-right-radius: 40.00439592009671px;
+}
 
+#SMBtn{
+    -fx-size: 190 117;
+    -fx-opacity: 0.85;
+    -fx-font-size: 25.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #6E3071;
+    -fx-background-color: #FFFFFF;
+    -fx-border-top: 0.0px;
+    -fx-border-top-color: solid #222020;
+    -fx-border-right: 0.0px;
+    -fx-border-right-color: solid #222020;
+    -fx-border-bottom: 0.0px;
+    -fx-border-bottom-color: solid #222020;
+    -fx-border-left: 0.0px;
+    -fx-border-left-color: solid #222020;
+    -fx-border-top-left-radius: 19.0px;
+    -fx-border-top-right-radius: 19.0px;
+    -fx-border-bottom-left-radius: 19.0px;
+    -fx-border-bottom-right-radius: 19.0px;
+}
 
+#MMBtn{
+    -fx-size: 190 117;
+    -fx-opacity: 0.85;
+    -fx-font-size: 25.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #6E3071;
+    -fx-background-color: #FFFFFF;
+    -fx-border-top: 0.0px;
+    -fx-border-top-color: solid #222020;
+    -fx-border-right: 0.0px;
+    -fx-border-right-color: solid #222020;
+    -fx-border-bottom: 0.0px;
+    -fx-border-bottom-color: solid #222020;
+    -fx-border-left: 0.0px;
+    -fx-border-left-color: solid #222020;
+    -fx-border-top-left-radius: 19.0px;
+    -fx-border-top-right-radius: 19.0px;
+    -fx-border-bottom-left-radius: 19.0px;
+    -fx-border-bottom-right-radius: 19.0px;
+}
+
+#SMpanal{
+    -fx-size: 352 225;
+    -fx-opacity: 0.96;
+    -fx-font-family: Arial;
+    -fx-font-size: 15.0px;
+    -fx-font-weight: 400;
+    -fx-text-align: center;
+    -fx-color: #000000;
+    -fx-background-color: #000E0F;
+    -fx-border-top: 1.0px;
+    -fx-border-top-color: solid #222020;
+    -fx-border-right: 1.0px;
+    -fx-border-right-color: solid #222020;
+    -fx-border-bottom: 1.0px;
+    -fx-border-bottom-color: solid #222020;
+    -fx-border-left: 1.0px;
+    -fx-border-left-color: solid #222020;
+    -fx-border-top-left-radius: 28.44px;
+    -fx-border-top-right-radius: 28.44px;
+    -fx-border-bottom-left-radius: 28.44px;
+    -fx-border-bottom-right-radius: 28.44px;
+}
+
+#SMBtn{
+    -fx-size: 25px 25px;
+    -fx-opacity: 0.85;
+    -fx-font-size: 25.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #6E3071;
+    -fx-background-color: #FFFFFF;
+    -fx-border-top: 0.0px;
+    -fx-border-top-color: solid #222020;
+    -fx-border-right: 0.0px;
+    -fx-border-right-color: solid #222020;
+    -fx-border-bottom: 0.0px;
+    -fx-border-bottom-color: solid #222020;
+    -fx-border-left: 0.0px;
+    -fx-border-left-color: solid #222020;
+    -fx-border-top-left-radius: 12.0px;
+    -fx-border-top-right-radius: 12.0px;
+    -fx-border-bottom-left-radius: 12.0px;
+    -fx-border-bottom-right-radius: 12.0px;
+}
+
+#MMpanal{
+    -fx-size: 352 225;
+    -fx-opacity: 0.96;
+    -fx-font-family: Arial;
+    -fx-font-size: 15.0px;
+    -fx-font-weight: 400;
+    -fx-text-align: center;
+    -fx-color: #000000;
+    -fx-background-color: #000E0F;
+    -fx-border-top: 1.0px;
+    -fx-border-top-color: solid #222020;
+    -fx-border-right: 1.0px;
+    -fx-border-right-color: solid #222020;
+    -fx-border-bottom: 1.0px;
+    -fx-border-bottom-color: solid #222020;
+    -fx-border-left: 1.0px;
+    -fx-border-left-color: solid #222020;
+    -fx-border-top-left-radius: 28.44px;
+    -fx-border-top-right-radius: 28.44px;
+    -fx-border-bottom-left-radius: 28.44px;
+    -fx-border-bottom-right-radius: 28.44px;
+}
+
+#localBtn{
+    -fx-size: 25px 25px;
+    -fx-opacity: 0.85;
+    -fx-font-size: 25.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #6E3071;
+    -fx-background-color: #FFFFFF;
+    -fx-border-top: 0.0px;
+    -fx-border-top-color: solid #222020;
+    -fx-border-right: 0.0px;
+    -fx-border-right-color: solid #222020;
+    -fx-border-bottom: 0.0px;
+    -fx-border-bottom-color: solid #222020;
+    -fx-border-left: 0.0px;
+    -fx-border-left-color: solid #222020;
+    -fx-border-top-left-radius: 19.0px;
+    -fx-border-top-right-radius: 19.0px;
+    -fx-border-bottom-left-radius: 19.0px;
+    -fx-border-bottom-right-radius: 19.0px;
+}
+
+#onlineBtn{
+    -fx-size: 25px 25px;
+    -fx-opacity: 0.85;
+    -fx-font-size: 25.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #6E3071;
+    -fx-background-color: #FFFFFF;
+    -fx-border-top: 0.0px;
+    -fx-border-top-color: solid #222020;
+    -fx-border-right: 0.0px;
+    -fx-border-right-color: solid #222020;
+    -fx-border-bottom: 0.0px;
+    -fx-border-bottom-color: solid #222020;
+    -fx-border-left: 0.0px;
+    -fx-border-left-color: solid #222020;
+    -fx-border-top-left-radius: 19.0px;
+    -fx-border-top-right-radius: 19.0px;
+    -fx-border-bottom-left-radius: 19.0px;
+    -fx-border-bottom-right-radius: 19.0px;
+}
+
+#XOpane{
+    -fx-size: 352 225;
+    -fx-opacity: 0.82;
+    -fx-font-family: Arial;
+    -fx-font-size: 15.0px;
+    -fx-font-weight: 400;
+    -fx-text-align: center;
+    -fx-color: #000000;
+    -fx-background-color: #000000;
+    -fx-border-top: 1.0px;
+    -fx-border-top-color: solid #000000;
+    -fx-border-right: 1.0px;
+    -fx-border-right-color: solid #000000;
+    -fx-border-bottom: 1.0px;
+    -fx-border-bottom-color: solid #000000;
+    -fx-border-left: 1.0px;
+    -fx-border-left-color: solid #000000;
+    -fx-border-top-left-radius: 28.44px;
+    -fx-border-top-right-radius: 28.44px;
+    -fx-border-bottom-left-radius: 28.44px;
+    -fx-border-bottom-right-radius: 28.44px;
+    -fx-mix-blend-mode: darken;
+}
