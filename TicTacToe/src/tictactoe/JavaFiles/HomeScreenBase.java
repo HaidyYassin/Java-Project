@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -32,9 +33,9 @@ public class HomeScreenBase extends AnchorPane {
     protected final ImageView localImg;
     protected final ImageView onlineImg;
     protected final ImageView MMpanalBackArrow;
-
+    Stage stage;
     public HomeScreenBase(Stage stage) {
-
+        this.stage=stage;
         pane = new Pane();
         SMBtn = new Button();
         singleModeImg = new ImageView();
@@ -160,6 +161,7 @@ public class HomeScreenBase extends AnchorPane {
         soundImg.setLayoutY(18.0);
         soundImg.setPickOnBounds(true);
         soundImg.setPreserveRatio(true);
+        setProfileIconAction();
         soundImg.setImage(new Image(getClass().getResource("/resources/images/sound.png").toExternalForm()));
 
         profileImg.setFitHeight(35.0);
@@ -333,6 +335,20 @@ public class HomeScreenBase extends AnchorPane {
         MMpanal.getChildren().add(MMpanalBackArrow);
         pane.getChildren().add(MMpanal);
         getChildren().add(pane);
+
+    }
+    public void setProfileIconAction() {
+        profileImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                ProfileBase gameScreen = new ProfileBase(stage);
+
+                Scene scene = new Scene(gameScreen);
+                stage.setScene(scene);
+                stage.show();
+
+            }
+        });
 
     }
 }
