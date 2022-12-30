@@ -182,7 +182,7 @@ public class RecordedHistoryTable extends AnchorPane {
                             String gc = selectedPerson.getGameContender().substring(0, selectedPerson.getGameContender().indexOf(" "));
                             String gs = selectedPerson.getGameStatus();
 
-                            RecordedMatchScreenBase rmsb = new RecordedMatchScreenBase(gs, gc);
+                            RecordedMatchScreenBase rmsb = new RecordedMatchScreenBase(gs, gc,stage);
 
                             Scene scene = new Scene(rmsb);
                             stage.setScene(scene);

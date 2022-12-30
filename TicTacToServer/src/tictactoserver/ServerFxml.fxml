@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="UserPane" prefHeight="500.0" prefWidth="800.0" stylesheets="@../Css/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="ServerPane" layoutX="60.0" layoutY="68.0" prefHeight="333.0" prefWidth="680.0" style="-fx-background-radius: 20; -fx-background-color: #010114;">
+         <children>
+            <Text layoutX="68.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manal Hamada " wrappingWidth="118.17236328125" />
+            <PieChart fx:id="pieChart" layoutX="-1.0" layoutY="-2.0" prefHeight="340.0" prefWidth="680.0" style="-fx-background-color: white; -fx-background-radius: 18;" title="Status" />
+         </children>
+      </Pane>
+      <ToggleButton layoutX="363.0" layoutY="415.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" style="-fx-background-color: #362875; -fx-text-fill: white; -fx-font-size: 18; -fx-font-family: Britannic Bold; -fx-background-radius: 15;" text="Start" />
+   </children>
+</AnchorPane>

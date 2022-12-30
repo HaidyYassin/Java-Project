@@ -34,9 +34,7 @@ public class TicTacToe extends Application {
         
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setOnCloseRequest((event) -> {
-            RecordedMatchScreenBase.th.stop();
-        });
+        
         stage.show();
         
         Thread.sleep(1000);
