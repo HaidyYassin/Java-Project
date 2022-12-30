@@ -27,25 +27,18 @@ public class TicTacToe extends Application {
     @Override
     public void start(Stage stage) throws Exception {
          
+        //Parent root = new SplashScreenBase( stage);
         Parent root = new SplashScreenBase( stage);
-        
-        Parent root = new  SignInBase( stage);
-        
-        
         Scene scene = new Scene(root);
         stage.setScene(scene);
         
         stage.show();
+        stage.setResizable(false); 
+        Thread.sleep(3000);   
         
-        Thread.sleep(1000);
-        
-        stage.hide();
         scene = new Scene(new SignInBase(stage));
         stage.setScene(scene);
-        stage.show(); 
-            
-         
-        
+        stage.show();   
     }
 
     /**

@@ -34,20 +34,29 @@ public class GameFxmlBase extends AnchorPane {
     protected final Line line0;
     protected final Line line1;
     protected final Line line2;
-    protected final Button button;
-    protected final Button button0;
-    protected final Button button1;
-    protected final Button button2;
-    protected final Button button3;
-    protected final Button button4;
-    protected final Button button5;
-    protected final Button button6;
-    protected final Button button7;
-    protected final Button button8;
+    protected final Button btn1;
+    protected final Button btn2;
+    protected final Button btn3;
+    protected final Button btn4;
+    protected final Button btn5;
+    protected final Button btn6;
+    protected final Button btn7;
+    protected final Button btn8;
+    protected final Button btn9;
     protected final Blend blend2;
     Stage stage;
-    public GameFxmlBase(Stage stage) {
+    String symbole;
+    String level;
+    int stepCounter;
+    boolean isYourTurn;
+    Button[] btnArr = new Button[9];
+
+    public GameFxmlBase(Stage stage, String level, String symbole) {
         this.stage=stage;
+        this.level = level;
+        this.symbole = symbole;
+        stepCounter = 0;
+        isYourTurn = true;
         imageView = new ImageView();
         blend = new Blend();
         imageView0 = new ImageView();
@@ -67,16 +76,15 @@ public class GameFxmlBase extends AnchorPane {
         line0 = new Line();
         line1 = new Line();
         line2 = new Line();
-        button = new Button();
-        button0 = new Button();
-        button1 = new Button();
-        button2 = new Button();
-        button3 = new Button();
-        button4 = new Button();
-        button5 = new Button();
-        button6 = new Button();
-        button7 = new Button();
-        button8 = new Button();
+        btn1 = new Button();
+        btn2 = new Button();
+        btn3 = new Button();
+        btn4 = new Button();
+        btn5 = new Button();
+        btn6 = new Button();
+        btn7 = new Button();
+        btn8 = new Button();
+        btn9 = new Button();
         blend2 = new Blend();
 
         setId("APane");
@@ -95,7 +103,6 @@ public class GameFxmlBase extends AnchorPane {
         imageView.setLayoutY(266.0);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
-        imageView.setCache(true);
         imageView.setImage(new Image(getClass().getResource("/resources/images/player1.png").toExternalForm()));
 
         imageView.setEffect(blend);
@@ -107,7 +114,6 @@ public class GameFxmlBase extends AnchorPane {
         imageView0.setLayoutY(288.0);
         imageView0.setPickOnBounds(true);
         imageView0.setPreserveRatio(true);
-        imageView0.setCache(true);
         imageView0.setImage(new Image(getClass().getResource("/resources/images/player2.png").toExternalForm()));
 
         pane.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
@@ -223,89 +229,80 @@ public class GameFxmlBase extends AnchorPane {
         line2.setStartX(289.0);
         line2.setStartY(-321.0);
 
-        button.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        button.setLayoutX(168.0);
-        button.setLayoutY(1.0);
-        button.setMnemonicParsing(false);
-        button.setPrefHeight(156.0);
-        button.setPrefWidth(200.0);
+        btn1.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn1.setLayoutX(4.0);
+        btn1.setLayoutY(1.0);
+        btn1.setMnemonicParsing(false);
+        btn1.setPrefHeight(156.0);
+        btn1.setPrefWidth(164.0);
+        btn1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn1.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
-        button0.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        button0.setLayoutX(372.0);
-        button0.setLayoutY(1.0);
-        button0.setMnemonicParsing(false);
-        button0.setPrefHeight(156.0);
-        button0.setPrefWidth(172.0);
+        btn2.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn2.setLayoutX(168.0);
+        btn2.setLayoutY(1.0);
+        btn2.setMnemonicParsing(false);
+        btn2.setPrefHeight(156.0);
+        btn2.setPrefWidth(200.0);
 
-        button1.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        button1.setLayoutX(170.0);
-        button1.setLayoutY(6.0);
-        button1.setMnemonicParsing(false);
-        button1.setPrefHeight(147.0);
-        button1.setPrefWidth(200.0);
-        button1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        button1.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        btn3.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn3.setLayoutX(372.0);
+        btn3.setLayoutY(1.0);
+        btn3.setMnemonicParsing(false);
+        btn3.setPrefHeight(156.0);
+        btn3.setPrefWidth(172.0);
 
-        button2.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        button2.setLayoutX(4.0);
-        button2.setLayoutY(158.0);
-        button2.setMnemonicParsing(false);
-        button2.setPrefHeight(156.0);
-        button2.setPrefWidth(164.0);
-        button2.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        button2.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        btn4.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn4.setLayoutX(4.0);
+        btn4.setLayoutY(158.0);
+        btn4.setMnemonicParsing(false);
+        btn4.setPrefHeight(156.0);
+        btn4.setPrefWidth(164.0);
+        btn4.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn4.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
-        button3.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        button3.setLayoutX(4.0);
-        button3.setLayoutY(319.0);
-        button3.setMnemonicParsing(false);
-        button3.setPrefHeight(141.0);
-        button3.setPrefWidth(164.0);
-        button3.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        button3.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        btn5.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn5.setLayoutX(174.0);
+        btn5.setLayoutY(163.0);
+        btn5.setMnemonicParsing(false);
+        btn5.setPrefHeight(156.0);
+        btn5.setPrefWidth(192.0);
+        btn5.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn5.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
-        button4.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        button4.setLayoutX(174.0);
-        button4.setLayoutY(163.0);
-        button4.setMnemonicParsing(false);
-        button4.setPrefHeight(156.0);
-        button4.setPrefWidth(192.0);
-        button4.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        button4.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        btn6.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn6.setLayoutX(375.0);
+        btn6.setLayoutY(158.0);
+        btn6.setMnemonicParsing(false);
+        btn6.setPrefHeight(156.0);
+        btn6.setPrefWidth(172.0);
 
-        button5.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        button5.setLayoutX(172.0);
-        button5.setLayoutY(317.0);
-        button5.setMnemonicParsing(false);
-        button5.setPrefHeight(141.0);
-        button5.setPrefWidth(200.0);
-        button5.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        button5.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        btn7.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn7.setLayoutX(4.0);
+        btn7.setLayoutY(319.0);
+        btn7.setMnemonicParsing(false);
+        btn7.setPrefHeight(141.0);
+        btn7.setPrefWidth(164.0);
+        btn7.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn7.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
-        button6.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        button6.setLayoutX(375.0);
-        button6.setLayoutY(319.0);
-        button6.setMnemonicParsing(false);
-        button6.setPrefHeight(141.0);
-        button6.setPrefWidth(172.0);
-        button6.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        button6.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        btn8.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn8.setLayoutX(172.0);
+        btn8.setLayoutY(317.0);
+        btn8.setMnemonicParsing(false);
+        btn8.setPrefHeight(141.0);
+        btn8.setPrefWidth(200.0);
+        btn8.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn8.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
-        button7.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        button7.setLayoutX(375.0);
-        button7.setLayoutY(158.0);
-        button7.setMnemonicParsing(false);
-        button7.setPrefHeight(156.0);
-        button7.setPrefWidth(172.0);
-
-        button8.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        button8.setLayoutX(4.0);
-        button8.setLayoutY(1.0);
-        button8.setMnemonicParsing(false);
-        button8.setPrefHeight(156.0);
-        button8.setPrefWidth(164.0);
-        button8.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        button8.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        btn9.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn9.setLayoutX(375.0);
+        btn9.setLayoutY(319.0);
+        btn9.setMnemonicParsing(false);
+        btn9.setPrefHeight(141.0);
+        btn9.setPrefWidth(172.0);
+        btn9.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn9.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
         setEffect(blend2);
         setOpaqueInsets(new Insets(0.0));
@@ -325,17 +322,133 @@ public class GameFxmlBase extends AnchorPane {
         pane1.getChildren().add(line0);
         pane1.getChildren().add(line1);
         pane1.getChildren().add(line2);
-        pane1.getChildren().add(button);
-        pane1.getChildren().add(button0);
-        pane1.getChildren().add(button1);
-        pane1.getChildren().add(button2);
-        pane1.getChildren().add(button3);
-        pane1.getChildren().add(button4);
-        pane1.getChildren().add(button5);
-        pane1.getChildren().add(button6);
-        pane1.getChildren().add(button7);
-        pane1.getChildren().add(button8);
+        pane1.getChildren().add(btn1);
+        pane1.getChildren().add(btn2);
+        pane1.getChildren().add(btn3);
+        pane1.getChildren().add(btn4);
+        pane1.getChildren().add(btn5);
+        pane1.getChildren().add(btn6);
+        pane1.getChildren().add(btn7);
+        pane1.getChildren().add(btn8);
+        pane1.getChildren().add(btn9);
         getChildren().add(pane1);
+        
+        
+        btnArr[0] = btn1;
+        btnArr[1] = btn2;
+        btnArr[2] = btn3;
+        btnArr[3] = btn4;
+        btnArr[4] = btn5;
+        btnArr[5] = btn6;
+        btnArr[6] = btn7;
+        btnArr[7] = btn8;
+        btnArr[8] = btn9;
 
+        //handleGame();
+    }
+    
+    public void handleGame()
+    {
+        
+            if(isYourTurn)
+                yourTurn();
+            else
+                computerTurn();
+        
+    }
+    
+    public void yourTurn()
+    {
+        btnDisable(false);
+        
+        btn1.setOnAction((e) -> {
+            btn1.setGraphic(drawXIcon());
+            isYourTurn = false;
+        });
+        btn3.setOnAction((e) -> {
+            btn3.setGraphic(drawXIcon());
+            isYourTurn = false;
+        });
+        btn9.setOnAction((e) -> {
+            btn9.setGraphic(drawXIcon());
+            isYourTurn = false;
+        });     
+    }
+    
+    public void computerTurn()
+    {
+        btnDisable(true);
+        if(level.equals("easy"))
+        {
+            int min = 0;
+            int max = 8;
+            int rand = (int)(Math.random()*(max - min + 1) + min);
+            
+            while(!isEnd() && btnArr[rand].getGraphic() != null)
+            {
+                rand = (int)(Math.random()*(max - min + 1) + min);
+            }
+            /*if(btnArr[rand].getGraphic() == null)
+            {
+                btnArr[rand].setGraphic(drawOIcon());
+            }
+            stepCounter ++;*/
+            
+            
+            isYourTurn = true;
+        }
+    }
+    
+    public void btnDisable(boolean disable)
+    {
+        if(disable == true)
+        {
+            for(int i = 0; i < 9; i++)
+            {
+                 btnArr[i].setDisable(disable);
+            }
+        }
+        
+        else
+        {
+            for(int i = 0; i < 9; i++)
+            {
+                if(btnArr[i].getGraphic() == null)
+                    btnArr[i].setDisable(disable);
+                else
+                    btnArr[i].setDisable(true);
+            }
+        }
+    }
+    
+    private ImageView drawOIcon(){
+        ImageView vimgO;
+        vimgO = new ImageView(getClass().getResource("/resources/images/oImage.png").toExternalForm());
+        vimgO.setFitWidth(140);
+        vimgO.setFitHeight(130);
+        vimgO.setBlendMode(javafx.scene.effect.BlendMode.MULTIPLY);
+        return vimgO;
+    
+    };
+    private ImageView drawXIcon(){
+        Image imgX ;
+        ImageView vimgX;
+        imgX = new Image("/resources/images/xImage.png");
+        vimgX = new ImageView(imgX);
+        vimgX.pickOnBoundsProperty();
+        vimgX.preserveRatioProperty();
+        vimgX.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
+        vimgX.setFitWidth(140);
+        vimgX.setFitHeight(130);
+        
+        return vimgX;
+    
+    };
+    
+    public boolean isEnd()
+    {
+        if(stepCounter < 8)
+            return false;
+        return true;
     }
 }

@@ -78,16 +78,15 @@
             <Line endX="291.0" layoutX="258.0" layoutY="318.0" startX="-257.0" />
             <Line endX="289.0" endY="141.0" layoutX="82.0" layoutY="321.0" startX="289.0" startY="-321.0" />
             <Line endX="289.0" endY="141.0" layoutX="-119.0" layoutY="321.0" startX="289.0" startY="-321.0" />
-            <Button blendMode="DARKEN" layoutX="168.0" layoutY="1.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="200.0" />
-            <Button blendMode="DARKEN" layoutX="372.0" layoutY="1.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="172.0" />
-            <Button blendMode="DARKEN" layoutX="170.0" layoutY="6.0" mnemonicParsing="false" prefHeight="147.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button blendMode="DARKEN" layoutX="4.0" layoutY="158.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button blendMode="DARKEN" layoutX="4.0" layoutY="319.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button blendMode="DARKEN" layoutX="174.0" layoutY="163.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="192.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button blendMode="DARKEN" layoutX="172.0" layoutY="317.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button blendMode="DARKEN" layoutX="375.0" layoutY="319.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="172.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button blendMode="DARKEN" layoutX="375.0" layoutY="158.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="172.0" />
-            <Button blendMode="DARKEN" layoutX="4.0" layoutY="1.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn1" blendMode="DARKEN" layoutX="4.0" layoutY="1.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn2" blendMode="DARKEN" layoutX="168.0" layoutY="1.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="200.0" />
+            <Button fx:id="btn3" blendMode="DARKEN" layoutX="372.0" layoutY="1.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="172.0" />
+            <Button fx:id="btn4" blendMode="DARKEN" layoutX="4.0" layoutY="158.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn5" blendMode="DARKEN" layoutX="174.0" layoutY="163.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="192.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn6" blendMode="DARKEN" layoutX="375.0" layoutY="158.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="172.0" />
+            <Button fx:id="btn7" blendMode="DARKEN" layoutX="4.0" layoutY="319.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn8" blendMode="DARKEN" layoutX="172.0" layoutY="317.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn9" blendMode="DARKEN" layoutX="375.0" layoutY="319.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="172.0" textAlignment="CENTER" textFill="#fffdfd" />
          </children>
       </Pane>
    </children>

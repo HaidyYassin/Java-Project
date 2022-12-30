@@ -19,9 +19,11 @@ public class XOScreenBase extends AnchorPane {
     protected final ImageView XImg;
     protected final ImageView OImg;
     Stage stage;
+    String level;
 
-    public XOScreenBase(Stage stage) {
+    public XOScreenBase(Stage stage, String level) {
         this.stage=stage;
+        this.level = level;
         pane = new Pane();
         SelectYourSymbolleTxt = new Text();
         XImg = new ImageView();
@@ -77,7 +79,7 @@ public class XOScreenBase extends AnchorPane {
         XImg.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                GameFxmlBase gameScreen = new GameFxmlBase(stage);
+                GameFxmlBase gameScreen = new GameFxmlBase(stage, level, "x");
         
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);

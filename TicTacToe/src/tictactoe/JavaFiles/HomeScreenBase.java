@@ -34,8 +34,10 @@ public class HomeScreenBase extends AnchorPane {
     protected final ImageView onlineImg;
     protected final ImageView MMpanalBackArrow;
     Stage stage;
+    String level;
     public HomeScreenBase(Stage stage) {
         this.stage=stage;
+        level = "";
         pane = new Pane();
         SMBtn = new Button();
         singleModeImg = new ImageView();
@@ -197,8 +199,9 @@ public class HomeScreenBase extends AnchorPane {
         {
             @Override
             public void handle(ActionEvent event) 
-            {         
-                XOScreenBase xoScreen = new XOScreenBase(stage);
+            {    
+                level = "easy";
+                XOScreenBase xoScreen = new XOScreenBase(stage, level);
         
                 Scene scene = new Scene(xoScreen);
                 stage.setScene(scene);
@@ -219,8 +222,9 @@ public class HomeScreenBase extends AnchorPane {
         {
             @Override
             public void handle(ActionEvent event) 
-            {         
-                XOScreenBase xoScreen = new XOScreenBase(stage);
+            {        
+                level = "medium";
+                XOScreenBase xoScreen = new XOScreenBase(stage, level);
         
                 Scene scene = new Scene(xoScreen);
                 stage.setScene(scene);
@@ -244,7 +248,8 @@ public class HomeScreenBase extends AnchorPane {
             @Override
             public void handle(ActionEvent event) 
             {         
-                XOScreenBase xoScreen = new XOScreenBase(stage);
+                level = "hard";
+                XOScreenBase xoScreen = new XOScreenBase(stage, level);
         
                 Scene scene = new Scene(xoScreen);
                 stage.setScene(scene);
@@ -349,6 +354,7 @@ public class HomeScreenBase extends AnchorPane {
 
             }
         });
+        
 
     }
 }
