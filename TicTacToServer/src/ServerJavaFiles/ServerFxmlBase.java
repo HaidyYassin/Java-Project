@@ -34,7 +34,7 @@ public  class ServerFxmlBase extends AnchorPane {
         setId("UserPane");
         setPrefHeight(500.0);
         setPrefWidth(800.0);
-        getStylesheets().add("/tictactoserver/../Css/CSS.css");
+        getStylesheets().add("/Css/CSS.css");
 
         ServerPane.setLayoutX(60.0);
         ServerPane.setLayoutY(68.0);
@@ -77,23 +77,28 @@ public  class ServerFxmlBase extends AnchorPane {
        new PieChart.Data("Online", 40),new PieChart.Data("Offline", 60) 
        );
        pieChart.setData(pieData);
-  
-   }
-      public void setToggleAction(){
-          toggleButton.addEventHandler(EventType.ROOT, new EventHandler<Event>(){
-              @Override
-              public void handle(Event event) {
-                  if (toggleButton.isSelected()){
-                      db.setConnection();
-                      toggleButton.setText("Stop");
-                  }
-                  else{
-                      toggleButton.setText("Start");
-                      db.stopConnection();
-                  }
-              }
-              
-          });
-          
-      }
+       pieChart.setStartAngle(180);
+
+    }
+
+    public void setToggleAction() {
+        toggleButton.addEventHandler(EventType.ROOT,new EventHandler<Event>() {
+            @Override
+            public void handle(Event event) {
+                if (toggleButton.isSelected()) {
+                    db.setConnection();
+                    toggleButton.setText("Stop");
+                }
+                else if (!toggleButton.isSelected()){
+                     db.stopConnection();
+                     toggleButton.setText("Start");
+                }
+               
+                }
+            
+
+        });
+
+    
+}
 }
