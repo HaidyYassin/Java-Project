@@ -18,6 +18,7 @@ public class XOScreenBase extends AnchorPane {
     protected final Text SelectYourSymbolleTxt;
     protected final ImageView XImg;
     protected final ImageView OImg;
+    protected final ImageView BackArrow;
     Stage stage;
     String level;
 
@@ -28,49 +29,74 @@ public class XOScreenBase extends AnchorPane {
         SelectYourSymbolleTxt = new Text();
         XImg = new ImageView();
         OImg = new ImageView();
+        BackArrow = new ImageView();
 
-        setId("backGrd");
-        setPrefHeight(400.0);
-        setPrefWidth(600.0);
+        setId("APane");
+        setMaxHeight(USE_PREF_SIZE);
+        setMaxWidth(USE_PREF_SIZE);
+        setMinHeight(USE_PREF_SIZE);
+        setMinWidth(USE_PREF_SIZE);
+        setPrefHeight(768.0);
+        setPrefWidth(1366.0);
         getStylesheets().add("/resources/cssFiles/CSS.css");
 
         pane.setId("XOpane");
-        pane.setLayoutX(70.0);
-        pane.setLayoutY(55.0);
-        pane.setPrefHeight(291.0);
-        pane.setPrefWidth(460.0);
+        pane.setLayoutX(233.0);
+        pane.setLayoutY(34.0);
+        pane.setPrefHeight(700.0);
+        pane.setPrefWidth(900.0);
         pane.setStyle("-fx-background-radius: 12;");
         pane.getStylesheets().add("/resources/cssFiles/CSS.css");
 
         SelectYourSymbolleTxt.setFill(javafx.scene.paint.Color.WHITE);
-        SelectYourSymbolleTxt.setLayoutX(67.0);
-        SelectYourSymbolleTxt.setLayoutY(53.0);
+        SelectYourSymbolleTxt.setLayoutX(193.0);
+        SelectYourSymbolleTxt.setLayoutY(85.0);
         SelectYourSymbolleTxt.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         SelectYourSymbolleTxt.setStrokeWidth(0.0);
-        SelectYourSymbolleTxt.setStyle("-fx-font-size: 35;");
+        SelectYourSymbolleTxt.setStyle("-fx-font-size: 55;");
         SelectYourSymbolleTxt.setText("Select Your Symbole");
         SelectYourSymbolleTxt.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
 
-        XImg.setFitHeight(150.0);
-        XImg.setFitWidth(161.0);
-        XImg.setLayoutX(67.0);
-        XImg.setLayoutY(101.0);
+        XImg.setFitHeight(300.0);
+        XImg.setFitWidth(460.0);
+        XImg.setLayoutX(0.0);
+        XImg.setLayoutY(270.0);
         XImg.setPickOnBounds(true);
         XImg.setPreserveRatio(true);
         XImg.setImage(new Image(getClass().getResource("/resources/images/xImage.png").toExternalForm()));
         setXImgAction();
         
-        OImg.setFitHeight(150.0);
-        OImg.setFitWidth(150.0);
-        OImg.setLayoutX(270.0);
-        OImg.setLayoutY(101.0);
+        OImg.setFitHeight(300.0);
+        OImg.setFitWidth(460.0);
+        OImg.setLayoutX(440.0);
+        OImg.setLayoutY(270.0);
         OImg.setPickOnBounds(true);
         OImg.setPreserveRatio(true);
         OImg.setImage(new Image(getClass().getResource("/resources/images/oImage.png").toExternalForm()));
+        setOImgAction();
+        
+        BackArrow.setFitHeight(50.0);
+        BackArrow.setFitWidth(50.0);
+        BackArrow.setLayoutX(63.0);
+        BackArrow.setLayoutY(41.0);
+        BackArrow.setPickOnBounds(true);
+        BackArrow.setPreserveRatio(true);
+        BackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
+        BackArrow.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                HomeScreenBase homeScreen = new HomeScreenBase(stage);
+
+                Scene scene = new Scene(homeScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
 
         pane.getChildren().add(SelectYourSymbolleTxt);
         pane.getChildren().add(XImg);
         pane.getChildren().add(OImg);
+        pane.getChildren().add(BackArrow);
         getChildren().add(pane);
 
     }
@@ -80,6 +106,22 @@ public class XOScreenBase extends AnchorPane {
             @Override
             public void handle(MouseEvent event) {
                 GameFxmlBase gameScreen = new GameFxmlBase(stage, level, "x");
+        
+                Scene scene = new Scene(gameScreen);
+                stage.setScene(scene);
+                stage.show();
+                
+            }
+            
+            
+        });
+    }
+    
+    public void setOImgAction() {
+        OImg.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                GameFxmlBase gameScreen = new GameFxmlBase(stage, level, "o");
         
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);
