@@ -1,7 +1,5 @@
 package ServerJavaFiles;
 
-
-
 import Data_Base.Db_Connect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -92,13 +90,11 @@ public  class ServerFxmlBase extends AnchorPane {
                 else if (!toggleButton.isSelected()){
                      db.stopConnection();
                      toggleButton.setText("Start");
-                }
-               
+              }
+          
                 }
             
 
-        });
-
-    
+        });  
 }
 }
