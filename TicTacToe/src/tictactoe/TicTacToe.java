@@ -36,7 +36,7 @@ public class TicTacToe extends Application {
         stage.setScene(scene);
         
         stage.show();
-        
+        stage.setResizable(false);
         Thread.sleep(1000);
         
         stage.hide();
