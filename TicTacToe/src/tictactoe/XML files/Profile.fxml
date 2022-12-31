@@ -11,26 +11,31 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="UserPane" prefHeight="500.0" prefWidth="800.0" stylesheets="@../../resources/cssFiles/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="APane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../resources/cssFiles/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane id="PaneX" layoutX="206.0" layoutY="51.0" opacity="0.76" prefHeight="423.0" prefWidth="417.0" style="-fx-background-radius: 15; -fx-border-radius: 22; -fx-background-color: #000E0F;" stylesheets="@../../resources/cssFiles/CSS.css">
+      <Pane id="PaneX" layoutX="333.0" layoutY="34.0" opacity="0.76" prefHeight="700.0" prefWidth="700.0" style="-fx-background-radius: 15; -fx-border-radius: 22; -fx-background-color: #000E0F;" stylesheets="@../../resources/cssFiles/CSS.css">
          <children>
-            <Button id="LogoutBtn" fx:id="Logout_Btn" layoutX="120.0" layoutY="361.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="201.0" style="-fx-background-radius: 22; -fx-font-size: 18;" stylesheets="@../../resources/cssFiles/CSS.css" text="Logout" textFill="WHITE" />
-            <Button id="LogoutBtn" fx:id="History_Btn" layoutX="120.0" layoutY="297.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="201.0" style="-fx-background-radius: 22; -fx-text-fill: #6E3071; -fx-background-color: white; -fx-font-size: 18;" stylesheets="@../../resources/cssFiles/CSS.css" text="History" />
-            <Line endX="172.0" layoutX="212.0" layoutY="266.0" startX="-179.0" stroke="#61306f" />
-            <Text fill="WHITE" layoutX="125.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User name :" />
-            <Text disable="true" fill="WHITE" layoutX="129.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score :" />
-            <ImageView fx:id="Prof_img" fitHeight="104.0" fitWidth="95.0" layoutX="151.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <Button id="LogoutBtn" fx:id="Logout_Btn" layoutX="115.0" layoutY="607.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="493.0" style="-fx-background-radius: 22; -fx-font-size: 24;" stylesheets="@../../resources/cssFiles/CSS.css" text="Logout" textFill="WHITE" />
+            <Button id="LogoutBtn" fx:id="History_Btn" layoutX="115.0" layoutY="526.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="493.0" style="-fx-background-radius: 22; -fx-text-fill: #6E3071; -fx-background-color: white; -fx-font-size: 24;" stylesheets="@../../resources/cssFiles/CSS.css" text="History" />
+            <Line endX="307.0" layoutX="358.0" layoutY="472.0" startX="-323.0" stroke="#61306f" />
+            <Text fill="WHITE" layoutX="35.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25;" text="User name :" />
+            <Text disable="true" fill="WHITE" layoutX="35.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25;" text="Score :" />
+            <ImageView fx:id="Prof_img" fitHeight="176.0" fitWidth="176.0" layoutX="270.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../resources/images/player2.png" />
                </image>
             </ImageView>
-            <TextField id="ProfileTxt" fx:id="Prof_User_Name" accessibleRole="THUMB" alignment="CENTER" layoutX="120.0" layoutY="155.0" prefHeight="31.0" prefWidth="201.0" style="-fx-background-color: #000000; -fx-background-radius: 15;" stylesheets="@../../resources/cssFiles/CSS.css">
+            <TextField id="ProfileTxt" fx:id="Prof_User_Name" accessibleRole="THUMB" alignment="CENTER" layoutX="184.0" layoutY="282.0" prefHeight="65.0" prefWidth="493.0" style="-fx-background-color: #000000; -fx-background-radius: 15;" stylesheets="@../../resources/cssFiles/CSS.css">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <TextField id="ProfileTxt" fx:id="Prof_score" alignment="CENTER" layoutX="120.0" layoutY="207.0" prefHeight="31.0" prefWidth="201.0" style="-fx-background-color: #000000; -fx-background-radius: 15;" stylesheets="@../../resources/cssFiles/CSS.css" />
+            <TextField id="ProfileTxt" fx:id="Prof_score" alignment="CENTER" disable="true" layoutX="184.0" layoutY="375.0" prefHeight="65.0" prefWidth="493.0" style="-fx-background-color: #000000; -fx-background-radius: 15;" stylesheets="@../../resources/cssFiles/CSS.css" />
+            <ImageView fx:id="BackArrow" fitHeight="50.0" fitWidth="50.0" layoutX="35.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/backArrow.png" />
+               </image>
+            </ImageView>
          </children>
          <effect>
             <Blend />

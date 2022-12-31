@@ -2,7 +2,7 @@
 #logInBtn{
     -fx-background-size: 255.00000000000023 40.999999999999886px;
     -fx-font-family: Britannic Bold;
-    -fx-font-size: 10.0px;
+    -fx-font-size: 25.0px;
     -fx-font-weight: 700;
     -fx-text-align: center;
     -fx-color: #6E3071;
@@ -24,7 +24,7 @@
     -fx-background-size: 373.00000000000034 48.64999999999998;
     -fx-opacity: 0.9;
     -fx-font-family: Britannic Bold;
-    -fx-font-size: 10.0px;
+    -fx-font-size: 25.0px;
     -fx-font-weight: 700;
     -fx-color: #FFFFFF;
     -fx-background-color: #000000;
@@ -58,8 +58,7 @@
 
 #signintxt{
     -fx-background-size: 150 100;
-    
-    -fx-font-size: 25.0px;
+    -fx-font-size: 55.0px;
     -fx-font-weight: 700;
     -fx-text-align: center;
     -fx-color: #FFFFFF;
@@ -68,7 +67,7 @@
 #donthave{
     -fx-background-size: 177.9872592680539 17.000000000000114px;
     -fx-font-family: Britannic Bold;
-    -fx-font-size: 9.0px;
+    -fx-font-size: 25.0px;
     -fx-font-weight: 700;
     -fx-color: #FFFFFF;
 
@@ -76,7 +75,7 @@
 #signuptxt{
     -fx-background-size: 88.23046875000068 24.0;
     -fx-font-family: Britannic Bold;
-    -fx-font-size: 12.0px;
+    -fx-font-size: 30.0px;
     -fx-font-weight: 700;
     -fx-text-align: center;
     -fx-color: #1BDAF1;
@@ -109,7 +108,7 @@
 #SMBtn{
     -fx-size: 190 117;
     -fx-opacity: 0.85;
-    -fx-font-size: 25.0px;
+    -fx-font-size: 35.0px;
     -fx-font-weight: 700;
     -fx-text-align: center;
     -fx-color: #6E3071;
@@ -131,7 +130,7 @@
 #MMBtn{
     -fx-size: 190 117;
     -fx-opacity: 0.85;
-    -fx-font-size: 25.0px;
+    -fx-font-size: 45.0px;
     -fx-font-weight: 700;
     -fx-text-align: center;
     -fx-color: #6E3071;
@@ -176,7 +175,7 @@
 #SMBtn{
     -fx-size: 25px 25px;
     -fx-opacity: 0.85;
-    -fx-font-size: 25.0px;
+    -fx-font-size: 45.0px;
     -fx-font-weight: 700;
     -fx-text-align: center;
     -fx-color: #6E3071;
@@ -221,7 +220,7 @@
 #localBtn{
     -fx-size: 25px 25px;
     -fx-opacity: 0.85;
-    -fx-font-size: 25.0px;
+    -fx-font-size: 35.0px;
     -fx-font-weight: 700;
     -fx-text-align: center;
     -fx-color: #6E3071;
@@ -243,7 +242,7 @@
 #onlineBtn{
     -fx-size: 25px 25px;
     -fx-opacity: 0.85;
-    -fx-font-size: 25.0px;
+    -fx-font-size: 35.0px;
     -fx-font-weight: 700;
     -fx-text-align: center;
     -fx-color: #6E3071;
@@ -405,7 +404,7 @@
     -fx-size:373.00000000000034 48.64999999999998; 
     -fx-opacity: 0.4;
     -fx-font-family: Britannic Bold;
-    -fx-font-size: 15.0px;
+    -fx-font-size: 25.0px;
     -fx-font-weight: 700;
     -fx-color: #FFFFFF;
     -fx-background-color: #D9D9D9;
@@ -542,8 +541,6 @@
     -fx-spacing: 8;
 }
 
-
-
 #willPayRow
 {
     -fx-text-fill:red;
@@ -563,61 +560,55 @@
     -fx-text-fill:black;
 }
 
+#but_ClearAll{
+        -fx-width: 205.89843749999977px;
+        -fx-height: 40.0px;
+        -fx-font-family: arial;
+        -fx-font-size: 22.0px;
+        -fx-font-weight: 700;
+        -fx-text-align: center;
+        -fx-color: #6E5071;
+        -fx-background-color: #F82FFF;
+        -fx-opacity: 0.92;
+        -fx-border-top-left-radius: 3px;
+        -fx-border-top-right-radius: 3px;
+        -fx-border-bottom-left-radius: 3px;
+        -fx-border-bottom-right-radius: 3px;
+}
+#historyTable{
+    -fx-width: 1176.4633333333331px;
+    -fx-height: 347.66666666666686px;
+    -fx-background-color: rgba(0,0,0,0.48);
+    -fx-mix-blend-mode: darken;
 
 
+}
+#pageBG{
+
+    -fx-background-image: url("bg.jpg");
+    -fx-background-size: 1360 768;
+
+}
+#idTxvRecordedMatches{
+
+    -fx-width: 480.146484375px;
+    -fx-height: 62.0px;
+    -fx-font-family: Arial;
+    -fx-font-size: 54.0px;
+    -fx-font-weight: 700;
+    -fx-text-align: center;
+    -fx-color: #F119F2;
 
 
-	
+}
 
-	#but_ClearAll{
-		-fx-width: 205.89843749999977px;
-		-fx-height: 40.0px;
-		-fx-font-family: arial;
-		-fx-font-size: 22.0px;
-		-fx-font-weight: 700;
-		-fx-text-align: center;
-		-fx-color: #6E5071;
-                -fx-background-color: #F82FFF;
-                -fx-opacity: 0.92;
-		-fx-border-top-left-radius: 3px;
-		-fx-border-top-right-radius: 3px;
-		-fx-border-bottom-left-radius: 3px;
-		-fx-border-bottom-right-radius: 3px;
-	}
-        #historyTable{
-            -fx-width: 1176.4633333333331px;
-            -fx-height: 347.66666666666686px;
-            -fx-background-color: rgba(0,0,0,0.48);
-            -fx-mix-blend-mode: darken;
+#table_view  {
 
-            
-        }
-        #pageBG{
-            
-            -fx-background-image: url("bg.jpg");
-	    -fx-background-size: 1360 768;
-
-        }
-	#idTxvRecordedMatches{
-	
-	    -fx-width: 480.146484375px;
-            -fx-height: 62.0px;
-	    -fx-font-family: Arial;
-	    -fx-font-size: 54.0px;
-	    -fx-font-weight: 700;
-	    -fx-text-align: center;
-	    -fx-color: #F119F2;
-
-
-	}
-        
-        #table_view  {
-            
-            -fx-width: 1176.4633333333331px;
-            -fx-height: 347.66666666666686px;
-            -fx-background-color: rgba(0,0,0,0.48);
-            -fx-mix-blend-mode: darken;
-            -fx-text-align: center;
+    -fx-width: 1176.4633333333331px;
+    -fx-height: 347.66666666666686px;
+    -fx-background-color: rgba(0,0,0,0.48);
+    -fx-mix-blend-mode: darken;
+    -fx-text-align: center;
 }
 #table_view .column-header .label{
     -fx-width: 183.22070312500023px;
@@ -736,8 +727,6 @@
     -fx-border-bottom-right-radius:6.351311595979422px; 
     -fx-spacing: 8;
 }
-
-
 
 #willPayRow
 {

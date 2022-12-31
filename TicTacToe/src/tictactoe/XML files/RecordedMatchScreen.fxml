@@ -13,22 +13,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="APane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../../resorces/historyTableStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="APane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../resources/cssFiles/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView id="player1" fitHeight="156.0" fitWidth="160.0" layoutX="1140.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="player1" fitHeight="150.0" fitWidth="150.0" layoutX="1081.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../resorces/player1.png" />
+            <Image url="@../../resources/images/player1.png" />
          </image>
          <effect>
             <Blend />
          </effect>
       </ImageView>
-      <ImageView id="player2" fitHeight="131.0" fitWidth="101.0" layoutX="69.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="player2" fitHeight="130.0" fitWidth="100.0" layoutX="143.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../resorces/player2.png" />
+            <Image url="@../../resources/images/player2.png" />
          </image>
       </ImageView>
-      <Pane id="paneX" blendMode="HARD_LIGHT" layoutX="1156.0" layoutY="413.0" opacity="0.85" prefHeight="146.99999999999997" prefWidth="123.02623191958844" style="-fx-background-radius: 7;" stylesheets="@../../../resorces/historyTableStyle.css">
+      <Pane id="paneX" blendMode="HARD_LIGHT" layoutX="1094.0" layoutY="360.0" opacity="0.85" prefHeight="146.99999999999997" prefWidth="123.02623191958844" style="-fx-background-radius: 7;" stylesheets="@../../resources/cssFiles/CSS.css">
          <effect>
             <Blend mode="MULTIPLY" />
          </effect>
@@ -40,7 +40,7 @@
             </Text>
             <ImageView fitHeight="67.0" fitWidth="110.0" layoutX="7.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resorces/xxx.png" />
+                  <Image url="@../../resources/images/xImage.png" />
                </image>
             </ImageView>
             <Text fill="WHITE" layoutX="47.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You">
@@ -50,7 +50,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane id="paneX" blendMode="HARD_LIGHT" cache="true" layoutX="69.0" layoutY="419.0" opacity="0.85" prefHeight="146.99999999999997" prefWidth="123.02623191958844" style="-fx-background-radius: 7;" stylesheets="@../../../resorces/historyTableStyle.css">
+      <Pane id="paneX" blendMode="HARD_LIGHT" cache="true" layoutX="132.0" layoutY="360.0" opacity="0.85" prefHeight="146.99999999999997" prefWidth="123.02623191958844" style="-fx-background-radius: 7;" stylesheets="@../../resources/cssFiles/CSS.css">
          <effect>
             <Blend />
          </effect>
@@ -67,35 +67,18 @@
             </Text>
             <ImageView fitHeight="62.0" fitWidth="117.0" layoutX="7.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resorces/ooo.png" />
+                  <Image url="@../../resources/images/oImage.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
       <Label layoutX="413.0" layoutY="441.0" prefHeight="44.0" prefWidth="110.0" />
-      <Pane id="gameBox" blendMode="HARD_LIGHT" layoutX="410.0" layoutY="127.0" prefHeight="462.0" prefWidth="548.0" stylesheets="@../../../resorces/historyTableStyle.css">
-         <children>
-            <Line endX="291.0" layoutX="257.0" layoutY="156.0" startX="-257.0" />
-            <Line endX="291.0" layoutX="258.0" layoutY="318.0" startX="-257.0" />
-            <Line endX="289.0" endY="141.0" layoutX="82.0" layoutY="320.0" startX="289.0" startY="-321.0" />
-            <Line endX="289.0" endY="141.0" layoutX="-119.0" layoutY="321.0" startX="289.0" startY="-321.0" />
-            <Button id="gameBoardCell3Id_btn" fx:id="gameBoardCell3Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="372.0" layoutY="1.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="172.0" />
-            <Button id="gameBoardCell2Id_btn" fx:id="gameBoardCell2Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="170.0" layoutY="6.0" mnemonicParsing="false" prefHeight="147.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button id="gameBoardCell4Id_btn" fx:id="gameBoardCell4Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="4.0" layoutY="158.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button id="gameBoardCell7Id_btn" fx:id="gameBoardCell7Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="4.0" layoutY="319.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button id="gameBoardCell5Id_btn" fx:id="gameBoardCell5Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="174.0" layoutY="163.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="192.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button id="gameBoardCell8Id_btn" fx:id="gameBoardCell8Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="172.0" layoutY="317.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button id="gameBoardCell9Id_btn" fx:id="gameBoardCell9Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="375.0" layoutY="319.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="172.0" textAlignment="CENTER" textFill="#fffdfd" />
-            <Button id="gameBoardCell6Id_btn" fx:id="gameBoardCell6Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="375.0" layoutY="158.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="172.0" />
-            <Button id="gameBoardCell1Id_btn" fx:id="gameBoardCell1Id_btn" blendMode="DARKEN" cache="true" disable="true" layoutX="4.0" layoutY="1.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="164.0" textAlignment="CENTER" textFill="#fffdfd" />
-         </children>
-      </Pane>
       <Text fill="#07ee41fa" layoutX="588.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Win">
          <font>
-            <Font name="Curlz MT" size="62.0" />
+            <Font name="Britannic Bold" size="62.0" />
          </font>
       </Text>
-      <HBox id="RecordedMovementBox" alignment="CENTER" layoutX="271.0" layoutY="656.0" maxWidth="1.7976931348623157E308" opacity="0.84" prefHeight="44.0" style="-fx-background-radius: 7;" stylesheets="@../../../resorces/historyTableStyle.css">
+      <HBox id="RecordedMovementBox" alignment="CENTER" layoutX="271.0" layoutY="656.0" maxWidth="1.7976931348623157E308" opacity="0.84" prefHeight="44.0" style="-fx-background-radius: 7;" stylesheets="@../../resources/cssFiles/CSS.css">
          <children>
             <Text id="RecoededMovementId_txv" fx:id="RecoededMovementId_txv" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1.You: X5 , 2.Omar: O2 , 3.You: X9 , 4.Omar: O1 , 5.You: X3 , 6.Omar: O7 , 7.You: X6 " textAlignment="CENTER" wrappingWidth="913.6875">
                <font>
@@ -104,6 +87,28 @@
             </Text>
          </children>
       </HBox>
+      <Pane id="gameBox" layoutX="376.0" layoutY="134.0" prefHeight="461.0" prefWidth="610.0" stylesheets="@../../resources/cssFiles/CSS.css">
+         <children>
+            <Line endX="352.0" endY="-1.0" layoutX="257.0" layoutY="156.0" startX="-257.0" startY="-1.0" />
+            <Line endX="352.0" endY="-7.0" layoutX="258.0" layoutY="318.0" startX="-258.0" startY="-7.0" />
+            <Line endX="325.0" endY="140.0" layoutX="82.0" layoutY="321.0" startX="325.0" startY="-321.0" />
+            <Line endX="323.0" endY="140.0" layoutX="-119.0" layoutY="321.0" startX="323.0" startY="-320.0" />
+            <Button fx:id="btn1" blendMode="DARKEN" layoutX="4.0" layoutY="1.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn2" blendMode="DARKEN" layoutX="205.0" layoutY="4.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" />
+            <Button fx:id="btn3" blendMode="DARKEN" layoutX="409.0" layoutY="1.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" />
+            <Button fx:id="btn4" blendMode="DARKEN" layoutX="4.0" layoutY="158.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn5" blendMode="DARKEN" layoutX="209.0" layoutY="158.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn6" blendMode="DARKEN" layoutX="409.0" layoutY="155.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" />
+            <Button fx:id="btn7" blendMode="DARKEN" layoutX="4.0" layoutY="312.0" mnemonicParsing="false" prefHeight="147.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn8" blendMode="DARKEN" layoutX="205.0" layoutY="312.0" mnemonicParsing="false" prefHeight="147.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
+            <Button fx:id="btn9" blendMode="DARKEN" layoutX="409.0" layoutY="312.0" mnemonicParsing="false" prefHeight="147.0" prefWidth="200.0" textAlignment="CENTER" textFill="#fffdfd" />
+         </children>
+      </Pane>
+      <ImageView fx:id="BackArrow" fitHeight="50.0" fitWidth="50.0" layoutX="443.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/images/backArrow.png" />
+         </image>
+      </ImageView>
    </children>
    <effect>
       <Blend />
