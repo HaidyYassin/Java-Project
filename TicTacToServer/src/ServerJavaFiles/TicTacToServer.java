@@ -29,16 +29,7 @@ public class TicTacToServer extends Application {
       primaryStage.show();
     }
 
-   public Scene setPieChart(){
-       ObservableList<PieChart.Data>pieData=FXCollections.observableArrayList(
-       new PieChart.Data("Online", 40),new PieChart.Data("Offline", 60) 
-       );
-       PieChart pChart=new PieChart(pieData);
-       Group root=new Group(pChart);
-       Scene scene = new Scene (root,600,400);
-       return scene;
-       
-   }
+
     public static void main(String[] args) {
         launch(args);
     }

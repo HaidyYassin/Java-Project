@@ -27,8 +27,7 @@ public class TicTacToe extends Application {
     MediaPlayer mediaPlayer;
     
     @Override
-    public void start(Stage stage) throws Exception {
-        
+    public void start(Stage stage) throws Exception {      
         Parent root = new SplashScreenBase( stage);
         Scene scene = new Scene(root);
         stage.setScene(scene);

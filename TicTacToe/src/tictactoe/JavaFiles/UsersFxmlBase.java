@@ -1,6 +1,9 @@
 package tictactoe.JavaFiles;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -85,6 +88,15 @@ public class UsersFxmlBase extends AnchorPane {
         BackArrow.setPickOnBounds(true);
         BackArrow.setPreserveRatio(true);
         BackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
+        BackArrow.setOnMouseClicked(event -> 
+            {    
+                HomeScreenBase homeScreen = new HomeScreenBase(stage);
+        
+                Scene scene = new Scene(homeScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        );
 
         usesListView.setLayoutX(43.0);
         usesListView.setLayoutY(209.0);
