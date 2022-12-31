@@ -108,9 +108,9 @@ public  class SignInBase extends Pane {
             @Override
             public void handle(ActionEvent event) 
             {         
-                HomeScreenBase homeScreen = new HomeScreenBase(stage);
+                UsersFxmlBase usersScreen = new UsersFxmlBase(stage);
         
-                Scene scene = new Scene(homeScreen);
+                Scene scene = new Scene(usersScreen);
                 stage.setScene(scene);
                 stage.show();
             }

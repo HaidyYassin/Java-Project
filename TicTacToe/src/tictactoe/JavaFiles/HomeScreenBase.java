@@ -311,9 +311,9 @@ public class HomeScreenBase extends AnchorPane {
             @Override
             public void handle(ActionEvent event) 
             {    
-                UsersFxmlBase usersScreen = new UsersFxmlBase(stage);
+                SignInBase signinScreen = new SignInBase(stage);
         
-                Scene scene = new Scene(usersScreen);
+                Scene scene = new Scene(signinScreen);
                 stage.setScene(scene);
                 stage.show();
             }
@@ -336,9 +336,9 @@ public class HomeScreenBase extends AnchorPane {
         onlineImg.setImage(new Image(getClass().getResource("/resources/images/online.png").toExternalForm()));
         onlineImg.setOnMouseClicked(event -> 
             {    
-                UsersFxmlBase usersScreen = new UsersFxmlBase(stage);
+                SignInBase signinScreen = new SignInBase(stage);
         
-                Scene scene = new Scene(usersScreen);
+                Scene scene = new Scene(signinScreen);
                 stage.setScene(scene);
                 stage.show();
             }

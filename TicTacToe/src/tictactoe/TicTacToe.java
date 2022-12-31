@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import tictactoe.JavaFiles.HomeScreenBase;
 import tictactoe.JavaFiles.SignInBase;
 import tictactoe.JavaFiles.SplashScreenBase;
 
@@ -36,7 +37,7 @@ public class TicTacToe extends Application {
         stage.setResizable(false); 
         Thread.sleep(3000);   
         
-        scene = new Scene(new SignInBase(stage));
+        scene = new Scene(new HomeScreenBase(stage));
         stage.setScene(scene);
         stage.show();   
     }
