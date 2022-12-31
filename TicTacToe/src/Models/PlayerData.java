@@ -13,21 +13,39 @@ public class PlayerData {
     
     private int id;
     private String name;
+    private String email;
+    private String pass;
+    private String icon;
+    private int score = 0;
+    private int recordId;
 
     public PlayerData() {
     }
-    private String email;
-    private String pass;
-    private int avatar;
-    private int score =0;
+  
     
 
-    public PlayerData(int id, String name, String email, String pass, int avatar) {
-        this.id = id;
+    public PlayerData( String name, String email, String pass) {
+        
         this.name = name;
         this.email = email;
         this.pass = pass;
-        this.avatar = avatar;
+        
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public int getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(int recordId) {
+        this.recordId = recordId;
     }
 
     public int getId() {
@@ -62,13 +80,7 @@ public class PlayerData {
         this.pass = pass;
     }
 
-    public int getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(int avatar) {
-        this.avatar = avatar;
-    }
+   
 
     public int getScore() {
         return score;

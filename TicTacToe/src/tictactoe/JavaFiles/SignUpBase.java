@@ -1,6 +1,11 @@
 package tictactoe.JavaFiles;
 
 import Models.PlayerData;
+import com.sun.corba.se.spi.activation.Server;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -18,7 +23,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.util.regex.Pattern;
 
-public  class SignUpBase extends Pane {
+
+public  class SignUpBase extends Pane implements Runnable{
 
     protected final Pane pane;
     protected final Text text;
@@ -32,10 +38,14 @@ public  class SignUpBase extends Pane {
     protected final ImageView imageView2;
     protected final Button signUpBtn;
     
-     PlayerData playerData = new PlayerData();
+    PlayerData playerData;
+    Socket s;
+    PrintStream ps;
+    Thread th;
 
     public SignUpBase(Stage stage) {
-
+        
+       // playerData = new PlayerData();
         pane = new Pane();
         text = new Text();
         nameTFSignUp = new TextField();
@@ -47,6 +57,7 @@ public  class SignUpBase extends Pane {
         imageView1 = new ImageView();
         imageView2 = new ImageView();
         signUpBtn = new Button();
+        setUserConnection();
 
         setId("backGrd");
         setMaxHeight(USE_PREF_SIZE);
@@ -227,5 +238,32 @@ public  class SignUpBase extends Pane {
         pane.getChildren().add(signUpBtn);
         getChildren().add(pane);
 
+    }
+    public void setUserConnection(){
+         try {
+            s=new Socket("127.0.0.1",5005);
+            ps=new PrintStream(s.getOutputStream());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.out.println("Errorin client class");
+        }
+        th=new Thread(this);
+        th.start();
+    }
+
+    @Override
+    public void run() {
+        
+        while(true){
+            
+            ps.print(setData());
+        }
+        
+    }
+    
+    public PlayerData setData(){
+       playerData = new PlayerData(nameTFSignUp.getText(),mailTFSignUp.getText()
+               , passTFSignUp.getText());
+       return playerData;
     }
 }

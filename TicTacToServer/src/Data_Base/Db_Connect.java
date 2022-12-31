@@ -19,7 +19,7 @@ public class Db_Connect {
         //DatabaseConnection connec = new DatabaseConnection();
         try {
           //  DriverManager.registerDriver(new ClientDriver() );
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/Player Data","root", "root");
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/Player_Db","root", "root");
            // System.out.println("system connection done");
 
         } catch (SQLException ex) {

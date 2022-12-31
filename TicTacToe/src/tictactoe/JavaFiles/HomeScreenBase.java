@@ -290,6 +290,7 @@ public class HomeScreenBase extends AnchorPane {
         onlineBtn.setPrefWidth(137.0);
         onlineBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         onlineBtn.setText("Online");
+        setOnlineBtnAction();
         onlineBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
 
         localImg.setFitHeight(117.0);
@@ -350,5 +351,19 @@ public class HomeScreenBase extends AnchorPane {
             }
         });
 
+    }
+    
+    public void setOnlineBtnAction(){
+        onlineBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                UsersFxmlBase usersScreen = new UsersFxmlBase(stage);
+
+                Scene scene = new Scene(usersScreen);
+                stage.setScene(scene);
+                stage.show();
+
+            }
+        }); 
     }
 }
