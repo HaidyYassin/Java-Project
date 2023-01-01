@@ -1,5 +1,7 @@
 package tictactoe.JavaFiles;
 
+import java.util.Scanner;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,7 +19,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GameFxmlBase extends AnchorPane {
-
+    boolean has_winner = false;
+    
     protected final ImageView imageView;
     protected final Blend blend;
     protected final ImageView imageView0;
@@ -254,28 +257,105 @@ public class GameFxmlBase extends AnchorPane {
         line2.setStartX(323.0);
         line2.setStartY(-320.0);
 
+        
+       
         btn1.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
         btn1.setLayoutX(4.0);
         btn1.setLayoutY(1.0);
         btn1.setMnemonicParsing(false);
         btn1.setPrefHeight(150.0);
         btn1.setPrefWidth(200.0);
+        btn1.setText(" ");
         btn1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         btn1.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
+        
+        Button board[][] = { {btn1, btn2, btn3}, {btn4, btn5, btn6}, {btn7, btn8, btn9} };
+       
+        btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn1.getText() == " ") {
+                      btn1.setText("X");
+                      btn1.setGraphic(drawXIcon());
+            // player == 'X' ? player = 'O' : player = 'X';
+                       int result = minimax(board, 100, false,true);
+                       System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+        } else {
+            System.out.print( "The field is not empty \n");
+        }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }});
+        
+        
         btn2.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
         btn2.setLayoutX(205.0);
         btn2.setLayoutY(4.0);
         btn2.setMnemonicParsing(false);
         btn2.setPrefHeight(150.0);
+        btn2.setText(" ");
         btn2.setPrefWidth(200.0);
-
+        btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn2.getText() == " ") {
+                      btn2.setText("X");
+                      btn2.setGraphic(drawXIcon());
+            // player == 'X' ? player = 'O' : player = 'X';
+                       int result = minimax(board, 100, false,true);
+                       System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+        } else {
+            System.out.print( "The field is not empty \n");
+        }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }});
+        
+        
         btn3.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
         btn3.setLayoutX(409.0);
         btn3.setLayoutY(1.0);
         btn3.setMnemonicParsing(false);
         btn3.setPrefHeight(150.0);
+        btn3.setText(" ");
         btn3.setPrefWidth(200.0);
+        btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn3.getText() == " ") {
+                      btn3.setText("X");
+                      btn3.setGraphic(drawXIcon());
+            // player == 'X' ? player = 'O' : player = 'X';
+                       int result = minimax(board, 100, false,true);
+                       System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+        } else {
+            System.out.print( "The field is not empty \n");
+        }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }});
+        
 
         btn4.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
         btn4.setLayoutX(4.0);
@@ -283,24 +363,97 @@ public class GameFxmlBase extends AnchorPane {
         btn4.setMnemonicParsing(false);
         btn4.setPrefHeight(150.0);
         btn4.setPrefWidth(200.0);
+        btn4.setText(" ");
         btn4.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         btn4.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
+        btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn4.getText() == " ") {
+                      btn4.setText("X");
+                      btn4.setGraphic(drawXIcon());
+            // player == 'X' ? player = 'O' : player = 'X';
+                       int result = minimax(board, 100, false,true);
+                       System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+        } else {
+            System.out.print( "The field is not empty \n");
+        }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }});
+        
+        
         btn5.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
         btn5.setLayoutX(209.0);
         btn5.setLayoutY(158.0);
         btn5.setMnemonicParsing(false);
         btn5.setPrefHeight(150.0);
         btn5.setPrefWidth(200.0);
+        btn5.setText(" ");
         btn5.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         btn5.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
+        btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn5.getText() == " ") {
+                      btn5.setText("X");
+                     btn5.setGraphic(drawXIcon());
+            // player == 'X' ? player = 'O' : player = 'X';
+                       int result = minimax(board, 100, false,true);
+                       System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+        } else {
+            System.out.print( "The field is not empty \n");
+        }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }});
+        
+        
+        
         btn6.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
         btn6.setLayoutX(409.0);
         btn6.setLayoutY(155.0);
         btn6.setMnemonicParsing(false);
         btn6.setPrefHeight(150.0);
         btn6.setPrefWidth(200.0);
+        btn6.setText(" ");
+        btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn6.getText() == " ") {
+                      btn6.setText("X");
+                      btn6.setGraphic(drawXIcon());
+            // player == 'X' ? player = 'O' : player = 'X';
+                       int result = minimax(board, 100, false,true);
+                       System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+        } else {
+            System.out.print( "The field is not empty \n");
+        }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }});
+        
 
         btn7.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
         btn7.setLayoutX(4.0);
@@ -308,18 +461,64 @@ public class GameFxmlBase extends AnchorPane {
         btn7.setMnemonicParsing(false);
         btn7.setPrefHeight(147.0);
         btn7.setPrefWidth(200.0);
+        btn7.setText(" ");
         btn7.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         btn7.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
+        btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn7.getText() == " ") {
+                      btn7.setText("X");
+                      btn7.setGraphic(drawXIcon());
+            // player == 'X' ? player = 'O' : player = 'X';
+                       int result = minimax(board, 100, false,true);
+                       System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+        } else {
+            System.out.print( "The field is not empty \n");
+        }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }});
+        
         btn8.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
         btn8.setLayoutX(205.0);
         btn8.setLayoutY(312.0);
         btn8.setMnemonicParsing(false);
         btn8.setPrefHeight(147.0);
         btn8.setPrefWidth(200.0);
+        btn8.setText(" ");
         btn8.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         btn8.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
+        btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn8.getText() == " ") {
+                      btn8.setText("X");
+                      btn8.setGraphic(drawXIcon());
+            // player == 'X' ? player = 'O' : player = 'X';
+                       int result = minimax(board, 100, false,true);
+                       System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+        } else {
+            System.out.print( "The field is not empty \n");
+        }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }});
+        
         btn9.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
         btn9.setLayoutX(409.0);
         btn9.setLayoutY(312.0);
@@ -328,6 +527,31 @@ public class GameFxmlBase extends AnchorPane {
         btn9.setPrefWidth(200.0);
         btn9.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         btn9.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        btn9.setText(" ");
+        btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn9.getText() == " ") {
+                      btn9.setText("X");
+                      btn9.setGraphic(drawXIcon());
+            // player == 'X' ? player = 'O' : player = 'X';
+                       int result = minimax(board, 100, false,true);
+                       System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+             } else {
+             System.out.print( "The field is not empty \n");
+             }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }});
+        
+        
         
         pane2.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
         pane2.setId("paneX");
@@ -364,6 +588,7 @@ public class GameFxmlBase extends AnchorPane {
             {         
                 player1Score.setImage(new Image(getClass().getResource("/resources/images/0.png").toExternalForm()));
                 player2Score.setImage(new Image(getClass().getResource("/resources/images/0.png").toExternalForm()));
+                 clearRecordedMatchCells();
             }
         });
 
@@ -531,16 +756,18 @@ public class GameFxmlBase extends AnchorPane {
         }
     }
     
-    private ImageView drawOIcon(){
+    static private ImageView drawOIcon(){
         ImageView vimgO;
-        vimgO = new ImageView(getClass().getResource("/resources/images/oImage.png").toExternalForm());
+        Image imgo ;
+        imgo = new Image("/resources/images/oImage.png");
+        vimgO = new ImageView(imgo);             
         vimgO.setFitWidth(140);
         vimgO.setFitHeight(130);
         vimgO.setBlendMode(javafx.scene.effect.BlendMode.MULTIPLY);
         return vimgO;
     
     };
-    private ImageView drawXIcon(){
+    static private ImageView drawXIcon(){
         Image imgX ;
         ImageView vimgX;
         imgX = new Image("/resources/images/xImage.png");
@@ -561,4 +788,140 @@ public class GameFxmlBase extends AnchorPane {
             return false;
         return true;
     }
+    
+    //hard level
+    public static boolean haveTheSameValueAndNotEmpty(Button x, Button y, Button z) {
+    if(x.getText() == y.getText() && x.getText() == z.getText() && x.getText() != " ") {
+        return true;
+    }
+    return false;
+}
+    
+    public static int checkWinner(Button board[][]) {
+    //  2: X winner
+    // -2: O winner
+    //  0: Tie
+    //  1: No winner
+
+    // For rows
+    for(int i = 0; i < 3; i++) {
+        if(haveTheSameValueAndNotEmpty(board[i][0], board[i][1], board[i][2])) {
+            return board[i][0].getText() == "X" ? 2 : -2;
+        }
+    }
+
+    // For cols
+    for(int i = 0; i < 3; i++) {
+        if(haveTheSameValueAndNotEmpty(board[0][i], board[1][i], board[2][i])) {
+            return board[0][i] .getText() == "X" ? 2 : -2;
+        }
+    }
+    
+    // Diameter 1
+    if(haveTheSameValueAndNotEmpty(board[0][0], board[1][1], board[2][2])) {
+        return board[0][0].getText() == "X" ? 2 : -2;
+    }
+
+    // Diameter 2
+    if(haveTheSameValueAndNotEmpty(board[2][0], board[1][1], board[0][2])) {
+        return board[2][0] .getText() == "X" ? 2 : -2;
+    }
+
+    // For Tie Case
+    boolean tie = true;
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            if(board[i][j].getText() == " ") {
+                tie = false;
+            }
+        }   
+    }
+    if(tie) return 0;
+
+    // Else
+    return 1;
+}
+
+public static int minimax(Button board[][], int depth, boolean isMaximizing, boolean firstTime){
+    int result = checkWinner(board);
+    if(depth == 0 || result != 1) {
+        return result;
+    }
+
+    if(isMaximizing) {
+        int finalScore = -10;
+        int finalI = 0, finalJ = 0;
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                if(board[i][j].getText() == " ") {
+                    board[i][j].setText("X");
+                    int score = minimax(board, depth - 1, false, false);
+                    board[i][j].setText(" ");
+                    if(score > finalScore) {
+                        finalScore = score;
+                        finalI = i;
+                        finalJ = j;
+                    }
+                    if(firstTime) {
+                        System.out.print( "score," + i + "," + j + ": " +score + "\n");
+                    }
+                }
+            }   
+        }
+        if(firstTime) {
+            board[finalI][finalJ].setText("X");
+            board[finalI][finalJ].setGraphic(drawXIcon());
+        }
+        return finalScore;
+    } else {
+        int finalScore = 10;
+        int finalI = 0, finalJ = 0;
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                if(board[i][j].getText() == " ") {
+                    board[i][j].setText("O");
+                    //drawOIcon();
+                    int score = minimax(board, depth - 1, true, false);
+                    board[i][j].setText(" ");
+                    if(score < finalScore) {
+                        finalScore = score;
+                        finalI = i;
+                        finalJ = j;
+                    }
+                    if(firstTime) {
+                        System.out.print( "score," + i + "," + j + ": " +score + "\n");
+                    }
+                }
+            }   
+        }
+        if(firstTime) {
+            board[finalI][finalJ].setText("O");
+            board[finalI][finalJ].setGraphic(drawOIcon());
+        }
+        return finalScore;
+    }
+}
+ private void clearRecordedMatchCells(){
+       Platform.runLater(()-> {
+                    btn1.setGraphic(null);
+                    btn2.setGraphic(null);
+                    btn3.setGraphic(null);
+                    btn4.setGraphic(null);
+                    btn5.setGraphic(null);
+                    btn6.setGraphic(null);
+                    btn7.setGraphic(null);
+                    btn8.setGraphic(null);
+                    btn9.setGraphic(null);
+                    btn1.setText(" ");
+                    btn2.setText(" ");
+                    btn3.setText(" ");
+                    btn4.setText(" ");
+                    btn5.setText(" ");
+                    btn6.setText(" ");
+                    btn7.setText(" ");
+                    btn8.setText(" ");
+                    btn9.setText(" ");
+                 } );
+ }
+
 }
