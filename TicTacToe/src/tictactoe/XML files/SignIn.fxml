@@ -8,32 +8,32 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane id="backGrd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../resources/cssFiles/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="APane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../resources/cssFiles/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane id="signinPane" layoutX="169.0" layoutY="61.0" prefHeight="279.0" prefWidth="263.0" style="-fx-background-radius: 10;" stylesheets="@../resources/cssFiles/CSS.css">
+      <Pane id="signinPane" layoutX="333.0" layoutY="34.0" prefHeight="700.0" prefWidth="700.0" style="-fx-background-radius: 10;" stylesheets="@../resources/cssFiles/CSS.css">
          <children>
-            <Text id="signintxt" fill="WHITE" layoutX="86.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Britannic Bold;" text="Sign In" wrappingWidth="90.6630859375" />
-            <TextField id="emailTF" fx:id="emailTFSignIn" layoutX="42.0" layoutY="90.0" prefHeight="23.0" prefWidth="178.0" promptText="E-mail" style="-fx-background-radius: 22;" stylesheets="@../resources/cssFiles/CSS.css">
+            <Text id="signintxt" fill="WHITE" layoutX="268.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Britannic Bold;" text="Sign In" wrappingWidth="339.6630859375" />
+            <TextField id="emailTF" fx:id="emailTFSignIn" layoutX="79.0" layoutY="210.0" prefHeight="65.0" prefWidth="543.0" promptText="E-mail" style="-fx-background-radius: 22; -fx-text-fill: white;" stylesheets="@../resources/cssFiles/CSS.css">
                <padding>
-                  <Insets left="25.0" />
+                  <Insets left="85.0" />
                </padding></TextField>
-            <TextField id="emailTF" fx:id="passTFSignIn" layoutX="43.0" layoutY="128.0" prefHeight="23.0" prefWidth="178.0" promptText="Password" style="-fx-background-radius: 22;" stylesheets="@../resources/cssFiles/CSS.css">
+            <TextField id="emailTF" fx:id="passTFSignIn" layoutX="79.0" layoutY="325.0" prefHeight="65.0" prefWidth="543.0" promptText="Password" style="-fx-background-radius: 22;" stylesheets="@../resources/cssFiles/CSS.css">
                <padding>
-                  <Insets left="25.0" />
+                  <Insets left="85.0" />
                </padding></TextField>
-            <Button id="logInBtn" fx:id="signInBtn" layoutX="66.0" layoutY="180.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="131.0" style="-fx-background-color: white; -fx-text-fill: #6E3071; -fx-background-radius: 22;" stylesheets="@../resources/cssFiles/CSS.css" text="Sign in" />
-            <ImageView fitHeight="16.0" fitWidth="19.0" layoutX="48.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+            <Button id="logInBtn" fx:id="signInBtn" layoutX="104.0" layoutY="484.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="493.0" style="-fx-background-color: white; -fx-text-fill: #6E3071; -fx-background-radius: 22;" stylesheets="@../resources/cssFiles/CSS.css" text="Sign In" />
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="100.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/images/mail_icon.png" />
+                  <Image url="@../../resources/images/mail_icon.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="23.0" fitWidth="19.0" layoutX="46.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="57.0" fitWidth="62.0" layoutX="97.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/images/Pass_icon.png" />
+                  <Image url="@../../resources/images/Pass_icon.png" />
                </image>
             </ImageView>
-            <Text id="donthave" fill="#fffdfd" layoutX="65.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have account?" wrappingWidth="105.2890625" />
-            <Text id="signuptxt" fx:id="SignUpText" fill="#1bdaf1" layoutX="154.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: #1BDAF1; -fx-font-family: Britannic Bold;" text="Sign Up" />
+            <Text id="donthave" fill="#fffdfd" layoutX="146.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have account?" wrappingWidth="329.2890625" />
+            <Text id="signuptxt" fx:id="SignUpText" fill="#1bdaf1" layoutX="414.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: #1BDAF1; -fx-font-family: Britannic Bold;" text="Sign Up" wrappingWidth="172.6396484375" />
          </children>
       </Pane>
    </children>

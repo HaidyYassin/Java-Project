@@ -6,19 +6,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="backGrd" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../resources/cssFiles/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="APane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../resources/cssFiles/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane id="XOpane" layoutX="70.0" layoutY="55.0" prefHeight="291.0" prefWidth="460.0" style="-fx-background-radius: 12;" stylesheets="@../CSS/CSS.css">
+      <Pane id="XOpane" layoutX="233.0" layoutY="34.0" prefHeight="700.0" prefWidth="900.0" style="-fx-background-radius: 12;" stylesheets="@../CSS/CSS.css">
          <children>
-            <Text fx:id="SelectYourSymbolleTxt" fill="WHITE" layoutX="67.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 35;" text="Select Your Symbole" textAlignment="CENTER" />
-            <ImageView fx:id="XImg" fitHeight="128.0" fitWidth="210.0" layoutX="20.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+            <Text fx:id="SelectYourSymbolleTxt" fill="WHITE" layoutX="193.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 55;" text="Select Your Symbole" textAlignment="CENTER" />
+            <ImageView fx:id="XImg" fitHeight="300.0" fitWidth="460.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../resources/images/xImage.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="OImg" fitHeight="166.0" fitWidth="210.0" layoutX="230.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="OImg" fitHeight="300.0" fitWidth="460.0" layoutX="440.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../resources/images/oImage.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="BackArrow" fitHeight="50.0" fitWidth="50.0" layoutX="63.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/backArrow.png" />
                </image>
             </ImageView>
          </children>
