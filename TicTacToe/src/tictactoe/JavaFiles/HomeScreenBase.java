@@ -59,30 +59,30 @@ public class HomeScreenBase extends AnchorPane {
         onlineImg = new ImageView();
         MMpanalBackArrow = new ImageView();
 
-        setId("backGrd");
+        setId("APane");
         setMaxHeight(USE_PREF_SIZE);
         setMaxWidth(USE_PREF_SIZE);
         setMinHeight(USE_PREF_SIZE);
         setMinWidth(USE_PREF_SIZE);
-        setPrefHeight(400.0);
-        setPrefWidth(600.0);
+        setPrefHeight(768.0);
+        setPrefWidth(1366.0);
         getStylesheets().add("/resources/cssFiles/CSS.css");
 
         pane.setId("panal");
-        pane.setLayoutX(54.0);
-        pane.setLayoutY(41.0);
-        pane.setPrefHeight(318.0);
-        pane.setPrefWidth(493.0);
+        pane.setLayoutX(233.0);
+        pane.setLayoutY(34.0);
+        pane.setPrefHeight(700.0);
+        pane.setPrefWidth(900.0);
         pane.setStyle("-fx-background-radius: 12;");
         pane.getStylesheets().add("/resources/cssFiles/CSS.css");
 
         SMBtn.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
         SMBtn.setId("SMBtn");
-        SMBtn.setLayoutX(37.0);
-        SMBtn.setLayoutY(168.0);
+        SMBtn.setLayoutX(43.0);
+        SMBtn.setLayoutY(425.0);
         SMBtn.setMnemonicParsing(false);
-        SMBtn.setPrefHeight(117.0);
-        SMBtn.setPrefWidth(190.0);
+        SMBtn.setPrefHeight(170.0);
+        SMBtn.setPrefWidth(343.0);
         SMBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         SMBtn.setText("Single Mode");
         SMBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
@@ -97,23 +97,27 @@ public class HomeScreenBase extends AnchorPane {
             }
         });
 
-        singleModeImg.setFitHeight(150.0);
-        singleModeImg.setFitWidth(200.0);
+        singleModeImg.setFitHeight(304.0);
+        singleModeImg.setFitWidth(304.0);
         singleModeImg.setId("singleModeImg");
-        singleModeImg.setLayoutX(57.0);
-        singleModeImg.setLayoutY(84.0);
+        singleModeImg.setLayoutX(63.0);
+        singleModeImg.setLayoutY(198.0);
         singleModeImg.setPickOnBounds(true);
         singleModeImg.setPreserveRatio(true);
         singleModeImg.setImage(new Image(getClass().getResource("/resources/images/singleMode.png").toExternalForm()));
-        singleModeImg.setOnMouseClicked(event -> SMpanal.setVisible(true));
+        singleModeImg.setOnMouseClicked(event -> 
+        {
+            MMpanal.setVisible(false);
+            SMpanal.setVisible(true);
+        });
 
         MMBtn.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
         MMBtn.setId("MMBtn");
-        MMBtn.setLayoutX(270.0);
-        MMBtn.setLayoutY(168.0);
+        MMBtn.setLayoutX(515.0);
+        MMBtn.setLayoutY(425.0);
         MMBtn.setMnemonicParsing(false);
-        MMBtn.setPrefHeight(117.0);
-        MMBtn.setPrefWidth(190.0);
+        MMBtn.setPrefHeight(170.0);
+        MMBtn.setPrefWidth(343.0);
         MMBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         MMBtn.setText("Multi Mode");
         MMBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
@@ -128,69 +132,73 @@ public class HomeScreenBase extends AnchorPane {
             }
         });
 
-        multiModeImg.setFitHeight(159.0);
-        multiModeImg.setFitWidth(159.0);
+        multiModeImg.setFitHeight(304.0);
+        multiModeImg.setFitWidth(304.0);
         multiModeImg.setId("multiModeImg");
-        multiModeImg.setLayoutX(286.0);
-        multiModeImg.setLayoutY(72.0);
+        multiModeImg.setLayoutX(535.0);
+        multiModeImg.setLayoutY(198.0);
         multiModeImg.setPickOnBounds(true);
         multiModeImg.setPreserveRatio(true);
         multiModeImg.setImage(new Image(getClass().getResource("/resources/images/multiMode.png").toExternalForm()));
-        multiModeImg.setOnMouseClicked(event -> MMpanal.setVisible(true));
+        multiModeImg.setOnMouseClicked(event -> 
+        {
+            SMpanal.setVisible(false);
+            MMpanal.setVisible(true);
+        });
 
-        musicImg.setFitHeight(27.0);
-        musicImg.setFitWidth(27.0);
+        musicImg.setFitHeight(50.0);
+        musicImg.setFitWidth(50.0);
         musicImg.setId("musicImg");
-        musicImg.setLayoutX(323.0);
-        musicImg.setLayoutY(18.0);
+        musicImg.setLayoutX(604.0);
+        musicImg.setLayoutY(45.0);
         musicImg.setPickOnBounds(true);
         musicImg.setPreserveRatio(true);
         musicImg.setImage(new Image(getClass().getResource("/resources/images/music.png").toExternalForm()));
 
-        settingImg.setFitHeight(27.0);
-        settingImg.setFitWidth(27.0);
+        settingImg.setFitHeight(50.0);
+        settingImg.setFitWidth(50.0);
         settingImg.setId("settingImg");
-        settingImg.setLayoutX(407.0);
-        settingImg.setLayoutY(18.0);
+        settingImg.setLayoutX(737.0);
+        settingImg.setLayoutY(45.0);
         settingImg.setPickOnBounds(true);
         settingImg.setPreserveRatio(true);
         settingImg.setImage(new Image(getClass().getResource("/resources/images/settings.png").toExternalForm()));
 
-        soundImg.setFitHeight(27.0);
-        soundImg.setFitWidth(27.0);
+        soundImg.setFitHeight(50.0);
+        soundImg.setFitWidth(50.0);
         soundImg.setId("soundImg");
-        soundImg.setLayoutX(365.0);
-        soundImg.setLayoutY(18.0);
+        soundImg.setLayoutX(668.0);
+        soundImg.setLayoutY(45.0);
         soundImg.setPickOnBounds(true);
         soundImg.setPreserveRatio(true);
         setProfileIconAction();
         soundImg.setImage(new Image(getClass().getResource("/resources/images/sound.png").toExternalForm()));
 
-        profileImg.setFitHeight(35.0);
-        profileImg.setFitWidth(41.0);
+        profileImg.setFitHeight(66.0);
+        profileImg.setFitWidth(66.0);
         profileImg.setId("profileImg");
-        profileImg.setLayoutX(443.0);
-        profileImg.setLayoutY(14.0);
+        profileImg.setLayoutX(792.0);
+        profileImg.setLayoutY(37.0);
         profileImg.setPickOnBounds(true);
         profileImg.setPreserveRatio(true);
         profileImg.setImage(new Image(getClass().getResource("/resources/images/player1.png").toExternalForm()));
 
         SMpanal.setId("SMpanal");
-        SMpanal.setLayoutX(71.0);
-        SMpanal.setLayoutY(72.0);
-        SMpanal.setPrefHeight(225.0);
-        SMpanal.setPrefWidth(352.0);
+        SMpanal.setLayoutX(151.0);
+        SMpanal.setLayoutY(185.0);
+        SMpanal.setPrefHeight(440.0);
+        SMpanal.setPrefWidth(598.0);
         SMpanal.setStyle("-fx-background-radius: 12;");
         SMpanal.getStylesheets().add("/resources/cssFiles/CSS.css");
         SMpanal.setVisible(false);
 
         easyBtn.setAlignment(javafx.geometry.Pos.CENTER);
         easyBtn.setId("SMBtn");
-        easyBtn.setLayoutX(112.0);
-        easyBtn.setLayoutY(25.0);
+        easyBtn.setLayoutX(141.0);
+        easyBtn.setLayoutY(40.0);
         easyBtn.setMnemonicParsing(false);
-        easyBtn.setPrefHeight(48.0);
-        easyBtn.setPrefWidth(128.0);
+        easyBtn.setPrefHeight(100.0);
+        easyBtn.setPrefWidth(333.0);
         easyBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         easyBtn.setText("Easy");
         easyBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
@@ -211,9 +219,11 @@ public class HomeScreenBase extends AnchorPane {
 
         mediumBtn.setAlignment(javafx.geometry.Pos.CENTER);
         mediumBtn.setId("SMBtn");
-        mediumBtn.setLayoutX(112.0);
-        mediumBtn.setLayoutY(90.0);
+        mediumBtn.setLayoutX(141.0);
+        mediumBtn.setLayoutY(180.0);
         mediumBtn.setMnemonicParsing(false);
+        mediumBtn.setPrefHeight(100.0);
+        mediumBtn.setPrefWidth(333.0);
         mediumBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         mediumBtn.setText("Medium");
         mediumBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
@@ -234,11 +244,11 @@ public class HomeScreenBase extends AnchorPane {
 
         hardBtn.setAlignment(javafx.geometry.Pos.CENTER);
         hardBtn.setId("SMBtn");
-        hardBtn.setLayoutX(112.0);
-        hardBtn.setLayoutY(154.0);
+        hardBtn.setLayoutX(141.0);
+        hardBtn.setLayoutY(320.0);
         hardBtn.setMnemonicParsing(false);
-        hardBtn.setPrefHeight(48.0);
-        hardBtn.setPrefWidth(128.0);
+        hardBtn.setPrefHeight(100.0);
+        hardBtn.setPrefWidth(333.0);
         hardBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         hardBtn.setText("Hard");
         hardBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
@@ -257,8 +267,8 @@ public class HomeScreenBase extends AnchorPane {
             }
         });
 
-        SMpanalBackArrow.setFitHeight(27.0);
-        SMpanalBackArrow.setFitWidth(27.0);
+        SMpanalBackArrow.setFitHeight(50.0);
+        SMpanalBackArrow.setFitWidth(50.0);
         SMpanalBackArrow.setLayoutX(14.0);
         SMpanalBackArrow.setLayoutY(12.0);
         SMpanalBackArrow.setPickOnBounds(true);
@@ -267,54 +277,77 @@ public class HomeScreenBase extends AnchorPane {
         SMpanalBackArrow.setOnMouseClicked(event -> SMpanal.setVisible(false));
 
         MMpanal.setId("MMpanal");
-        MMpanal.setLayoutX(71.0);
-        MMpanal.setLayoutY(72.0);
-        MMpanal.setPrefHeight(225.0);
-        MMpanal.setPrefWidth(352.0);
+        MMpanal.setLayoutX(151.0);
+        MMpanal.setLayoutY(185.0);
+        MMpanal.setPrefHeight(440.0);
+        MMpanal.setPrefWidth(598.0);
         MMpanal.setStyle("-fx-background-radius: 12;");
         MMpanal.getStylesheets().add("/resources/cssFiles/CSS.css");
         MMpanal.setVisible(false);
 
         localBtn.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
         localBtn.setId("localBtn");
-        localBtn.setLayoutX(26.0);
-        localBtn.setLayoutY(81.0);
+        localBtn.setLayoutX(39.0);
+        localBtn.setLayoutY(190.0);
         localBtn.setMnemonicParsing(false);
-        localBtn.setPrefHeight(117.0);
-        localBtn.setPrefWidth(137.0);
+        localBtn.setPrefHeight(183.0);
+        localBtn.setPrefWidth(258.0);
         localBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         localBtn.setText("Local");
         localBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
 
         onlineBtn.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
         onlineBtn.setId("onlineBtn");
-        onlineBtn.setLayoutX(188.0);
-        onlineBtn.setLayoutY(81.0);
+        onlineBtn.setLayoutX(318.0);
+        onlineBtn.setLayoutY(190.0);
         onlineBtn.setMnemonicParsing(false);
-        onlineBtn.setPrefHeight(117.0);
-        onlineBtn.setPrefWidth(137.0);
+        onlineBtn.setPrefHeight(183.0);
+        onlineBtn.setPrefWidth(258.0);
         onlineBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         onlineBtn.setText("Online");
         onlineBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
+        onlineBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
+        {
+            @Override
+            public void handle(ActionEvent event) 
+            {    
+                SignInBase signinScreen = new SignInBase(stage);
+        
+                Scene scene = new Scene(signinScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
 
-        localImg.setFitHeight(117.0);
-        localImg.setFitWidth(114.0);
-        localImg.setLayoutX(36.0);
-        localImg.setLayoutY(35.0);
+        localImg.setFitHeight(230.0);
+        localImg.setFitWidth(230.0);
+        localImg.setLayoutX(33.0);
+        localImg.setLayoutY(75.0);
         localImg.setPickOnBounds(true);
         localImg.setPreserveRatio(true);
         localImg.setImage(new Image(getClass().getResource("/resources/images/local.png").toExternalForm()));
 
-        onlineImg.setFitHeight(117.0);
-        onlineImg.setFitWidth(114.0);
-        onlineImg.setLayoutX(200.0);
-        onlineImg.setLayoutY(35.0);
+        onlineImg.setFitHeight(200.0);
+        onlineImg.setFitWidth(200.0);
+        onlineImg.setLayoutX(347.0);
+        onlineImg.setLayoutY(75.0);
         onlineImg.setPickOnBounds(true);
         onlineImg.setPreserveRatio(true);
         onlineImg.setImage(new Image(getClass().getResource("/resources/images/online.png").toExternalForm()));
+        onlineImg.setOnMouseClicked(event -> 
+            {    
+                SignInBase signinScreen = new SignInBase(stage);
+        
+                Scene scene = new Scene(signinScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        );
 
-        MMpanalBackArrow.setFitHeight(27.0);
-        MMpanalBackArrow.setFitWidth(27.0);
+        MMpanalBackArrow.setFitHeight(50.0);
+        MMpanalBackArrow.setFitWidth(50.0);
+        MMpanalBackArrow.setLayoutX(14.0);
+        MMpanalBackArrow.setLayoutY(12.0);
         MMpanalBackArrow.setPickOnBounds(true);
         MMpanalBackArrow.setPreserveRatio(true);
         MMpanalBackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
@@ -351,10 +384,7 @@ public class HomeScreenBase extends AnchorPane {
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);
                 stage.show();
-
             }
         });
-        
-
     }
 }

@@ -4,6 +4,7 @@ import Models.HistoryTableModel;
 import java.util.Optional;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -14,6 +15,9 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -32,6 +36,7 @@ public class RecordedHistoryTable extends AnchorPane {
     protected final TableColumn colStatusId;
     protected final TableColumn colContenderId;
     protected final TableColumn colSelectId;
+    protected final ImageView BackArrow;
 
     public RecordedHistoryTable(Stage stage) {
 
@@ -45,14 +50,15 @@ public class RecordedHistoryTable extends AnchorPane {
         colStatusId = new TableColumn();
         colContenderId = new TableColumn();
         colSelectId = new TableColumn();
-
-        setBlendMode(javafx.scene.effect.BlendMode.MULTIPLY);
-        setCache(true);
-        setId("pageBG");
-        setMaxHeight(Double.MAX_VALUE);
-        setMaxWidth(Double.MAX_VALUE);
+        BackArrow = new ImageView();
+        
+        setId("APane");
+        setMaxHeight(USE_PREF_SIZE);
+        setMaxWidth(USE_PREF_SIZE);
+        setMinHeight(USE_PREF_SIZE);
+        setMinWidth(USE_PREF_SIZE);
         setPrefHeight(768.0);
-        setPrefWidth(1331.0);
+        setPrefWidth(1366.0);
         getStylesheets().add("/resources/cssFiles/CSS.css");
 
         final ObservableList<HistoryTableModel> tableData = FXCollections.observableArrayList(
@@ -84,14 +90,14 @@ public class RecordedHistoryTable extends AnchorPane {
 
         deleteAll_btn.setCache(true);
         deleteAll_btn.setId("but_ClearAll");
-        deleteAll_btn.setLayoutX(422.0);
+        deleteAll_btn.setLayoutX(431.0);
         deleteAll_btn.setLayoutY(673.0);
         deleteAll_btn.setMnemonicParsing(false);
         deleteAll_btn.setPrefHeight(59.0);
         deleteAll_btn.setPrefWidth(210.0);
         deleteAll_btn.getStylesheets().add("/resources/cssFiles/CSS.css");
         deleteAll_btn.setText("Delete All");
-        deleteAll_btn.setTextFill(javafx.scene.paint.Color.valueOf("#efefef"));
+        deleteAll_btn.setStyle("-fx-background-color: white; -fx-text-fill: #fb06ff; -fx-background-radius: 22;");
         deleteAll_btn.setOnAction((event) -> {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Delete all recorded matches");
@@ -112,25 +118,44 @@ public class RecordedHistoryTable extends AnchorPane {
       
            
         });
+        
+        BackArrow.setFitHeight(50.0);
+        BackArrow.setFitWidth(50.0);
+        BackArrow.setLayoutX(363.0);
+        BackArrow.setLayoutY(181.0);
+        BackArrow.setPickOnBounds(true);
+        BackArrow.setPreserveRatio(true);
+        BackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
+        BackArrow.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                HomeScreenBase homeScreen = new HomeScreenBase(stage);
 
-        text.setFill(javafx.scene.paint.Color.valueOf("#f119f2"));
-        text.setLayoutX(93.0);
-        text.setLayoutY(238.0);
+                Scene scene = new Scene(homeScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
+
+        text.setFill(javafx.scene.paint.Color.valueOf("#fb06ff"));
+        text.setLayoutX(431.0);
+        text.setLayoutY(228.0);
         text.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         text.setStrokeWidth(0.0);
         text.setText("Recorded Matches");
+        text.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         text.setFont(new Font("System Bold", 54.0));
 
         deleteSelected_btn.setCache(true);
         deleteSelected_btn.setId("but_ClearAll");
-        deleteSelected_btn.setLayoutX(666.0);
+        deleteSelected_btn.setLayoutX(690.0);
         deleteSelected_btn.setLayoutY(673.0);
         deleteSelected_btn.setMnemonicParsing(false);
         deleteSelected_btn.setPrefHeight(59.0);
         deleteSelected_btn.setPrefWidth(210.0);
         deleteSelected_btn.getStylesheets().add("/resources/cssFiles/CSS.css");
         deleteSelected_btn.setText("Delete Selected");
-        deleteSelected_btn.setTextFill(javafx.scene.paint.Color.valueOf("#efefef"));
+        deleteSelected_btn.setStyle("-fx-background-color: white; -fx-text-fill: #fb06ff; -fx-background-radius: 22;");
         
         deleteSelected_btn.setOnAction((event) -> {
            ObservableList<HistoryTableModel> selectedDataToRemoveList =FXCollections.observableArrayList();
@@ -226,6 +251,7 @@ public class RecordedHistoryTable extends AnchorPane {
         getChildren().add(deleteAll_btn);
         getChildren().add(text);
         getChildren().add(deleteSelected_btn);
+        getChildren().add(BackArrow);
         table_view.getColumns().add(colNumId);
         table_view.getColumns().add(colScoreId);
         table_view.getColumns().add(colStatusId);
