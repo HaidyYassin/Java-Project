@@ -70,7 +70,7 @@ public class TicTacToe extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) { 
-        music("D:\\iti material\\java project\\java project\\Java-Project\\TicTacToe\\src\\resources\\cssFiles\\bensound-bluebay.wav");
+        music("D:\\MAD43-SV\\Java\\tic tac toe game\\tictactoejava\\Java-Project\\Java-Project\\TicTacToe\\src\\resources\\cssFiles\\bensound-bluebay.wav");
         launch(args);
     }  
 }

@@ -10,7 +10,7 @@
    <children>
       <Pane id="XOpane" layoutX="233.0" layoutY="34.0" prefHeight="700.0" prefWidth="900.0" style="-fx-background-radius: 12;" stylesheets="@../CSS/CSS.css">
          <children>
-            <Text fx:id="SelectYourSymbolleTxt" fill="WHITE" layoutX="193.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 55;" text="Select Your Symbole" textAlignment="CENTER" />
+            <Text fx:id="SelectYourSymbolleTxt" fill="WHITE" layoutX="193.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 55;" text="Select Your Symbol" textAlignment="CENTER" />
             <ImageView fx:id="XImg" fitHeight="300.0" fitWidth="460.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../resources/images/xImage.png" />

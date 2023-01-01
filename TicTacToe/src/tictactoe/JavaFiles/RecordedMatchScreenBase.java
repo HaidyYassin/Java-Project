@@ -245,33 +245,7 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         pane1.setPrefWidth(548.0);
         pane1.getStylesheets().add("/resources/cssFiles/CSS.css");
 
-        line.setEndX(291.0);
-        line.setLayoutX(257.0);
-        line.setLayoutY(156.0);
-        line.setStartX(-257.0);
-        line.setBlendMode(BlendMode.MULTIPLY);
-
-        line0.setEndX(291.0);
-        line0.setLayoutX(258.0);
-        line0.setLayoutY(318.0);
-        line0.setStartX(-257.0);
-        line0.setBlendMode(BlendMode.DARKEN);
-
-        line1.setEndX(289.0);
-        line1.setEndY(141.0);
-        line1.setLayoutX(82.0);
-        line1.setLayoutY(320.0);
-        line1.setStartX(289.0);
-        line1.setStartY(-321.0);
-        line1.setBlendMode(BlendMode.MULTIPLY);
         
-        line2.setEndX(289.0);
-        line2.setEndY(141.0);
-        line2.setLayoutX(-119.0);
-        line2.setLayoutY(321.0);
-        line2.setStartX(289.0);
-        line2.setStartY(-321.0);
-        line2.setBlendMode(BlendMode.MULTIPLY);
 
        btn3.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
        btn3.setStyle("-fx-background-color:#4D0DA5;");
@@ -484,10 +458,7 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         getChildren().add(BackArrow);
         hBox.getChildren().add(RecoededMovementId_txv);
         getChildren().add(hBox);
-        pane1.getChildren().add(line);
-        pane1.getChildren().add(line0);
-        pane1.getChildren().add(line1);
-        pane1.getChildren().add(line2);
+        
         pane1.getChildren().add(btn1);
         pane1.getChildren().add(btn2);
         pane1.getChildren().add(btn3);
@@ -497,6 +468,10 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         pane1.getChildren().add(btn7);
         pane1.getChildren().add(btn8);
         pane1.getChildren().add(btn9);
+        pane1.getChildren().add(line);
+        pane1.getChildren().add(line0);
+        pane1.getChildren().add(line1);
+        pane1.getChildren().add(line2);
         getChildren().add(pane1);
         
         s=RecoededMovementId_txv.getText().replaceAll("\\s", "");

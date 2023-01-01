@@ -674,10 +674,7 @@ public class GameFxmlBase extends AnchorPane {
         pane0.getChildren().add(imageView2);
         getChildren().add(pane0);
         getChildren().add(label);
-        pane1.getChildren().add(line);
-        pane1.getChildren().add(line0);
-        pane1.getChildren().add(line1);
-        pane1.getChildren().add(line2);
+        
         pane1.getChildren().add(btn1);
         pane1.getChildren().add(btn2);
         pane1.getChildren().add(btn3);
@@ -687,6 +684,10 @@ public class GameFxmlBase extends AnchorPane {
         pane1.getChildren().add(btn7);
         pane1.getChildren().add(btn8);
         pane1.getChildren().add(btn9);
+        pane1.getChildren().add(line);
+        pane1.getChildren().add(line0);
+        pane1.getChildren().add(line1);
+        pane1.getChildren().add(line2);
         getChildren().add(pane1);
         getChildren().add(newGame_btn);
         getChildren().add(exit_btn);
@@ -960,3 +961,4 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
  }
 
 }
+

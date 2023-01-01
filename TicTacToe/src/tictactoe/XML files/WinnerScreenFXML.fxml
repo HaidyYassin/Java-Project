@@ -2,10 +2,20 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="APane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../resources/cssFiles/CSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane id="APane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../resources/cssFiles/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane id="panal" layoutX="233.0" layoutY="34.0" prefHeight="700.0" prefWidth="900.0" style="-fx-background-radius: 12;" stylesheets="@../../resources/cssFiles/CSS.css" />
+      <Pane id="panal" layoutX="233.0" layoutY="34.0" prefHeight="700.0" prefWidth="900.0" style="-fx-background-radius: 12;" stylesheets="@../../resources/cssFiles/CSS.css">
+         <children>
+            <Text fill="#07ee41fa" layoutX="344.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Win">
+               <font>
+                  <Font name="Britannic Bold" size="62.0" />
+               </font>
+            </Text>
+            <MediaView fitHeight="400.0" fitWidth="600.0" layoutX="154.0" layoutY="194.0" />
+         </children></Pane>
    </children>
 </AnchorPane>
