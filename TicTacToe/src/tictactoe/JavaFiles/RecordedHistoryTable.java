@@ -56,10 +56,10 @@ public class RecordedHistoryTable extends AnchorPane {
         getStylesheets().add("/resources/cssFiles/CSS.css");
 
         final ObservableList<HistoryTableModel> tableData = FXCollections.observableArrayList(
-                new HistoryTableModel("1", "10", "Win", "Ahmed Mohammed"),
+                new HistoryTableModel("1", "10", "Win", "Omar Mohammed"),
                 new HistoryTableModel("2", "0", "Lose", "Ali Islam"),
-                new HistoryTableModel("3", "15", "Win", "Ahmed Nader"),
-                new HistoryTableModel("4", "10", "Win", "Youssef Ahmed")
+                new HistoryTableModel("3", "5", "Draw", "Ahmed Nader"),
+                new HistoryTableModel("4", "15", "Win", "Youssef Ahmed")
         );
         colNumId.setCellValueFactory(
                 new PropertyValueFactory<>("GameNumber")
@@ -181,8 +181,9 @@ public class RecordedHistoryTable extends AnchorPane {
                             HistoryTableModel selectedPerson = (HistoryTableModel) table_view.getSelectionModel().getSelectedItem();
                             String gc = selectedPerson.getGameContender().substring(0, selectedPerson.getGameContender().indexOf(" "));
                             String gs = selectedPerson.getGameStatus();
+                            String recordSteps=selectedPerson.getRecordFile();
 
-                            RecordedMatchScreenBase rmsb = new RecordedMatchScreenBase(gs, gc,stage);
+                            RecordedMatchScreenBase rmsb = new RecordedMatchScreenBase(gs, gc,recordSteps,stage);
 
                             Scene scene = new Scene(rmsb);
                             stage.setScene(scene);

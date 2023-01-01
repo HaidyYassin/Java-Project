@@ -1,0 +1,1 @@
+1.You: X1 , 2.Ali: O5 , 3.You: X7 , 4.Ali: O4 , 5.You: X3 , 6.Ali: O6  

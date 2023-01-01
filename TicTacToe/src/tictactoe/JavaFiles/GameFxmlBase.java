@@ -388,14 +388,14 @@ public class GameFxmlBase extends AnchorPane {
             {
                 rand = (int)(Math.random()*(max - min + 1) + min);
             }
-            /*if(btnArr[rand].getGraphic() == null)
+            if(btnArr[rand].getGraphic() == null)
             {
                 btnArr[rand].setGraphic(drawOIcon());
+                isYourTurn = true;
             }
-            stepCounter ++;*/
+            stepCounter ++;
             
-            
-            isYourTurn = true;
+           
         }
     }
     

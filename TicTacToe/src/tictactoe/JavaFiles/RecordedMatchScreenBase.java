@@ -60,7 +60,7 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
    
     
  
-    public RecordedMatchScreenBase(String gameState,String gameContender,Stage stage) {
+    public RecordedMatchScreenBase(String gameState,String gameContender,String recordedFile,Stage stage) {
         
         
         //imgO = new Image("/resorces/ooo.png");
@@ -210,7 +210,9 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         label.setPrefHeight(44.0);
         label.setPrefWidth(110.0);
         
-        //pane1.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
+        pane1.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        //pane1.setStyle("-fx-focus-color:transparent;");
+        //pane1.setOpacity(0.10);
         pane1.setId("gameBox");
         pane1.setLayoutX(410.0);
         pane1.setLayoutY(127.0);
@@ -242,7 +244,8 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         line2.setStartX(289.0);
         line2.setStartY(-321.0);
 
-        gameBoardCell3Id_btn.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        gameBoardCell3Id_btn.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        gameBoardCell3Id_btn.setStyle("-fx-background-color:#4D0DA5;");
         gameBoardCell3Id_btn.setCache(true);
         gameBoardCell3Id_btn.setDisable(true);
         gameBoardCell3Id_btn.setId("gameBoardCell3Id_btn");
@@ -251,20 +254,29 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         gameBoardCell3Id_btn.setMnemonicParsing(false);
         gameBoardCell3Id_btn.setPrefHeight(156.0);
         gameBoardCell3Id_btn.setPrefWidth(172.0);
-
-        gameBoardCell2Id_btn.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        ImageView vimgX;
+        Image imgg = new Image("/resources/images/xImage.png");
+        vimgX = new ImageView(imgg);
+        vimgX.setLayoutX(372.0);
+        vimgX.setLayoutY(1.0);
+        vimgX.setFitWidth(140);
+        vimgX.setFitHeight(130);
+        
+        gameBoardCell2Id_btn.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        gameBoardCell2Id_btn.setStyle("-fx-background-color:#4D0DA5;");
         gameBoardCell2Id_btn.setCache(true);
         gameBoardCell2Id_btn.setDisable(true);
         gameBoardCell2Id_btn.setId("gameBoardCell2Id_btn");
         gameBoardCell2Id_btn.setLayoutX(170.0);
         gameBoardCell2Id_btn.setLayoutY(6.0);
         gameBoardCell2Id_btn.setMnemonicParsing(false);
-        gameBoardCell2Id_btn.setPrefHeight(147.0);
-        gameBoardCell2Id_btn.setPrefWidth(200.0);
+        gameBoardCell2Id_btn.setPrefHeight(135.0);
+        gameBoardCell2Id_btn.setPrefWidth(190.0);
         gameBoardCell2Id_btn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        gameBoardCell2Id_btn.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+       // gameBoardCell2Id_btn.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
-        gameBoardCell4Id_btn.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        gameBoardCell4Id_btn.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        gameBoardCell4Id_btn.setStyle("-fx-background-color:#4D0DA5;");
         gameBoardCell4Id_btn.setCache(true);
         gameBoardCell4Id_btn.setDisable(true);
         gameBoardCell4Id_btn.setId("gameBoardCell4Id_btn");
@@ -276,7 +288,8 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         gameBoardCell4Id_btn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         gameBoardCell4Id_btn.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
-        gameBoardCell7Id_btn.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        gameBoardCell7Id_btn.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        gameBoardCell7Id_btn.setStyle("-fx-background-color:#4D0DA5;");
         gameBoardCell7Id_btn.setCache(true);
         gameBoardCell7Id_btn.setDisable(true);
         gameBoardCell7Id_btn.setId("gameBoardCell7Id_btn");
@@ -284,23 +297,26 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         gameBoardCell7Id_btn.setLayoutY(319.0);
         gameBoardCell7Id_btn.setMnemonicParsing(false);
         gameBoardCell7Id_btn.setPrefHeight(141.0);
-        gameBoardCell7Id_btn.setPrefWidth(164.0);
+        gameBoardCell7Id_btn.setPrefWidth(155.0);
         gameBoardCell7Id_btn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         gameBoardCell7Id_btn.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
-        gameBoardCell5Id_btn.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+       // gameBoardCell5Id_btn.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        gameBoardCell5Id_btn.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        gameBoardCell5Id_btn.setStyle("-fx-background-color:#4D0DA5;");
         gameBoardCell5Id_btn.setCache(true);
         gameBoardCell5Id_btn.setDisable(true);
         gameBoardCell5Id_btn.setId("gameBoardCell5Id_btn");
         gameBoardCell5Id_btn.setLayoutX(174.0);
         gameBoardCell5Id_btn.setLayoutY(163.0);
         gameBoardCell5Id_btn.setMnemonicParsing(false);
-        gameBoardCell5Id_btn.setPrefHeight(156.0);
-        gameBoardCell5Id_btn.setPrefWidth(192.0);
+        gameBoardCell5Id_btn.setPrefHeight(145.0);
+        gameBoardCell5Id_btn.setPrefWidth(190.0);
         gameBoardCell5Id_btn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         gameBoardCell5Id_btn.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
-        gameBoardCell8Id_btn.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        
+        gameBoardCell8Id_btn.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        gameBoardCell8Id_btn.setStyle("-fx-background-color:#4D0DA5;");
         gameBoardCell8Id_btn.setCache(true);
         gameBoardCell8Id_btn.setDisable(true);
         gameBoardCell8Id_btn.setId("gameBoardCell8Id_btn");
@@ -311,8 +327,9 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         gameBoardCell8Id_btn.setPrefWidth(200.0);
         gameBoardCell8Id_btn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         gameBoardCell8Id_btn.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
-        gameBoardCell9Id_btn.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        
+        gameBoardCell9Id_btn.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        gameBoardCell9Id_btn.setStyle("-fx-background-color:#4D0DA5;");
         gameBoardCell9Id_btn.setCache(true);
         gameBoardCell9Id_btn.setDisable(true);
         gameBoardCell9Id_btn.setId("gameBoardCell9Id_btn");
@@ -323,8 +340,9 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         gameBoardCell9Id_btn.setPrefWidth(172.0);
         gameBoardCell9Id_btn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         gameBoardCell9Id_btn.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
-        gameBoardCell6Id_btn.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        
+        gameBoardCell6Id_btn.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        gameBoardCell6Id_btn.setStyle("-fx-background-color:#4D0DA5;");
         gameBoardCell6Id_btn.setCache(true);
         gameBoardCell6Id_btn.setDisable(true);
         gameBoardCell6Id_btn.setId("gameBoardCell6Id_btn");
@@ -333,16 +351,18 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         gameBoardCell6Id_btn.setMnemonicParsing(false);
         gameBoardCell6Id_btn.setPrefHeight(156.0);
         gameBoardCell6Id_btn.setPrefWidth(172.0);
-
-        gameBoardCell1Id_btn.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        
+        gameBoardCell1Id_btn.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        gameBoardCell1Id_btn.setStyle("-fx-background-color:#4D0DA5;");
+       // gameBoardCell1Id_btn.setStyle("-fx-focus-color:transparent;");
         gameBoardCell1Id_btn.setCache(true);
         gameBoardCell1Id_btn.setDisable(true);
         gameBoardCell1Id_btn.setId("gameBoardCell1Id_btn");
         gameBoardCell1Id_btn.setLayoutX(4.0);
         gameBoardCell1Id_btn.setLayoutY(1.0);
         gameBoardCell1Id_btn.setMnemonicParsing(false);
-        gameBoardCell1Id_btn.setPrefHeight(156.0);
-        gameBoardCell1Id_btn.setPrefWidth(164.0);
+        gameBoardCell1Id_btn.setPrefHeight(145.0);
+        gameBoardCell1Id_btn.setPrefWidth(155.0);
         gameBoardCell1Id_btn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         gameBoardCell1Id_btn.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
@@ -354,6 +374,12 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         RecordedGameState_txv.setText("You "+gameState);
         if(gameState=="Win")
         RecordedGameState_txv.setFill(javafx.scene.paint.Color.valueOf("#07ee41fa"));
+        else if(gameState=="Draw")
+        {
+            RecordedGameState_txv.setFill(javafx.scene.paint.Color.valueOf("#1565C0"));
+            RecordedGameState_txv.setText(gameState);
+        }
+        
         else
         RecordedGameState_txv.setFill(javafx.scene.paint.Color.valueOf("#D32F2F"));    
         RecordedGameState_txv.setFont(new Font("Curlz MT", 62.0));
@@ -372,7 +398,8 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         RecoededMovementId_txv.setId("RecoededMovementId_txv");
         RecoededMovementId_txv.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         RecoededMovementId_txv.setStrokeWidth(0.0);
-        RecoededMovementId_txv.setText("1.You: X5 , 2.Omar: O2 , 3.You: X9 , 4.Omar: O1 , 5.You: X3 , 6.Omar: O7 , 7.You: X6 ");
+         RecoededMovementId_txv.setText(recordedFile);
+        //RecoededMovementId_txv.setText("1.You: X5 , 2.Omar: O2 , 3.You: X9 , 4.Omar: O1 , 5.You: X3 , 6.Omar: O7 , 7.You: X6 ");
         RecoededMovementId_txv.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         RecoededMovementId_txv.setWrappingWidth(913.6875);
         RecoededMovementId_txv.setFont(new Font("System Bold", 20.0));
@@ -409,7 +436,9 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         pane1.getChildren().add(gameBoardCell6Id_btn);
         pane1.getChildren().add(gameBoardCell1Id_btn);
         
+        
         getChildren().add(pane1);
+        
         getChildren().add(RecordedGameState_txv);
         hBox.getChildren().add(RecoededMovementId_txv);
         getChildren().add(hBox);
@@ -484,7 +513,6 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         vimgX = new ImageView(imgX);
         vimgX.pickOnBoundsProperty();
         vimgX.preserveRatioProperty();
-        vimgX.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
         vimgX.setFitWidth(140);
         vimgX.setFitHeight(130);
         
@@ -496,7 +524,8 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         vimgO = new ImageView(getClass().getResource("/resources/images/oImage.png").toExternalForm());
         vimgO.setFitWidth(140);
         vimgO.setFitHeight(130);
-        vimgO.setBlendMode(javafx.scene.effect.BlendMode.MULTIPLY);
+        vimgO.pickOnBoundsProperty();
+        vimgO.preserveRatioProperty();
         return vimgO;
     
     };
@@ -512,7 +541,7 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
                     gameBoardCell8Id_btn.setGraphic(null);
                     gameBoardCell9Id_btn.setGraphic(null);
                  } );
-        
+       
     
     }
     public void drawRecordedMatch(int i){
@@ -520,8 +549,6 @@ public  class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         //System.out.println("From Draw "+ RecoededMovementId_txv.getText());
        // String s=" 1.You: X5 , 2.Omar: O2 , 3.You: X9 , 4.Omar: O1 , 5.You: X3 , 6.Omar: O7 , 7.You: X6 ";
         
-        
-       
             System.out.println(s);
            
            if(split[i].charAt(split[i].length()-2)=='X')
