@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import static javafx.scene.control.ContentDisplay.GRAPHIC_ONLY;
 import javafx.scene.control.Label;
 import javafx.scene.effect.Blend;
 import javafx.scene.image.Image;
@@ -259,7 +260,8 @@ public class GameFxmlBase extends AnchorPane {
 
         
        
-        btn1.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn1.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn1.setStyle("-fx-background-color:#4D0DA5;");
         btn1.setLayoutX(4.0);
         btn1.setLayoutY(1.0);
         btn1.setMnemonicParsing(false);
@@ -278,6 +280,8 @@ public class GameFxmlBase extends AnchorPane {
                   if(btn1.getText() == " ") {
                       btn1.setText("X");
                       btn1.setGraphic(drawXIcon());
+                      btn1.setContentDisplay(GRAPHIC_ONLY);
+
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        System.out.print( "result: " + result + "\n");
@@ -295,7 +299,8 @@ public class GameFxmlBase extends AnchorPane {
             }});
         
         
-        btn2.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn2.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn2.setStyle("-fx-background-color:#4D0DA5;");
         btn2.setLayoutX(205.0);
         btn2.setLayoutY(4.0);
         btn2.setMnemonicParsing(false);
@@ -309,6 +314,8 @@ public class GameFxmlBase extends AnchorPane {
                   if(btn2.getText() == " ") {
                       btn2.setText("X");
                       btn2.setGraphic(drawXIcon());
+                      btn2.setContentDisplay(GRAPHIC_ONLY);
+
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        System.out.print( "result: " + result + "\n");
@@ -326,7 +333,8 @@ public class GameFxmlBase extends AnchorPane {
             }});
         
         
-        btn3.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn3.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn3.setStyle("-fx-background-color:#4D0DA5;");
         btn3.setLayoutX(409.0);
         btn3.setLayoutY(1.0);
         btn3.setMnemonicParsing(false);
@@ -340,6 +348,8 @@ public class GameFxmlBase extends AnchorPane {
                   if(btn3.getText() == " ") {
                       btn3.setText("X");
                       btn3.setGraphic(drawXIcon());
+                      btn3.setContentDisplay(GRAPHIC_ONLY);
+
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        System.out.print( "result: " + result + "\n");
@@ -357,7 +367,8 @@ public class GameFxmlBase extends AnchorPane {
             }});
         
 
-        btn4.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn4.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn4.setStyle("-fx-background-color:#4D0DA5;");
         btn4.setLayoutX(4.0);
         btn4.setLayoutY(158.0);
         btn4.setMnemonicParsing(false);
@@ -373,6 +384,8 @@ public class GameFxmlBase extends AnchorPane {
                   if(btn4.getText() == " ") {
                       btn4.setText("X");
                       btn4.setGraphic(drawXIcon());
+                      btn4.setContentDisplay(GRAPHIC_ONLY);
+
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        System.out.print( "result: " + result + "\n");
@@ -390,8 +403,9 @@ public class GameFxmlBase extends AnchorPane {
             }});
         
         
-        btn5.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn5.setLayoutX(209.0);
+        btn5.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn5.setStyle("-fx-background-color:#4D0DA5;");
+        btn5.setLayoutX(205.0);
         btn5.setLayoutY(158.0);
         btn5.setMnemonicParsing(false);
         btn5.setPrefHeight(150.0);
@@ -406,6 +420,8 @@ public class GameFxmlBase extends AnchorPane {
                   if(btn5.getText() == " ") {
                       btn5.setText("X");
                      btn5.setGraphic(drawXIcon());
+                     btn5.setContentDisplay(GRAPHIC_ONLY);
+
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        System.out.print( "result: " + result + "\n");
@@ -424,8 +440,9 @@ public class GameFxmlBase extends AnchorPane {
         
         
         
-        btn6.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn6.setLayoutX(409.0);
+        btn6.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn6.setStyle("-fx-background-color:#4D0DA5;");
+        btn6.setLayoutX(410.0);
         btn6.setLayoutY(155.0);
         btn6.setMnemonicParsing(false);
         btn6.setPrefHeight(150.0);
@@ -438,6 +455,8 @@ public class GameFxmlBase extends AnchorPane {
                   if(btn6.getText() == " ") {
                       btn6.setText("X");
                       btn6.setGraphic(drawXIcon());
+                      btn6.setContentDisplay(GRAPHIC_ONLY);
+
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        System.out.print( "result: " + result + "\n");
@@ -455,7 +474,8 @@ public class GameFxmlBase extends AnchorPane {
             }});
         
 
-        btn7.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn7.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn7.setStyle("-fx-background-color:#4D0DA5;");
         btn7.setLayoutX(4.0);
         btn7.setLayoutY(312.0);
         btn7.setMnemonicParsing(false);
@@ -471,6 +491,8 @@ public class GameFxmlBase extends AnchorPane {
                   if(btn7.getText() == " ") {
                       btn7.setText("X");
                       btn7.setGraphic(drawXIcon());
+                      btn7.setContentDisplay(GRAPHIC_ONLY);
+
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        System.out.print( "result: " + result + "\n");
@@ -487,7 +509,8 @@ public class GameFxmlBase extends AnchorPane {
                 }
             }});
         
-        btn8.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn8.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn8.setStyle("-fx-background-color:#4D0DA5;");
         btn8.setLayoutX(205.0);
         btn8.setLayoutY(312.0);
         btn8.setMnemonicParsing(false);
@@ -503,6 +526,8 @@ public class GameFxmlBase extends AnchorPane {
                   if(btn8.getText() == " ") {
                       btn8.setText("X");
                       btn8.setGraphic(drawXIcon());
+                      btn8.setContentDisplay(GRAPHIC_ONLY);
+
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        System.out.print( "result: " + result + "\n");
@@ -519,7 +544,8 @@ public class GameFxmlBase extends AnchorPane {
                 }
             }});
         
-        btn9.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+        btn9.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn9.setStyle("-fx-background-color:#4D0DA5;");
         btn9.setLayoutX(409.0);
         btn9.setLayoutY(312.0);
         btn9.setMnemonicParsing(false);
@@ -535,6 +561,8 @@ public class GameFxmlBase extends AnchorPane {
                   if(btn9.getText() == " ") {
                       btn9.setText("X");
                       btn9.setGraphic(drawXIcon());
+                      btn9.setContentDisplay(GRAPHIC_ONLY);
+
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        System.out.print( "result: " + result + "\n");
@@ -699,6 +727,7 @@ public class GameFxmlBase extends AnchorPane {
         btn1.setOnAction((e) -> {
             btn1.setGraphic(drawXIcon());
             isYourTurn = false;
+            
         });
         btn3.setOnAction((e) -> {
             btn3.setGraphic(drawXIcon());
@@ -723,14 +752,14 @@ public class GameFxmlBase extends AnchorPane {
             {
                 rand = (int)(Math.random()*(max - min + 1) + min);
             }
-            /*if(btnArr[rand].getGraphic() == null)
+            if(btnArr[rand].getGraphic() == null)
             {
                 btnArr[rand].setGraphic(drawOIcon());
+                isYourTurn = true;
             }
-            stepCounter ++;*/
+            stepCounter ++;
             
-            
-            isYourTurn = true;
+           
         }
     }
     
@@ -763,7 +792,7 @@ public class GameFxmlBase extends AnchorPane {
         vimgO = new ImageView(imgo);             
         vimgO.setFitWidth(140);
         vimgO.setFitHeight(130);
-        vimgO.setBlendMode(javafx.scene.effect.BlendMode.MULTIPLY);
+       // vimgO.setBlendMode(javafx.scene.effect.BlendMode.MULTIPLY);
         return vimgO;
     
     };
@@ -774,7 +803,7 @@ public class GameFxmlBase extends AnchorPane {
         vimgX = new ImageView(imgX);
         vimgX.pickOnBoundsProperty();
         vimgX.preserveRatioProperty();
-        vimgX.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
+       // vimgX.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
         vimgX.setFitWidth(140);
         vimgX.setFitHeight(130);
         
@@ -855,6 +884,8 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
             for(int j = 0; j < 3; j++) {
                 if(board[i][j].getText() == " ") {
                     board[i][j].setText("X");
+                    board[i][j].setContentDisplay(GRAPHIC_ONLY);
+
                     int score = minimax(board, depth - 1, false, false);
                     board[i][j].setText(" ");
                     if(score > finalScore) {
@@ -871,6 +902,7 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
         if(firstTime) {
             board[finalI][finalJ].setText("X");
             board[finalI][finalJ].setGraphic(drawXIcon());
+            board[finalI][finalJ].setContentDisplay(GRAPHIC_ONLY);
         }
         return finalScore;
     } else {
@@ -880,6 +912,7 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
             for(int j = 0; j < 3; j++) {
                 if(board[i][j].getText() == " ") {
                     board[i][j].setText("O");
+                    board[i][j].setContentDisplay(GRAPHIC_ONLY);
                     //drawOIcon();
                     int score = minimax(board, depth - 1, true, false);
                     board[i][j].setText(" ");
@@ -897,12 +930,13 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
         if(firstTime) {
             board[finalI][finalJ].setText("O");
             board[finalI][finalJ].setGraphic(drawOIcon());
+            board[finalI][finalJ].setContentDisplay(GRAPHIC_ONLY);
         }
         return finalScore;
     }
 }
  private void clearRecordedMatchCells(){
-       Platform.runLater(()-> {
+       
                     btn1.setGraphic(null);
                     btn2.setGraphic(null);
                     btn3.setGraphic(null);
@@ -921,7 +955,8 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
                     btn7.setText(" ");
                     btn8.setText(" ");
                     btn9.setText(" ");
-                 } );
+                 
+       has_winner=false;
  }
 
 }

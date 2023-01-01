@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -61,10 +62,14 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
     String [] split;
     Thread th ;
 
-    public RecordedMatchScreenBase(String gameState,String gameContender,Stage stage) {
-        
+    
+    
+   
+    
+ 
+    public RecordedMatchScreenBase(String gameState,String gameContender,String recordedFile,Stage stage) {
+    
          //imgO = new Image("/resorces/ooo.png");
-
         imageView = new ImageView();
         blend = new Blend();
         imageView0 = new ImageView();
@@ -229,6 +234,163 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         label.setLayoutY(441.0);
         label.setPrefHeight(44.0);
         label.setPrefWidth(110.0);
+        
+        //pane1.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        //pane1.setStyle("-fx-focus-color:transparent;");
+        //pane1.setOpacity(0.10);
+        pane1.setId("gameBox");
+        pane1.setLayoutX(410.0);
+        pane1.setLayoutY(127.0);
+        pane1.setPrefHeight(462.0);
+        pane1.setPrefWidth(548.0);
+        pane1.getStylesheets().add("/resources/cssFiles/CSS.css");
+
+        line.setEndX(291.0);
+        line.setLayoutX(257.0);
+        line.setLayoutY(156.0);
+        line.setStartX(-257.0);
+        line.setBlendMode(BlendMode.MULTIPLY);
+
+        line0.setEndX(291.0);
+        line0.setLayoutX(258.0);
+        line0.setLayoutY(318.0);
+        line0.setStartX(-257.0);
+        line0.setBlendMode(BlendMode.DARKEN);
+
+        line1.setEndX(289.0);
+        line1.setEndY(141.0);
+        line1.setLayoutX(82.0);
+        line1.setLayoutY(320.0);
+        line1.setStartX(289.0);
+        line1.setStartY(-321.0);
+        line1.setBlendMode(BlendMode.MULTIPLY);
+        
+        line2.setEndX(289.0);
+        line2.setEndY(141.0);
+        line2.setLayoutX(-119.0);
+        line2.setLayoutY(321.0);
+        line2.setStartX(289.0);
+        line2.setStartY(-321.0);
+        line2.setBlendMode(BlendMode.MULTIPLY);
+
+       btn3.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+       btn3.setStyle("-fx-background-color:#4D0DA5;");
+       //btn3.setCache(true);
+      // btn3.setDisable(true);
+       btn3.setId("gameBoardCell3Id_btn");
+       btn3.setLayoutX(409.0);
+       btn3.setLayoutY(1.0);
+       btn3.setMnemonicParsing(false);
+       btn3.setPrefHeight(156.0);
+       btn3.setPrefWidth(172.0);
+        
+        
+       btn2.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+       btn2.setStyle("-fx-background-color:#4D0DA5;");
+      // btn2.setCache(true);
+      // btn2.setDisable(true);
+       btn2.setId("gameBoardCell2Id_btn");
+       btn2.setLayoutX(205.0);
+        btn2.setLayoutY(4.0);
+       btn2.setMnemonicParsing(false);
+       btn2.setPrefHeight(135.0);
+       btn2.setPrefWidth(190.0);
+       btn2.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+       //btn2.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+
+       btn4.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+       btn4.setStyle("-fx-background-color:#4D0DA5;");
+      // btn4.setCache(true);
+      // btn4.setDisable(true);
+       btn4.setId("gameBoardCell4Id_btn");
+        btn4.setLayoutX(4.0);
+        btn4.setLayoutY(158.0);
+       btn4.setMnemonicParsing(false);
+       btn4.setPrefHeight(156.0);
+       btn4.setPrefWidth(164.0);
+       btn4.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+       btn4.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+
+       btn7.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+       btn7.setStyle("-fx-background-color:#4D0DA5;");
+       //btn7.setCache(true);
+       //btn7.setDisable(true);
+       btn7.setId("gameBoardCell7Id_btn");
+       btn7.setLayoutX(4.0);
+       btn7.setLayoutY(312.0);
+       btn7.setMnemonicParsing(false);
+       btn7.setPrefHeight(141.0);
+       btn7.setPrefWidth(155.0);
+       //btn7.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+      // btn7.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+
+       //btn5.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
+       btn5.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+       btn5.setStyle("-fx-background-color:#4D0DA5;");
+       //btn5.setCache(true);
+       //btn5.setDisable(true);
+       btn5.setId("gameBoardCell5Id_btn");
+       btn5.setLayoutX(205.0);
+       btn5.setLayoutY(158.0);
+       btn5.setMnemonicParsing(false);
+       btn5.setPrefHeight(145.0);
+       btn5.setPrefWidth(190.0);
+       //btn5.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+       //btn5.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        
+       btn8.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+       btn8.setStyle("-fx-background-color:#4D0DA5;");
+       //btn8.setCache(true);
+       //btn8.setDisable(true);
+       btn8.setId("gameBoardCell8Id_btn");
+       btn8.setLayoutX(210.0);
+       btn8.setLayoutY(317.0);
+       btn8.setMnemonicParsing(false);
+       btn8.setLayoutX(205.0);
+        btn8.setLayoutY(312.0);
+       btn8.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+       btn8.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        
+       btn9.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+       btn9.setStyle("-fx-background-color:#4D0DA5;");
+       //btn9.setCache(true);
+       //btn9.setDisable(true);
+       btn9.setId("gameBoardCell9Id_btn");
+       btn9.setLayoutX(409.0);
+        btn9.setLayoutY(312.0);
+       btn9.setMnemonicParsing(false);
+       btn9.setPrefHeight(141.0);
+       btn9.setPrefWidth(172.0);
+       btn9.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+       btn9.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        
+       btn6.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+       btn6.setStyle("-fx-background-color:#4D0DA5;");
+       //btn6.setCache(true);
+      // btn6.setDisable(true);
+       btn6.setId("gameBoardCell6Id_btn");
+       btn6.setLayoutX(410.0);
+       btn6.setLayoutY(155.0);
+       btn6.setMnemonicParsing(false);
+       btn6.setPrefHeight(156.0);
+       btn6.setPrefWidth(172.0);
+        
+       btn1.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+       btn1.setStyle("-fx-background-color:#4D0DA5;");
+       btn1.setMnemonicParsing(false);
+       //btn1.setStyle("-fx-focus-color:transparent;");
+       //btn1.setCache(true);
+      // btn1.setDisable(true);
+       btn1.setId("gameBoardCell1Id_btn");
+       btn1.setLayoutX(4.0);
+       btn1.setLayoutY(1.0);
+       btn1.setMnemonicParsing(false);
+       btn1.setPrefHeight(145.0);
+       btn1.setPrefWidth(155.0);
+       btn1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+       btn1.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+
+
 
         text3.setLayoutX(588.0);
         text3.setLayoutY(90.0);
@@ -238,6 +400,12 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         text3.setFont(new Font("Britannic Bold", 62.0));
         if(gameState=="Win")
             text3.setFill(javafx.scene.paint.Color.valueOf("#07ee41fa"));
+        else if(gameState=="Draw")
+        {
+            text3.setFill(javafx.scene.paint.Color.valueOf("#FFEE58"));
+            text3.setText(gameState);
+        }
+
         else
             text3.setFill(javafx.scene.paint.Color.valueOf("#D32F2F"));    
 
@@ -255,7 +423,8 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         RecoededMovementId_txv.setId("RecoededMovementId_txv");
         RecoededMovementId_txv.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         RecoededMovementId_txv.setStrokeWidth(0.0);
-        RecoededMovementId_txv.setText("1.You: X5 , 2.Omar: O2 , 3.You: X9 , 4.Omar: O1 , 5.You: X3 , 6.Omar: O7 , 7.You: X6 ");
+         RecoededMovementId_txv.setText(recordedFile);
+        //RecoededMovementId_txv.setText("1.You: X5 , 2.Omar: O2 , 3.You: X9 , 4.Omar: O1 , 5.You: X3 , 6.Omar: O7 , 7.You: X6 ");
         RecoededMovementId_txv.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         RecoededMovementId_txv.setWrappingWidth(913.6875);
         RecoededMovementId_txv.setFont(new Font("System Bold", 20.0));
@@ -295,89 +464,7 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         line2.setStartX(323.0);
         line2.setStartY(-320.0);
 
-        btn1.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn1.setLayoutX(4.0);
-        btn1.setLayoutY(1.0);
-        btn1.setMnemonicParsing(false);
-        btn1.setPrefHeight(150.0);
-        btn1.setPrefWidth(200.0);
-        btn1.setStyle("-fx-focus-color: transparent;");
-        btn1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn1.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
-        btn2.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn2.setLayoutX(205.0);
-        btn2.setLayoutY(4.0);
-        btn2.setMnemonicParsing(false);
-        btn2.setStyle("-fx-focus-color: transparent;");
-        btn2.setPrefHeight(150.0);
-        btn2.setPrefWidth(200.0);
-
-        btn3.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn3.setLayoutX(409.0);
-        btn3.setLayoutY(1.0);
-        btn3.setMnemonicParsing(false);
-        btn3.setStyle("-fx-focus-color: transparent;");
-        btn3.setPrefHeight(150.0);
-        btn3.setPrefWidth(200.0);
-
-        btn4.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn4.setLayoutX(4.0);
-        btn4.setLayoutY(158.0);
-        btn4.setMnemonicParsing(false);
-        btn4.setStyle("-fx-focus-color: transparent;");
-        btn4.setPrefHeight(150.0);
-        btn4.setPrefWidth(200.0);
-        btn4.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn4.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
-        btn5.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn5.setLayoutX(209.0);
-        btn5.setLayoutY(158.0);
-        btn5.setMnemonicParsing(false);
-        btn5.setStyle("-fx-focus-color: transparent;");
-        btn5.setPrefHeight(150.0);
-        btn5.setPrefWidth(200.0);
-        btn5.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn5.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
-        btn6.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn6.setLayoutX(409.0);
-        btn6.setLayoutY(155.0);
-        btn6.setMnemonicParsing(false);
-        btn6.setStyle("-fx-focus-color: transparent;");
-        btn6.setPrefHeight(150.0);
-        btn6.setPrefWidth(200.0);
-
-        btn7.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn7.setLayoutX(4.0);
-        btn7.setLayoutY(312.0);
-        btn7.setMnemonicParsing(false);
-        btn7.setStyle("-fx-focus-color: transparent;");
-        btn7.setPrefHeight(147.0);
-        btn7.setPrefWidth(200.0);
-        btn7.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn7.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
-        btn8.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn8.setLayoutX(205.0);
-        btn8.setLayoutY(312.0);
-        btn8.setMnemonicParsing(false);
-        btn8.setStyle("-fx-focus-color: transparent;");
-        btn8.setPrefHeight(147.0);
-        btn8.setPrefWidth(200.0);
-        btn8.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn8.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-
-        btn9.setBlendMode(javafx.scene.effect.BlendMode.DARKEN);
-        btn9.setLayoutX(409.0);
-        btn9.setLayoutY(312.0);
-        btn9.setMnemonicParsing(false);
-        btn9.setStyle("-fx-focus-color: transparent;");
-        btn9.setPrefHeight(147.0);
-        btn9.setPrefWidth(200.0);
-        btn9.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn9.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        
 
         setEffect(blend2);
         setOpaqueInsets(new Insets(0.0));
@@ -478,9 +565,8 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         ImageView vimgX;
         imgX = new Image("/resources/images/xImage.png");
         vimgX = new ImageView(imgX);
-        vimgX.pickOnBoundsProperty();
-        vimgX.preserveRatioProperty();
-        vimgX.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
+        //vimgX.pickOnBoundsProperty();
+       // vimgX.preserveRatioProperty();
         vimgX.setFitWidth(140);
         vimgX.setFitHeight(130);
         
@@ -492,7 +578,8 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         vimgO = new ImageView(getClass().getResource("/resources/images/oImage.png").toExternalForm());
         vimgO.setFitWidth(140);
         vimgO.setFitHeight(130);
-        vimgO.setBlendMode(javafx.scene.effect.BlendMode.MULTIPLY);
+       // vimgO.pickOnBoundsProperty();
+        //vimgO.preserveRatioProperty();
         return vimgO;
     
     };
@@ -508,7 +595,7 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
                     btn8.setGraphic(null);
                     btn9.setGraphic(null);
                  } );
-        
+       
     
     }
     public void drawRecordedMatch(int i){
@@ -516,8 +603,6 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         //System.out.println("From Draw "+ RecoededMovementId_txv.getText());
        // String s=" 1.You: X5 , 2.Omar: O2 , 3.You: X9 , 4.Omar: O1 , 5.You: X3 , 6.Omar: O7 , 7.You: X6 ";
         
-        
-       
             System.out.println(s);
            
            if(split[i].charAt(split[i].length()-2)=='X')
