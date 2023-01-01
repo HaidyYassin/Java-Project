@@ -54,7 +54,7 @@ public class XOScreenBase extends AnchorPane {
         SelectYourSymbolleTxt.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         SelectYourSymbolleTxt.setStrokeWidth(0.0);
         SelectYourSymbolleTxt.setStyle("-fx-font-size: 55;");
-        SelectYourSymbolleTxt.setText("Select Your Symbole");
+        SelectYourSymbolleTxt.setText("Select Your Symbol");
         SelectYourSymbolleTxt.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
 
         XImg.setFitHeight(300.0);

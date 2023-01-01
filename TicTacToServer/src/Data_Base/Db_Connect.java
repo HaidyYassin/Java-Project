@@ -18,16 +18,16 @@ public class Db_Connect {
     public void setConnection() {
         //DatabaseConnection connec = new DatabaseConnection();
         try {
-          //  DriverManager.registerDriver(new ClientDriver() );
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/Player Data","root", "root");
-           // System.out.println("system connection done");
+           DriverManager.registerDriver(new ClientDriver() );
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/Player_Db","root", "root");
+            System.out.println("system connection done");
 
         } catch (SQLException ex) {
             ex.printStackTrace();
             System.out.println("Error in connection");
             return;
         }
-         System.out.println("system connection done");
+        
     }
     
     public void stopConnection(){
