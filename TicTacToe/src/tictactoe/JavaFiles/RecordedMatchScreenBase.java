@@ -219,7 +219,7 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         text2.setLayoutY(59.0);
         text2.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         text2.setStrokeWidth(0.0);
-        text2.setText("Omar");
+        text2.setText(gameContender);
         text2.setFont(new Font("Britannic Bold", 18.0));
 
         imageView2.setFitHeight(62.0);

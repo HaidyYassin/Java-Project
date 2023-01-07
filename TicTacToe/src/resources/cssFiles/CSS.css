@@ -1,4 +1,30 @@
 
+
+
+
+.infoDialog{
+    -fx-background-color: #393351;
+     -fx-padding: 20 20 20 25;
+}
+.infoDialog > *.button-bar > *.container{
+    -fx-background-color: #393351;
+    -fx-alignment:center;
+}
+.infoDialog > *.label.content{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.infoDialog:header *.header-panel{
+    -fx-background-color: #393351;
+}
+.infoDialog:header *.header-panel *.label{
+    -fx-font-size: 25px;
+    -fx-font-style: italic;
+    -fx-text-fill: #ffffff
+    
+    
+}
+
 #logInBtn{
     -fx-background-size: 255.00000000000023 40.999999999999886px;
     -fx-font-family: Britannic Bold;

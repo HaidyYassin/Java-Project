@@ -63,6 +63,7 @@ public class GameFxmlBase extends AnchorPane {
     String level;
     int stepCounter;
     boolean isYourTurn,isrecord;
+    int XO_turn;
     Button[] btnArr = new Button[9];
 
     public GameFxmlBase(Stage stage, String level, boolean isrecord,String symbole) {
@@ -73,7 +74,7 @@ public class GameFxmlBase extends AnchorPane {
         this.isrecord=isrecord;
         stepCounter = 0;
         isYourTurn = true;
-
+        XO_turn = 1;
         imageView = new ImageView();
         blend = new Blend();
         imageView0 = new ImageView();
@@ -263,8 +264,403 @@ public class GameFxmlBase extends AnchorPane {
        
        
         Button board[][] = { {btn1, btn2, btn3}, {btn4, btn5, btn6}, {btn7, btn8, btn9} };
-        
+       
+         if(this.level=="easy"){
+             System.out.println("esay");
             btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn1.getGraphic() == null) {
+                       btnDisable(false);
+                       btn1.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn2.getGraphic() == null) {
+                       btnDisable(false);
+                       btn2.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn3.getGraphic() == null) {
+                       btnDisable(false);
+                       btn3.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn4.getGraphic() == null) {
+                       btnDisable(false);
+                       btn4.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn5.getGraphic() == null) {
+                       btnDisable(false);
+                       btn5.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn6.getGraphic() == null) {
+                       btnDisable(false);
+                       btn6.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn7.getGraphic() == null) {
+                       btnDisable(false);
+                       btn7.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn8.getGraphic() == null) {
+                       btnDisable(false);
+                       btn8.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn9.getGraphic() == null) {
+                       btnDisable(false);
+                       btn9.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+        
+         }
+         else if(this.level=="local"){
+             
+              btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event) {
+                if(!has_winner) {
+                    if(btn1.getText() == " " && XO_turn % 2 != 0)
+                    {
+                        btn1.setText("X");
+                        btn1.setGraphic(drawXIcon());
+                        btn1.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else if(btn1.getText() == " " && XO_turn % 2 == 0)
+                    {
+                        btn1.setText("O");
+                        btn1.setGraphic(drawOIcon());
+                        btn1.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else {
+                    System.out.print( "The field is not empty \n");
+                    }
+                    
+                    has_winner = checkWinner(board) != 1;
+                }
+                
+                int result = checkWinner(board);
+                if(result == 0) {
+                    System.out.print("Tie \n");
+                 } 
+                else 
+                {
+                    System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }
+        });
+              btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event) {
+               if(!has_winner) {
+                    if(btn2.getText() == " " && XO_turn % 2 != 0)
+                    {
+                        btn2.setText("X");
+                        btn2.setGraphic(drawXIcon());
+                        btn2.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else if(btn2.getText() == " " && XO_turn % 2 == 0)
+                    {
+                        btn2.setText("O");
+                        btn2.setGraphic(drawOIcon());
+                        btn2.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else {
+                    System.out.print( "The field is not empty \n");
+                    }
+                    
+                    has_winner = checkWinner(board) != 1;
+                }
+               
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+           }
+        });
+              btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event) {
+               if(!has_winner) {
+                    if(btn3.getText() == " " && XO_turn % 2 != 0)
+                    {
+                        btn3.setText("X");
+                        btn3.setGraphic(drawXIcon());
+                        btn3.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else if(btn3.getText() == " " && XO_turn % 2 == 0)
+                    {
+                        btn3.setText("O");
+                        btn3.setGraphic(drawOIcon());
+                        btn3.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else {
+                    System.out.print( "The field is not empty \n");
+                    }
+                    
+                    has_winner = checkWinner(board) != 1;
+                }
+               
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+           }
+        });
+              btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event) {
+               if(!has_winner) {
+                    if(btn4.getText() == " " && XO_turn % 2 != 0)
+                    {
+                        btn4.setText("X");
+                        btn4.setGraphic(drawXIcon());
+                        btn4.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else if(btn4.getText() == " " && XO_turn % 2 == 0)
+                    {
+                        btn4.setText("O");
+                        btn4.setGraphic(drawOIcon());
+                        btn4.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else {
+                    System.out.print( "The field is not empty \n");
+                    }
+                    
+                    has_winner = checkWinner(board) != 1;
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+           }
+        });
+              btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event) {
+               if(!has_winner) {
+                    if(btn5.getText() == " " && XO_turn % 2 != 0)
+                    {
+                        btn5.setText("X");
+                        btn5.setGraphic(drawXIcon());
+                        btn5.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else if(btn5.getText() == " " && XO_turn % 2 == 0)
+                    {
+                        btn5.setText("O");
+                        btn5.setGraphic(drawOIcon());
+                        btn5.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else {
+                    System.out.print( "The field is not empty \n");
+                    }
+                    
+                    has_winner = checkWinner(board) != 1;
+                }
+
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+           }
+        });
+              btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event) {
+               if(!has_winner) {
+                    if(btn6.getText() == " " && XO_turn % 2 != 0)
+                    {
+                        btn6.setText("X");
+                        btn6.setGraphic(drawXIcon());
+                        btn6.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else if(btn6.getText() == " " && XO_turn % 2 == 0)
+                    {
+                        btn6.setText("O");
+                        btn6.setGraphic(drawOIcon());
+                        btn6.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else {
+                    System.out.print( "The field is not empty \n");
+                    }
+                    
+                    has_winner = checkWinner(board) != 1;
+                }
+
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+           }
+        });
+              btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event) {
+               if(!has_winner) {
+                    if(btn7.getText() == " " && XO_turn % 2 != 0)
+                    {
+                        btn7.setText("X");
+                        btn7.setGraphic(drawXIcon());
+                        btn7.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else if(btn7.getText() == " " && XO_turn % 2 == 0)
+                    {
+                        btn7.setText("O");
+                        btn7.setGraphic(drawOIcon());
+                        btn7.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else {
+                    System.out.print( "The field is not empty \n");
+                    }
+                    
+                    has_winner = checkWinner(board) != 1;
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+           }
+        });
+              btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event) {
+               if(!has_winner) {
+                    if(btn8.getText() == " " && XO_turn % 2 != 0)
+                    {
+                        btn8.setText("X");
+                        btn8.setGraphic(drawXIcon());
+                        btn8.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else if(btn8.getText() == " " && XO_turn % 2 == 0)
+                    {
+                        btn8.setText("O");
+                        btn8.setGraphic(drawOIcon());
+                        btn8.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else {
+                    System.out.print( "The field is not empty \n");
+                    }
+                    
+                    has_winner = checkWinner(board) != 1;
+                }
+
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+           }
+        });
+              btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+           @Override
+           public void handle(ActionEvent event) {
+               if(!has_winner) {
+                    if(btn9.getText() == " " && XO_turn % 2 != 0)
+                    {
+                        btn9.setText("X");
+                        btn9.setGraphic(drawXIcon());
+                        btn9.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else if(btn9.getText() == " " && XO_turn % 2 == 0)
+                    {
+                        btn9.setText("O");
+                        btn9.setGraphic(drawOIcon());
+                        btn9.setContentDisplay(GRAPHIC_ONLY);
+                        XO_turn ++;
+                    }
+                    else {
+                    System.out.print( "The field is not empty \n");
+                    }
+                    
+                    has_winner = checkWinner(board) != 1;
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+           }
+        });
+              
+         }
+         else{
+             btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -522,101 +918,7 @@ public class GameFxmlBase extends AnchorPane {
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
             }});
-        
-        
-         if(this.level=="easy"){
-             System.out.println("esay");
-            btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn1.getGraphic() == null) {
-                       btnDisable(false);
-                       btn1.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn2.getGraphic() == null) {
-                       btnDisable(false);
-                       btn2.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn3.getGraphic() == null) {
-                       btnDisable(false);
-                       btn3.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn4.getGraphic() == null) {
-                       btnDisable(false);
-                       btn4.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn5.getGraphic() == null) {
-                       btnDisable(false);
-                       btn5.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn6.getGraphic() == null) {
-                       btnDisable(false);
-                       btn6.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn7.getGraphic() == null) {
-                       btnDisable(false);
-                       btn7.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn8.getGraphic() == null) {
-                       btnDisable(false);
-                       btn8.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn9.getGraphic() == null) {
-                       btnDisable(false);
-                       btn9.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-        
+         
          }
             
         
