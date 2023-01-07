@@ -3,7 +3,11 @@ package tictactoe.JavaFiles;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -35,8 +39,10 @@ public class HomeScreenBase extends AnchorPane {
     protected final ImageView MMpanalBackArrow;
     Stage stage;
     String level;
+    boolean isrecord;
+
     public HomeScreenBase(Stage stage) {
-        this.stage=stage;
+        this.stage = stage;
         level = "";
         pane = new Pane();
         SMBtn = new Button();
@@ -87,11 +93,9 @@ public class HomeScreenBase extends AnchorPane {
         SMBtn.setText("Single Mode");
         SMBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         SMBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        SMBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
-        {
+        SMBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) 
-            {         
+            public void handle(ActionEvent event) {
                 MMpanal.setVisible(false);
                 SMpanal.setVisible(true);
             }
@@ -105,8 +109,8 @@ public class HomeScreenBase extends AnchorPane {
         singleModeImg.setPickOnBounds(true);
         singleModeImg.setPreserveRatio(true);
         singleModeImg.setImage(new Image(getClass().getResource("/resources/images/singleMode.png").toExternalForm()));
-        singleModeImg.setOnMouseClicked(event -> 
-        {
+        singleModeImg.setOnMouseClicked(event
+                -> {
             MMpanal.setVisible(false);
             SMpanal.setVisible(true);
         });
@@ -122,11 +126,9 @@ public class HomeScreenBase extends AnchorPane {
         MMBtn.setText("Multi Mode");
         MMBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         MMBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        MMBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
-        {
+        MMBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) 
-            {    
+            public void handle(ActionEvent event) {
                 SMpanal.setVisible(false);
                 MMpanal.setVisible(true);
             }
@@ -140,8 +142,8 @@ public class HomeScreenBase extends AnchorPane {
         multiModeImg.setPickOnBounds(true);
         multiModeImg.setPreserveRatio(true);
         multiModeImg.setImage(new Image(getClass().getResource("/resources/images/multiMode.png").toExternalForm()));
-        multiModeImg.setOnMouseClicked(event -> 
-        {
+        multiModeImg.setOnMouseClicked(event
+                -> {
             SMpanal.setVisible(false);
             MMpanal.setVisible(true);
         });
@@ -203,17 +205,11 @@ public class HomeScreenBase extends AnchorPane {
         easyBtn.setText("Easy");
         easyBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         easyBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        easyBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
-        {
+        easyBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) 
-            {    
-                level = "easy";
-                XOScreenBase xoScreen = new XOScreenBase(stage, level);
-        
-                Scene scene = new Scene(xoScreen);
-                stage.setScene(scene);
-                stage.show();
+            public void handle(ActionEvent event) {
+                
+                 navigetToNextScreen("easy");
             }
         });
 
@@ -228,17 +224,10 @@ public class HomeScreenBase extends AnchorPane {
         mediumBtn.setText("Medium");
         mediumBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         mediumBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        mediumBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
-        {
+        mediumBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) 
-            {        
-                level = "medium";
-                XOScreenBase xoScreen = new XOScreenBase(stage, level);
-        
-                Scene scene = new Scene(xoScreen);
-                stage.setScene(scene);
-                stage.show();
+            public void handle(ActionEvent event) {
+                navigetToNextScreen("medium");
             }
         });
 
@@ -253,17 +242,11 @@ public class HomeScreenBase extends AnchorPane {
         hardBtn.setText("Hard");
         hardBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         hardBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        hardBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
-        {
+        hardBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) 
-            {         
-                level = "hard";
-                XOScreenBase xoScreen = new XOScreenBase(stage, level);
-        
-                Scene scene = new Scene(xoScreen);
-                stage.setScene(scene);
-                stage.show();
+            public void handle(ActionEvent event) {
+               
+                navigetToNextScreen("hard");
             }
         });
 
@@ -306,13 +289,11 @@ public class HomeScreenBase extends AnchorPane {
         onlineBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         onlineBtn.setText("Online");
         onlineBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        onlineBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
-        {
+        onlineBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) 
-            {    
+            public void handle(ActionEvent event) {
                 SignInBase signinScreen = new SignInBase(stage);
-        
+
                 Scene scene = new Scene(signinScreen);
                 stage.setScene(scene);
                 stage.show();
@@ -334,14 +315,14 @@ public class HomeScreenBase extends AnchorPane {
         onlineImg.setPickOnBounds(true);
         onlineImg.setPreserveRatio(true);
         onlineImg.setImage(new Image(getClass().getResource("/resources/images/online.png").toExternalForm()));
-        onlineImg.setOnMouseClicked(event -> 
-            {    
-                SignInBase signinScreen = new SignInBase(stage);
-        
-                Scene scene = new Scene(signinScreen);
-                stage.setScene(scene);
-                stage.show();
-            }
+        onlineImg.setOnMouseClicked(event
+                -> {
+            SignInBase signinScreen = new SignInBase(stage);
+
+            Scene scene = new Scene(signinScreen);
+            stage.setScene(scene);
+            stage.show();
+        }
         );
 
         MMpanalBackArrow.setFitHeight(50.0);
@@ -375,6 +356,7 @@ public class HomeScreenBase extends AnchorPane {
         getChildren().add(pane);
 
     }
+
     public void setProfileIconAction() {
         profileImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -386,5 +368,32 @@ public class HomeScreenBase extends AnchorPane {
                 stage.show();
             }
         });
+    }
+   private void navigetToNextScreen(String level){
+       
+                ButtonType Yes = new ButtonType("Yes");
+                ButtonType No = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Alert a = new Alert(Alert.AlertType.NONE);
+                a.setTitle("Alert ASk");
+                a.getDialogPane().getButtonTypes().addAll(Yes, No);
+                a.setHeaderText("Do you want to record this game?");
+                DialogPane dialogPane = a.getDialogPane();
+                dialogPane.getStylesheets().add(
+                        getClass().getResource("fullpackstyling.css").toExternalForm());
+                dialogPane.getStyleClass().add("infoDialog");
+                a.showAndWait();
+                if (a.getResult() == Yes) {
+                    
+                    isrecord=true;
+
+                } else if (a.getResult() == No) {
+                    isrecord=false;
+                    System.out.println("alertNo");
+                }
+                //a.setContentText(s);
+                XOScreenBase xoScreen = new XOScreenBase(stage, level,isrecord);
+                Scene scene = new Scene(xoScreen);
+                stage.setScene(scene);
+                stage.show();
     }
 }

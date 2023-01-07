@@ -1,6 +1,7 @@
 package tictactoe.JavaFiles;
 
 import Models.HistoryTableModel;
+import Models.RecordsMatchesList;
 import java.util.Optional;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -61,12 +62,7 @@ public class RecordedHistoryTable extends AnchorPane {
         setPrefWidth(1366.0);
         getStylesheets().add("/resources/cssFiles/CSS.css");
 
-        final ObservableList<HistoryTableModel> tableData = FXCollections.observableArrayList(
-                new HistoryTableModel("1", "10", "Win", "Omar Mohammed"),
-                new HistoryTableModel("2", "0", "Lose", "Ali Islam"),
-                new HistoryTableModel("3", "5", "Draw", "Ahmed Nader"),
-                new HistoryTableModel("4", "15", "Win", "Youssef Ahmed")
-        );
+        
         colNumId.setCellValueFactory(
                 new PropertyValueFactory<>("GameNumber")
         );
@@ -83,7 +79,7 @@ public class RecordedHistoryTable extends AnchorPane {
                 new PropertyValueFactory<>("CheckBox")
         );
 
-        table_view.setItems(tableData);
+        table_view.setItems(RecordsMatchesList.tableData);
 
         vBox.setLayoutX(75.0);
         vBox.setLayoutY(243.0);
@@ -159,7 +155,7 @@ public class RecordedHistoryTable extends AnchorPane {
         
         deleteSelected_btn.setOnAction((event) -> {
            ObservableList<HistoryTableModel> selectedDataToRemoveList =FXCollections.observableArrayList();
-           for(HistoryTableModel data:tableData){
+           for(HistoryTableModel data:RecordsMatchesList.tableData){
             
                 if(data.getCheckBox().isSelected()){
                     selectedDataToRemoveList.add(data);
@@ -178,7 +174,7 @@ public class RecordedHistoryTable extends AnchorPane {
                  alert.getButtonTypes().setAll(buttonTypeDelete, buttonTypeNo, buttonTypeCancel);
                  Optional<ButtonType> result = alert.showAndWait();
                      if (result.get() == buttonTypeDelete){
-                           tableData.removeAll(selectedDataToRemoveList);
+                           RecordsMatchesList.tableData.removeAll(selectedDataToRemoveList);
                      } else if (result.get() == buttonTypeCancel) {
                          alert.close();
                      } else  {

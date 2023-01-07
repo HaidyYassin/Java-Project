@@ -8,6 +8,7 @@
 
 <AnchorPane id="UserPane" prefHeight="500.0" prefWidth="800.0" stylesheets="@../Css/CSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+       
       <Pane fx:id="ServerPane" layoutX="60.0" layoutY="68.0" prefHeight="333.0" prefWidth="680.0" style="-fx-background-radius: 20; -fx-background-color: #010114;">
          <children>
             <Text layoutX="68.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manal Hamada " wrappingWidth="118.17236328125" />

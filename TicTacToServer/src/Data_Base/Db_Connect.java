@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.derby.jdbc.ClientDriver;
-
 
 public class Db_Connect {
 
@@ -19,7 +17,7 @@ public class Db_Connect {
         //DatabaseConnection connec = new DatabaseConnection();
         try {
           //  DriverManager.registerDriver(new ClientDriver() );
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/Player Data","root", "root");
+            con = DriverManager.getConnection("jdbc:derby://localhost:1527/TTTDB","root", "root");
            // System.out.println("system connection done");
 
         } catch (SQLException ex) {

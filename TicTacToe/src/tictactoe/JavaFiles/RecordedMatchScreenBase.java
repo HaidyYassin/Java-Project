@@ -484,10 +484,7 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         getChildren().add(BackArrow);
         hBox.getChildren().add(RecoededMovementId_txv);
         getChildren().add(hBox);
-        pane1.getChildren().add(line);
-        pane1.getChildren().add(line0);
-        pane1.getChildren().add(line1);
-        pane1.getChildren().add(line2);
+        
         pane1.getChildren().add(btn1);
         pane1.getChildren().add(btn2);
         pane1.getChildren().add(btn3);
@@ -497,6 +494,10 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         pane1.getChildren().add(btn7);
         pane1.getChildren().add(btn8);
         pane1.getChildren().add(btn9);
+        pane1.getChildren().add(line);
+        pane1.getChildren().add(line0);
+        pane1.getChildren().add(line1);
+        pane1.getChildren().add(line2);
         getChildren().add(pane1);
         
         s=RecoededMovementId_txv.getText().replaceAll("\\s", "");

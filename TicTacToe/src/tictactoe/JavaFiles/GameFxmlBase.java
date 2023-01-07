@@ -62,14 +62,15 @@ public class GameFxmlBase extends AnchorPane {
     String symbole;
     String level;
     int stepCounter;
-    boolean isYourTurn;
+    boolean isYourTurn,isrecord;
     Button[] btnArr = new Button[9];
 
-    public GameFxmlBase(Stage stage, String level, String symbole) {
+    public GameFxmlBase(Stage stage, String level, boolean isrecord,String symbole) {
         
         this.stage=stage;
         this.level = level;
         this.symbole = symbole;
+        this.isrecord=isrecord;
         stepCounter = 0;
         isYourTurn = true;
 
@@ -260,20 +261,10 @@ public class GameFxmlBase extends AnchorPane {
 
         
        
-        btn1.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn1.setStyle("-fx-background-color:#4D0DA5;");
-        btn1.setLayoutX(4.0);
-        btn1.setLayoutY(1.0);
-        btn1.setMnemonicParsing(false);
-        btn1.setPrefHeight(150.0);
-        btn1.setPrefWidth(200.0);
-        btn1.setText(" ");
-        btn1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn1.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        
-        Button board[][] = { {btn1, btn2, btn3}, {btn4, btn5, btn6}, {btn7, btn8, btn9} };
        
-        btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+        Button board[][] = { {btn1, btn2, btn3}, {btn4, btn5, btn6}, {btn7, btn8, btn9} };
+        
+            btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -297,17 +288,7 @@ public class GameFxmlBase extends AnchorPane {
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
             }});
-        
-        
-        btn2.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn2.setStyle("-fx-background-color:#4D0DA5;");
-        btn2.setLayoutX(205.0);
-        btn2.setLayoutY(4.0);
-        btn2.setMnemonicParsing(false);
-        btn2.setPrefHeight(150.0);
-        btn2.setText(" ");
-        btn2.setPrefWidth(200.0);
-        btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -331,17 +312,7 @@ public class GameFxmlBase extends AnchorPane {
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
             }});
-        
-        
-        btn3.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn3.setStyle("-fx-background-color:#4D0DA5;");
-        btn3.setLayoutX(409.0);
-        btn3.setLayoutY(1.0);
-        btn3.setMnemonicParsing(false);
-        btn3.setPrefHeight(150.0);
-        btn3.setText(" ");
-        btn3.setPrefWidth(200.0);
-        btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -365,19 +336,7 @@ public class GameFxmlBase extends AnchorPane {
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
             }});
-        
-
-        btn4.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn4.setStyle("-fx-background-color:#4D0DA5;");
-        btn4.setLayoutX(4.0);
-        btn4.setLayoutY(158.0);
-        btn4.setMnemonicParsing(false);
-        btn4.setPrefHeight(150.0);
-        btn4.setPrefWidth(200.0);
-        btn4.setText(" ");
-        btn4.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn4.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -401,19 +360,7 @@ public class GameFxmlBase extends AnchorPane {
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
             }});
-        
-        
-        btn5.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn5.setStyle("-fx-background-color:#4D0DA5;");
-        btn5.setLayoutX(205.0);
-        btn5.setLayoutY(158.0);
-        btn5.setMnemonicParsing(false);
-        btn5.setPrefHeight(150.0);
-        btn5.setPrefWidth(200.0);
-        btn5.setText(" ");
-        btn5.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn5.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -437,18 +384,7 @@ public class GameFxmlBase extends AnchorPane {
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
             }});
-        
-        
-        
-        btn6.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn6.setStyle("-fx-background-color:#4D0DA5;");
-        btn6.setLayoutX(410.0);
-        btn6.setLayoutY(155.0);
-        btn6.setMnemonicParsing(false);
-        btn6.setPrefHeight(150.0);
-        btn6.setPrefWidth(200.0);
-        btn6.setText(" ");
-        btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -472,19 +408,7 @@ public class GameFxmlBase extends AnchorPane {
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
             }});
-        
-
-        btn7.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn7.setStyle("-fx-background-color:#4D0DA5;");
-        btn7.setLayoutX(4.0);
-        btn7.setLayoutY(312.0);
-        btn7.setMnemonicParsing(false);
-        btn7.setPrefHeight(147.0);
-        btn7.setPrefWidth(200.0);
-        btn7.setText(" ");
-        btn7.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn7.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -508,18 +432,8 @@ public class GameFxmlBase extends AnchorPane {
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
             }});
-        
-        btn8.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn8.setStyle("-fx-background-color:#4D0DA5;");
-        btn8.setLayoutX(205.0);
-        btn8.setLayoutY(312.0);
-        btn8.setMnemonicParsing(false);
-        btn8.setPrefHeight(147.0);
-        btn8.setPrefWidth(200.0);
-        btn8.setText(" ");
-        btn8.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn8.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            if(this.level=="hard"){
+            btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -543,18 +457,48 @@ public class GameFxmlBase extends AnchorPane {
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
             }});
-        
-        btn9.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn9.setStyle("-fx-background-color:#4D0DA5;");
-        btn9.setLayoutX(409.0);
-        btn9.setLayoutY(312.0);
-        btn9.setMnemonicParsing(false);
-        btn9.setPrefHeight(147.0);
-        btn9.setPrefWidth(200.0);
-        btn9.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn9.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        btn9.setText(" ");
-        btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            }
+            else if(this.level=="medium"){
+                btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn8.getText() == " ") {
+                      btn8.setText("X");
+                      btn8.setGraphic(drawXIcon());
+                      btn8.setContentDisplay(GRAPHIC_ONLY);
+                      
+                        int min = 0;
+                        int max = 8;
+                        int rand = (int)(Math.random()*(max - min + 1) + min);
+
+                        while( btnArr[rand].getGraphic() != null)
+                        {
+                            rand = (int)(Math.random()*(max - min + 1) + min);
+                        }
+                        if(btnArr[rand].getGraphic() == null)
+                        {
+                            btnArr[rand].setGraphic(drawOIcon());
+                            
+                        }
+                      System.out.println(rand);
+                       // player == 'X' ? player = 'O' : player = 'X';
+                       //int result = mediumFun(board, 100, false,true);
+                       //System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+        } else {
+            System.out.print( "The field is not empty \n");
+        }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } else {
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+            }});
+            }
+            btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -578,6 +522,209 @@ public class GameFxmlBase extends AnchorPane {
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
             }});
+        
+        
+         if(this.level=="easy"){
+             System.out.println("esay");
+            btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn1.getGraphic() == null) {
+                       btnDisable(false);
+                       btn1.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn2.getGraphic() == null) {
+                       btnDisable(false);
+                       btn2.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn3.getGraphic() == null) {
+                       btnDisable(false);
+                       btn3.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn4.getGraphic() == null) {
+                       btnDisable(false);
+                       btn4.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn5.getGraphic() == null) {
+                       btnDisable(false);
+                       btn5.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn6.getGraphic() == null) {
+                       btnDisable(false);
+                       btn6.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn7.getGraphic() == null) {
+                       btnDisable(false);
+                       btn7.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn8.getGraphic() == null) {
+                       btnDisable(false);
+                       btn8.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+            btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn9.getGraphic() == null) {
+                       btnDisable(false);
+                       btn9.setGraphic(drawXIcon());
+                       computerTurn();
+                           
+        }}}} );
+        
+         }
+            
+        
+        btn1.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn1.setStyle("-fx-background-color:#4D0DA5;");
+        btn1.setLayoutX(4.0);
+        btn1.setLayoutY(1.0);
+        btn1.setMnemonicParsing(false);
+        btn1.setPrefHeight(150.0);
+        btn1.setPrefWidth(200.0);
+        btn1.setText(" ");
+        btn1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn1.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        
+        
+    
+        btn2.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn2.setStyle("-fx-background-color:#4D0DA5;");
+        btn2.setLayoutX(205.0);
+        btn2.setLayoutY(4.0);
+        btn2.setMnemonicParsing(false);
+        btn2.setPrefHeight(150.0);
+        btn2.setText(" ");
+        btn2.setPrefWidth(200.0);
+      
+        btn3.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn3.setStyle("-fx-background-color:#4D0DA5;");
+        btn3.setLayoutX(409.0);
+        btn3.setLayoutY(1.0);
+        btn3.setMnemonicParsing(false);
+        btn3.setPrefHeight(150.0);
+        btn3.setText(" ");
+        btn3.setPrefWidth(200.0);
+       
+        
+
+        btn4.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn4.setStyle("-fx-background-color:#4D0DA5;");
+        btn4.setLayoutX(4.0);
+        btn4.setLayoutY(158.0);
+        btn4.setMnemonicParsing(false);
+        btn4.setPrefHeight(150.0);
+        btn4.setPrefWidth(200.0);
+        btn4.setText(" ");
+        btn4.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn4.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        
+        
+        
+        btn5.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn5.setStyle("-fx-background-color:#4D0DA5;");
+        btn5.setLayoutX(205.0);
+        btn5.setLayoutY(158.0);
+        btn5.setMnemonicParsing(false);
+        btn5.setPrefHeight(150.0);
+        btn5.setPrefWidth(200.0);
+        btn5.setText(" ");
+        btn5.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn5.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+       
+        
+        
+        
+        btn6.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn6.setStyle("-fx-background-color:#4D0DA5;");
+        btn6.setLayoutX(410.0);
+        btn6.setLayoutY(155.0);
+        btn6.setMnemonicParsing(false);
+        btn6.setPrefHeight(150.0);
+        btn6.setPrefWidth(200.0);
+        btn6.setText(" ");
+       
+        
+
+        btn7.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn7.setStyle("-fx-background-color:#4D0DA5;");
+        btn7.setLayoutX(4.0);
+        btn7.setLayoutY(312.0);
+        btn7.setMnemonicParsing(false);
+        btn7.setPrefHeight(147.0);
+        btn7.setPrefWidth(200.0);
+        btn7.setText(" ");
+        btn7.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn7.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        
+        btn8.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn8.setStyle("-fx-background-color:#4D0DA5;");
+        btn8.setLayoutX(205.0);
+        btn8.setLayoutY(312.0);
+        btn8.setMnemonicParsing(false);
+        btn8.setPrefHeight(147.0);
+        btn8.setPrefWidth(200.0);
+        btn8.setText(" ");
+        btn8.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn8.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        
+        
+        btn9.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn9.setStyle("-fx-background-color:#4D0DA5;");
+        btn9.setLayoutX(409.0);
+        btn9.setLayoutY(312.0);
+        btn9.setMnemonicParsing(false);
+        btn9.setPrefHeight(147.0);
+        btn9.setPrefWidth(200.0);
+        btn9.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn9.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        btn9.setText(" ");
+       
         
         
         
@@ -674,10 +821,6 @@ public class GameFxmlBase extends AnchorPane {
         pane0.getChildren().add(imageView2);
         getChildren().add(pane0);
         getChildren().add(label);
-        pane1.getChildren().add(line);
-        pane1.getChildren().add(line0);
-        pane1.getChildren().add(line1);
-        pane1.getChildren().add(line2);
         pane1.getChildren().add(btn1);
         pane1.getChildren().add(btn2);
         pane1.getChildren().add(btn3);
@@ -687,6 +830,10 @@ public class GameFxmlBase extends AnchorPane {
         pane1.getChildren().add(btn7);
         pane1.getChildren().add(btn8);
         pane1.getChildren().add(btn9);
+        pane1.getChildren().add(line);
+        pane1.getChildren().add(line0);
+        pane1.getChildren().add(line1);
+        pane1.getChildren().add(line2);
         getChildren().add(pane1);
         getChildren().add(newGame_btn);
         getChildren().add(exit_btn);
@@ -820,7 +967,8 @@ public class GameFxmlBase extends AnchorPane {
     
     //hard level
     public static boolean haveTheSameValueAndNotEmpty(Button x, Button y, Button z) {
-    if(x.getText() == y.getText() && x.getText() == z.getText() && x.getText() != " ") {
+    if(x.getText() == y.getText() && x.getText() == z.getText() && !(x.getText().equals(" "))) {
+        //  x.setStyle("-fx-background-color:#FFEB3B;");
         return true;
     }
     return false;
@@ -835,6 +983,9 @@ public class GameFxmlBase extends AnchorPane {
     // For rows
     for(int i = 0; i < 3; i++) {
         if(haveTheSameValueAndNotEmpty(board[i][0], board[i][1], board[i][2])) {
+//             board[i][0].setStyle("-fx-background-color:#FFEB3B;");
+//             board[i][1].setStyle("-fx-background-color:#FFEB3B;");
+//             board[i][2].setStyle("-fx-background-color:#FFEB3B;");
             return board[i][0].getText() == "X" ? 2 : -2;
         }
     }
@@ -842,17 +993,26 @@ public class GameFxmlBase extends AnchorPane {
     // For cols
     for(int i = 0; i < 3; i++) {
         if(haveTheSameValueAndNotEmpty(board[0][i], board[1][i], board[2][i])) {
+//             board[0][i].setStyle("-fx-background-color:#FFEB3B;");
+//             board[1][i].setStyle("-fx-background-color:#FFEB3B;");
+//             board[2][i].setStyle("-fx-background-color:#FFEB3B;");
             return board[0][i] .getText() == "X" ? 2 : -2;
         }
     }
     
     // Diameter 1
     if(haveTheSameValueAndNotEmpty(board[0][0], board[1][1], board[2][2])) {
+//             board[0][0].setStyle("-fx-background-color:#FFEB3B;");
+//             board[1][1].setStyle("-fx-background-color:#FFEB3B;");
+//             board[2][2].setStyle("-fx-background-color:#FFEB3B;");
         return board[0][0].getText() == "X" ? 2 : -2;
     }
 
     // Diameter 2
     if(haveTheSameValueAndNotEmpty(board[2][0], board[1][1], board[0][2])) {
+//             board[0][0].setStyle("-fx-background-color:#FFEB3B;");
+//             board[1][1].setStyle("-fx-background-color:#FFEB3B;");
+//             board[2][2].setStyle("-fx-background-color:#FFEB3B;");
         return board[2][0] .getText() == "X" ? 2 : -2;
     }
 
@@ -935,8 +1095,9 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
         return finalScore;
     }
 }
+
+
  private void clearRecordedMatchCells(){
-       
                     btn1.setGraphic(null);
                     btn2.setGraphic(null);
                     btn3.setGraphic(null);

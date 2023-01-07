@@ -94,6 +94,7 @@ public class HistoryTableModel implements Serializable {
                     int size = fileInputStream.available();
                     byte[] b = new byte[size];
                     fileInputStream.read(b);
+                    
                      record=new String(b);
                     fileInputStream.close();
                 }catch(Exception ex){
