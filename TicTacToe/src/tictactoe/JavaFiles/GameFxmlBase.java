@@ -390,10 +390,12 @@ public class GameFxmlBase extends AnchorPane {
                 if(result == 0) {
                     System.out.print("Tie \n");
                  } 
-                else 
-                {
-                    System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                else if(result == 2 || result==-2 ){
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
             }
         });
               btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -424,9 +426,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 } 
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                 else{
+                    System.out.println("playing");
+                 }
            }
         });
               btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -457,9 +463,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
            }
         });
               btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -489,9 +499,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 } 
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
            }
         });
               btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -522,9 +536,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 } 
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
            }
         });
               btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -555,9 +573,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
            }
         });
               btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -587,9 +609,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
            }
         });
               btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -620,9 +646,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
            }
         });
               btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -652,15 +682,19 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
            }
         });
               
          }
          else{
-             btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -671,7 +705,8 @@ public class GameFxmlBase extends AnchorPane {
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
-                       System.out.print( "result: " + result + "\n");
+                       returnColor();
+                       //System.out.print( "result: " + result + "\n");
                         has_winner = checkWinner(board) != 1;
         } else {
             System.out.print( "The field is not empty \n");
@@ -680,9 +715,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
             }});
             btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
@@ -695,7 +734,8 @@ public class GameFxmlBase extends AnchorPane {
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
-                       System.out.print( "result: " + result + "\n");
+                       returnColor();
+                      // System.out.print( "result: " + result + "\n");
                         has_winner = checkWinner(board) != 1;
         } else {
             System.out.print( "The field is not empty \n");
@@ -704,9 +744,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 } 
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
             }});
             btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
@@ -719,7 +763,8 @@ public class GameFxmlBase extends AnchorPane {
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
-                       System.out.print( "result: " + result + "\n");
+                       returnColor();
+                      // System.out.print( "result: " + result + "\n");
                         has_winner = checkWinner(board) != 1;
         } else {
             System.out.print( "The field is not empty \n");
@@ -728,9 +773,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 } 
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
             }});
             btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
@@ -743,7 +792,8 @@ public class GameFxmlBase extends AnchorPane {
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
-                       System.out.print( "result: " + result + "\n");
+                       returnColor();
+                       //System.out.print( "result: " + result + "\n");
                         has_winner = checkWinner(board) != 1;
         } else {
             System.out.print( "The field is not empty \n");
@@ -752,9 +802,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                 else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                 else{
+                    System.out.println("playing");
+                 }
             }});
             btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
@@ -767,7 +821,8 @@ public class GameFxmlBase extends AnchorPane {
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
-                       System.out.print( "result: " + result + "\n");
+                       returnColor();
+                      // System.out.print( "result: " + result + "\n");
                         has_winner = checkWinner(board) != 1;
         } else {
             System.out.print( "The field is not empty \n");
@@ -776,10 +831,15 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
             }});
+            if(this.level=="hard"){
             btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
@@ -791,7 +851,8 @@ public class GameFxmlBase extends AnchorPane {
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
-                       System.out.print( "result: " + result + "\n");
+                       returnColor();
+                     //  System.out.print( "result: " + result + "\n");
                         has_winner = checkWinner(board) != 1;
         } else {
             System.out.print( "The field is not empty \n");
@@ -800,10 +861,58 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
             }});
+            } 
+            else if(this.level=="medium"){
+                btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(!has_winner) {
+                  if(btn6.getText() == " ") {
+                      btn6.setText("X");
+                      btn6.setGraphic(drawXIcon());
+                      btn6.setContentDisplay(GRAPHIC_ONLY);
+                      
+                        int min = 0;
+                        int max = 8;
+                        int rand = (int)(Math.random()*(max - min + 1) + min);
+
+                        while( btnArr[rand].getGraphic() != null)
+                        {
+                            rand = (int)(Math.random()*(max - min + 1) + min);
+                        }
+                        if(btnArr[rand].getGraphic() == null)
+                        {
+                            btnArr[rand].setGraphic(drawOIcon());
+                            
+                        }
+                      System.out.println(rand);
+                       // player == 'X' ? player = 'O' : player = 'X';
+                       //int result = mediumFun(board, 100, false,true);
+                       //System.out.print( "result: " + result + "\n");
+                        has_winner = checkWinner(board) != 1;
+        } else {
+            System.out.print( "The field is not empty \n");
+        }
+                }
+                int result = checkWinner(board);
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 } 
+                else if(result == 2 || result==-2 ){
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }else{
+                    System.out.println("playing");
+                 }
+            }});
+            }
             btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
@@ -815,7 +924,8 @@ public class GameFxmlBase extends AnchorPane {
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
-                       System.out.print( "result: " + result + "\n");
+                       returnColor();
+                     //  System.out.print( "result: " + result + "\n");
                         has_winner = checkWinner(board) != 1;
         } else {
             System.out.print( "The field is not empty \n");
@@ -824,9 +934,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
             }});
             if(this.level=="hard"){
             btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -840,7 +954,8 @@ public class GameFxmlBase extends AnchorPane {
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
-                       System.out.print( "result: " + result + "\n");
+                       returnColor();
+                      // System.out.print( "result: " + result + "\n");
                         has_winner = checkWinner(board) != 1;
         } else {
             System.out.print( "The field is not empty \n");
@@ -849,9 +964,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
             }});
             }
             else if(this.level=="medium"){
@@ -889,9 +1008,12 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 } 
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                }
+                }else{
+                    System.out.println("playing");
+                 }
             }});
             }
             btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -905,7 +1027,8 @@ public class GameFxmlBase extends AnchorPane {
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
-                       System.out.print( "result: " + result + "\n");
+                       returnColor();
+                      // System.out.print( "result: " + result + "\n");
                         has_winner = checkWinner(board) != 1;
              } else {
              System.out.print( "The field is not empty \n");
@@ -914,9 +1037,13 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                 } else {
+                 }
+                else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
+                else{
+                    System.out.println("playing");
+                 }
             }});
          
          }
@@ -1270,7 +1397,9 @@ public class GameFxmlBase extends AnchorPane {
     //hard level
     public static boolean haveTheSameValueAndNotEmpty(Button x, Button y, Button z) {
     if(x.getText() == y.getText() && x.getText() == z.getText() && !(x.getText().equals(" "))) {
-        //  x.setStyle("-fx-background-color:#FFEB3B;");
+          x.setStyle("-fx-background-color:#FFEB3B;");
+          y.setStyle("-fx-background-color:#FFEB3B;");
+          z.setStyle("-fx-background-color:#FFEB3B;");
         return true;
     }
     return false;
@@ -1285,9 +1414,6 @@ public class GameFxmlBase extends AnchorPane {
     // For rows
     for(int i = 0; i < 3; i++) {
         if(haveTheSameValueAndNotEmpty(board[i][0], board[i][1], board[i][2])) {
-//             board[i][0].setStyle("-fx-background-color:#FFEB3B;");
-//             board[i][1].setStyle("-fx-background-color:#FFEB3B;");
-//             board[i][2].setStyle("-fx-background-color:#FFEB3B;");
             return board[i][0].getText() == "X" ? 2 : -2;
         }
     }
@@ -1295,26 +1421,17 @@ public class GameFxmlBase extends AnchorPane {
     // For cols
     for(int i = 0; i < 3; i++) {
         if(haveTheSameValueAndNotEmpty(board[0][i], board[1][i], board[2][i])) {
-//             board[0][i].setStyle("-fx-background-color:#FFEB3B;");
-//             board[1][i].setStyle("-fx-background-color:#FFEB3B;");
-//             board[2][i].setStyle("-fx-background-color:#FFEB3B;");
             return board[0][i] .getText() == "X" ? 2 : -2;
         }
     }
     
     // Diameter 1
     if(haveTheSameValueAndNotEmpty(board[0][0], board[1][1], board[2][2])) {
-//             board[0][0].setStyle("-fx-background-color:#FFEB3B;");
-//             board[1][1].setStyle("-fx-background-color:#FFEB3B;");
-//             board[2][2].setStyle("-fx-background-color:#FFEB3B;");
         return board[0][0].getText() == "X" ? 2 : -2;
     }
 
     // Diameter 2
-    if(haveTheSameValueAndNotEmpty(board[2][0], board[1][1], board[0][2])) {
-//             board[0][0].setStyle("-fx-background-color:#FFEB3B;");
-//             board[1][1].setStyle("-fx-background-color:#FFEB3B;");
-//             board[2][2].setStyle("-fx-background-color:#FFEB3B;");
+    else if(haveTheSameValueAndNotEmpty(board[2][0], board[1][1], board[0][2])) {
         return board[2][0] .getText() == "X" ? 2 : -2;
     }
 
@@ -1356,7 +1473,7 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
                         finalJ = j;
                     }
                     if(firstTime) {
-                        System.out.print( "score," + i + "," + j + ": " +score + "\n");
+                       // System.out.print( "score," + i + "," + j + ": " +score + "\n");
                     }
                 }
             }   
@@ -1384,7 +1501,7 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
                         finalJ = j;
                     }
                     if(firstTime) {
-                        System.out.print( "score," + i + "," + j + ": " +score + "\n");
+                       // System.out.print( "score," + i + "," + j + ": " +score + "\n");
                     }
                 }
             }   
@@ -1418,8 +1535,21 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
                     btn7.setText(" ");
                     btn8.setText(" ");
                     btn9.setText(" ");
+                    returnColor();
                  
        has_winner=false;
+ }
+ 
+ public void returnColor(){
+      btn1.setStyle("-fx-background-color:#4D0DA5;");
+      btn2.setStyle("-fx-background-color:#4D0DA5;");
+      btn3.setStyle("-fx-background-color:#4D0DA5;");
+      btn4.setStyle("-fx-background-color:#4D0DA5;");
+      btn5.setStyle("-fx-background-color:#4D0DA5;");
+      btn6.setStyle("-fx-background-color:#4D0DA5;");
+      btn7.setStyle("-fx-background-color:#4D0DA5;");
+      btn8.setStyle("-fx-background-color:#4D0DA5;");
+      btn9.setStyle("-fx-background-color:#4D0DA5;");
  }
 
 }
