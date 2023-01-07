@@ -219,7 +219,7 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         text2.setLayoutY(59.0);
         text2.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         text2.setStrokeWidth(0.0);
-        text2.setText("Omar");
+        text2.setText(gameContender);
         text2.setFont(new Font("Britannic Bold", 18.0));
 
         imageView2.setFitHeight(62.0);
@@ -245,7 +245,33 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         pane1.setPrefWidth(548.0);
         pane1.getStylesheets().add("/resources/cssFiles/CSS.css");
 
+        line.setEndX(291.0);
+        line.setLayoutX(257.0);
+        line.setLayoutY(156.0);
+        line.setStartX(-257.0);
+        line.setBlendMode(BlendMode.MULTIPLY);
+
+        line0.setEndX(291.0);
+        line0.setLayoutX(258.0);
+        line0.setLayoutY(318.0);
+        line0.setStartX(-257.0);
+        line0.setBlendMode(BlendMode.DARKEN);
+
+        line1.setEndX(289.0);
+        line1.setEndY(141.0);
+        line1.setLayoutX(82.0);
+        line1.setLayoutY(320.0);
+        line1.setStartX(289.0);
+        line1.setStartY(-321.0);
+        line1.setBlendMode(BlendMode.MULTIPLY);
         
+        line2.setEndX(289.0);
+        line2.setEndY(141.0);
+        line2.setLayoutX(-119.0);
+        line2.setLayoutY(321.0);
+        line2.setStartX(289.0);
+        line2.setStartY(-321.0);
+        line2.setBlendMode(BlendMode.MULTIPLY);
 
        btn3.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
        btn3.setStyle("-fx-background-color:#4D0DA5;");

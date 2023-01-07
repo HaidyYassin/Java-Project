@@ -89,11 +89,12 @@ public class HistoryTableModel implements Serializable {
     public String getRecordFile(){
             String record="";
         try{
-                    fileInputStream = new FileInputStream("D:\\MAD43-SV\\Java\\tic tac toe game\\tictactoejava\\Java-Project\\Java-Project\\TicTacToe\\recordedFiles\\"+num.get()+".txt");
+                    fileInputStream = new FileInputStream("D:\\iti_java_project\\Java-Project\\TicTacToe\\recordedFiles\\"+num.get()+".txt");
                     //byte[]b =event.getText().getBytes();
                     int size = fileInputStream.available();
                     byte[] b = new byte[size];
                     fileInputStream.read(b);
+                    
                      record=new String(b);
                     fileInputStream.close();
                 }catch(Exception ex){
