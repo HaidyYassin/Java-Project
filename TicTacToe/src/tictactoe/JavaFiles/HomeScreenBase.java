@@ -295,6 +295,20 @@ public class HomeScreenBase extends AnchorPane {
         localBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         localBtn.setText("Local");
         localBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
+        localBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
+        {
+            @Override
+            public void handle(ActionEvent event) 
+            {         
+                level = "local";
+                XOScreenBase xoScreen = new XOScreenBase(stage, level);
+        
+                Scene scene = new Scene(xoScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
+        
 
         onlineBtn.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
         onlineBtn.setId("onlineBtn");
@@ -326,6 +340,16 @@ public class HomeScreenBase extends AnchorPane {
         localImg.setPickOnBounds(true);
         localImg.setPreserveRatio(true);
         localImg.setImage(new Image(getClass().getResource("/resources/images/local.png").toExternalForm()));
+        localImg.setOnMouseClicked(event -> 
+            {    
+                level = "local";
+                XOScreenBase xoScreen = new XOScreenBase(stage, level);
+        
+                Scene scene = new Scene(xoScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        );
 
         onlineImg.setFitHeight(200.0);
         onlineImg.setFitWidth(200.0);
