@@ -1,5 +1,6 @@
 package tictactoe.JavaFiles;
 
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -16,14 +17,14 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class HomeScreenBase extends AnchorPane {
-
+    Stage stage;
     protected final Pane pane;
     protected final Button SMBtn;
     protected final ImageView singleModeImg;
     protected final Button MMBtn;
     protected final ImageView multiModeImg;
     protected final ImageView musicImg;
-    protected final ImageView settingImg;
+    protected final ImageView mutedMusicImg;
     protected final ImageView soundImg;
     protected final ImageView profileImg;
     protected final Pane SMpanal;
@@ -37,20 +38,17 @@ public class HomeScreenBase extends AnchorPane {
     protected final ImageView localImg;
     protected final ImageView onlineImg;
     protected final ImageView MMpanalBackArrow;
-    Stage stage;
-    String level;
-    boolean isrecord;
+    protected final ImageView mutedSoundImg;
 
     public HomeScreenBase(Stage stage) {
-        this.stage = stage;
-        level = "";
+
         pane = new Pane();
         SMBtn = new Button();
         singleModeImg = new ImageView();
         MMBtn = new Button();
         multiModeImg = new ImageView();
         musicImg = new ImageView();
-        settingImg = new ImageView();
+        mutedMusicImg = new ImageView();
         soundImg = new ImageView();
         profileImg = new ImageView();
         SMpanal = new Pane();
@@ -64,6 +62,7 @@ public class HomeScreenBase extends AnchorPane {
         localImg = new ImageView();
         onlineImg = new ImageView();
         MMpanalBackArrow = new ImageView();
+        mutedSoundImg = new ImageView();
 
         setId("APane");
         setMaxHeight(USE_PREF_SIZE);
@@ -93,13 +92,6 @@ public class HomeScreenBase extends AnchorPane {
         SMBtn.setText("Single Mode");
         SMBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         SMBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        SMBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                MMpanal.setVisible(false);
-                SMpanal.setVisible(true);
-            }
-        });
 
         singleModeImg.setFitHeight(304.0);
         singleModeImg.setFitWidth(304.0);
@@ -110,11 +102,11 @@ public class HomeScreenBase extends AnchorPane {
         singleModeImg.setPreserveRatio(true);
         singleModeImg.setImage(new Image(getClass().getResource("/resources/images/singleMode.png").toExternalForm()));
         singleModeImg.setOnMouseClicked(event
-                -> {
+                ->{
             MMpanal.setVisible(false);
             SMpanal.setVisible(true);
         });
-
+        
         MMBtn.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
         MMBtn.setId("MMBtn");
         MMBtn.setLayoutX(515.0);
@@ -126,13 +118,13 @@ public class HomeScreenBase extends AnchorPane {
         MMBtn.setText("Multi Mode");
         MMBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         MMBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        MMBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+        MMBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                SMpanal.setVisible(false);
-                MMpanal.setVisible(true);
-            }
-        });
+                 MMpanal.setVisible(true);
+                 SMpanal.setVisible(false);
+            
+            }});
 
         multiModeImg.setFitHeight(304.0);
         multiModeImg.setFitWidth(304.0);
@@ -143,39 +135,60 @@ public class HomeScreenBase extends AnchorPane {
         multiModeImg.setPreserveRatio(true);
         multiModeImg.setImage(new Image(getClass().getResource("/resources/images/multiMode.png").toExternalForm()));
         multiModeImg.setOnMouseClicked(event
-                -> {
-            SMpanal.setVisible(false);
+                ->{
             MMpanal.setVisible(true);
+            SMpanal.setVisible(false);
         });
-
+        
         musicImg.setFitHeight(50.0);
         musicImg.setFitWidth(50.0);
         musicImg.setId("musicImg");
-        musicImg.setLayoutX(604.0);
+        musicImg.setLayoutX(671.0);
         musicImg.setLayoutY(45.0);
         musicImg.setPickOnBounds(true);
         musicImg.setPreserveRatio(true);
         musicImg.setImage(new Image(getClass().getResource("/resources/images/music.png").toExternalForm()));
-
-        settingImg.setFitHeight(50.0);
-        settingImg.setFitWidth(50.0);
-        settingImg.setId("settingImg");
-        settingImg.setLayoutX(737.0);
-        settingImg.setLayoutY(45.0);
-        settingImg.setPickOnBounds(true);
-        settingImg.setPreserveRatio(true);
-        settingImg.setImage(new Image(getClass().getResource("/resources/images/settings.png").toExternalForm()));
-
+        musicImg.setOnMouseClicked(event
+                ->{
+            musicImg.setVisible(false);
+            mutedMusicImg.setVisible(true);
+            MusicPlayer.PauseMusic();
+        });
+        
+        
+        mutedMusicImg.setFitHeight(50.0);
+        mutedMusicImg.setFitWidth(50.0);
+        mutedMusicImg.setId("musicImg");
+        mutedMusicImg.setLayoutX(671.0);
+        mutedMusicImg.setLayoutY(45.0);
+        mutedMusicImg.setPickOnBounds(true);
+        mutedMusicImg.setPreserveRatio(true);
+        mutedMusicImg.setVisible(false);
+        mutedMusicImg.setImage(new Image(getClass().getResource("/resources/images/musicMuted.png").toExternalForm()));
+        mutedMusicImg.setOnMouseClicked(event
+                ->{
+            musicImg.setVisible(true);
+            mutedMusicImg.setVisible(false);
+            MusicPlayer.ResumeMusic();
+        });
+        
+        
         soundImg.setFitHeight(50.0);
         soundImg.setFitWidth(50.0);
         soundImg.setId("soundImg");
-        soundImg.setLayoutX(668.0);
+        soundImg.setLayoutX(733.0);
         soundImg.setLayoutY(45.0);
         soundImg.setPickOnBounds(true);
         soundImg.setPreserveRatio(true);
-        setProfileIconAction();
         soundImg.setImage(new Image(getClass().getResource("/resources/images/sound.png").toExternalForm()));
-
+        soundImg.setOnMouseClicked(event
+                ->{
+           soundImg.setVisible(false);
+            mutedSoundImg.setVisible(true);
+            
+        });
+        
+        
         profileImg.setFitHeight(66.0);
         profileImg.setFitWidth(66.0);
         profileImg.setId("profileImg");
@@ -205,13 +218,12 @@ public class HomeScreenBase extends AnchorPane {
         easyBtn.setText("Easy");
         easyBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         easyBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        easyBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+        easyBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                
                  navigetToNextScreen("easy");
-            }
-        });
+            
+            }});
 
         mediumBtn.setAlignment(javafx.geometry.Pos.CENTER);
         mediumBtn.setId("SMBtn");
@@ -224,13 +236,14 @@ public class HomeScreenBase extends AnchorPane {
         mediumBtn.setText("Medium");
         mediumBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         mediumBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        mediumBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+        mediumBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                navigetToNextScreen("medium");
-            }
-        });
-
+                 navigetToNextScreen("medium");
+            
+            }});
+        
+        
         hardBtn.setAlignment(javafx.geometry.Pos.CENTER);
         hardBtn.setId("SMBtn");
         hardBtn.setLayoutX(141.0);
@@ -242,13 +255,13 @@ public class HomeScreenBase extends AnchorPane {
         hardBtn.setText("Hard");
         hardBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         hardBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        hardBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+        hardBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-               
-                navigetToNextScreen("hard");
-            }
-        });
+                 navigetToNextScreen("hard");
+            
+            }});
+        
 
         SMpanalBackArrow.setFitHeight(50.0);
         SMpanalBackArrow.setFitWidth(50.0);
@@ -257,8 +270,8 @@ public class HomeScreenBase extends AnchorPane {
         SMpanalBackArrow.setPickOnBounds(true);
         SMpanalBackArrow.setPreserveRatio(true);
         SMpanalBackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
-        SMpanalBackArrow.setOnMouseClicked(event -> SMpanal.setVisible(false));
-
+        SMpanalBackArrow.setOnMouseClicked(event -> { SMpanal.setVisible(false);});
+        
         MMpanal.setId("MMpanal");
         MMpanal.setLayoutX(151.0);
         MMpanal.setLayoutY(185.0);
@@ -278,14 +291,12 @@ public class HomeScreenBase extends AnchorPane {
         localBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         localBtn.setText("Local");
         localBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        localBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
-        {
+        localBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
-            public void handle(ActionEvent event) 
-            {         
-                navigetToNextScreen("local");
-            }
-        });
+            public void handle(ActionEvent event) {
+                 navigetToNextScreen("local");
+            
+            }});
         
 
         onlineBtn.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
@@ -298,30 +309,29 @@ public class HomeScreenBase extends AnchorPane {
         onlineBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         onlineBtn.setText("Online");
         onlineBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
-        onlineBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+        onlineBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                SignInBase signinScreen = new SignInBase(stage);
-
-                Scene scene = new Scene(signinScreen);
-                stage.setScene(scene);
-                stage.show();
-            }
-        });
+                 Scene scene = new Scene(new SignInBase(stage));
+                 stage.setScene(scene);
+                 stage.show();
+            
+            }});
+        
+        
 
         localImg.setFitHeight(230.0);
         localImg.setFitWidth(230.0);
-        localImg.setLayoutX(33.0);
+        localImg.setLayoutX(53.0);
         localImg.setLayoutY(75.0);
         localImg.setPickOnBounds(true);
         localImg.setPreserveRatio(true);
         localImg.setImage(new Image(getClass().getResource("/resources/images/local.png").toExternalForm()));
-        localImg.setOnMouseClicked(event -> 
-            {    
-                navigetToNextScreen("local");
-            }
-        );
-
+        localImg.setOnMouseClicked(event -> { 
+            navigetToNextScreen("local");
+        });
+        
+        
         onlineImg.setFitHeight(200.0);
         onlineImg.setFitWidth(200.0);
         onlineImg.setLayoutX(347.0);
@@ -329,16 +339,17 @@ public class HomeScreenBase extends AnchorPane {
         onlineImg.setPickOnBounds(true);
         onlineImg.setPreserveRatio(true);
         onlineImg.setImage(new Image(getClass().getResource("/resources/images/online.png").toExternalForm()));
-        onlineImg.setOnMouseClicked(event
-                -> {
-            SignInBase signinScreen = new SignInBase(stage);
-
-            Scene scene = new Scene(signinScreen);
-            stage.setScene(scene);
-            stage.show();
-        }
-        );
-
+        onlineImg.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                 Scene scene = new Scene(new SignInBase(stage));
+                 stage.setScene(scene);
+                 stage.show();
+            
+            }});
+        
+        
+        
         MMpanalBackArrow.setFitHeight(50.0);
         MMpanalBackArrow.setFitWidth(50.0);
         MMpanalBackArrow.setLayoutX(14.0);
@@ -346,14 +357,30 @@ public class HomeScreenBase extends AnchorPane {
         MMpanalBackArrow.setPickOnBounds(true);
         MMpanalBackArrow.setPreserveRatio(true);
         MMpanalBackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
-        MMpanalBackArrow.setOnMouseClicked(event -> MMpanal.setVisible(false));
 
+        mutedSoundImg.setFitHeight(50.0);
+        mutedSoundImg.setFitWidth(50.0);
+        mutedSoundImg.setLayoutX(733.0);
+        mutedSoundImg.setLayoutY(45.0);
+        mutedSoundImg.setPickOnBounds(true);
+        mutedSoundImg.setPreserveRatio(true);
+        mutedSoundImg.setImage(new Image(getClass().getResource("/resources/images/soundMuted.png").toExternalForm()));
+        mutedSoundImg.setVisible(false);
+        mutedSoundImg.setOnMouseClicked(event
+                ->{
+           soundImg.setVisible(true);
+            mutedSoundImg.setVisible(false);
+            
+        });
+        
+        
+        
         pane.getChildren().add(SMBtn);
         pane.getChildren().add(singleModeImg);
         pane.getChildren().add(MMBtn);
         pane.getChildren().add(multiModeImg);
         pane.getChildren().add(musicImg);
-        pane.getChildren().add(settingImg);
+        pane.getChildren().add(mutedMusicImg);
         pane.getChildren().add(soundImg);
         pane.getChildren().add(profileImg);
         SMpanal.getChildren().add(easyBtn);
@@ -367,10 +394,11 @@ public class HomeScreenBase extends AnchorPane {
         MMpanal.getChildren().add(onlineImg);
         MMpanal.getChildren().add(MMpanalBackArrow);
         pane.getChildren().add(MMpanal);
+        pane.getChildren().add(mutedSoundImg);
         getChildren().add(pane);
 
     }
-
+    
     public void setProfileIconAction() {
         profileImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -383,7 +411,11 @@ public class HomeScreenBase extends AnchorPane {
             }
         });
     }
-   private void navigetToNextScreen(String level){
+
+    boolean isrecord;
+
+    
+    private void navigetToNextScreen(String level){
        
                 ButtonType Yes = new ButtonType("Yes");
                 ButtonType No = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -409,4 +441,5 @@ public class HomeScreenBase extends AnchorPane {
                 stage.setScene(scene);
                 stage.show();
     }
+
 }

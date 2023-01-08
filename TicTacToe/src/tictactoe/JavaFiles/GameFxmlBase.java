@@ -871,7 +871,7 @@ public class GameFxmlBase extends AnchorPane {
             }});
             } 
             else if(this.level=="medium"){
-                btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -942,6 +942,7 @@ public class GameFxmlBase extends AnchorPane {
                     System.out.println("playing");
                  }
             }});
+            
             if(this.level=="hard"){
             btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
