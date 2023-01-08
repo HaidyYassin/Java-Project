@@ -1,6 +1,13 @@
 package tictactoe.JavaFiles;
 
 import Models.PlayerData;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,9 +24,23 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.util.regex.Pattern;
+import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
 
 public  class SignUpBase extends Pane {
+    
+    
+    StringTokenizer token;
+    private Thread thread;
+    String userName;
+    String email;
+    String password ;
+    boolean isvalid=false;
+    Socket socket;
+    DataInputStream dis;
+    PrintStream ps;
+    
+    PlayerData playerData = new PlayerData();
 
     protected final Pane pane;
     protected final Text text;
@@ -34,7 +55,7 @@ public  class SignUpBase extends Pane {
     protected final Button signUpBtn;
     protected final ImageView BackArrow;
     
-     PlayerData playerData = new PlayerData();
+     
 
     public SignUpBase(Stage stage) {
 
@@ -188,10 +209,12 @@ public  class SignUpBase extends Pane {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setHeaderText("Incomplete Data !!");
                         alert.showAndWait();     
-               }else{
+               }else if(!isvalid){
                  //check name validation   
                     if(Pattern.matches("^[a-zA-Z][a-zA-Z0-9_]{7,29}$", nameTFSignUp.getText())){
-                             playerData.setName(nameTFSignUp.getText());
+                             //playerData.setName(nameTFSignUp.getText());
+                              userName = nameTFSignUp.getText().trim();
+                              isvalid = true;
                      }else{
                              Alert alert = new Alert(Alert.AlertType.INFORMATION);
                              alert.setHeaderText("Invalid Name!");
@@ -200,44 +223,103 @@ public  class SignUpBase extends Pane {
                      //chec mail pattern    
                      if(Pattern.matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", 
                              mailTFSignUp.getText())){
-                             playerData.setEmail(mailTFSignUp.getText());
+                             //playerData.setEmail(mailTFSignUp.getText());
+                              email = mailTFSignUp.getText().trim();
+                              isvalid = true;
                      }else{
                              Alert alert = new Alert(Alert.AlertType.INFORMATION);
                              alert.setHeaderText("Invalid mail!");
                              alert.showAndWait();
                          }
-//                     if(Pattern.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$",
-//                             passTFSignUp.getText())){
-//                             playerData.setPass(passTFSignUp.getText());
-//                     }else{
-//                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                             alert.setHeaderText("choose strong pass!");
-//                             alert.showAndWait();
-//                         }
-                         playerData.setPass(passTFSignUp.getText());
-                     if(confirmPassTFSignUp.getText() == passTFSignUp.getText()){
+                     if(Pattern.matches("[a-zA-Z0-9]{8,20}$",
+                             passTFSignUp.getText())){
+                             password = passTFSignUp.getText().trim();
+                             isvalid = true;
+                             //playerData.setPass(passTFSignUp.getText());
+                     }else{
+                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                             alert.setHeaderText("choose strong pass!");
+                             alert.showAndWait();
+                         }
+                         //playerData.setPass(passTFSignUp.getText());
+                          
+                         
+                         
+                     if(confirmPassTFSignUp.getText().equals( passTFSignUp.getText()) ){
                              //second screen 
+                             isvalid = true;
                      }else{
                              Alert alert = new Alert(Alert.AlertType.INFORMATION);
                              alert.setHeaderText("wrong pass!");
                              alert.showAndWait();
                          }
                 }
+                if(isvalid){
+                    
+                    thread =   new Thread(){
+                    String state,playerData;
+                    //HashMap<String, String> hash = new HashMap<>(); 
+                    @Override
+                    public void run(){
+                        try {
+                            
+                            state = dis.readLine();
+                            token = new StringTokenizer(state,"###");
+                            String receivedState = token.nextToken();
+                            
+                            System.out.println(receivedState);
+                            
+                            switch(receivedState){
+                                case "Registered Successfully":
+                                    System.out.println("asdfasdfasdfasdfas");
+                                     playerData = dis.readLine();
+                                     token = new StringTokenizer(playerData,"###");
+//                                     ps.out.("username", token.nextToken());
+//                                     MainController.hash.put("email",token.nextToken());
+//                                     MainController.hash.put("score", "0");
+                                    
+//                                     Platform.runLater(()->{
+//                                       //btnback.handleButtonBack(e,hash,socket);
+//                                       thread.stop();
+//                                       btnback.handleButtonBack(e);
+//                                     });
+                                     
+//                                    this.stop();
+                                    break;
+                                    
+                                case "already signed-up":
+                                    Platform.runLater(()->{
+                                       Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setHeaderText("This Email is " +receivedState);
+                                        alert.showAndWait();
+                                        
+                                    });                                
+                                    break;
+                            }
+                            
+                        }catch (IOException ex) {
+//                            Platform.runLater(() -> {
+//                                try {
+//                                    AskDialog  serverIssueAlert  = new AskDialog();
+//                                    serverIssueAlert.serverIssueAlert("There is issue in connection game page will be closed");
+//                                    ButtonBack backtoLoginPage = new ButtonBack("/view/sample.fxml");
+//                                    backtoLoginPage.handleButtonBack(e);
+//                                    this.stop();
+//                                    socket.close();
+//                                    dis.close();
+//                                    ps.close();
+//                                } catch (IOException ex1) {
+//                                    ex1.printStackTrace();
+//                                }
+//                            });
+                        }
+                    }
+                };
+             thread.start();
+                }
             
            }});
                
-        signUpBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
-        {
-            @Override
-            public void handle(ActionEvent event) 
-            {         
-                HomeScreenBase homeScreen = new HomeScreenBase(stage);
-        
-                Scene scene = new Scene(homeScreen);
-                stage.setScene(scene);
-                stage.show();
-            }
-        });
 
         pane.getChildren().add(text);
         pane.getChildren().add(nameTFSignUp);
@@ -252,5 +334,25 @@ public  class SignUpBase extends Pane {
         pane.getChildren().add(BackArrow);
         getChildren().add(pane);
 
+    }
+    
+    private void signup(Stage stage){
+        HomeScreenBase homeScreen = new HomeScreenBase(stage);
+        
+                Scene scene = new Scene(homeScreen);
+                stage.setScene(scene);
+                stage.show();
+    }
+    
+    private void connection(){
+
+                try {
+                    socket = new Socket("127.0.0.1",9081);
+                    DataInputStream dis = new DataInputStream(socket.getInputStream());
+                    PrintStream ps = new PrintStream(socket.getOutputStream());
+                    ps.println("SignUp###"+userName+"###"+email+"###"+password);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
     }
 }
