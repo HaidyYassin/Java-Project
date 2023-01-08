@@ -175,7 +175,7 @@ public class HomeScreenBase extends AnchorPane {
         soundImg.setPreserveRatio(true);
         setProfileIconAction();
         soundImg.setImage(new Image(getClass().getResource("/resources/images/sound.png").toExternalForm()));
-
+        
         profileImg.setFitHeight(66.0);
         profileImg.setFitWidth(66.0);
         profileImg.setId("profileImg");

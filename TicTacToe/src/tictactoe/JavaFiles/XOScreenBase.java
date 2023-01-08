@@ -21,6 +21,7 @@ public class XOScreenBase extends AnchorPane {
     protected final ImageView BackArrow;
     Stage stage;
     String level;
+    String symbol;
     boolean isrecord;
 
     public XOScreenBase(Stage stage, String level,boolean isrecord) {
@@ -107,7 +108,8 @@ public class XOScreenBase extends AnchorPane {
         XImg.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord ,"x");
+                symbol = "x";
+                GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord ,symbol);
         
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);
@@ -123,7 +125,8 @@ public class XOScreenBase extends AnchorPane {
         OImg.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord, "o");
+                symbol = "o";
+                GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord, symbol);
         
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);

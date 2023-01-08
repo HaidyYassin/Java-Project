@@ -25,7 +25,6 @@ import tictactoe.JavaFiles.SplashScreenBase;
  */
 public class TicTacToe extends Application {
     
-    MediaPlayer mediaPlayer;
     
     @Override
     public void start(Stage stage) throws Exception {      
