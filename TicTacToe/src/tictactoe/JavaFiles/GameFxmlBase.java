@@ -403,13 +403,15 @@ public class GameFxmlBase extends AnchorPane {
               }
 
               int result = checkWinner(board);
-              if(result == 0) {
-                  System.out.print("Tie \n");
-               } 
-              else 
-              {
-                  System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-              }
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 }
+                else if(result == 2 || result==-2 ){
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+                else{
+                    System.out.println("playing");
+                 }
           }
       });
             btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -454,11 +456,15 @@ public class GameFxmlBase extends AnchorPane {
               }
 
               int result = checkWinner(board);
-              if(result == 0) {
-                     System.out.print("Tie \n");
-               } else {
-                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-              }
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 }
+                else if(result == 2 || result==-2 ){
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+                else{
+                    System.out.println("playing");
+                 }
          }
       });
             btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -503,11 +509,15 @@ public class GameFxmlBase extends AnchorPane {
               }
 
               int result = checkWinner(board);
-              if(result == 0) {
-                     System.out.print("Tie \n");
-               } else {
-                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-              }
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 }
+                else if(result == 2 || result==-2 ){
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+                else{
+                    System.out.println("playing");
+                 }
          }
       });
             btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -551,11 +561,15 @@ public class GameFxmlBase extends AnchorPane {
                   has_winner = checkWinner(board) != 1;
               }
               int result = checkWinner(board);
-              if(result == 0) {
-                     System.out.print("Tie \n");
-               } else {
-                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-              }
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 }
+                else if(result == 2 || result==-2 ){
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+                else{
+                    System.out.println("playing");
+                 }
          }
       });
             btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -600,11 +614,15 @@ public class GameFxmlBase extends AnchorPane {
               }
 
               int result = checkWinner(board);
-              if(result == 0) {
-                     System.out.print("Tie \n");
-               } else {
-                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-              }
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 }
+                else if(result == 2 || result==-2 ){
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+                else{
+                    System.out.println("playing");
+                 }
          }
       });
             btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -649,11 +667,15 @@ public class GameFxmlBase extends AnchorPane {
               }
 
               int result = checkWinner(board);
-              if(result == 0) {
-                     System.out.print("Tie \n");
-               } else {
-                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-              }
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 }
+                else if(result == 2 || result==-2 ){
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+                else{
+                    System.out.println("playing");
+                 }
          }
       });
             btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -697,11 +719,15 @@ public class GameFxmlBase extends AnchorPane {
                   has_winner = checkWinner(board) != 1;
               }
               int result = checkWinner(board);
-              if(result == 0) {
-                     System.out.print("Tie \n");
-               } else {
-                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-              }
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 }
+                else if(result == 2 || result==-2 ){
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+                else{
+                    System.out.println("playing");
+                 }
          }
       });
             btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -746,11 +772,15 @@ public class GameFxmlBase extends AnchorPane {
               }
 
               int result = checkWinner(board);
-              if(result == 0) {
-                     System.out.print("Tie \n");
-               } else {
-                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-              }
+                if(result == 0) {
+                       System.out.print("Tie \n");
+                 }
+                else if(result == 2 || result==-2 ){
+                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+                }
+                else{
+                    System.out.println("playing");
+                 }
          }
       });
             btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
