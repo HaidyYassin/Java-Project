@@ -25,6 +25,7 @@ public  class SignInBase extends Pane {
     protected final ImageView imageView0;
     protected final Text text0;
     protected final Text SignUpText;
+    protected final ImageView BackArrow;
     
     PlayerData playerData = new PlayerData();
 
@@ -39,6 +40,7 @@ public  class SignInBase extends Pane {
         imageView0 = new ImageView();
         text0 = new Text();
         SignUpText = new Text();
+        BackArrow = new ImageView();
 
         setId("APane");
         setMaxHeight(USE_PREF_SIZE);
@@ -161,6 +163,24 @@ public  class SignInBase extends Pane {
 
             
         });
+        
+        BackArrow.setFitHeight(50.0);
+        BackArrow.setFitWidth(50.0);
+        BackArrow.setLayoutX(42.0);
+        BackArrow.setLayoutY(43.0);
+        BackArrow.setPickOnBounds(true);
+        BackArrow.setPreserveRatio(true);
+        BackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
+        BackArrow.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                HomeScreenBase homeScreen = new HomeScreenBase(stage);
+
+                Scene scene = new Scene(homeScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
 
         pane.getChildren().add(text);
         pane.getChildren().add(emailTFSignIn);
@@ -170,6 +190,7 @@ public  class SignInBase extends Pane {
         pane.getChildren().add(imageView0);
         pane.getChildren().add(text0);
         pane.getChildren().add(SignUpText);
+        pane.getChildren().add(BackArrow);
         getChildren().add(pane);
 
     }

@@ -21,7 +21,7 @@ public class MusicPlayer {
     {
         try
         {          
-            File musicpath = new File("D:\\iti material\\java project\\java project\\Java-Project\\TicTacToe\\src\\resources\\music\\bensound-bluebay.wav");
+            File musicpath = new File("D:\\MAD43-SV\\Java\\tic tac toe game\\tictactoejava\\Java-Project\\Java-Project\\TicTacToe\\src\\resources\\music\\bensound-bluebay.wav");
             if(musicpath.exists())
             {
                 AudioInputStream audio = AudioSystem.getAudioInputStream(musicpath);

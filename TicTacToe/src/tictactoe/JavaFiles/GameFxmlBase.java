@@ -59,18 +59,18 @@ public class GameFxmlBase extends AnchorPane {
     protected final Blend blend2;
     
     Stage stage;
-    String symbole;
+    String symbol;
     String level;
     int stepCounter;
     boolean isYourTurn,isrecord;
     int XO_turn;
     Button[] btnArr = new Button[9];
 
-    public GameFxmlBase(Stage stage, String level, boolean isrecord,String symbole) {
+    public GameFxmlBase(Stage stage, String level, boolean isrecord,String symbol) {
         
         this.stage=stage;
         this.level = level;
-        this.symbole = symbole;
+        this.symbol = symbol;
         this.isrecord=isrecord;
         stepCounter = 0;
         isYourTurn = true;
@@ -361,336 +361,450 @@ public class GameFxmlBase extends AnchorPane {
          }
          else if(this.level=="local"){
              
-              btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event) {
-                if(!has_winner) {
-                    if(btn1.getText() == " " && XO_turn % 2 != 0)
-                    {
-                        btn1.setText("X");
-                        btn1.setGraphic(drawXIcon());
-                        btn1.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else if(btn1.getText() == " " && XO_turn % 2 == 0)
-                    {
-                        btn1.setText("O");
-                        btn1.setGraphic(drawOIcon());
-                        btn1.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else {
-                    System.out.print( "The field is not empty \n");
-                    }
-                    
-                    has_winner = checkWinner(board) != 1;
-                }
-                
-                int result = checkWinner(board);
-                if(result == 0) {
-                    System.out.print("Tie \n");
-                 } 
-                else if(result == 2 || result==-2 ){
-                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                }
-                else{
-                    System.out.println("playing");
-                 }
-            }
-        });
-              btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event) {
-               if(!has_winner) {
-                    if(btn2.getText() == " " && XO_turn % 2 != 0)
-                    {
-                        btn2.setText("X");
-                        btn2.setGraphic(drawXIcon());
-                        btn2.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else if(btn2.getText() == " " && XO_turn % 2 == 0)
-                    {
-                        btn2.setText("O");
-                        btn2.setGraphic(drawOIcon());
-                        btn2.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else {
-                    System.out.print( "The field is not empty \n");
-                    }
-                    
-                    has_winner = checkWinner(board) != 1;
-                }
-               
-                int result = checkWinner(board);
-                if(result == 0) {
-                       System.out.print("Tie \n");
-                 } 
-                else if(result == 2 || result==-2 ){
-                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                }
-                 else{
-                    System.out.println("playing");
-                 }
-           }
-        });
-              btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event) {
-               if(!has_winner) {
-                    if(btn3.getText() == " " && XO_turn % 2 != 0)
-                    {
-                        btn3.setText("X");
-                        btn3.setGraphic(drawXIcon());
-                        btn3.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else if(btn3.getText() == " " && XO_turn % 2 == 0)
-                    {
-                        btn3.setText("O");
-                        btn3.setGraphic(drawOIcon());
-                        btn3.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else {
-                    System.out.print( "The field is not empty \n");
-                    }
-                    
-                    has_winner = checkWinner(board) != 1;
-                }
-               
-                int result = checkWinner(board);
-                if(result == 0) {
-                       System.out.print("Tie \n");
-                 }
-                else if(result == 2 || result==-2 ){
-                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                }
-                else{
-                    System.out.println("playing");
-                 }
-           }
-        });
-              btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event) {
-               if(!has_winner) {
-                    if(btn4.getText() == " " && XO_turn % 2 != 0)
-                    {
-                        btn4.setText("X");
-                        btn4.setGraphic(drawXIcon());
-                        btn4.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else if(btn4.getText() == " " && XO_turn % 2 == 0)
-                    {
-                        btn4.setText("O");
-                        btn4.setGraphic(drawOIcon());
-                        btn4.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else {
-                    System.out.print( "The field is not empty \n");
-                    }
-                    
-                    has_winner = checkWinner(board) != 1;
-                }
-                int result = checkWinner(board);
-                if(result == 0) {
-                       System.out.print("Tie \n");
-                 } 
-                else if(result == 2 || result==-2 ){
-                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                }
-                else{
-                    System.out.println("playing");
-                 }
-           }
-        });
-              btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event) {
-               if(!has_winner) {
-                    if(btn5.getText() == " " && XO_turn % 2 != 0)
-                    {
-                        btn5.setText("X");
-                        btn5.setGraphic(drawXIcon());
-                        btn5.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else if(btn5.getText() == " " && XO_turn % 2 == 0)
-                    {
-                        btn5.setText("O");
-                        btn5.setGraphic(drawOIcon());
-                        btn5.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else {
-                    System.out.print( "The field is not empty \n");
-                    }
-                    
-                    has_winner = checkWinner(board) != 1;
-                }
+            btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent event) {
+              if(!has_winner) {
+                  if(btn1.getText() == " " && XO_turn % 2 != 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn1.setText("X");
+                          btn1.setGraphic(drawXIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn1.setText("O");
+                          btn1.setGraphic(drawOIcon());
+                      }
+                      btn1.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else if(btn1.getText() == " " && XO_turn % 2 == 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn1.setText("O");
+                          btn1.setGraphic(drawOIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn1.setText("X");
+                          btn1.setGraphic(drawXIcon());
+                      }
+                      btn1.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else {
+                  System.out.print( "The field is not empty \n");
+                  }
 
-                int result = checkWinner(board);
-                if(result == 0) {
-                       System.out.print("Tie \n");
-                 } 
-                else if(result == 2 || result==-2 ){
-                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                }
-                else{
-                    System.out.println("playing");
-                 }
-           }
-        });
-              btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event) {
-               if(!has_winner) {
-                    if(btn6.getText() == " " && XO_turn % 2 != 0)
-                    {
-                        btn6.setText("X");
-                        btn6.setGraphic(drawXIcon());
-                        btn6.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else if(btn6.getText() == " " && XO_turn % 2 == 0)
-                    {
-                        btn6.setText("O");
-                        btn6.setGraphic(drawOIcon());
-                        btn6.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else {
-                    System.out.print( "The field is not empty \n");
-                    }
-                    
-                    has_winner = checkWinner(board) != 1;
-                }
+                  has_winner = checkWinner(board) != 1;
+              }
 
-                int result = checkWinner(board);
-                if(result == 0) {
-                       System.out.print("Tie \n");
-                 }
-                else if(result == 2 || result==-2 ){
-                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                }
-                else{
-                    System.out.println("playing");
-                 }
-           }
-        });
-              btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event) {
-               if(!has_winner) {
-                    if(btn7.getText() == " " && XO_turn % 2 != 0)
-                    {
-                        btn7.setText("X");
-                        btn7.setGraphic(drawXIcon());
-                        btn7.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else if(btn7.getText() == " " && XO_turn % 2 == 0)
-                    {
-                        btn7.setText("O");
-                        btn7.setGraphic(drawOIcon());
-                        btn7.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else {
-                    System.out.print( "The field is not empty \n");
-                    }
-                    
-                    has_winner = checkWinner(board) != 1;
-                }
-                int result = checkWinner(board);
-                if(result == 0) {
-                       System.out.print("Tie \n");
-                 }
-                else if(result == 2 || result==-2 ){
-                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                }
-                else{
-                    System.out.println("playing");
-                 }
-           }
-        });
-              btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event) {
-               if(!has_winner) {
-                    if(btn8.getText() == " " && XO_turn % 2 != 0)
-                    {
-                        btn8.setText("X");
-                        btn8.setGraphic(drawXIcon());
-                        btn8.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else if(btn8.getText() == " " && XO_turn % 2 == 0)
-                    {
-                        btn8.setText("O");
-                        btn8.setGraphic(drawOIcon());
-                        btn8.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else {
-                    System.out.print( "The field is not empty \n");
-                    }
-                    
-                    has_winner = checkWinner(board) != 1;
-                }
+              int result = checkWinner(board);
+              if(result == 0) {
+                  System.out.print("Tie \n");
+               } 
+              else 
+              {
+                  System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+              }
+          }
+      });
+            btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent event) {
+             if(!has_winner) {
+                  if(btn2.getText() == " " && XO_turn % 2 != 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn2.setText("X");
+                          btn2.setGraphic(drawXIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn2.setText("O");
+                          btn2.setGraphic(drawOIcon());
+                      }
+                      btn2.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else if(btn2.getText() == " " && XO_turn % 2 == 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn2.setText("O");
+                          btn2.setGraphic(drawOIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn2.setText("X");
+                          btn2.setGraphic(drawXIcon());
+                      }
+                      btn2.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else {
+                  System.out.print( "The field is not empty \n");
+                  }
 
-                int result = checkWinner(board);
-                if(result == 0) {
-                       System.out.print("Tie \n");
-                 }
-                else if(result == 2 || result==-2 ){
-                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                }
-                else{
-                    System.out.println("playing");
-                 }
-           }
-        });
-              btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-           @Override
-           public void handle(ActionEvent event) {
-               if(!has_winner) {
-                    if(btn9.getText() == " " && XO_turn % 2 != 0)
-                    {
-                        btn9.setText("X");
-                        btn9.setGraphic(drawXIcon());
-                        btn9.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else if(btn9.getText() == " " && XO_turn % 2 == 0)
-                    {
-                        btn9.setText("O");
-                        btn9.setGraphic(drawOIcon());
-                        btn9.setContentDisplay(GRAPHIC_ONLY);
-                        XO_turn ++;
-                    }
-                    else {
-                    System.out.print( "The field is not empty \n");
-                    }
-                    
-                    has_winner = checkWinner(board) != 1;
-                }
-                int result = checkWinner(board);
-                if(result == 0) {
-                       System.out.print("Tie \n");
-                 }
-                else if(result == 2 || result==-2 ){
-                        System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                }
-                else{
-                    System.out.println("playing");
-                 }
-           }
-        });
+                  has_winner = checkWinner(board) != 1;
+              }
+
+              int result = checkWinner(board);
+              if(result == 0) {
+                     System.out.print("Tie \n");
+               } else {
+                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+              }
+         }
+      });
+            btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent event) {
+             if(!has_winner) {
+                  if(btn3.getText() == " " && XO_turn % 2 != 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn3.setText("X");
+                          btn3.setGraphic(drawXIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn3.setText("O");
+                          btn3.setGraphic(drawOIcon());
+                      }
+                      btn3.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else if(btn3.getText() == " " && XO_turn % 2 == 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn3.setText("O");
+                          btn3.setGraphic(drawOIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn3.setText("X");
+                          btn3.setGraphic(drawXIcon());
+                      }
+                      btn3.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else {
+                  System.out.print( "The field is not empty \n");
+                  }
+
+                  has_winner = checkWinner(board) != 1;
+              }
+
+              int result = checkWinner(board);
+              if(result == 0) {
+                     System.out.print("Tie \n");
+               } else {
+                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+              }
+         }
+      });
+            btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent event) {
+             if(!has_winner) {
+                  if(btn4.getText() == " " && XO_turn % 2 != 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn4.setText("X");
+                          btn4.setGraphic(drawXIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn4.setText("O");
+                          btn4.setGraphic(drawOIcon());
+                      }
+                      btn4.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else if(btn4.getText() == " " && XO_turn % 2 == 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn4.setText("O");
+                          btn4.setGraphic(drawOIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn4.setText("X");
+                          btn4.setGraphic(drawXIcon());
+                      }
+                      btn4.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else {
+                  System.out.print( "The field is not empty \n");
+                  }
+
+                  has_winner = checkWinner(board) != 1;
+              }
+              int result = checkWinner(board);
+              if(result == 0) {
+                     System.out.print("Tie \n");
+               } else {
+                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+              }
+         }
+      });
+            btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent event) {
+             if(!has_winner) {
+                  if(btn5.getText() == " " && XO_turn % 2 != 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn5.setText("X");
+                          btn5.setGraphic(drawXIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn5.setText("O");
+                          btn5.setGraphic(drawOIcon());
+                      }
+                      btn5.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else if(btn5.getText() == " " && XO_turn % 2 == 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn5.setText("O");
+                          btn5.setGraphic(drawOIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn5.setText("X");
+                          btn5.setGraphic(drawXIcon());
+                      }
+                      btn5.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else {
+                  System.out.print( "The field is not empty \n");
+                  }
+
+                  has_winner = checkWinner(board) != 1;
+              }
+
+              int result = checkWinner(board);
+              if(result == 0) {
+                     System.out.print("Tie \n");
+               } else {
+                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+              }
+         }
+      });
+            btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent event) {
+             if(!has_winner) {
+                  if(btn6.getText() == " " && XO_turn % 2 != 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn6.setText("X");
+                          btn6.setGraphic(drawXIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn6.setText("O");
+                          btn6.setGraphic(drawOIcon());
+                      }
+                      btn6.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else if(btn6.getText() == " " && XO_turn % 2 == 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn6.setText("O");
+                          btn6.setGraphic(drawOIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn6.setText("X");
+                          btn6.setGraphic(drawXIcon());
+                      }
+                      btn6.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else {
+                  System.out.print( "The field is not empty \n");
+                  }
+
+                  has_winner = checkWinner(board) != 1;
+              }
+
+              int result = checkWinner(board);
+              if(result == 0) {
+                     System.out.print("Tie \n");
+               } else {
+                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+              }
+         }
+      });
+            btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent event) {
+             if(!has_winner) {
+                  if(btn7.getText() == " " && XO_turn % 2 != 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn7.setText("X");
+                          btn7.setGraphic(drawXIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn7.setText("O");
+                          btn7.setGraphic(drawOIcon());
+                      }
+                      btn7.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else if(btn7.getText() == " " && XO_turn % 2 == 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn7.setText("O");
+                          btn7.setGraphic(drawOIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn7.setText("X");
+                          btn7.setGraphic(drawXIcon());
+                      }
+                      btn7.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else {
+                  System.out.print( "The field is not empty \n");
+                  }
+
+                  has_winner = checkWinner(board) != 1;
+              }
+              int result = checkWinner(board);
+              if(result == 0) {
+                     System.out.print("Tie \n");
+               } else {
+                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+              }
+         }
+      });
+            btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent event) {
+             if(!has_winner) {
+                  if(btn8.getText() == " " && XO_turn % 2 != 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn8.setText("X");
+                          btn8.setGraphic(drawXIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn8.setText("O");
+                          btn8.setGraphic(drawOIcon());
+                      }
+                      btn8.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else if(btn8.getText() == " " && XO_turn % 2 == 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn8.setText("O");
+                          btn8.setGraphic(drawOIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn8.setText("X");
+                          btn8.setGraphic(drawXIcon());
+                      }
+                      btn8.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else {
+                  System.out.print( "The field is not empty \n");
+                  }
+
+                  has_winner = checkWinner(board) != 1;
+              }
+
+              int result = checkWinner(board);
+              if(result == 0) {
+                     System.out.print("Tie \n");
+               } else {
+                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+              }
+         }
+      });
+            btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+         @Override
+         public void handle(ActionEvent event) {
+             if(!has_winner) {
+                  if(btn9.getText() == " " && XO_turn % 2 != 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn9.setText("X");
+                          btn9.setGraphic(drawXIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn9.setText("O");
+                          btn9.setGraphic(drawOIcon());
+                      }
+                      btn9.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else if(btn9.getText() == " " && XO_turn % 2 == 0)
+                  {
+                      if(symbol.equals("x"))
+                      {
+                          btn9.setText("O");
+                          btn9.setGraphic(drawOIcon());
+                      }
+                      else if(symbol.equals("o"))
+                      {
+                          btn9.setText("X");
+                          btn9.setGraphic(drawXIcon());
+                      }
+                      btn9.setContentDisplay(GRAPHIC_ONLY);
+                      XO_turn ++;
+                  }
+                  else {
+                  System.out.print( "The field is not empty \n");
+                  }
+
+                  has_winner = checkWinner(board) != 1;
+              }
+              int result = checkWinner(board);
+              if(result == 0) {
+                     System.out.print("Tie \n");
+               }
+              else if(result == 2 || result==-2 ){
+                      System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
+              }
+              else{
+                  System.out.println("playing");
+               }
+         }
+      });
               
          }
          else{
@@ -1193,7 +1307,8 @@ public class GameFxmlBase extends AnchorPane {
             {         
                 player1Score.setImage(new Image(getClass().getResource("/resources/images/0.png").toExternalForm()));
                 player2Score.setImage(new Image(getClass().getResource("/resources/images/0.png").toExternalForm()));
-                 clearRecordedMatchCells();
+                XO_turn = 1;
+                clearRecordedMatchCells();
             }
         });
 
@@ -1398,6 +1513,8 @@ public class GameFxmlBase extends AnchorPane {
     //hard level
     public static boolean haveTheSameValueAndNotEmpty(Button x, Button y, Button z) {
     if(x.getText() == y.getText() && x.getText() == z.getText() && !(x.getText().equals(" "))) {
+        //x.setStyle("-fx-background-color:#FFEB3B;");
+
           x.setStyle("-fx-background-color:#FFEB3B;");
           y.setStyle("-fx-background-color:#FFEB3B;");
           z.setStyle("-fx-background-color:#FFEB3B;");
@@ -1415,6 +1532,11 @@ public class GameFxmlBase extends AnchorPane {
     // For rows
     for(int i = 0; i < 3; i++) {
         if(haveTheSameValueAndNotEmpty(board[i][0], board[i][1], board[i][2])) {
+
+//            board[i][0].setStyle("-fx-background-color:#FFEB3B;");
+//            board[i][1].setStyle("-fx-background-color:#FFEB3B;");
+//            board[i][2].setStyle("-fx-background-color:#FFEB3B;");
+
             return board[i][0].getText() == "X" ? 2 : -2;
         }
     }
@@ -1541,6 +1663,7 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
        has_winner=false;
  }
  
+
  public void returnColor(){
       btn1.setStyle("-fx-background-color:#4D0DA5;");
       btn2.setStyle("-fx-background-color:#4D0DA5;");
@@ -1552,5 +1675,4 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
       btn8.setStyle("-fx-background-color:#4D0DA5;");
       btn9.setStyle("-fx-background-color:#4D0DA5;");
  }
-
 }

@@ -42,6 +42,7 @@ public class HomeScreenBase extends AnchorPane {
 
     public HomeScreenBase(Stage stage) {
 
+        this.stage = stage;
         pane = new Pane();
         SMBtn = new Button();
         singleModeImg = new ImageView();
@@ -92,6 +93,12 @@ public class HomeScreenBase extends AnchorPane {
         SMBtn.setText("Single Mode");
         SMBtn.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         SMBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
+        SMBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                MMpanal.setVisible(false);
+                SMpanal.setVisible(true);
+            }});
 
         singleModeImg.setFitHeight(304.0);
         singleModeImg.setFitWidth(304.0);
@@ -121,9 +128,8 @@ public class HomeScreenBase extends AnchorPane {
         MMBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                 MMpanal.setVisible(true);
-                 SMpanal.setVisible(false);
-            
+                SMpanal.setVisible(false);
+                MMpanal.setVisible(true);          
             }});
 
         multiModeImg.setFitHeight(304.0);
@@ -136,8 +142,8 @@ public class HomeScreenBase extends AnchorPane {
         multiModeImg.setImage(new Image(getClass().getResource("/resources/images/multiMode.png").toExternalForm()));
         multiModeImg.setOnMouseClicked(event
                 ->{
-            MMpanal.setVisible(true);
             SMpanal.setVisible(false);
+            MMpanal.setVisible(true);
         });
         
         musicImg.setFitHeight(50.0);
@@ -197,7 +203,17 @@ public class HomeScreenBase extends AnchorPane {
         profileImg.setPickOnBounds(true);
         profileImg.setPreserveRatio(true);
         profileImg.setImage(new Image(getClass().getResource("/resources/images/player1.png").toExternalForm()));
+        profileImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                ProfileBase profileScreen = new ProfileBase(stage);
 
+                Scene scene = new Scene(profileScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
+  
         SMpanal.setId("SMpanal");
         SMpanal.setLayoutX(151.0);
         SMpanal.setLayoutY(185.0);
@@ -357,6 +373,7 @@ public class HomeScreenBase extends AnchorPane {
         MMpanalBackArrow.setPickOnBounds(true);
         MMpanalBackArrow.setPreserveRatio(true);
         MMpanalBackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
+        MMpanalBackArrow.setOnMouseClicked(event -> { MMpanal.setVisible(false);});
 
         mutedSoundImg.setFitHeight(50.0);
         mutedSoundImg.setFitWidth(50.0);
@@ -425,7 +442,7 @@ public class HomeScreenBase extends AnchorPane {
                 a.setHeaderText("Do you want to record this game?");
                 DialogPane dialogPane = a.getDialogPane();
                 dialogPane.getStylesheets().add(
-                        getClass().getResource("/resources/cssFiles/CSS.css").toExternalForm());
+                getClass().getResource("/resources/cssFiles/CSS.css").toExternalForm());
                 dialogPane.getStyleClass().add("infoDialog");
                 a.showAndWait();
                 if (a.getResult() == Yes) {
