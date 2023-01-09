@@ -1,6 +1,15 @@
 package tictactoe.JavaFiles;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -62,16 +71,26 @@ public class GameFxmlBase extends AnchorPane {
     String symbole;
     String level;
     int stepCounter;
-    boolean isYourTurn,isrecord;
+    private boolean isYourTurn,isRecord;
     int XO_turn;
     Button[] btnArr = new Button[9];
-
+    File gamefile;
+    List<String> WriteLine;
+    public static int StepNum=0;
+    String gameState;
+    public static String gameSteps="";
+    String Score;
+    String Date;
+    String conc;
+    
+   
     public GameFxmlBase(Stage stage, String level, boolean isrecord,String symbole) {
         
         this.stage=stage;
         this.level = level;
         this.symbole = symbole;
-        this.isrecord=isrecord;
+        this.isRecord=isrecord;
+        
         stepCounter = 0;
         isYourTurn = true;
         XO_turn = 1;
@@ -264,6 +283,43 @@ public class GameFxmlBase extends AnchorPane {
        
        
         Button board[][] = { {btn1, btn2, btn3}, {btn4, btn5, btn6}, {btn7, btn8, btn9} };
+        
+       
+            try{
+            
+             File folder = new File("..\\TicTacToe\\recordedFiles\\local");
+             int name=folder.list().length+1;
+            gamefile=new File("D:\\iti_java_project\\Java-Project\\TicTacToe\\recordedFiles\\local\\"+name+".txt");
+            gamefile.createNewFile();
+            String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+            PrintWriter writer = new PrintWriter(gamefile, "UTF-8");
+            writer.println("");
+            writer.println("");
+            writer.println("");
+            writer.println("");
+            writer.println("");
+            writer.println("");
+            writer.close();
+           
+            if(gamefile.exists()){
+            WriteLine= Files.readAllLines(gamefile.toPath());
+            WriteLine.set(0, timeStamp);
+            WriteLine.set(1, "Bot");
+            
+            }else{
+                gamefile.createNewFile();
+            }
+            
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            
+            
+            
+            
+           
+            
+        
        
          if(this.level=="easy"){
              System.out.println("esay");
@@ -702,7 +758,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn1.setText("X");
                       btn1.setGraphic(drawXIcon());
                       btn1.setContentDisplay(GRAPHIC_ONLY);
-
+                      StepNum++;
+                      gameSteps+=StepNum+"."+"You: X"+1;
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        returnColor();
@@ -731,7 +788,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn2.setText("X");
                       btn2.setGraphic(drawXIcon());
                       btn2.setContentDisplay(GRAPHIC_ONLY);
-
+                      StepNum++;
+                      gameSteps+=StepNum+"."+"You: X"+2;
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        returnColor();
@@ -760,6 +818,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn3.setText("X");
                       btn3.setGraphic(drawXIcon());
                       btn3.setContentDisplay(GRAPHIC_ONLY);
+                      StepNum++;
+                      gameSteps+=StepNum+"."+"You: X"+3;
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
@@ -789,6 +849,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn4.setText("X");
                       btn4.setGraphic(drawXIcon());
                       btn4.setContentDisplay(GRAPHIC_ONLY);
+                      StepNum++;
+                      gameSteps+=StepNum+"."+"You: X"+4;
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
@@ -818,6 +880,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn5.setText("X");
                      btn5.setGraphic(drawXIcon());
                      btn5.setContentDisplay(GRAPHIC_ONLY);
+                     StepNum++;
+                      gameSteps+=StepNum+"."+"You: X"+5;
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
@@ -848,7 +912,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn6.setText("X");
                       btn6.setGraphic(drawXIcon());
                       btn6.setContentDisplay(GRAPHIC_ONLY);
-
+                      StepNum++;
+                      gameSteps+=StepNum+"."+"You: X"+6;
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        returnColor();
@@ -879,7 +944,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn6.setText("X");
                       btn6.setGraphic(drawXIcon());
                       btn6.setContentDisplay(GRAPHIC_ONLY);
-                      
+                      StepNum++;
+                      gameSteps+=StepNum+"."+"You: X"+6;
                         int min = 0;
                         int max = 8;
                         int rand = (int)(Math.random()*(max - min + 1) + min);
@@ -921,7 +987,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn7.setText("X");
                       btn7.setGraphic(drawXIcon());
                       btn7.setContentDisplay(GRAPHIC_ONLY);
-
+                      StepNum++;
+                      gameSteps+=StepNum+"."+"You: X"+7;
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        returnColor();
@@ -951,6 +1018,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn8.setText("X");
                       btn8.setGraphic(drawXIcon());
                       btn8.setContentDisplay(GRAPHIC_ONLY);
+                      StepNum++;
+                      gameSteps+=StepNum+"."+"You: X"+8;
 
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
@@ -1024,7 +1093,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn9.setText("X");
                       btn9.setGraphic(drawXIcon());
                       btn9.setContentDisplay(GRAPHIC_ONLY);
-
+                      StepNum++;
+                      gameSteps+=StepNum+"."+"You: X"+9;
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        returnColor();
@@ -1281,10 +1351,16 @@ public class GameFxmlBase extends AnchorPane {
         btnArr[6] = btn7;
         btnArr[7] = btn8;
         btnArr[8] = btn9;
-
-        //handleGame();
+        
+        try {
+            Files.write(gamefile.toPath(), WriteLine);
+            //handleGame();
+        } catch (IOException ex) {
+            Logger.getLogger(GameFxmlBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
+    
     
     public void handleGame()
     {

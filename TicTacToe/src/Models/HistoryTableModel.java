@@ -5,10 +5,14 @@
  */
 package Models;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
@@ -24,25 +28,38 @@ import javafx.scene.control.CheckBox;
 public class HistoryTableModel implements Serializable {
 
     private final SimpleStringProperty num;
+    private final SimpleStringProperty Date;
     private final SimpleStringProperty score;
     private final SimpleStringProperty status;
     private final SimpleStringProperty Contender;
     private  CheckBox checkBox;
-    FileInputStream fileInputStream;
+    private String gameSteps;
     
-
-    public HistoryTableModel(String num, String score, String status, String Contender)  {
-        this.num = new SimpleStringProperty(num);
-        this.score = new SimpleStringProperty(score);
-        this.status = new SimpleStringProperty(status);
-        this.Contender = new SimpleStringProperty(Contender);
-        this.checkBox=new CheckBox();
-       
+    public HistoryTableModel(File file) throws IOException  {
+            this.num = new SimpleStringProperty(file.getName().substring(0, file.getName().indexOf('.')));
+            this.Date = new SimpleStringProperty(Files.readAllLines(file.toPath()).get(0));
+            this.Contender = new SimpleStringProperty(Files.readAllLines(file.toPath()).get(1));
+            this.status = new SimpleStringProperty(Files.readAllLines(file.toPath()).get(3));
+            this.score = new SimpleStringProperty(Files.readAllLines(file.toPath()).get(4));
+            this.checkBox=new CheckBox();
+            this.gameSteps=Files.readAllLines(file.toPath()).get(2);
         
     }
-    
-    
 
+    public String getDate() {
+        return Date.get();
+    }
+    public void setDate(String date) {
+        this.gameSteps = date;
+    }
+    public String getGameSteps() {
+        return gameSteps;
+    }
+
+    public void setGameSteps(String gs) {
+        this.gameSteps = gs;
+    }
+    
     public String getGameNumber(){
     
         return  num.get();
@@ -86,24 +103,6 @@ public class HistoryTableModel implements Serializable {
     
         Contender.set(con);
     }
-    public String getRecordFile(){
-            String record="";
-        try{
-                    fileInputStream = new FileInputStream("D:\\iti_java_project\\Java-Project\\TicTacToe\\recordedFiles\\"+num.get()+".txt");
-                    //byte[]b =event.getText().getBytes();
-                    int size = fileInputStream.available();
-                    byte[] b = new byte[size];
-                    fileInputStream.read(b);
-                    
-                     record=new String(b);
-                    fileInputStream.close();
-                }catch(Exception ex){
-                    
-                    System.out.println(ex.getMessage());
-                }
-        System.out.println("The record file"+record);
-        return record;
-
-    }
+  
     
 }

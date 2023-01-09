@@ -2,7 +2,14 @@ package tictactoe.JavaFiles;
 
 import Models.HistoryTableModel;
 import Models.RecordsMatchesList;
+import static Models.RecordsMatchesList.tableData;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -33,13 +40,14 @@ public class RecordedHistoryTable extends AnchorPane {
     protected final Button deleteSelected_btn;
     protected final TableView table_view;
     protected final TableColumn colNumId;
+    protected final TableColumn colDateId;
     protected final TableColumn colScoreId;
     protected final TableColumn colStatusId;
     protected final TableColumn colContenderId;
     protected final TableColumn colSelectId;
     protected final ImageView BackArrow;
 
-    public RecordedHistoryTable(Stage stage) {
+    public RecordedHistoryTable(Stage stage) throws IOException {
 
         vBox = new VBox();
         deleteAll_btn = new Button();
@@ -47,11 +55,13 @@ public class RecordedHistoryTable extends AnchorPane {
         deleteSelected_btn = new Button();
         table_view = new TableView();
         colNumId = new TableColumn();
+        colDateId = new TableColumn();
         colScoreId = new TableColumn();
         colStatusId = new TableColumn();
         colContenderId = new TableColumn();
         colSelectId = new TableColumn();
         BackArrow = new ImageView();
+        tableData.clear();
         
         setId("APane");
         setMaxHeight(USE_PREF_SIZE);
@@ -62,7 +72,9 @@ public class RecordedHistoryTable extends AnchorPane {
         setPrefWidth(1366.0);
         getStylesheets().add("/resources/cssFiles/CSS.css");
 
-        
+        colDateId.setCellValueFactory(
+                new PropertyValueFactory<>("Date")
+        );
         colNumId.setCellValueFactory(
                 new PropertyValueFactory<>("GameNumber")
         );
@@ -78,9 +90,20 @@ public class RecordedHistoryTable extends AnchorPane {
         colSelectId.setCellValueFactory(
                 new PropertyValueFactory<>("CheckBox")
         );
+        
+        File folder = new File("..\\TicTacToe\\recordedFiles\\local");
+        File[] listOfFiles = folder.listFiles();
+
+    for (File file : listOfFiles) {
+     if (file.isFile()) {
+         System.out.println(folder.list().length);
+        tableData.add(new HistoryTableModel(file));
+    }
+     
+    }
+    
 
         table_view.setItems(RecordsMatchesList.tableData);
-
         vBox.setLayoutX(75.0);
         vBox.setLayoutY(243.0);
 
@@ -111,8 +134,6 @@ public class RecordedHistoryTable extends AnchorPane {
                     alert.close();
                 }
 
-      
-           
         });
         
         BackArrow.setFitHeight(50.0);
@@ -126,7 +147,6 @@ public class RecordedHistoryTable extends AnchorPane {
             @Override
             public void handle(MouseEvent event) {
                 HomeScreenBase homeScreen = new HomeScreenBase(stage);
-
                 Scene scene = new Scene(homeScreen);
                 stage.setScene(scene);
                 stage.show();
@@ -164,7 +184,6 @@ public class RecordedHistoryTable extends AnchorPane {
             }
            if(selectedDataToRemoveList.size()!=0)
            {
-           
                 Alert alert = new Alert(AlertType.WARNING);
                  alert.setTitle("Delete selected recorded matches");
                  alert.setHeaderText("Are you Really want to delete selected recorded matches?");
@@ -202,10 +221,8 @@ public class RecordedHistoryTable extends AnchorPane {
                             HistoryTableModel selectedPerson = (HistoryTableModel) table_view.getSelectionModel().getSelectedItem();
                             String gc = selectedPerson.getGameContender().substring(0, selectedPerson.getGameContender().indexOf(" "));
                             String gs = selectedPerson.getGameStatus();
-                            String recordSteps=selectedPerson.getRecordFile();
-
+                            String recordSteps=selectedPerson.getGameSteps();
                             RecordedMatchScreenBase rmsb = new RecordedMatchScreenBase(gs, gc,recordSteps,stage);
-
                             Scene scene = new Scene(rmsb);
                             stage.setScene(scene);
                             stage.show();
@@ -213,19 +230,26 @@ public class RecordedHistoryTable extends AnchorPane {
                     }
                 }
         );
-
+            
+                    
+        colDateId.setId("colDateId");
+        colDateId.setPrefWidth(226.15);
+        colDateId.setResizable(false);
+        colDateId.setText("Date");
+        
         colNumId.setId("colNumId");
-        colNumId.setPrefWidth(226.15);
-        colNumId.setResizable(false);
+        colNumId.setPrefWidth(160.15);
+        colNumId.setResizable(true);
         colNumId.setText("Number");
+      
 
         colScoreId.setId("colScoreId");
-        colScoreId.setPrefWidth(226.15);
+        colScoreId.setPrefWidth(150.15);
         colScoreId.setResizable(false);
         colScoreId.setText("Score");
 
         colStatusId.setId("colStatusId");
-        colStatusId.setPrefWidth(226.15);
+        colStatusId.setPrefWidth(150.15);
         colStatusId.setResizable(false);
         colStatusId.setText("Status");
 
@@ -248,7 +272,9 @@ public class RecordedHistoryTable extends AnchorPane {
         getChildren().add(text);
         getChildren().add(deleteSelected_btn);
         getChildren().add(BackArrow);
+       
         table_view.getColumns().add(colNumId);
+        table_view.getColumns().add(colDateId);
         table_view.getColumns().add(colScoreId);
         table_view.getColumns().add(colStatusId);
         table_view.getColumns().add(colContenderId);
