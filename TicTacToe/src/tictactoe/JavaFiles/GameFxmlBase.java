@@ -289,7 +289,7 @@ public class GameFxmlBase extends AnchorPane {
             
              File folder = new File("..\\TicTacToe\\recordedFiles\\local");
              int name=folder.list().length+1;
-            gamefile=new File("D:\\iti_java_project\\Java-Project\\TicTacToe\\recordedFiles\\local\\"+name+".txt");
+            gamefile=new File("..\\TicTacToe\\recordedFiles\\local\\"+name+".txt");
             gamefile.createNewFile();
             String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
             PrintWriter writer = new PrintWriter(gamefile, "UTF-8");
@@ -313,14 +313,7 @@ public class GameFxmlBase extends AnchorPane {
             }catch(Exception e){
                 e.printStackTrace();
             }
-            
-            
-            
-            
-           
-            
-        
-       
+
          if(this.level=="easy"){
              System.out.println("esay");
             btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
