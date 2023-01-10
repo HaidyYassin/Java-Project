@@ -107,14 +107,16 @@ public class XOScreenBase extends AnchorPane {
         XImg.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord ,"x");
-        
+                GameFxmlBase gameScreen = new GameFxmlBase(stage, level, isrecord, "x");
+                gameScreen.text0.setText("You");
+                gameScreen.text2.setText("Computer");
+                gameScreen.text2.setLayoutX(17.0);
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);
                 stage.show();
-                
+
             }
-            
+
             
         });
     }
@@ -124,7 +126,9 @@ public class XOScreenBase extends AnchorPane {
             @Override
             public void handle(MouseEvent event) {
                 GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord, "o");
-        
+                gameScreen.text2.setText("You");
+                gameScreen.text0.setText("Computer");
+                gameScreen.text0.setLayoutX(17.0);
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);
                 stage.show();

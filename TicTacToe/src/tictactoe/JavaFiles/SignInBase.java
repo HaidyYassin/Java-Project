@@ -1,6 +1,7 @@
 package tictactoe.JavaFiles;
 
 import Models.PlayerData;
+import java.io.DataInputStream;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -26,12 +27,15 @@ public  class SignInBase extends Pane {
     protected final Text text0;
     protected final Text SignUpText;
     
+     static DataInputStream dis;
+    
     PlayerData playerData = new PlayerData();
 
     public SignInBase(Stage stage) {
 
         pane = new Pane();
         text = new Text();
+        
         emailTFSignIn = new TextField();
         passTFSignIn = new TextField();
         signInBtn = new Button();

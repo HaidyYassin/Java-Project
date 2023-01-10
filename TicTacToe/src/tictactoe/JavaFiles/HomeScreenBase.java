@@ -384,7 +384,7 @@ public class HomeScreenBase extends AnchorPane {
         });
     }
    private void navigetToNextScreen(String level){
-       
+                Scene scene;
                 ButtonType Yes = new ButtonType("Yes");
                 ButtonType No = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
                 Alert a = new Alert(Alert.AlertType.NONE);
@@ -396,17 +396,28 @@ public class HomeScreenBase extends AnchorPane {
                         getClass().getResource("/resources/cssFiles/CSS.css").toExternalForm());
                 dialogPane.getStyleClass().add("infoDialog");
                 a.showAndWait();
-                if (a.getResult() == Yes) {
-                    
-                    isrecord=true;
+                
+        if (a.getResult() == Yes) {
 
-                } else if (a.getResult() == No) {
-                    isrecord=false;
-                    System.out.println("alertNo");
-                }
-                XOScreenBase xoScreen = new XOScreenBase(stage, level,isrecord);
-                Scene scene = new Scene(xoScreen);
-                stage.setScene(scene);
-                stage.show();
+            isrecord = true;
+
+        } else if (a.getResult() == No) {
+            isrecord = false;
+            System.out.println("alertNo");
+
+        }
+
+        if (level == "medium" || level == "hard") {
+            GameFxmlBase gameScreen = new GameFxmlBase(stage, level, isrecord,"x");
+            scene = new Scene(gameScreen);
+            gameScreen.text2.setLayoutX(17.0);
+
+        } else {
+            XOScreenBase xoScreen = new XOScreenBase(stage, level, isrecord);
+            scene = new Scene(xoScreen);
+
+        }
+        stage.setScene(scene);
+        stage.show();
     }
 }

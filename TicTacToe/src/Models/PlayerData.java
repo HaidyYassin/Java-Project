@@ -18,15 +18,20 @@ public class PlayerData {
     }
     private String email;
     private String pass;
-    private int avatar;
+    private String avatar;
     private int score =0;
     
 
-    public PlayerData(int id, String name, String email, String pass, int avatar) {
+    public PlayerData(int id, String name, String email, String pass,String avatar) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.pass = pass;
+        this.avatar = avatar;
+    }
+    
+     public PlayerData( String name,String avatar) {
+        this.name = name;
         this.avatar = avatar;
     }
 
@@ -62,11 +67,11 @@ public class PlayerData {
         this.pass = pass;
     }
 
-    public int getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 

@@ -1,5 +1,10 @@
 package tictactoe.JavaFiles;
 
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,7 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class UsersFxml1Base extends AnchorPane {
+public class UsersFxml1Base extends AnchorPane implements Runnable{
 
     protected final Pane ServerPane;
     protected final Text text;
@@ -48,10 +53,14 @@ public class UsersFxml1Base extends AnchorPane {
     protected final Button button1;
     protected final DropShadow dropShadow1;
     Stage stage;
+    Thread th ;
+    DataInputStream dis;
 
     public UsersFxml1Base(Stage stage) {
 
         this.stage = stage;
+        th = new Thread(this);
+        dis= SignInBase.dis;
         ServerPane = new Pane();
         text = new Text();
         BackArrow = new ImageView();
@@ -296,6 +305,23 @@ public class UsersFxml1Base extends AnchorPane {
         hBox3.getChildren().add(button1);
         ServerPane.getChildren().add(hBox3);
         getChildren().add(ServerPane);
+        th.start();
 
     }
+    public void setList() {
+        while (true) {
+
+        }
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            
+
+        } 
+        
+    }
 }
+    
+

@@ -390,6 +390,12 @@
     -fx-height: 156.00000000000006px;
 }
 
+#text{
+   -fx-font-family: Britannic Bold;
+   -fx-font-size: 20.0px; 
+    
+}
+
 #UserPane{
     -fx-background-size:800 500;
     -fx-border-top: 3.0px;

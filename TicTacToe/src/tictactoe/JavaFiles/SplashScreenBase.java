@@ -28,7 +28,7 @@ public class SplashScreenBase extends Pane {
         imageView.setLayoutY(71.0);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
-        imageView.setImage(new Image(getClass().getResource("/resources/images/splash_icon.png").toExternalForm()));
+        //imageView.setImage(new Image(getClass().getResource("/resources/splash_icon.png").toExternalForm()));
 
         getChildren().add(imageView);
 
