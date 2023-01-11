@@ -16,8 +16,10 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import tictactoe.JavaFiles.HomeScreenBase;
+import tictactoe.JavaFiles.OnlineGame;
 import tictactoe.JavaFiles.SignInBase;
 import tictactoe.JavaFiles.SplashScreenBase;
+import tictactoe.JavaFiles.UsersFxml1Base;
 
 /**
  *
@@ -28,18 +30,19 @@ public class TicTacToe extends Application {
     MediaPlayer mediaPlayer;
     
     @Override
-    public void start(Stage stage) throws Exception {      
-        Parent root = new SplashScreenBase( stage);
+    public void start(Stage stage) throws Exception { 
+       
+        Parent root = new UsersFxml1Base(stage);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        
+        /*
         stage.setResizable(false); 
         Thread.sleep(3000);   
         
         scene = new Scene(new HomeScreenBase(stage));
         stage.setScene(scene);
-        stage.show();   
+        stage.show();   */
     }
     
 
@@ -70,7 +73,7 @@ public class TicTacToe extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) { 
-        music("D:\\MAD43-SV\\Java\\tic tac toe game\\tictactoejava\\Java-Project\\Java-Project\\TicTacToe\\src\\resources\\cssFiles\\bensound-bluebay.wav");
+        music("..\\Java-Project\\TicTacToe\\src\\resources\\cssFiles\\bensound-bluebay.wav");
         launch(args);
     }  
 }

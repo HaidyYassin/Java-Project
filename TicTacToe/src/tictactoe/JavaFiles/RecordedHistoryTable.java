@@ -96,7 +96,7 @@ public class RecordedHistoryTable extends AnchorPane {
 
     for (File file : listOfFiles) {
      if (file.isFile()) {
-         System.out.println(folder.list().length);
+        // System.out.println(folder.list().length);
         tableData.add(new HistoryTableModel(file));
     }
      

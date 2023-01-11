@@ -5,16 +5,14 @@
  */
 package tictactoe.JavaFiles;
 
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-/**
- *
- * @author WaterMelon
- */
-//public class MultiPlayer extends GameFxmlBase{
-//    
-////    public MultiPlayer(Stage stage, String level, String symbole) {
-////        //super(stage, level, ,symbole);
-////    }
-////    
-//}
+
+public class MultiPlayer {
+    
+    public MultiPlayer(Button []arra) {
+        
+    }
+    
+}
