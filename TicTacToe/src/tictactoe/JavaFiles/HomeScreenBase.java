@@ -41,7 +41,7 @@ public class HomeScreenBase extends AnchorPane {
     protected final ImageView mutedSoundImg;
 
     public HomeScreenBase(Stage stage) {
-
+        this.stage = stage;
         pane = new Pane();
         SMBtn = new Button();
         singleModeImg = new ImageView();

@@ -1,11 +1,21 @@
 package tictactoe.JavaFiles;
 
 import Models.PlayerData;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.HashMap;
+import java.util.StringTokenizer;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,10 +26,21 @@ import javafx.stage.Stage;
 
 public  class SignInBase extends Pane {
 
+    StringTokenizer token;
+    private Thread thread;
+    String email;
+    String password ;
+    boolean isvalid=false;
+    Socket socket;
+    DataInputStream dis;
+    PrintStream ps;
+    
+    
+    
     protected final Pane pane;
     protected final Text text;
     protected final TextField emailTFSignIn;
-    protected final TextField passTFSignIn;
+    protected final PasswordField passTFSignIn;
     protected final Button signInBtn;
     protected final ImageView imageView;
     protected final ImageView imageView0;
@@ -33,7 +54,7 @@ public  class SignInBase extends Pane {
         pane = new Pane();
         text = new Text();
         emailTFSignIn = new TextField();
-        passTFSignIn = new TextField();
+        passTFSignIn = new PasswordField();
         signInBtn = new Button();
         imageView = new ImageView();
         imageView0 = new ImageView();
@@ -93,6 +114,9 @@ public  class SignInBase extends Pane {
         passTFSignIn.setStyle("-fx-background-radius: 22; -fx-text-fill: #FFFFFF;");
         passTFSignIn.getStylesheets().add("/resources/cssFiles/CSS.css");
         passTFSignIn.setPadding(new Insets(0.0, 0.0, 0.0, 85.0));
+        //passTFSignIn.setSkin();
+        
+        
 
         signInBtn.setId("logInBtn");
         signInBtn.setLayoutX(104.0);
@@ -107,12 +131,138 @@ public  class SignInBase extends Pane {
         {
             @Override
             public void handle(ActionEvent event) 
-            {         
-                UsersFxml1Base usersScreen = new UsersFxml1Base(stage);
+            {     
+                 email = emailTFSignIn.getText().trim();
+                 password = passTFSignIn.getText().trim();
+               if(email.equals("") || password.equals("")){
+                   Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                   alert.setHeaderText("Incomplete Data !!");
+                   alert.showAndWait();    
+               }else{
+                         try {
+                        socket = new Socket(InetAddress.getLocalHost(),5005);
+                         dis = new DataInputStream(socket.getInputStream());
+                         ps = new PrintStream(socket.getOutputStream());
+                         ps.println("SignIn###"+email+"###"+password);
+                    } catch (IOException ex) {
+                            ex.printStackTrace();
+                    }
+                    thread =   new Thread(){
+                    String state,playerData;
+                    HashMap<String, String> hash = new HashMap<>(); 
+                    @Override
+                    public void run(){
+                        try {
+                            
+                            state = dis.readLine();
+                            token = new StringTokenizer(state,"###");
+                            String receivedState = token.nextToken();
+                            System.out.println("sign in page "+receivedState);
         
-                Scene scene = new Scene(usersScreen);
-                stage.setScene(scene);
-                stage.show();
+                            switch(receivedState){
+                                case "Logged in successfully":
+                                    playerData = dis.readLine();
+                                    System.out.println("player data "+playerData);
+                            
+                                    StringTokenizer token2 = new StringTokenizer(playerData,"###");
+                                    hash.put("username", token2.nextToken());
+                                    hash.put("email",token2.nextToken());
+                                    hash.put("score", token2.nextToken());
+                                     
+                                    
+                                     Platform.runLater(()->{
+                                        signIn(stage);
+                                         thread.stop();
+                                      
+                                      });
+                                    break;
+                                case "This Email is alreay sign-in":
+                                    System.out.println("already sign in before run later");
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                            alert.setHeaderText("This Email is " +receivedState);
+                                            alert.showAndWait();
+                                        }
+                                    });
+//                                    Platform.runLater(()->{
+//                                       txtAlret.setText(receivedState);
+//                                      });                                
+                                    break;
+                                case "Email is incorrect":
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                            alert.setHeaderText(receivedState);
+                                            alert.showAndWait();
+                                        }
+                                    });
+//                                    Platform.runLater(()->{
+//                                       txtAlret.setText(receivedState);
+//                                      });                                
+                                    break;
+                                case "Password is incorrect":
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                            alert.setHeaderText(receivedState);
+                                            alert.showAndWait();
+                                        }
+                                    });
+//                                     Platform.runLater(()->{
+//                                       txtAlret.setText(receivedState);
+//                                      });                                 
+                                    break;
+                                case "Connection issue, please try again later":
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                            alert.setHeaderText(receivedState);
+                                            alert.showAndWait();
+                                        }
+                                    });
+//                                     Platform.runLater(()->{
+//                                       txtAlret.setText(receivedState);
+//                                      }); 
+                                    break;
+                                default :
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                            alert.setHeaderText("Please Enter valid Credentials");
+                                            alert.showAndWait();
+                                        }
+                                    });
+                            }
+
+                        } catch (IOException ex) {
+                            Platform.runLater(() -> {
+                                try {
+                                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                    alert.setHeaderText("There is issue in connection game page will be closed");
+                                    alert.showAndWait(); 
+                                  
+                                    this.stop();
+                                    socket.close();
+                                    dis.close();
+                                    ps.close();
+                                } catch (IOException ex1) {
+                                    ex1.printStackTrace();
+                                }
+
+                                });
+                            System.out.println("111111111");
+                        }
+                    }
+                };   
+              thread.start();   
+               }
+                   
             }
         });
         
@@ -151,9 +301,7 @@ public  class SignInBase extends Pane {
         SignUpText.setText("Sign Up");
         SignUpText.setOnMouseClicked(new EventHandler<MouseEvent>(){
             public void handle(MouseEvent event) {
-               // Stage stage = new Stage();
                 SignUpBase signUp = new SignUpBase(stage);
-        
                 Scene scene = new Scene(signUp);
                 stage.setScene(scene);
                 stage.show();
@@ -172,5 +320,13 @@ public  class SignInBase extends Pane {
         pane.getChildren().add(SignUpText);
         getChildren().add(pane);
 
+    }
+    
+    
+     private void signIn(Stage stage){
+            HomeScreenBase homeScreen = new HomeScreenBase(stage);
+            Scene scene = new Scene(homeScreen);
+            stage.setScene(scene);
+            stage.show();
     }
 }
