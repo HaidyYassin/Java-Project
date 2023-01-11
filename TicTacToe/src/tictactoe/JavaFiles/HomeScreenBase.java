@@ -1,5 +1,7 @@
 package tictactoe.JavaFiles;
 
+import Models.PlayerData;
+import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -53,10 +55,12 @@ public class HomeScreenBase extends AnchorPane {
     protected final ImageView mutedSoundImg;
     Stage stage;
     static String name;
+   PlayerData player;
 
     public HomeScreenBase(Stage stage) {
 
         this.stage = stage;
+      //  hash = new HashMap<>();
         pane = new Pane();
         SMBtn = new Button();
         singleModeImg = new ImageView();
@@ -224,11 +228,16 @@ public class HomeScreenBase extends AnchorPane {
         profileImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                ProfileBase profileScreen = new ProfileBase(stage);
-
-                Scene scene = new Scene(profileScreen);
-                stage.setScene(scene);
-                stage.show();
+//                if(ConnectWithServer.dataFromServer.get("ISACTIVE") == null){
+//                    System.out.println("can't show profile");
+//                }
+//                else
+//                {
+                    ProfileBase profileScreen = new ProfileBase(stage);
+                    Scene scene = new Scene(profileScreen);
+                    stage.setScene(scene);
+                    stage.show();
+//                }
             }
         });
 

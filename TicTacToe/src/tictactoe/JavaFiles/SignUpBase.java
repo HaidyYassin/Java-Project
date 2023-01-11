@@ -4,7 +4,10 @@ import Models.PlayerData;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.InetAddress;
 import java.net.Socket;
+import java.util.HashMap;
+import static java.util.Objects.hash;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +28,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.util.regex.Pattern;
 import javafx.application.Platform;
+import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 
 public  class SignUpBase extends Pane {
@@ -35,6 +39,7 @@ public  class SignUpBase extends Pane {
     String userName;
     String email;
     String password ;
+    String Cpassword ;
     boolean isvalid=false;
     Socket socket;
     DataInputStream dis;
@@ -46,8 +51,8 @@ public  class SignUpBase extends Pane {
     protected final Text text;
     protected final TextField nameTFSignUp;
     protected final TextField mailTFSignUp;
-    protected final TextField passTFSignUp;
-    protected final TextField confirmPassTFSignUp;
+    protected final PasswordField passTFSignUp;
+    protected final PasswordField confirmPassTFSignUp;
     protected final ImageView imageView;
     protected final ImageView imageView0;
     protected final ImageView imageView1;
@@ -55,22 +60,22 @@ public  class SignUpBase extends Pane {
     protected final Button signUpBtn;
     protected final ImageView BackArrow;
     
-     
-
     public SignUpBase(Stage stage) {
 
+        
         pane = new Pane();
         text = new Text();
         nameTFSignUp = new TextField();
         mailTFSignUp = new TextField();
-        passTFSignUp = new TextField();
-        confirmPassTFSignUp = new TextField();
+        passTFSignUp = new PasswordField();
+        confirmPassTFSignUp = new PasswordField();
         imageView = new ImageView();
         imageView0 = new ImageView();
         imageView1 = new ImageView();
         imageView2 = new ImageView();
         BackArrow = new ImageView();
         signUpBtn = new Button();
+        
 
         setId("APane");
         setMaxHeight(USE_PREF_SIZE);
@@ -189,6 +194,7 @@ public  class SignUpBase extends Pane {
                 stage.show();
             }
         });
+        
 
         signUpBtn.setId("logInBtn");
         signUpBtn.setLayoutX(104.0);
@@ -201,64 +207,18 @@ public  class SignUpBase extends Pane {
         signUpBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                
-                if (nameTFSignUp.getText().equals("") ||  
-                    mailTFSignUp.getText().equals("") || passTFSignUp.getText().equals("")||
-                    confirmPassTFSignUp.getText().equals("") ){
-                     
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText("Incomplete Data !!");
-                        alert.showAndWait();     
-               }else if(!isvalid){
-                 //check name validation   
-                    if(Pattern.matches("^[a-zA-Z][a-zA-Z0-9_]{7,29}$", nameTFSignUp.getText())){
-                             //playerData.setName(nameTFSignUp.getText());
-                              userName = nameTFSignUp.getText().trim();
-                              isvalid = true;
-                     }else{
-                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                             alert.setHeaderText("Invalid Name!");
-                             alert.showAndWait();
-                         }
-                     //chec mail pattern    
-                     if(Pattern.matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", 
-                             mailTFSignUp.getText())){
-                             //playerData.setEmail(mailTFSignUp.getText());
-                              email = mailTFSignUp.getText().trim();
-                              isvalid = true;
-                     }else{
-                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                             alert.setHeaderText("Invalid mail!");
-                             alert.showAndWait();
-                         }
-                     if(Pattern.matches("[a-zA-Z0-9]{8,20}$",
-                             passTFSignUp.getText())){
-                             password = passTFSignUp.getText().trim();
-                             isvalid = true;
-                             //playerData.setPass(passTFSignUp.getText());
-                     }else{
-                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                             alert.setHeaderText("choose strong pass!");
-                             alert.showAndWait();
-                         }
-                         //playerData.setPass(passTFSignUp.getText());
-                          
-                         
-                         
-                     if(confirmPassTFSignUp.getText().equals( passTFSignUp.getText()) ){
-                             //second screen 
-                             isvalid = true;
-                     }else{
-                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                             alert.setHeaderText("wrong pass!");
-                             alert.showAndWait();
-                         }
-                }
-                if(isvalid){
-                    
+                if(checkdata()){
+                    try {
+                        socket = new Socket(InetAddress.getLocalHost(),5005);
+                         dis = new DataInputStream(socket.getInputStream());
+                         ps = new PrintStream(socket.getOutputStream());
+                         ps.println("SignUp###"+userName+"###"+email+"###"+password);
+                    } catch (IOException ex) {
+                            ex.printStackTrace();
+                    }
                     thread =   new Thread(){
                     String state,playerData;
-                    //HashMap<String, String> hash = new HashMap<>(); 
+                    HashMap<String, String> hash = new HashMap<>(); 
                     @Override
                     public void run(){
                         try {
@@ -271,20 +231,18 @@ public  class SignUpBase extends Pane {
                             
                             switch(receivedState){
                                 case "Registered Successfully":
-                                    System.out.println("asdfasdfasdfasdfas");
                                      playerData = dis.readLine();
                                      token = new StringTokenizer(playerData,"###");
-//                                     ps.out.("username", token.nextToken());
-//                                     MainController.hash.put("email",token.nextToken());
-//                                     MainController.hash.put("score", "0");
-                                    
-//                                     Platform.runLater(()->{
-//                                       //btnback.handleButtonBack(e,hash,socket);
-//                                       thread.stop();
-//                                       btnback.handleButtonBack(e);
-//                                     });
+                                     hash.put("name", token.nextToken());
+                                     hash.put("email",token.nextToken());
+                                     hash.put("score", "0");
+                                        
+                                     Platform.runLater(()->{
+                                         signup(stage);
+                                       thread.stop();
+                                       });
                                      
-//                                    this.stop();
+                                    this.stop();
                                     break;
                                     
                                 case "already signed-up":
@@ -298,20 +256,20 @@ public  class SignUpBase extends Pane {
                             }
                             
                         }catch (IOException ex) {
-//                            Platform.runLater(() -> {
-//                                try {
-//                                    AskDialog  serverIssueAlert  = new AskDialog();
-//                                    serverIssueAlert.serverIssueAlert("There is issue in connection game page will be closed");
-//                                    ButtonBack backtoLoginPage = new ButtonBack("/view/sample.fxml");
-//                                    backtoLoginPage.handleButtonBack(e);
-//                                    this.stop();
-//                                    socket.close();
-//                                    dis.close();
-//                                    ps.close();
-//                                } catch (IOException ex1) {
-//                                    ex1.printStackTrace();
-//                                }
-//                            });
+                            Platform.runLater(() -> {
+                                try {
+                                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                    alert.setHeaderText("There is issue in connection game page will be closed");
+                                    alert.showAndWait(); 
+                                  
+                                    this.stop();
+                                    socket.close();
+                                    dis.close();
+                                    ps.close();
+                                } catch (IOException ex1) {
+                                    ex1.printStackTrace();
+                                }
+                            });
                         }
                     }
                 };
@@ -337,22 +295,53 @@ public  class SignUpBase extends Pane {
     }
     
     private void signup(Stage stage){
-        HomeScreenBase homeScreen = new HomeScreenBase(stage);
-        
-                Scene scene = new Scene(homeScreen);
-                stage.setScene(scene);
-                stage.show();
+        UsersFxml1Base userScreen = new UsersFxml1Base(stage);
+        Scene scene = new Scene(userScreen);
+        stage.setScene(scene);
+        stage.show();
     }
     
-    private void connection(){
-
-                try {
-                    socket = new Socket("127.0.0.1",9081);
-                    DataInputStream dis = new DataInputStream(socket.getInputStream());
-                    PrintStream ps = new PrintStream(socket.getOutputStream());
-                    ps.println("SignUp###"+userName+"###"+email+"###"+password);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+    private boolean checkdata(){
+                userName = nameTFSignUp.getText().trim();
+                email = mailTFSignUp.getText().trim();
+                password = passTFSignUp.getText().trim();
+                Cpassword=confirmPassTFSignUp.getText().trim();
+                
+                if (userName.equals("") ||  email.equals("") || password.equals("")||Cpassword.equals("")){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText("Incomplete Data !!");
+                        alert.showAndWait();     
+               }else{
+               
+                    if(Pattern.matches("^[a-zA-Z][a-zA-Z0-9_]{3,29}$",userName)){        
+                      if(Pattern.matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",email)){
+                           if(Pattern.matches("[a-zA-Z0-9]{8,20}$",password)){
+                             if(Cpassword.equals(password) ){
+                                 return true;
+                         }else{
+                                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                 alert.setHeaderText("Password didn't match!!");
+                                 alert.showAndWait();
+                               }
+                               
+                     }else{
+                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                             alert.setHeaderText("choose strong pass!");
+                             alert.showAndWait();
+                         }      
+                     }else{
+                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                             alert.setHeaderText("Invalid mail!");
+                             alert.showAndWait();
+                         }  
+                     }else{
+                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                             alert.setHeaderText("Invalid Name!");
+                             alert.showAndWait();
+                    }      
                 }
+      return false;
     }
+    
+    
 }

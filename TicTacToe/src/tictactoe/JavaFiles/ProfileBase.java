@@ -1,9 +1,20 @@
 package tictactoe.JavaFiles;
 
+import Models.PlayerData;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.HashMap;
+import static java.util.Objects.hash;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Blend;
@@ -33,6 +44,9 @@ public class ProfileBase extends AnchorPane {
     protected final ImageView BackArrow;
     protected final Blend blend;
     Stage stage;
+    StringTokenizer token;
+    private Thread thread;
+    String Name;
 
     public ProfileBase(Stage stage) {
 
@@ -135,6 +149,14 @@ public class ProfileBase extends AnchorPane {
         Prof_User_Name.setStyle("-fx-background-color: #000000; -fx-background-radius: 15;");
         Prof_User_Name.getStylesheets().add("/resources/cssFiles/CSS.css");
         Prof_User_Name.setCursor(Cursor.DEFAULT);
+       
+        if(HasEmail()){
+           Prof_User_Name.setText(Name);
+           Prof_User_Name.setEditable(false);
+        }else{
+           Prof_User_Name.setText("Player");
+            Prof_User_Name.setEditable(false);
+        }
 
         Prof_score.setAlignment(javafx.geometry.Pos.CENTER);
         Prof_score.setId("ProfileTxt");
@@ -184,8 +206,8 @@ public class ProfileBase extends AnchorPane {
         Logout_Btn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                backToSignIn();
                 SignInBase signInScreen = new SignInBase(stage);
-
                 Scene scene = new Scene(signInScreen);
                 stage.setScene(scene);
                 stage.show();
@@ -193,4 +215,28 @@ public class ProfileBase extends AnchorPane {
         });
 
     }
+    
+    public void backToSignIn(){
+        System.out.println("backToSignIn: called");
+        if(ConnectWithServer.dataFromServer.get("email")!= null){
+            System.out.println("Send to server to logout");
+            ConnectWithServer.ps.println("logout###"+ConnectWithServer.dataFromServer.get("email"));
+            thread.stop();
+            try {
+                ConnectWithServer.socket.close();
+                ConnectWithServer.dis.close();
+                ConnectWithServer.ps.close();
+            } catch (IOException ex) {
+                ex.printStackTrace(); 
+            }   
+        }
+    }
+
+    private boolean HasEmail() {
+       if(ConnectWithServer.dataFromServer.get("email")!= null)
+       {Name= ConnectWithServer.dataFromServer.get("userName");
+            return true;}
+       return false;
+    }
 }
+
