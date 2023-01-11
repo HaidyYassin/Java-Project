@@ -712,8 +712,6 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
                  } );
                     break;
                
-               
-               
                }
            
            }

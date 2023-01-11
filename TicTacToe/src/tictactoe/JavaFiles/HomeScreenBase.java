@@ -1,23 +1,29 @@
 package tictactoe.JavaFiles;
 
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import tictactoe.JavaFiles.MusicPlayer;
+import tictactoe.JavaFiles.ProfileBase;
+import tictactoe.JavaFiles.SignInBase;
+import tictactoe.JavaFiles.XOScreenBase;
 
 public class HomeScreenBase extends AnchorPane {
-    Stage stage;
+
     protected final Pane pane;
     protected final Button SMBtn;
     protected final ImageView singleModeImg;
@@ -38,7 +44,15 @@ public class HomeScreenBase extends AnchorPane {
     protected final ImageView localImg;
     protected final ImageView onlineImg;
     protected final ImageView MMpanalBackArrow;
+    protected final Pane player2Namepanal;
+    protected final Button okBtn;
+    protected final ImageView BackArrow;
+    protected final Text text;
+    protected final Text text0;
+    protected final TextField nameFieldtxt;
     protected final ImageView mutedSoundImg;
+    Stage stage;
+    static String name;
 
     public HomeScreenBase(Stage stage) {
 
@@ -63,6 +77,12 @@ public class HomeScreenBase extends AnchorPane {
         localImg = new ImageView();
         onlineImg = new ImageView();
         MMpanalBackArrow = new ImageView();
+        player2Namepanal = new Pane();
+        okBtn = new Button();
+        BackArrow = new ImageView();
+        text = new Text();
+        text0 = new Text();
+        nameFieldtxt = new TextField();
         mutedSoundImg = new ImageView();
 
         setId("APane");
@@ -113,7 +133,7 @@ public class HomeScreenBase extends AnchorPane {
             MMpanal.setVisible(false);
             SMpanal.setVisible(true);
         });
-        
+
         MMBtn.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
         MMBtn.setId("MMBtn");
         MMBtn.setLayoutX(515.0);
@@ -145,7 +165,7 @@ public class HomeScreenBase extends AnchorPane {
             SMpanal.setVisible(false);
             MMpanal.setVisible(true);
         });
-        
+
         musicImg.setFitHeight(50.0);
         musicImg.setFitWidth(50.0);
         musicImg.setId("musicImg");
@@ -177,8 +197,7 @@ public class HomeScreenBase extends AnchorPane {
             mutedMusicImg.setVisible(false);
             MusicPlayer.ResumeMusic();
         });
-        
-        
+
         soundImg.setFitHeight(50.0);
         soundImg.setFitWidth(50.0);
         soundImg.setId("soundImg");
@@ -193,8 +212,7 @@ public class HomeScreenBase extends AnchorPane {
             mutedSoundImg.setVisible(true);
             
         });
-        
-        
+
         profileImg.setFitHeight(66.0);
         profileImg.setFitWidth(66.0);
         profileImg.setId("profileImg");
@@ -213,7 +231,7 @@ public class HomeScreenBase extends AnchorPane {
                 stage.show();
             }
         });
-  
+
         SMpanal.setId("SMpanal");
         SMpanal.setLayoutX(151.0);
         SMpanal.setLayoutY(185.0);
@@ -258,8 +276,7 @@ public class HomeScreenBase extends AnchorPane {
                  navigetToNextScreen("medium");
             
             }});
-        
-        
+
         hardBtn.setAlignment(javafx.geometry.Pos.CENTER);
         hardBtn.setId("SMBtn");
         hardBtn.setLayoutX(141.0);
@@ -277,7 +294,6 @@ public class HomeScreenBase extends AnchorPane {
                  navigetToNextScreen("hard");
             
             }});
-        
 
         SMpanalBackArrow.setFitHeight(50.0);
         SMpanalBackArrow.setFitWidth(50.0);
@@ -287,7 +303,7 @@ public class HomeScreenBase extends AnchorPane {
         SMpanalBackArrow.setPreserveRatio(true);
         SMpanalBackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
         SMpanalBackArrow.setOnMouseClicked(event -> { SMpanal.setVisible(false);});
-        
+
         MMpanal.setId("MMpanal");
         MMpanal.setLayoutX(151.0);
         MMpanal.setLayoutY(185.0);
@@ -310,10 +326,10 @@ public class HomeScreenBase extends AnchorPane {
         localBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                 navigetToNextScreen("local");
+                player2Namepanal.setVisible(true);
+                 //navigetToNextScreen("local");
             
             }});
-        
 
         onlineBtn.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
         onlineBtn.setId("onlineBtn");
@@ -333,8 +349,6 @@ public class HomeScreenBase extends AnchorPane {
                  stage.show();
             
             }});
-        
-        
 
         localImg.setFitHeight(230.0);
         localImg.setFitWidth(230.0);
@@ -343,11 +357,12 @@ public class HomeScreenBase extends AnchorPane {
         localImg.setPickOnBounds(true);
         localImg.setPreserveRatio(true);
         localImg.setImage(new Image(getClass().getResource("/resources/images/local.png").toExternalForm()));
-        localImg.setOnMouseClicked(event -> { 
-            navigetToNextScreen("local");
+        localImg.setOnMouseClicked(event
+                ->{
+            player2Namepanal.setVisible(true);
+            //navigetToNextScreen("local");
         });
-        
-        
+
         onlineImg.setFitHeight(200.0);
         onlineImg.setFitWidth(200.0);
         onlineImg.setLayoutX(347.0);
@@ -355,17 +370,13 @@ public class HomeScreenBase extends AnchorPane {
         onlineImg.setPickOnBounds(true);
         onlineImg.setPreserveRatio(true);
         onlineImg.setImage(new Image(getClass().getResource("/resources/images/online.png").toExternalForm()));
-        onlineImg.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                 Scene scene = new Scene(new SignInBase(stage));
-                 stage.setScene(scene);
-                 stage.show();
+        onlineImg.setOnMouseClicked(event -> { 
+            Scene scene = new Scene(new SignInBase(stage));
+            stage.setScene(scene);
+            stage.show();
             
-            }});
-        
-        
-        
+        });
+
         MMpanalBackArrow.setFitHeight(50.0);
         MMpanalBackArrow.setFitWidth(50.0);
         MMpanalBackArrow.setLayoutX(14.0);
@@ -374,6 +385,70 @@ public class HomeScreenBase extends AnchorPane {
         MMpanalBackArrow.setPreserveRatio(true);
         MMpanalBackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
         MMpanalBackArrow.setOnMouseClicked(event -> { MMpanal.setVisible(false);});
+
+        player2Namepanal.setId("MMpanal");
+        player2Namepanal.setLayoutX(116.0);
+        player2Namepanal.setLayoutY(75.0);
+        player2Namepanal.setPrefHeight(259.0);
+        player2Namepanal.setPrefWidth(404.0);
+        player2Namepanal.setStyle("-fx-background-radius: 12;");
+        player2Namepanal.getStylesheets().add("/resources/cssFiles/CSS.css");
+        player2Namepanal.setVisible(false);
+
+        okBtn.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
+        okBtn.setId("onlineBtn");
+        okBtn.setLayoutX(154.0);
+        okBtn.setLayoutY(173.0);
+        okBtn.setMnemonicParsing(false);
+        okBtn.setPrefHeight(65.0);
+        okBtn.setPrefWidth(96.0);
+        okBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
+        okBtn.setText("Ok");
+        okBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
+        okBtn.setOnMouseClicked(event
+                ->{
+            player2Namepanal.setVisible(false);
+            name = nameFieldtxt.getText();
+            navigetToNextScreen("local");
+        });
+
+        BackArrow.setFitHeight(50.0);
+        BackArrow.setFitWidth(50.0);
+        BackArrow.setLayoutX(14.0);
+        BackArrow.setLayoutY(12.0);
+        BackArrow.setPickOnBounds(true);
+        BackArrow.setPreserveRatio(true);
+        BackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
+        BackArrow.setOnMouseClicked(event -> { player2Namepanal.setVisible(false);});
+
+        text.setFill(javafx.scene.paint.Color.WHITE);
+        text.setId("signintxt");
+        text.setLayoutX(93.0);
+        text.setLayoutY(47.0);
+        text.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
+        text.setStrokeWidth(0.0);
+        text.setStyle("-fx-font-family: Britannic Bold; -fx-font-size: 26;");
+        text.setText("Enter Player's 2 Name");
+        text.setWrappingWidth(325.6630859375);
+
+        text0.setFill(javafx.scene.paint.Color.WHITE);
+        text0.setId("signintxt");
+        text0.setLayoutX(22.0);
+        text0.setLayoutY(123.0);
+        text0.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
+        text0.setStrokeWidth(0.0);
+        text0.setStyle("-fx-font-family: Britannic Bold; -fx-font-size: 20;");
+        text0.setText("Player's 2 Name");
+        text0.setWrappingWidth(157.6630859375);
+
+        nameFieldtxt.setId("emailTF");
+        nameFieldtxt.setLayoutX(194.0);
+        nameFieldtxt.setLayoutY(91.0);
+        nameFieldtxt.setPrefHeight(50.0);
+        nameFieldtxt.setPrefWidth(200.0);
+        nameFieldtxt.setStyle("-fx-background-radius: 22; -fx-text-fill: white;");
+        nameFieldtxt.getStylesheets().add("/resources/cssFiles/CSS.css");
+        nameFieldtxt.setPadding(new Insets(0.0, 0.0, 0.0, 85.0));
 
         mutedSoundImg.setFitHeight(50.0);
         mutedSoundImg.setFitWidth(50.0);
@@ -389,9 +464,7 @@ public class HomeScreenBase extends AnchorPane {
             mutedSoundImg.setVisible(false);
             
         });
-        
-        
-        
+
         pane.getChildren().add(SMBtn);
         pane.getChildren().add(singleModeImg);
         pane.getChildren().add(MMBtn);
@@ -412,10 +485,15 @@ public class HomeScreenBase extends AnchorPane {
         MMpanal.getChildren().add(MMpanalBackArrow);
         pane.getChildren().add(MMpanal);
         pane.getChildren().add(mutedSoundImg);
+        player2Namepanal.getChildren().add(okBtn);
+        player2Namepanal.getChildren().add(BackArrow);
+        player2Namepanal.getChildren().add(text);
+        player2Namepanal.getChildren().add(text0);
+        player2Namepanal.getChildren().add(nameFieldtxt);
+        MMpanal.getChildren().add(player2Namepanal);
         getChildren().add(pane);
 
     }
-    
     public void setProfileIconAction() {
         profileImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -433,7 +511,7 @@ public class HomeScreenBase extends AnchorPane {
 
     
     private void navigetToNextScreen(String level){
-       
+                Scene scene;
                 ButtonType Yes = new ButtonType("Yes");
                 ButtonType No = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
                 Alert a = new Alert(Alert.AlertType.NONE);
@@ -442,21 +520,32 @@ public class HomeScreenBase extends AnchorPane {
                 a.setHeaderText("Do you want to record this game?");
                 DialogPane dialogPane = a.getDialogPane();
                 dialogPane.getStylesheets().add(
-                getClass().getResource("/resources/cssFiles/CSS.css").toExternalForm());
+                        getClass().getResource("/resources/cssFiles/CSS.css").toExternalForm());
                 dialogPane.getStyleClass().add("infoDialog");
                 a.showAndWait();
-                if (a.getResult() == Yes) {
-                    
-                    isrecord=true;
+                
+        if (a.getResult() == Yes) {
 
-                } else if (a.getResult() == No) {
-                    isrecord=false;
-                    System.out.println("alertNo");
-                }
-                XOScreenBase xoScreen = new XOScreenBase(stage, level,isrecord);
-                Scene scene = new Scene(xoScreen);
-                stage.setScene(scene);
-                stage.show();
+            isrecord = true;
+
+        } else if (a.getResult() == No) {
+            isrecord = false;
+            System.out.println("alertNo");
+
+        }
+
+        if (level == "medium" || level == "hard") {
+            GameFxmlBase gameScreen = new GameFxmlBase(stage, level, isrecord, "x");
+            scene = new Scene(gameScreen);
+            gameScreen.text2.setLayoutX(17.0);
+
+        } 
+        else {
+            XOScreenBase xoScreen = new XOScreenBase(stage, level, isrecord);
+            scene = new Scene(xoScreen);
+
+        }
+        stage.setScene(scene);
+        stage.show();
     }
-
 }
