@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import static javafx.scene.control.ContentDisplay.GRAPHIC_ONLY;
 import javafx.scene.control.Label;
 import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -17,11 +18,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class GameFxmlBase extends AnchorPane {
-    boolean has_winner = false;
-    
+
     protected final ImageView imageView;
     protected final Blend blend;
     protected final ImageView imageView0;
@@ -57,24 +58,32 @@ public class GameFxmlBase extends AnchorPane {
     protected final Pane pane3;
     protected final ImageView player2Score;
     protected final Blend blend2;
-    
-    Stage stage;
-    String symbol;
-    String level;
-    int stepCounter;
-    boolean isYourTurn,isrecord;
-    int XO_turn;
-    Button[] btnArr = new Button[9];
+    protected final Button round_btn;
 
-    public GameFxmlBase(Stage stage, String level, boolean isrecord,String symbol) {
-        
-        this.stage=stage;
+    Stage stage;
+    String symbole;
+    String level;
+    int stepCounter,roundCounter;
+    boolean isYourTurn, isrecord;
+    int XO_turn;
+    boolean has_winner;
+    String computerSympole;
+    Button[] btnArr = new Button[9];
+    Button board[][] = new Button[3][3];
+
+    public GameFxmlBase(Stage stage, String level, boolean isrecord, String symbole) {
+
+        this.stage = stage;
         this.level = level;
-        this.symbol = symbol;
-        this.isrecord=isrecord;
+        this.symbole = symbole;
+        this.isrecord = isrecord;
+        checkComputerSympol();
+        has_winner = false;
         stepCounter = 0;
+        roundCounter=0;
         isYourTurn = true;
         XO_turn = 1;
+
         imageView = new ImageView();
         blend = new Blend();
         imageView0 = new ImageView();
@@ -110,6 +119,7 @@ public class GameFxmlBase extends AnchorPane {
         pane3 = new Pane();
         player2Score = new ImageView();
         blend2 = new Blend();
+        round_btn=new Button();
 
         setId("APane");
         setMaxHeight(USE_PREF_SIZE);
@@ -204,11 +214,12 @@ public class GameFxmlBase extends AnchorPane {
         text1.setFont(new Font("Arial Bold", 24.0));
 
         text2.setFill(javafx.scene.paint.Color.WHITE);
-        text2.setLayoutX(40.0);
+        text2.setLayoutX(38.0);
+        text2.setTextAlignment(javafx.scene.text.TextAlignment.LEFT);
         text2.setLayoutY(59.0);
         text2.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         text2.setStrokeWidth(0.0);
-        text2.setText("Omar");
+        text2.setText("Computer");
         text2.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         text2.setFont(new Font("Britannic Bold", 18.0));
 
@@ -259,109 +270,542 @@ public class GameFxmlBase extends AnchorPane {
         line2.setLayoutY(321.0);
         line2.setStartX(323.0);
         line2.setStartY(-320.0);
+        
+        btn1.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn1.setStyle("-fx-background-color:#4D0DA5;");
+        btn1.setLayoutX(4.0);
+        btn1.setLayoutY(1.0);
+        btn1.setMnemonicParsing(false);
+        btn1.setPrefHeight(153.0);
+        btn1.setPrefWidth(200.0);
+        btn1.setText(" ");
+        btn1.setContentDisplay(GRAPHIC_ONLY);
+        btn1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn1.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
+        btn2.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn2.setStyle("-fx-background-color:#4D0DA5;");
+        btn2.setLayoutX(205.0);
+        btn2.setLayoutY(1.0);
+        btn2.setMnemonicParsing(false);
+        btn2.setPrefHeight(153.2);
+        btn2.setPrefWidth(203.0);
+        btn2.setText(" ");
+        btn2.setContentDisplay(GRAPHIC_ONLY);
+       
+
+        btn3.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn3.setStyle("-fx-background-color:#4D0DA5;");
+        btn3.setLayoutX(409.0);
+        btn3.setLayoutY(1.0);
+        btn3.setMnemonicParsing(false);
+        btn3.setPrefHeight(154.0);
+        btn3.setPrefWidth(200.0);
+        btn3.setText(" ");
+        btn3.setContentDisplay(GRAPHIC_ONLY);
         
-       
-       
-        Button board[][] = { {btn1, btn2, btn3}, {btn4, btn5, btn6}, {btn7, btn8, btn9} };
-       
-         if(this.level=="easy"){
-             System.out.println("esay");
-            btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+
+        btn4.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn4.setStyle("-fx-background-color:#4D0DA5;");
+        btn4.setLayoutX(4.0);
+        btn4.setLayoutY(158.0);
+        btn4.setMnemonicParsing(false);
+        btn4.setPrefHeight(149.8);
+        btn4.setPrefWidth(200.0);
+        btn4.setText(" ");
+        btn4.setContentDisplay(GRAPHIC_ONLY);
+        btn4.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn4.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+
+        btn5.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn5.setStyle("-fx-background-color:#4D0DA5;");
+        btn5.setLayoutX(205.0);
+        btn5.setLayoutY(158.0);
+        btn5.setMnemonicParsing(false);
+        btn5.setPrefHeight(149.8);
+        btn5.setPrefWidth(203.0);
+        btn5.setText(" ");
+        btn5.setContentDisplay(GRAPHIC_ONLY);
+        btn5.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn5.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+
+        btn6.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn6.setStyle("-fx-background-color:#4D0DA5;");
+        btn6.setLayoutX(409.0);
+        btn6.setLayoutY(158.0);
+        btn6.setMnemonicParsing(false);
+        btn6.setPrefHeight(150.0);
+        btn6.setPrefWidth(200.0);
+        btn6.setContentDisplay(GRAPHIC_ONLY);
+        btn6.setText(" ");
+
+        btn7.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn7.setStyle("-fx-background-color:#4D0DA5;");
+        btn7.setLayoutX(4.0);
+        btn7.setLayoutY(312.0);
+        btn7.setMnemonicParsing(false);
+        btn7.setPrefHeight(147.0);
+        btn7.setPrefWidth(200.0);
+        btn7.setText(" ");
+        btn7.setContentDisplay(GRAPHIC_ONLY);
+        btn7.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn7.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+
+        btn8.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn8.setStyle("-fx-background-color:#4D0DA5;");
+        btn8.setContentDisplay(GRAPHIC_ONLY);
+        btn8.setLayoutX(205.0);
+        btn8.setLayoutY(312.0);
+        btn8.setMnemonicParsing(false);
+        btn8.setPrefHeight(147.0);
+        btn8.setPrefWidth(203.0);
+        btn8.setText(" ");
+        btn8.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn8.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+
+        btn9.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
+        btn9.setStyle("-fx-background-color:#4D0DA5;");
+        btn9.setLayoutX(409.0);
+        btn9.setLayoutY(312.0);
+        btn9.setMnemonicParsing(false);
+        btn9.setPrefHeight(147.0);
+        btn9.setPrefWidth(200.0);
+        btn9.setContentDisplay(GRAPHIC_ONLY);
+        btn9.setPrefWidth(200.0);
+        btn9.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        btn9.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
+        btn9.setText(" ");
+
+        pane2.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
+        pane2.setId("paneX");
+        pane2.setLayoutX(166.0);
+        pane2.setLayoutY(515.0);
+        pane2.setOpacity(0.87);
+        pane2.setPrefHeight(44.0);
+        pane2.setPrefWidth(55.0);
+        pane2.getStylesheets().add("/resources/cssFiles/CSS.css");
+
+        pane3.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
+        pane3.setId("paneX");
+        pane3.setLayoutX(1122.0);
+        pane3.setLayoutY(515.0);
+        pane3.setPrefHeight(44.0);
+        pane3.setPrefWidth(55.0);
+        pane3.getStylesheets().add("/resources/cssFiles/CSS.css");
+
+        newGame_btn.setCache(true);
+        newGame_btn.setId("but_ClearAll");
+        newGame_btn.setLayoutX(335.0);
+        newGame_btn.setLayoutY(629.0);
+        newGame_btn.setMnemonicParsing(false);
+        newGame_btn.setPrefHeight(59.0);
+        newGame_btn.setPrefWidth(210.0);
+        newGame_btn.setStyle("-fx-background-color: #ECC216; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-size: 24;");
+        newGame_btn.getStylesheets().add("/resources/cssFiles/CSS.css");
+        newGame_btn.setText("New Game");
+        newGame_btn.setTextFill(javafx.scene.paint.Color.valueOf("#efefef"));
+        newGame_btn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn1.getGraphic() == null) {
-                       btnDisable(false);
-                       btn1.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+                player1Score.setImage(new Image(getClass().getResource("/resources/images/0.png").toExternalForm()));
+                player2Score.setImage(new Image(getClass().getResource("/resources/images/0.png").toExternalForm()));
+                clearRecordedMatchCells();
+                round_btn.setText("First round");
+                roundCounter=0;
+            }
+        });
+
+        exit_btn.setCache(true);
+        exit_btn.setId("but_ClearAll");
+        exit_btn.setLayoutX(837.0);
+        exit_btn.setLayoutY(629.0);
+        exit_btn.setMnemonicParsing(false);
+        exit_btn.setPrefHeight(59.0);
+        exit_btn.setPrefWidth(210.0);
+        exit_btn.setStyle("-fx-background-color: #4D0DA5; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-size: 24;");
+        exit_btn.getStylesheets().add("/resources/cssFiles/CSS.css");
+        exit_btn.setText("Exit");
+        exit_btn.setTextFill(javafx.scene.paint.Color.valueOf("#efefef"));
+        exit_btn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn2.getGraphic() == null) {
-                       btnDisable(false);
-                       btn2.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+                HomeScreenBase homeScreen = new HomeScreenBase(stage);
+
+                Scene scene = new Scene(homeScreen);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
+        round_btn.setCache(true);
+        round_btn.setId("but_ClearAll");
+        round_btn.setLayoutX(592.0);
+        round_btn.setLayoutY(629.0);
+        round_btn.setMnemonicParsing(false);
+        round_btn.setPrefHeight(59.0);
+        round_btn.setPrefWidth(210.0);
+        round_btn.setBlendMode(BlendMode.MULTIPLY);
+        round_btn.setStyle("-fx-background-color: #4D0DA5; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-size: 24;");
+        round_btn.getStylesheets().add("/resources/cssFiles/CSS.css");
+        round_btn.setText("First round");
+        round_btn.setDisable(true);
+        round_btn.setTextFill(javafx.scene.paint.Color.valueOf("#efefef"));
+        round_btn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn3.getGraphic() == null) {
-                       btnDisable(false);
-                       btn3.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn4.getGraphic() == null) {
-                       btnDisable(false);
-                       btn4.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn5.getGraphic() == null) {
-                       btnDisable(false);
-                       btn5.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn6.getGraphic() == null) {
-                       btnDisable(false);
-                       btn6.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn7.getGraphic() == null) {
-                       btnDisable(false);
-                       btn7.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn8.getGraphic() == null) {
-                       btnDisable(false);
-                       btn8.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
-            btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                if(!has_winner) {
-                  if(btn9.getGraphic() == null) {
-                       btnDisable(false);
-                       btn9.setGraphic(drawXIcon());
-                       computerTurn();
-                           
-        }}}} );
+                clearRecordedMatchCells();
+                round_btn.setBlendMode(BlendMode.MULTIPLY);
+                round_btn.setDisable(true);
+                
+            }
+        });
         
-         }
-         else if(this.level=="local"){
-             
-            btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+        player1Score.setFitHeight(62.0);
+        player1Score.setFitWidth(63.0);
+        player1Score.setLayoutX(-1.0);
+        player1Score.setLayoutY(2.0);
+        player1Score.setPickOnBounds(true);
+        player1Score.setPreserveRatio(true);
+        player1Score.setImage(new Image(getClass().getResource("/resources/images/0.png").toExternalForm()));
+
+        player2Score.setFitHeight(62.0);
+        player2Score.setFitWidth(63.0);
+        player2Score.setLayoutX(-1.0);
+        player2Score.setLayoutY(-2.0);
+        player2Score.setPickOnBounds(true);
+        player2Score.setPreserveRatio(true);
+        player2Score.setImage(new Image(getClass().getResource("/resources/images/0.png").toExternalForm()));
+
+        setEffect(blend2);
+        setOpaqueInsets(new Insets(0.0));
+
+        getChildren().add(imageView);
+        getChildren().add(imageView0);
+        pane.getChildren().add(text);
+        pane.getChildren().add(imageView1);
+        pane.getChildren().add(text0);
+        getChildren().add(pane);
+        pane0.getChildren().add(text1);
+        pane0.getChildren().add(text2);
+        pane0.getChildren().add(imageView2);
+        getChildren().add(pane0);
+        getChildren().add(label);
+        pane1.getChildren().add(btn1);
+        pane1.getChildren().add(btn2);
+        pane1.getChildren().add(btn3);
+        pane1.getChildren().add(btn4);
+        pane1.getChildren().add(btn5);
+        pane1.getChildren().add(btn6);
+        pane1.getChildren().add(btn7);
+        pane1.getChildren().add(btn8);
+        pane1.getChildren().add(btn9);
+        pane1.getChildren().add(line);
+        pane1.getChildren().add(line0);
+        pane1.getChildren().add(line1);
+        pane1.getChildren().add(line2);
+        getChildren().add(pane1);
+        getChildren().add(newGame_btn);
+        getChildren().add(round_btn);
+        getChildren().add(exit_btn);
+        pane2.getChildren().add(player1Score);
+        getChildren().add(pane2);
+        pane3.getChildren().add(player2Score);
+        getChildren().add(pane3);
+        addBtns();
+
+        myTurn(level, symbole);
+        //playEasy(level, symbole);
+    }
+
+    public void addBtns() {
+        btnArr[0] = btn1;
+        btnArr[1] = btn2;
+        btnArr[2] = btn3;
+        btnArr[3] = btn4;
+        btnArr[4] = btn5;
+        btnArr[5] = btn6;
+        btnArr[6] = btn7;
+        btnArr[7] = btn8;
+        btnArr[8] = btn9;
+
+        board[0][0] = btn1;
+        board[0][1] = btn2;
+        board[0][2] = btn3;
+        board[1][0] = btn4;
+        board[1][1] = btn5;
+        board[1][2] = btn6;
+        board[2][0] = btn7;
+        board[2][1] = btn8;
+        board[2][2] = btn9;
+    }
+
+    public void disableBtns() {
+        for (int i = 0; i <= 8; i++) {
+            btnArr[i].setDisable(true);
+        }
+    }
+
+    static private ImageView drawOIcon() {
+
+        ImageView vimgO;
+        Image imgo;
+        imgo = new Image("/resources/images/oImage.png");
+        vimgO = new ImageView(imgo);
+        vimgO.setFitWidth(140);
+        vimgO.setFitHeight(130);
+        // vimgO.setBlendMode(javafx.scene.effect.BlendMode.MULTIPLY);
+        return vimgO;
+
+    }
+
+    ;
+    
+    static private ImageView drawIcon(String s) {
+        ImageView vimg;
+        Image img;
+        if (s == "x") {
+            img = new Image("/resources/images/xImage.png");
+        } else {
+            img = new Image("/resources/images/oImage.png");
+        }
+        vimg = new ImageView(img);
+        vimg.setFitWidth(140);
+        vimg.setFitHeight(130);
+        return vimg;
+    }
+
+    static private ImageView drawXIcon() {
+        Image imgX;
+        ImageView vimgX;
+        imgX = new Image("/resources/images/xImage.png");
+        vimgX = new ImageView(imgX);
+        vimgX.pickOnBoundsProperty();
+        vimgX.preserveRatioProperty();
+        // vimgX.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
+        vimgX.setFitWidth(140);
+        vimgX.setFitHeight(130);
+
+        return vimgX;
+
+    }
+
+    ;
+    
+    public boolean isEnd() {
+        if (stepCounter < 8) {
+            return false;
+        }
+        return true;
+    }
+
+    //hard level
+    public  boolean haveTheSameValueAndNotEmpty(Button x, Button y, Button z) {
+        if (x.getText() == y.getText() && x.getText() == z.getText() && !(x.getText().equals(" "))) {
+            //x.setStyle("-fx-background-color:#FFEB3B;");
+
+            x.setStyle("-fx-background-color:#FFEB3B;");
+            y.setStyle("-fx-background-color:#FFEB3B;");
+            z.setStyle("-fx-background-color:#FFEB3B;");
+            setRound(x.getText());
+            return true;
+        }
+        //setRound("t");
+        return false;
+    }
+
+    public int checkWinner(Button board[][]) {
+        //  2: X winner
+        // -2: O winner
+        //  0: Tie
+        //  1: No winner
+
+        // For rows
+        for (int i = 0; i < 3; i++) {
+            if (haveTheSameValueAndNotEmpty(board[i][0], board[i][1], board[i][2])) {
+
+                has_winner = true;
+                return board[i][0].getText() == "X" ? 2 : -2;
+
+            }
+        }
+
+        // For cols
+        for (int i = 0; i < 3; i++) {
+            if (haveTheSameValueAndNotEmpty(board[0][i], board[1][i], board[2][i])) {
+
+                has_winner = true;
+                return board[0][i].getText() == "X" ? 2 : -2;
+            }
+        }
+
+        // Diameter 1
+        if (haveTheSameValueAndNotEmpty(board[0][0], board[1][1], board[2][2])) {
+            has_winner = true;
+            return board[0][0].getText() == "X" ? 2 : -2;
+        }
+        // Diameter 2
+        if (haveTheSameValueAndNotEmpty(board[2][0], board[1][1], board[0][2])) {
+            has_winner = true;
+            return board[2][0].getText() == "X" ? 2 : -2;
+        }
+        // For Tie Case
+        boolean tie = true;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j].getText() == " ") {
+                    tie = false;
+                }
+            }
+        }
+        if (tie) {
+            return 0;
+        }
+
+        // Else
+        return 1;
+    }
+
+    public int minimax(Button board[][], int depth, boolean isMaximizing, boolean firstTime) {
+        int result = checkWinner(board);
+        if (depth == 0 || result != 1) {
+            return result;
+        }
+
+        if (isMaximizing) {
+            int finalScore = -10;
+            int finalI = 0, finalJ = 0;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (board[i][j].getText() == " ") {
+                        board[i][j].setText("X");
+                        board[i][j].setContentDisplay(GRAPHIC_ONLY);
+
+                        int score = minimax(board, depth - 1, false, false);
+                        board[i][j].setText(" ");
+                        if (score > finalScore) {
+                            finalScore = score;
+                            finalI = i;
+                            finalJ = j;
+                        }
+                        if (firstTime) {
+                            System.out.print("score," + i + "," + j + ": " + score + "\n");
+                        }
+                    }
+                }
+            }
+            if (firstTime) {
+                board[finalI][finalJ].setText("X");
+                board[finalI][finalJ].setGraphic(drawXIcon());
+                board[finalI][finalJ].setContentDisplay(GRAPHIC_ONLY);
+            }
+            return finalScore;
+        } else {
+            int finalScore = 10;
+            int finalI = 0, finalJ = 0;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (board[i][j].getText() == " ") {
+                        board[i][j].setText("O");
+                        board[i][j].setContentDisplay(GRAPHIC_ONLY);
+                        //drawOIcon();
+                        int score = minimax(board, depth - 1, true, false);
+                        board[i][j].setText(" ");
+                        if (score < finalScore) {
+                            finalScore = score;
+                            finalI = i;
+                            finalJ = j;
+                        }
+                        if (firstTime) {
+                            System.out.print("score," + i + "," + j + ": " + score + "\n");
+                        }
+                    }
+                }
+            }
+            if (firstTime) {
+                board[finalI][finalJ].setText("O");
+                board[finalI][finalJ].setGraphic(drawOIcon());
+                board[finalI][finalJ].setContentDisplay(GRAPHIC_ONLY);
+            }
+            return finalScore;
+        }
+    }
+
+     private void clearRecordedMatchCells() {
+        btn1.setGraphic(null);
+        btn2.setGraphic(null);
+        btn3.setGraphic(null);
+        btn4.setGraphic(null);
+        btn5.setGraphic(null);
+        btn6.setGraphic(null);
+        btn7.setGraphic(null);
+        btn8.setGraphic(null);
+        btn9.setGraphic(null);
+        btn1.setText(" ");
+        btn2.setText(" ");
+        btn3.setText(" ");
+        btn4.setText(" ");
+        btn5.setText(" ");
+        btn6.setText(" ");
+        btn7.setText(" ");
+        btn8.setText(" ");
+        btn9.setText(" ");
+        returnColor();
+        has_winner = false;
+        isYourTurn = true;
+        stepCounter = 0;
+
+    }
+
+    public void checkComputerSympol() {
+        if (symbole == "x") {
+            computerSympole = "o";
+        } else {
+            computerSympole = "x";
+    
+        }
+    }
+
+    public void computerTurn(String level, String s) {
+        // btnDisable(true);
+        if (level.equals("easy")) {
+            int min = 0;
+            int max = 8;
+            int rand = (int) (Math.random() * (max - min + 1) + min);
+
+            if (isYourTurn == false && has_winner == false) {
+                while (!isEnd() && btnArr[rand].getGraphic() != null) {
+                    rand = (int) (Math.random() * (max - min + 1) + min);
+
+                }
+                if (btnArr[rand].getGraphic() == null) {
+                    btnArr[rand].setGraphic(drawIcon(s));
+                    btnArr[rand].setText(s);
+                    checkWinner(board);
+                    isYourTurn = true;
+                    // btnArr[rand].setDisable(true);
+                    stepCounter++;
+                }
+            }
+        }
+    }
+
+    public void myTurn(String level, String s) {
+        // Button board[][] = { {btn1, btn2, btn3}, {btn4, btn5, btn6}, {btn7, btn8, btn9} };
+        if (level == "easy") {
+
+            playEasy(level, s);
+        }
+        if (this.level == "local") {
+            playLocalMode(s);
+
+        }
+        if (level == "medium" || level == "hard") {
+            playHardOrMedium();
+
+        }
+    }
+
+    public void playLocalMode(String symbol ) {
+    btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
          @Override
          public void handle(ActionEvent event) {
               if(!has_winner) {
@@ -835,10 +1279,162 @@ public class GameFxmlBase extends AnchorPane {
                }
          }
       });
-              
-         }
-         else{
-            btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+    }
+
+      public void playEasy(String level, String s) {
+        btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (has_winner == false && isYourTurn == true &&btn1.getGraphic()==null) {
+                    btn1.setGraphic(drawIcon(s));
+                    btn1.setText(s);
+                    stepCounter++;
+                    checkWinner(board);
+                    isYourTurn = false;
+                    // btn1.setDisable(true);
+                    computerTurn(level, computerSympole);
+
+                }
+            }
+        });
+
+        btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (has_winner == false && isYourTurn == true&& btn2.getGraphic()==null) {
+                    btn2.setGraphic(drawIcon(s));
+                    btn2.setText(s);
+                    checkWinner(board);
+                    //setRound(checkWinner(board));
+                    stepCounter++;
+                    isYourTurn = false;
+                    // btn2.setDisable(true);
+
+                    computerTurn(level, computerSympole);
+                }
+            }
+        });
+        btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (has_winner == false && isYourTurn == true&&btn3.getGraphic()==null) {
+                    btn3.setGraphic(drawIcon(s));
+                    btn3.setText(s);
+                    checkWinner(board);
+                    //setRound(checkWinner(board));
+                    stepCounter++;
+                    isYourTurn = false;
+                    // btn3.setDisable(true);
+
+                    computerTurn(level, computerSympole);
+
+                }
+            }
+        });
+        btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (has_winner == false && isYourTurn == true&&btn4.getGraphic()==null) {
+                    btn4.setGraphic(drawIcon(s));
+                    btn4.setText(s);
+                    checkWinner(board);
+                    //setRound(checkWinner(board));
+                    stepCounter++;
+                    isYourTurn = false;
+                    // btn4.setDisable(true);
+
+                    computerTurn(level, computerSympole);
+
+                }
+            }
+        });
+        btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (has_winner == false && isYourTurn == true&&btn5.getGraphic()==null) {
+                    btn5.setGraphic(drawIcon(s));
+                    btn5.setText(s);
+                    checkWinner(board);
+                   // setRound(checkWinner(board));
+                    stepCounter++;
+                    isYourTurn = false;
+                    // btn5.setDisable(true);
+
+                    computerTurn(level, computerSympole);
+
+                }
+            }
+        });
+        btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (has_winner == false && isYourTurn == true&&btn6.getGraphic()==null) {
+                    btn6.setGraphic(drawIcon(s));
+                    btn6.setText(s);
+                    checkWinner(board);
+                    // setRound(checkWinner(board));
+                    stepCounter++;
+                    isYourTurn = false;
+                    // btn6.setDisable(true);
+
+                    computerTurn(level, computerSympole);
+
+                }
+            }
+        });
+        btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (has_winner == false && isYourTurn == true &&btn5.getGraphic()==null) {
+                    btn7.setGraphic(drawIcon(s));
+                    btn7.setText(s);
+                    checkWinner(board);
+                   // setRound(checkWinner(board));
+                    stepCounter++;
+                    isYourTurn = false;
+                    //btn7.setDisable(true);
+
+                    computerTurn(level, computerSympole);
+
+                }
+            }
+        });
+        btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (has_winner == false && isYourTurn == true&&btn8.getGraphic()==null) {
+                    btn8.setGraphic(drawIcon(s));
+                    btn8.setText(s);
+                    checkWinner(board);
+                    // setRound(checkWinner(board));
+                    stepCounter++;
+                    isYourTurn = false;
+                    //btn8.setDisable(true);
+                    computerTurn(level, computerSympole);
+
+                }
+            }
+        });
+        btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (has_winner == false && isYourTurn == true&&btn9.getGraphic()==null) {
+                    btn9.setGraphic(drawIcon(s));
+                    btn9.setText(s);
+                    checkWinner(board);
+                    //setRound(checkWinner(board));
+                    stepCounter++;
+                    isYourTurn = false;
+                    // btn9.setDisable(true);
+                    computerTurn(level, computerSympole);
+
+                }
+            }
+        });
+
+    }
+    public void playHardOrMedium() {
+        btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                 if(!has_winner) {
@@ -1191,510 +1787,11 @@ public class GameFxmlBase extends AnchorPane {
                  }
             }});
          
-         }
+         
             
-        
-        btn1.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn1.setStyle("-fx-background-color:#4D0DA5;");
-        btn1.setLayoutX(4.0);
-        btn1.setLayoutY(1.0);
-        btn1.setMnemonicParsing(false);
-        btn1.setPrefHeight(150.0);
-        btn1.setPrefWidth(200.0);
-        btn1.setText(" ");
-        btn1.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn1.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        
-        
-    
-        btn2.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn2.setStyle("-fx-background-color:#4D0DA5;");
-        btn2.setLayoutX(205.0);
-        btn2.setLayoutY(4.0);
-        btn2.setMnemonicParsing(false);
-        btn2.setPrefHeight(150.0);
-        btn2.setText(" ");
-        btn2.setPrefWidth(200.0);
-      
-        btn3.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn3.setStyle("-fx-background-color:#4D0DA5;");
-        btn3.setLayoutX(409.0);
-        btn3.setLayoutY(1.0);
-        btn3.setMnemonicParsing(false);
-        btn3.setPrefHeight(150.0);
-        btn3.setText(" ");
-        btn3.setPrefWidth(200.0);
-       
-        
-
-        btn4.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn4.setStyle("-fx-background-color:#4D0DA5;");
-        btn4.setLayoutX(4.0);
-        btn4.setLayoutY(158.0);
-        btn4.setMnemonicParsing(false);
-        btn4.setPrefHeight(150.0);
-        btn4.setPrefWidth(200.0);
-        btn4.setText(" ");
-        btn4.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn4.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        
-        
-        
-        btn5.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn5.setStyle("-fx-background-color:#4D0DA5;");
-        btn5.setLayoutX(205.0);
-        btn5.setLayoutY(158.0);
-        btn5.setMnemonicParsing(false);
-        btn5.setPrefHeight(150.0);
-        btn5.setPrefWidth(200.0);
-        btn5.setText(" ");
-        btn5.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn5.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-       
-        
-        
-        
-        btn6.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn6.setStyle("-fx-background-color:#4D0DA5;");
-        btn6.setLayoutX(410.0);
-        btn6.setLayoutY(155.0);
-        btn6.setMnemonicParsing(false);
-        btn6.setPrefHeight(150.0);
-        btn6.setPrefWidth(200.0);
-        btn6.setText(" ");
-       
-        
-
-        btn7.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn7.setStyle("-fx-background-color:#4D0DA5;");
-        btn7.setLayoutX(4.0);
-        btn7.setLayoutY(312.0);
-        btn7.setMnemonicParsing(false);
-        btn7.setPrefHeight(147.0);
-        btn7.setPrefWidth(200.0);
-        btn7.setText(" ");
-        btn7.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn7.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        
-        btn8.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn8.setStyle("-fx-background-color:#4D0DA5;");
-        btn8.setLayoutX(205.0);
-        btn8.setLayoutY(312.0);
-        btn8.setMnemonicParsing(false);
-        btn8.setPrefHeight(147.0);
-        btn8.setPrefWidth(200.0);
-        btn8.setText(" ");
-        btn8.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn8.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        
-        
-        btn9.setBlendMode(javafx.scene.effect.BlendMode.SRC_OVER);
-        btn9.setStyle("-fx-background-color:#4D0DA5;");
-        btn9.setLayoutX(409.0);
-        btn9.setLayoutY(312.0);
-        btn9.setMnemonicParsing(false);
-        btn9.setPrefHeight(147.0);
-        btn9.setPrefWidth(200.0);
-        btn9.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        btn9.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
-        btn9.setText(" ");
-       
-        
-        
-        
-        pane2.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
-        pane2.setId("paneX");
-        pane2.setLayoutX(166.0);
-        pane2.setLayoutY(515.0);
-        pane2.setOpacity(0.87);
-        pane2.setPrefHeight(44.0);
-        pane2.setPrefWidth(55.0);
-        pane2.getStylesheets().add("/resources/cssFiles/CSS.css");
-        
-        pane3.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
-        pane3.setId("paneX");
-        pane3.setLayoutX(1122.0);
-        pane3.setLayoutY(515.0);
-        pane3.setPrefHeight(44.0);
-        pane3.setPrefWidth(55.0);
-        pane3.getStylesheets().add("/resources/cssFiles/CSS.css");
-        
-        newGame_btn.setCache(true);
-        newGame_btn.setId("but_ClearAll");
-        newGame_btn.setLayoutX(413.0);
-        newGame_btn.setLayoutY(637.0);
-        newGame_btn.setMnemonicParsing(false);
-        newGame_btn.setPrefHeight(59.0);
-        newGame_btn.setPrefWidth(210.0);
-        newGame_btn.setStyle("-fx-background-color: #4D0DA5; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-size: 24;");
-        newGame_btn.getStylesheets().add("/resources/cssFiles/CSS.css");
-        newGame_btn.setText("New Game");
-        newGame_btn.setTextFill(javafx.scene.paint.Color.valueOf("#efefef"));
-        newGame_btn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
-        {
-            @Override
-            public void handle(ActionEvent event) 
-            {         
-                player1Score.setImage(new Image(getClass().getResource("/resources/images/0.png").toExternalForm()));
-                player2Score.setImage(new Image(getClass().getResource("/resources/images/0.png").toExternalForm()));
-                XO_turn = 1;
-                clearRecordedMatchCells();
-            }
-        });
-
-        exit_btn.setCache(true);
-        exit_btn.setId("but_ClearAll");
-        exit_btn.setLayoutX(752.0);
-        exit_btn.setLayoutY(637.0);
-        exit_btn.setMnemonicParsing(false);
-        exit_btn.setPrefHeight(59.0);
-        exit_btn.setPrefWidth(210.0);
-        exit_btn.setStyle("-fx-background-color: #4D0DA5; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-size: 24;");
-        exit_btn.getStylesheets().add("/resources/cssFiles/CSS.css");
-        exit_btn.setText("Exit");
-        exit_btn.setTextFill(javafx.scene.paint.Color.valueOf("#efefef"));
-        exit_btn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
-        {
-            @Override
-            public void handle(ActionEvent event) 
-            {         
-                HomeScreenBase homeScreen = new HomeScreenBase(stage);
-
-                Scene scene = new Scene(homeScreen);
-                stage.setScene(scene);
-                stage.show();
-            }
-        });
-
-        player1Score.setFitHeight(62.0);
-        player1Score.setFitWidth(63.0);
-        player1Score.setLayoutX(-1.0);
-        player1Score.setLayoutY(2.0);
-        player1Score.setPickOnBounds(true);
-        player1Score.setPreserveRatio(true);
-        player1Score.setImage(new Image(getClass().getResource("/resources/images/1.png").toExternalForm()));
-
-        player2Score.setFitHeight(59.0);
-        player2Score.setFitWidth(63.0);
-        player2Score.setLayoutX(-1.0);
-        player2Score.setLayoutY(-2.0);
-        player2Score.setPickOnBounds(true);
-        player2Score.setPreserveRatio(true);
-        player2Score.setImage(new Image(getClass().getResource("/resources/images/2.png").toExternalForm()));
-
-        setEffect(blend2);
-        setOpaqueInsets(new Insets(0.0));
-
-        getChildren().add(imageView);
-        getChildren().add(imageView0);
-        pane.getChildren().add(text);
-        pane.getChildren().add(imageView1);
-        pane.getChildren().add(text0);
-        getChildren().add(pane);
-        pane0.getChildren().add(text1);
-        pane0.getChildren().add(text2);
-        pane0.getChildren().add(imageView2);
-        getChildren().add(pane0);
-        getChildren().add(label);
-        pane1.getChildren().add(btn1);
-        pane1.getChildren().add(btn2);
-        pane1.getChildren().add(btn3);
-        pane1.getChildren().add(btn4);
-        pane1.getChildren().add(btn5);
-        pane1.getChildren().add(btn6);
-        pane1.getChildren().add(btn7);
-        pane1.getChildren().add(btn8);
-        pane1.getChildren().add(btn9);
-        pane1.getChildren().add(line);
-        pane1.getChildren().add(line0);
-        pane1.getChildren().add(line1);
-        pane1.getChildren().add(line2);
-        getChildren().add(pane1);
-        getChildren().add(newGame_btn);
-        getChildren().add(exit_btn);
-        pane2.getChildren().add(player1Score);
-        getChildren().add(pane2);
-        pane3.getChildren().add(player2Score);
-        getChildren().add(pane3);
-        
-        
-        btnArr[0] = btn1;
-        btnArr[1] = btn2;
-        btnArr[2] = btn3;
-        btnArr[3] = btn4;
-        btnArr[4] = btn5;
-        btnArr[5] = btn6;
-        btnArr[6] = btn7;
-        btnArr[7] = btn8;
-        btnArr[8] = btn9;
-
-        //handleGame();
 
     }
-    
-    public void handleGame()
-    {
-        
-            if(isYourTurn)
-                yourTurn();
-            else
-                computerTurn();
-        
-    }
-    
-    public void yourTurn()
-    {
-        btnDisable(false);
-        
-        btn1.setOnAction((e) -> {
-            btn1.setGraphic(drawXIcon());
-            isYourTurn = false;
-            
-        });
-        btn3.setOnAction((e) -> {
-            btn3.setGraphic(drawXIcon());
-            isYourTurn = false;
-        });
-        btn9.setOnAction((e) -> {
-            btn9.setGraphic(drawXIcon());
-            isYourTurn = false;
-        });     
-    }
-    
-    public void computerTurn()
-    {
-        btnDisable(true);
-        if(level.equals("easy"))
-        {
-            int min = 0;
-            int max = 8;
-            int rand = (int)(Math.random()*(max - min + 1) + min);
-            
-            while(!isEnd() && btnArr[rand].getGraphic() != null)
-            {
-                rand = (int)(Math.random()*(max - min + 1) + min);
-            }
-            if(btnArr[rand].getGraphic() == null)
-            {
-                btnArr[rand].setGraphic(drawOIcon());
-                isYourTurn = true;
-            }
-            stepCounter ++;
-            
-           
-        }
-    }
-    
-    public void btnDisable(boolean disable)
-    {
-        if(disable == true)
-        {
-            for(int i = 0; i < 9; i++)
-            {
-                 btnArr[i].setDisable(disable);
-            }
-        }
-        
-        else
-        {
-            for(int i = 0; i < 9; i++)
-            {
-                if(btnArr[i].getGraphic() == null)
-                    btnArr[i].setDisable(disable);
-                else
-                    btnArr[i].setDisable(true);
-            }
-        }
-    }
-    
-    static private ImageView drawOIcon(){
-        ImageView vimgO;
-        Image imgo ;
-        imgo = new Image("/resources/images/oImage.png");
-        vimgO = new ImageView(imgo);             
-        vimgO.setFitWidth(140);
-        vimgO.setFitHeight(130);
-       // vimgO.setBlendMode(javafx.scene.effect.BlendMode.MULTIPLY);
-        return vimgO;
-    
-    };
-    static private ImageView drawXIcon(){
-        Image imgX ;
-        ImageView vimgX;
-        imgX = new Image("/resources/images/xImage.png");
-        vimgX = new ImageView(imgX);
-        vimgX.pickOnBoundsProperty();
-        vimgX.preserveRatioProperty();
-       // vimgX.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
-        vimgX.setFitWidth(140);
-        vimgX.setFitHeight(130);
-        
-        return vimgX;
-    
-    };
-    
-    public boolean isEnd()
-    {
-        if(stepCounter < 8)
-            return false;
-        return true;
-    }
-    
-    //hard level
-    public static boolean haveTheSameValueAndNotEmpty(Button x, Button y, Button z) {
-    if(x.getText() == y.getText() && x.getText() == z.getText() && !(x.getText().equals(" "))) {
-        //x.setStyle("-fx-background-color:#FFEB3B;");
-
-          x.setStyle("-fx-background-color:#FFEB3B;");
-          y.setStyle("-fx-background-color:#FFEB3B;");
-          z.setStyle("-fx-background-color:#FFEB3B;");
-        return true;
-    }
-    return false;
-}
-    
-    public static int checkWinner(Button board[][]) {
-    //  2: X winner
-    // -2: O winner
-    //  0: Tie
-    //  1: No winner
-
-    // For rows
-    for(int i = 0; i < 3; i++) {
-        if(haveTheSameValueAndNotEmpty(board[i][0], board[i][1], board[i][2])) {
-
-//            board[i][0].setStyle("-fx-background-color:#FFEB3B;");
-//            board[i][1].setStyle("-fx-background-color:#FFEB3B;");
-//            board[i][2].setStyle("-fx-background-color:#FFEB3B;");
-
-            return board[i][0].getText() == "X" ? 2 : -2;
-        }
-    }
-
-    // For cols
-    for(int i = 0; i < 3; i++) {
-        if(haveTheSameValueAndNotEmpty(board[0][i], board[1][i], board[2][i])) {
-            return board[0][i] .getText() == "X" ? 2 : -2;
-        }
-    }
-    
-    // Diameter 1
-    if(haveTheSameValueAndNotEmpty(board[0][0], board[1][1], board[2][2])) {
-        return board[0][0].getText() == "X" ? 2 : -2;
-    }
-
-    // Diameter 2
-    else if(haveTheSameValueAndNotEmpty(board[2][0], board[1][1], board[0][2])) {
-        return board[2][0] .getText() == "X" ? 2 : -2;
-    }
-
-    // For Tie Case
-    boolean tie = true;
-    for(int i = 0; i < 3; i++) {
-        for(int j = 0; j < 3; j++) {
-            if(board[i][j].getText() == " ") {
-                tie = false;
-            }
-        }   
-    }
-    if(tie) return 0;
-
-    // Else
-    return 1;
-}
-
-public static int minimax(Button board[][], int depth, boolean isMaximizing, boolean firstTime){
-    int result = checkWinner(board);
-    if(depth == 0 || result != 1) {
-        return result;
-    }
-
-    if(isMaximizing) {
-        int finalScore = -10;
-        int finalI = 0, finalJ = 0;
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
-                if(board[i][j].getText() == " ") {
-                    board[i][j].setText("X");
-                    board[i][j].setContentDisplay(GRAPHIC_ONLY);
-
-                    int score = minimax(board, depth - 1, false, false);
-                    board[i][j].setText(" ");
-                    if(score > finalScore) {
-                        finalScore = score;
-                        finalI = i;
-                        finalJ = j;
-                    }
-                    if(firstTime) {
-                       // System.out.print( "score," + i + "," + j + ": " +score + "\n");
-                    }
-                }
-            }   
-        }
-        if(firstTime) {
-            board[finalI][finalJ].setText("X");
-            board[finalI][finalJ].setGraphic(drawXIcon());
-            board[finalI][finalJ].setContentDisplay(GRAPHIC_ONLY);
-        }
-        return finalScore;
-    } else {
-        int finalScore = 10;
-        int finalI = 0, finalJ = 0;
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
-                if(board[i][j].getText() == " ") {
-                    board[i][j].setText("O");
-                    board[i][j].setContentDisplay(GRAPHIC_ONLY);
-                    //drawOIcon();
-                    int score = minimax(board, depth - 1, true, false);
-                    board[i][j].setText(" ");
-                    if(score < finalScore) {
-                        finalScore = score;
-                        finalI = i;
-                        finalJ = j;
-                    }
-                    if(firstTime) {
-                       // System.out.print( "score," + i + "," + j + ": " +score + "\n");
-                    }
-                }
-            }   
-        }
-        if(firstTime) {
-            board[finalI][finalJ].setText("O");
-            board[finalI][finalJ].setGraphic(drawOIcon());
-            board[finalI][finalJ].setContentDisplay(GRAPHIC_ONLY);
-        }
-        return finalScore;
-    }
-}
-
-
- private void clearRecordedMatchCells(){
-                    btn1.setGraphic(null);
-                    btn2.setGraphic(null);
-                    btn3.setGraphic(null);
-                    btn4.setGraphic(null);
-                    btn5.setGraphic(null);
-                    btn6.setGraphic(null);
-                    btn7.setGraphic(null);
-                    btn8.setGraphic(null);
-                    btn9.setGraphic(null);
-                    btn1.setText(" ");
-                    btn2.setText(" ");
-                    btn3.setText(" ");
-                    btn4.setText(" ");
-                    btn5.setText(" ");
-                    btn6.setText(" ");
-                    btn7.setText(" ");
-                    btn8.setText(" ");
-                    btn9.setText(" ");
-                    returnColor();
-                 
-       has_winner=false;
- }
- 
-
- public void returnColor(){
+     public void returnColor(){
       btn1.setStyle("-fx-background-color:#4D0DA5;");
       btn2.setStyle("-fx-background-color:#4D0DA5;");
       btn3.setStyle("-fx-background-color:#4D0DA5;");
@@ -1705,4 +1802,87 @@ public static int minimax(Button board[][], int depth, boolean isMaximizing, boo
       btn8.setStyle("-fx-background-color:#4D0DA5;");
       btn9.setStyle("-fx-background-color:#4D0DA5;");
  }
+    public void setRound(String winer){
+        if (roundCounter<=2){
+         if(winer=="x"){
+            if (roundCounter==0){
+                player2Score.setImage(new Image(getClass().getResource("/resources/images/1.png").toExternalForm()));
+                roundCounter++;
+                round_btn.setDisable(false);
+                round_btn.setText("Second round");
+                round_btn.setBlendMode(BlendMode.SRC_OVER);
+              }
+            else if (roundCounter==1){
+                player2Score.setImage(new Image(getClass().getResource("/resources/images/2.png").toExternalForm()));
+                roundCounter++;
+                round_btn.setDisable(false);
+                round_btn.setText("Third round");
+                round_btn.setBlendMode(BlendMode.SRC_OVER);
+              }
+            else if (roundCounter==2) {
+                player2Score.setImage(new Image(getClass().getResource("/resources/images/3.png").toExternalForm()));
+                roundCounter++;
+                round_btn.setDisable(false);
+                round_btn.setText("Finished");
+                round_btn.setDisable(true);
+                round_btn.setBlendMode(BlendMode.MULTIPLY);
+              }
+                
+            }
+        /* else if(winer=="o"){
+               if (roundCounter==0){
+                player1Score.setImage(new Image(getClass().getResource("/resources/images/1.png").toExternalForm()));
+                roundCounter++;
+                round_btn.setDisable(false);
+                round_btn.setText("Second round");
+                round_btn.setBlendMode(BlendMode.SRC_OVER);
+              }
+            if (roundCounter==1){
+                player1Score.setImage(new Image(getClass().getResource("/resources/images/2.png").toExternalForm()));
+                roundCounter++;
+                round_btn.setDisable(false);
+                round_btn.setText("Third round");
+                round_btn.setBlendMode(BlendMode.SRC_OVER);
+              }
+             else {
+                player1Score.setImage(new Image(getClass().getResource("/resources/images/3.png").toExternalForm()));
+                round_btn.setDisable(true);
+                round_btn.setText("Finished");
+                round_btn.setDisable(false);
+                round_btn.setBlendMode(BlendMode.MULTIPLY);
+              }
+             
+         }
+         else if(winer=="t"){
+             if (roundCounter == 0) {
+                 player1Score.setImage(new Image(getClass().getResource("/resources/images/1.png").toExternalForm()));
+                 player2Score.setImage(new Image(getClass().getResource("/resources/images/1.png").toExternalForm()));
+                 roundCounter++;
+                 round_btn.setDisable(false);
+                 round_btn.setText("Second round");
+                 round_btn.setBlendMode(BlendMode.SRC_OVER);
+             }
+             if (roundCounter == 1) {
+                 player1Score.setImage(new Image(getClass().getResource("/resources/images/2.png").toExternalForm()));
+                 player2Score.setImage(new Image(getClass().getResource("/resources/images/2.png").toExternalForm()));
+                 roundCounter++;
+                 round_btn.setDisable(false);
+                 round_btn.setText("Third round");
+                 round_btn.setBlendMode(BlendMode.SRC_OVER);
+             } else {
+                 player1Score.setImage(new Image(getClass().getResource("/resources/images/3.png").toExternalForm()));
+                 player2Score.setImage(new Image(getClass().getResource("/resources/images/3.png").toExternalForm()));
+                 roundCounter++;
+                 round_btn.setDisable(false);
+                 round_btn.setText("Finished");
+                 round_btn.setDisable(true);
+                 round_btn.setBlendMode(BlendMode.MULTIPLY);
+             }
+             
+         }*/
+            
+        
+        } 
+    }
+
 }

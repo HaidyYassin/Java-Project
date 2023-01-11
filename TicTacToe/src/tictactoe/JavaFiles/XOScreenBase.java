@@ -109,14 +109,26 @@ public class XOScreenBase extends AnchorPane {
             @Override
             public void handle(MouseEvent event) {
                 symbol = "x";
-                GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord ,symbol);
-        
+                GameFxmlBase gameScreen = new GameFxmlBase(stage, level, isrecord, symbol);
+                if(level == "local")
+                {
+                    gameScreen.text2.setText("You");
+                    gameScreen.text0.setText(HomeScreenBase.name);
+                    gameScreen.text0.setLayoutX(19.0);
+                }
+                else
+                {
+                    gameScreen.text0.setText("You");
+                    gameScreen.text2.setText("Computer");
+                    gameScreen.text2.setLayoutX(17.0);
+                }
+                
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);
                 stage.show();
-                
+
             }
-            
+
             
         });
     }
@@ -127,7 +139,19 @@ public class XOScreenBase extends AnchorPane {
             public void handle(MouseEvent event) {
                 symbol = "o";
                 GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord, symbol);
-        
+                if(level == "local")
+                {
+                    gameScreen.text0.setText("You");
+                    gameScreen.text2.setText(HomeScreenBase.name);
+                    gameScreen.text2.setLayoutX(19.0);
+                }
+                else
+                {
+                    gameScreen.text2.setText("You");
+                    gameScreen.text0.setText("Computer");
+                    gameScreen.text0.setLayoutX(17.0);
+                }
+                
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);
                 stage.show();
