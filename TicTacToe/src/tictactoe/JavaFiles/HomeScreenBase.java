@@ -1,5 +1,6 @@
 package tictactoe.JavaFiles;
 
+import Models.PlayerData;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,10 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import tictactoe.JavaFiles.MusicPlayer;
-import tictactoe.JavaFiles.ProfileBase;
-import tictactoe.JavaFiles.SignInBase;
-import tictactoe.JavaFiles.XOScreenBase;
 
 public class HomeScreenBase extends AnchorPane {
 
@@ -53,6 +50,7 @@ public class HomeScreenBase extends AnchorPane {
     protected final ImageView mutedSoundImg;
     Stage stage;
     static String name;
+   PlayerData player;
 
     public HomeScreenBase(Stage stage) {
 
@@ -224,11 +222,16 @@ public class HomeScreenBase extends AnchorPane {
         profileImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                ProfileBase profileScreen = new ProfileBase(stage);
-
-                Scene scene = new Scene(profileScreen);
-                stage.setScene(scene);
-                stage.show();
+//                if(ConnectWithServer.dataFromServer.get("ISACTIVE") == null){
+//                    System.out.println("can't show profile");
+//                }
+//                else
+//                {
+                    ProfileBase profileScreen = new ProfileBase(stage);
+                    Scene scene = new Scene(profileScreen);
+                    stage.setScene(scene);
+                    stage.show();
+//                }
             }
         });
 
@@ -511,22 +514,23 @@ public class HomeScreenBase extends AnchorPane {
 
     
     private void navigetToNextScreen(String level){
-                Scene scene;
-                ButtonType Yes = new ButtonType("Yes");
-                ButtonType No = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
-                Alert a = new Alert(Alert.AlertType.NONE);
-                a.setTitle("Alert ASk");
-                a.getDialogPane().getButtonTypes().addAll(Yes, No);
-                a.setHeaderText("Do you want to record this game?");
-                DialogPane dialogPane = a.getDialogPane();
-                dialogPane.getStylesheets().add(
-                        getClass().getResource("/resources/cssFiles/CSS.css").toExternalForm());
-                dialogPane.getStyleClass().add("infoDialog");
-                a.showAndWait();
+        Scene scene;
+        ButtonType Yes = new ButtonType("Yes");
+        ButtonType No = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert a = new Alert(Alert.AlertType.NONE);
+        a.setTitle("Alert ASk");
+        a.getDialogPane().getButtonTypes().addAll(Yes, No);
+        a.setHeaderText("Do you want to record this game?");
+        DialogPane dialogPane = a.getDialogPane();
+        dialogPane.getStylesheets().add(
+        getClass().getResource("/resources/cssFiles/CSS.css").toExternalForm());
+        dialogPane.getStyleClass().add("infoDialog");
+        a.showAndWait();
                 
         if (a.getResult() == Yes) {
 
             isrecord = true;
+            System.out.println("alertYes");
 
         } else if (a.getResult() == No) {
             isrecord = false;

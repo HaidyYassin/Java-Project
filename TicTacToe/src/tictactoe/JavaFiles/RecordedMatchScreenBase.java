@@ -1,5 +1,6 @@
 package tictactoe.JavaFiles;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
@@ -134,12 +135,16 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         BackArrow.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                RecordedHistoryTable RecTableScreen = new RecordedHistoryTable(stage);
-
-                Scene scene = new Scene(RecTableScreen);
-                stage.setScene(scene);
-                stage.show();
-                th.stop();
+                try {
+                    RecordedHistoryTable RecTableScreen = new RecordedHistoryTable(stage);
+                    
+                    Scene scene = new Scene(RecTableScreen);
+                    stage.setScene(scene);
+                    stage.show();
+                    th.stop();
+                } catch (IOException ex) {
+                    Logger.getLogger(RecordedMatchScreenBase.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 
@@ -711,6 +716,8 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
                      btn9.setGraphic(drawOIcon());
                  } );
                     break;
+               
+               
                
                }
            

@@ -5,6 +5,7 @@
  */
 package Models;
 
+import java.io.File;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -14,10 +15,9 @@ import javafx.collections.ObservableList;
  */
 public class RecordsMatchesList {
     
+       
     public static ObservableList<HistoryTableModel> tableData = FXCollections.observableArrayList(
-                new HistoryTableModel("1", "10", "Win", "Omar Mohammed"),
-                new HistoryTableModel("2", "0", "Lose", "Ali Islam"),
-                new HistoryTableModel("3", "5", "Draw", "Ahmed Nader"),
-                new HistoryTableModel("4", "15", "Win", "Youssef Ahmed")
+                
         );
+
 }
