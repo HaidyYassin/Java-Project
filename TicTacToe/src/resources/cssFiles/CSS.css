@@ -408,6 +408,18 @@
     -fx-border-left-color: solid #000000; 
     -fx-background-image:url("bg.jpg");
 }
+#ServerPane{
+    -fx-background-size:1050 620;
+    -fx-border-top: 3.0px;
+    -fx-border-top-color:solid #000000;
+    -fx-border-right: 3.0px;
+    -fx-border-right-color:solid #000000;
+    -fx-border-bottom: 3.0px; 
+    -fx-border-bottom-color:solid #000000;
+    -fx-border-left: 3.0px; 
+    -fx-border-left-color: solid #000000; 
+    -fx-background-image:url("bg.jpg");
+}
 
 #ProfilePan{
     -fx-size:622.0426829268312 582.7399320016118 ;
