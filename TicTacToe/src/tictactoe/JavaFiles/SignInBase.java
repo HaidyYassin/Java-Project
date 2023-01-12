@@ -149,7 +149,7 @@ public  class SignInBase extends Pane {
                             ex.printStackTrace();
                     }
                     thread =   new Thread(){
-                    String state,playerData;
+                    String state,stat1,playerData;
                     HashMap<String, String> hash = new HashMap<>(); 
                     @Override
                     public void run(){
@@ -170,13 +170,13 @@ public  class SignInBase extends Pane {
                                     hash.put("email",token2.nextToken());
                                     hash.put("score", token2.nextToken());
                                     
-                                   /* ps.println("playerlist###");
-                                    state1 = dis.readLine();
-                                    token = new StringTokenizer(state1, "###");
-                                    String receivedState = token.nextToken();
-                                    System.out.println("sign in page " + receivedState);*/
-                                    
-                                    
+                                    ps.println("playerlist###");
+                                    while(dis.){
+                                        stat1 = dis.readLine();
+                                        token = new StringTokenizer(stat1, "###");
+                                        String receivedState2 = token.nextToken();
+                                        System.out.println("user name " + receivedState);
+                                    }
                                      Platform.runLater(()->{
                                         signIn(stage);
                                          thread.stop();

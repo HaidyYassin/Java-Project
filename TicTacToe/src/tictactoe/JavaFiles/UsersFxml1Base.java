@@ -64,6 +64,7 @@ public class UsersFxml1Base extends AnchorPane implements Runnable{
     Stage stage;
     Thread th ;
     DataInputStream dis;
+    
     public UsersFxml1Base(Stage stage) {
         
         this.stage = stage;
