@@ -1,0 +1,5 @@
+2023/01/09 02:35:19
+Omar Ali
+1.You: X5 , 2.Omar: O2 , 3.You: X9 , 4.Omar: O1 , 5.You: X3 , 6.Omar: O7 , 7.You: X6 
+Win
+15

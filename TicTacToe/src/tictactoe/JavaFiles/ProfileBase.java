@@ -10,6 +10,7 @@ import java.util.HashMap;
 import static java.util.Objects.hash;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
@@ -100,11 +101,15 @@ public class ProfileBase extends AnchorPane {
         History_Btn.setText("History");
         History_Btn.setOnAction( (event) -> {
             
-            RecordedHistoryTable recordedHistoryTable = new RecordedHistoryTable(stage);
-
+            try {
+                RecordedHistoryTable recordedHistoryTable = new RecordedHistoryTable(stage);
+                
                 Scene scene = new Scene(recordedHistoryTable);
                 stage.setScene(scene);
                 stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ProfileBase.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         });
 

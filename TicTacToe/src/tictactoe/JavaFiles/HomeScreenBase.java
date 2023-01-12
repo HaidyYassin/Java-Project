@@ -1,7 +1,6 @@
 package tictactoe.JavaFiles;
 
 import Models.PlayerData;
-import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -19,10 +18,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import tictactoe.JavaFiles.MusicPlayer;
-import tictactoe.JavaFiles.ProfileBase;
-import tictactoe.JavaFiles.SignInBase;
-import tictactoe.JavaFiles.XOScreenBase;
 
 public class HomeScreenBase extends AnchorPane {
 
@@ -60,7 +55,6 @@ public class HomeScreenBase extends AnchorPane {
     public HomeScreenBase(Stage stage) {
 
         this.stage = stage;
-      //  hash = new HashMap<>();
         pane = new Pane();
         SMBtn = new Button();
         singleModeImg = new ImageView();
@@ -520,22 +514,23 @@ public class HomeScreenBase extends AnchorPane {
 
     
     private void navigetToNextScreen(String level){
-                Scene scene;
-                ButtonType Yes = new ButtonType("Yes");
-                ButtonType No = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
-                Alert a = new Alert(Alert.AlertType.NONE);
-                a.setTitle("Alert ASk");
-                a.getDialogPane().getButtonTypes().addAll(Yes, No);
-                a.setHeaderText("Do you want to record this game?");
-                DialogPane dialogPane = a.getDialogPane();
-                dialogPane.getStylesheets().add(
-                        getClass().getResource("/resources/cssFiles/CSS.css").toExternalForm());
-                dialogPane.getStyleClass().add("infoDialog");
-                a.showAndWait();
+        Scene scene;
+        ButtonType Yes = new ButtonType("Yes");
+        ButtonType No = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert a = new Alert(Alert.AlertType.NONE);
+        a.setTitle("Alert ASk");
+        a.getDialogPane().getButtonTypes().addAll(Yes, No);
+        a.setHeaderText("Do you want to record this game?");
+        DialogPane dialogPane = a.getDialogPane();
+        dialogPane.getStylesheets().add(
+        getClass().getResource("/resources/cssFiles/CSS.css").toExternalForm());
+        dialogPane.getStyleClass().add("infoDialog");
+        a.showAndWait();
                 
         if (a.getResult() == Yes) {
 
             isrecord = true;
+            System.out.println("alertYes");
 
         } else if (a.getResult() == No) {
             isrecord = false;
