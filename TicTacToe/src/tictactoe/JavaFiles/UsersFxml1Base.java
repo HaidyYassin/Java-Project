@@ -170,7 +170,7 @@ public class UsersFxml1Base extends AnchorPane{
         try {
             while(true){
                 System.out.println("true");
-             if(ConnectWithServer.serverIsConnected&&(ConnectWithServer.dis.readLine()=="SignUp"||ConnectWithServer.dis.readLine()=="SignIn"))
+             if(ConnectWithServer.serverIsConnected&&ConnectWithServer.dis.readLine()=="SignUp"||ConnectWithServer.dis.readLine()=="SignIn")
             {
                 String  data = ConnectWithServer.dis.readLine();
                 

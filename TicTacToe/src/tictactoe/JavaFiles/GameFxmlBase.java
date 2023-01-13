@@ -761,9 +761,12 @@ public class GameFxmlBase extends AnchorPane {
                             board[rand1][rand2].setGraphic(drawOIcon());
                             board[rand1][rand2].setContentDisplay(GRAPHIC_ONLY);
                             System.out.println("Random Minimax");
-                            gamerecord.StepNum++;
-                            int index = (rand1 * 3 + rand2)+1;
-                            gamerecord.gameSteps+=gamerecord.StepNum+"."+"Bot: O"+index+" , ";
+                            if(isrecord){
+                                 gamerecord.StepNum++;
+                                 int index = (rand1 * 3 + rand2)+1;
+                                gamerecord.gameSteps+=gamerecord.StepNum+"."+"Bot: O"+index+" , ";
+                            }
+                           
                         }
                 
                 }
@@ -786,18 +789,22 @@ public class GameFxmlBase extends AnchorPane {
                             board[rand1][rand2].setGraphic(drawOIcon());
                             board[rand1][rand2].setContentDisplay(GRAPHIC_ONLY);
                             System.out.println("Random Minimax mi");
-                            gamerecord.StepNum++;
-                            int index = (rand1 * 3 + rand2)+1;
-                            gamerecord.gameSteps+=gamerecord.StepNum+"."+"Bot: O"+index+" , ";
+                            if(isrecord){
+                                 gamerecord.StepNum++;
+                                 int index = (rand1 * 3 + rand2)+1;
+                                gamerecord.gameSteps+=gamerecord.StepNum+"."+"Bot: O"+index+" , ";
+                            }
                         }
                 }
                 else{
                 board[finalI][finalJ].setText("O");
                 board[finalI][finalJ].setGraphic(drawOIcon());
                 board[finalI][finalJ].setContentDisplay(GRAPHIC_ONLY);
-                gamerecord.StepNum++;
-                int index = (finalI * 3 + finalJ)+1;
-                gamerecord.gameSteps+=gamerecord.StepNum+"."+"Bot: O"+index+" , ";
+                if(isrecord){
+                                 gamerecord.StepNum++;
+                                 int index = (finalI * 3 + finalJ)+1;
+                                gamerecord.gameSteps+=gamerecord.StepNum+"."+"Bot: O"+index+" , ";
+                            }
                 }
                 
             }
@@ -825,13 +832,12 @@ public class GameFxmlBase extends AnchorPane {
         btn8.setText(" ");
         btn9.setText(" ");
         returnColor();
+        gamerecord.gameSteps=" ";
         has_winner = false;
         isYourTurn = true;
         stepCounter = 0;
         MiniMaxStep=0;
-        gamerecord.StepNum=0;
-        gamerecord.gameSteps="";
-          
+        gamerecord.StepNum=0;  
     }
 
     public void checkComputerSympol() {
@@ -1344,8 +1350,9 @@ public class GameFxmlBase extends AnchorPane {
                       btn1.setText("X");
                       btn1.setGraphic(drawXIcon());
                       btn1.setContentDisplay(GRAPHIC_ONLY);
+                      if(isrecord)
                       gamerecord.gameStepForPlayer(1);
-            // player == 'X' ? player = 'O' : player = 'X';
+                        // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        returnColor();
                        //System.out.print( "result: " + result + "\n");
@@ -1357,15 +1364,18 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
+                       if(isrecord)
                        gamerecord.writeStateOnFile("Tie");
                  }
                 else if(result == 2 || result==-2 ){
+                        if(isrecord)
                         gamerecord.writeStateOnFile(((result == 2) ? "Win" : "Loss"));
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
                 else{
                     System.out.println("playing");
                  }
+                if(isrecord)
                 gamerecord.writeStepToFile();
             }});
             btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1376,7 +1386,8 @@ public class GameFxmlBase extends AnchorPane {
                       btn2.setText("X");
                       btn2.setGraphic(drawXIcon());
                       btn2.setContentDisplay(GRAPHIC_ONLY);
-                     gamerecord.gameStepForPlayer(2);
+                      if(isrecord)
+                      gamerecord.gameStepForPlayer(2);
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
                        returnColor();
@@ -1388,15 +1399,18 @@ public class GameFxmlBase extends AnchorPane {
                 }
                 int result = checkWinner(board);
                 if(result == 0) {
+                       if(isrecord)
                        gamerecord.writeStateOnFile("Tie");
                  } 
                 else if(result == 2 || result==-2 ){
+                        if(isrecord)
                         gamerecord.writeStateOnFile(((result == 2) ? "Win" : "Loss"));
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
                 else{
                     System.out.println("playing");
                  }
+                if(isrecord)
                 gamerecord.writeStepToFile();
             }});
             btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1407,6 +1421,7 @@ public class GameFxmlBase extends AnchorPane {
                       btn3.setText("X");
                       btn3.setGraphic(drawXIcon());
                       btn3.setContentDisplay(GRAPHIC_ONLY);
+                      if(isrecord)
                       gamerecord.gameStepForPlayer(3);
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
@@ -1420,6 +1435,7 @@ public class GameFxmlBase extends AnchorPane {
                 int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
+                       if(isrecord)
                         gamerecord.writeStateOnFile("Tie");
                  } 
                 else if(result == 2 || result==-2 ){
@@ -1429,6 +1445,7 @@ public class GameFxmlBase extends AnchorPane {
                 else{
                     System.out.println("playing");
                  }
+                if(isrecord)
                 gamerecord.writeStepToFile();
             }});
             btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1439,6 +1456,7 @@ public class GameFxmlBase extends AnchorPane {
                       btn4.setText("X");
                       btn4.setGraphic(drawXIcon());
                       btn4.setContentDisplay(GRAPHIC_ONLY);
+                      if(isrecord)
                       gamerecord.gameStepForPlayer(4);
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
@@ -1451,6 +1469,7 @@ public class GameFxmlBase extends AnchorPane {
                 }
                 int result = checkWinner(board);
                 if(result == 0) {
+                        if(isrecord)
                        gamerecord.writeStateOnFile("Tie");
                        System.out.print("Tie \n");
                  }
@@ -1461,6 +1480,7 @@ public class GameFxmlBase extends AnchorPane {
                  else{
                     System.out.println("playing");
                  }
+                if(isrecord)
                  gamerecord.writeStepToFile();
             }});
             btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1471,6 +1491,7 @@ public class GameFxmlBase extends AnchorPane {
                       btn5.setText("X");
                      btn5.setGraphic(drawXIcon());
                      btn5.setContentDisplay(GRAPHIC_ONLY);
+                     if(isrecord)
                      gamerecord.gameStepForPlayer(5);
 
             // player == 'X' ? player = 'O' : player = 'X';
@@ -1484,16 +1505,19 @@ public class GameFxmlBase extends AnchorPane {
                 }
                 int result = checkWinner(board);
                 if(result == 0) {
+                    if(isrecord)
                         gamerecord.writeStateOnFile("Tie");
                        System.out.print("Tie \n");
                  }
                 else if(result == 2 || result==-2 ){
+                    if(isrecord)
                         gamerecord.writeStateOnFile(((result == 2) ? "Win" : "Loss"));
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
                 else{
                     System.out.println("playing");
                  }
+                if(isrecord)
                 gamerecord.writeStepToFile();
             }});
             btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1504,6 +1528,7 @@ public class GameFxmlBase extends AnchorPane {
                       btn6.setText("X");
                       btn6.setGraphic(drawXIcon());
                       btn6.setContentDisplay(GRAPHIC_ONLY);
+                      if(isrecord)
                       gamerecord.gameStepForPlayer(6);
 
             // player == 'X' ? player = 'O' : player = 'X';
@@ -1517,16 +1542,19 @@ public class GameFxmlBase extends AnchorPane {
                 }
                 int result = checkWinner(board);
                 if(result == 0) {
+                    if(isrecord)
                        gamerecord.writeStateOnFile("Tie");
                        System.out.print("Tie \n");
                  }
                 else if(result == 2 || result==-2 ){
+                        if(isrecord)
                         gamerecord.writeStateOnFile(((result == 2) ? "Win" : "Loss"));
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
                 else{
                     System.out.println("playing");
                  }
+                if(isrecord)
                 gamerecord.writeStepToFile();
             }});
             btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1537,6 +1565,7 @@ public class GameFxmlBase extends AnchorPane {
                       btn7.setText("X");
                       btn7.setGraphic(drawXIcon());
                       btn7.setContentDisplay(GRAPHIC_ONLY);
+                      if(isrecord)
                       gamerecord.gameStepForPlayer(7);
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
@@ -1549,16 +1578,19 @@ public class GameFxmlBase extends AnchorPane {
                 }
                 int result = checkWinner(board);
                 if(result == 0) {
+                        if(isrecord)
                         gamerecord.writeStateOnFile("Tie");
                        System.out.print("Tie \n");
                  }
                 else if(result == 2 || result==-2 ){
+                        if(isrecord)
                          gamerecord.writeStateOnFile(((result == 2) ? "Win" : "Loss"));
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
                 else{
                     System.out.println("playing");
                  }
+                if(isrecord)
                 gamerecord.writeStepToFile();
             }});
             btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1569,6 +1601,7 @@ public class GameFxmlBase extends AnchorPane {
                       btn8.setText("X");
                       btn8.setGraphic(drawXIcon());
                       btn8.setContentDisplay(GRAPHIC_ONLY);
+                      if(isrecord)
                      gamerecord.gameStepForPlayer(8);
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
@@ -1581,16 +1614,19 @@ public class GameFxmlBase extends AnchorPane {
                 }
                 int result = checkWinner(board);
                 if(result == 0) {
+                       if(isrecord)
                         gamerecord.writeStateOnFile("Tie");
                        System.out.print("Tie \n");
                  }
                 else if(result == 2 || result==-2 ){
+                     if(isrecord)
                        gamerecord.writeStateOnFile(((result == 2) ? "Win" : "Loss"));
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
                 else{
                     System.out.println("playing");
                  }
+                if(isrecord)
                 gamerecord.writeStepToFile();
             }});
             btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1601,6 +1637,7 @@ public class GameFxmlBase extends AnchorPane {
                       btn9.setText("X");
                       btn9.setGraphic(drawXIcon());
                       btn9.setContentDisplay(GRAPHIC_ONLY);
+                      if(isrecord)
                       gamerecord.gameStepForPlayer(9);
             // player == 'X' ? player = 'O' : player = 'X';
                        int result = minimax(board, 100, false,true);
@@ -1613,21 +1650,22 @@ public class GameFxmlBase extends AnchorPane {
                 }
                 int result = checkWinner(board);
                 if(result == 0) {
-                    gamerecord.writeStateOnFile("Tie");
+                    if(isrecord)
+                       gamerecord.writeStateOnFile("Tie");
                        System.out.print("Tie \n");
                  }
                 else if(result == 2 || result==-2 ){
+                    if(isrecord)
                         gamerecord.writeStateOnFile(((result == 2) ? "Win" : "Loss"));
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
                 }
                 else{
                     System.out.println("playing");
                  }
+                if(isrecord)
                 gamerecord.writeStepToFile();
             }});
          
-         
-            
 
     }
       public void returnColor(){
