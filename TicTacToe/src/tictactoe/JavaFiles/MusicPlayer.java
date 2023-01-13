@@ -15,20 +15,23 @@ import javax.sound.sampled.Clip;
  * @author DELL
  */
 public class MusicPlayer {
-    static Clip clip ;
-    static long clipTimePosition;
-    public static void PlayMusic()
+   private static Clip clip ;
+   private static long clipTimePosition;
+   private static AudioInputStream audio;
+   public static boolean streaming = true;
+   public static void PlayMusic()
     {
         try
         {          
             File musicpath = new File("..\\TicTacToe\\src\\resources\\music\\bensound-bluebay.wav");
             if(musicpath.exists())
             {
-                AudioInputStream audio = AudioSystem.getAudioInputStream(musicpath);
+                audio = AudioSystem.getAudioInputStream(musicpath);
                 clip  = AudioSystem.getClip();
                 clip.open(audio);
                 clip.start();
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
+                streaming = true;
             }
             else
             {
@@ -44,10 +47,12 @@ public class MusicPlayer {
     public static void PauseMusic(){
        clipTimePosition = clip.getMicrosecondPosition();
        clip.stop();
+       streaming = false;
     }
     
     public static void ResumeMusic(){
        clip.setMicrosecondPosition(clipTimePosition);
        clip.start();
+       streaming = true;
     }
 }

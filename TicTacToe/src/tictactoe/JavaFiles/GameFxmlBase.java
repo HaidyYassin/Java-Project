@@ -73,8 +73,8 @@ public class GameFxmlBase extends AnchorPane {
     protected final ImageView player2Score;
     protected final Blend blend2;
     protected final Button round_btn;
-    MediaPlayer player;
-    MediaView mediaView;
+    private MediaPlayer player;
+    private MediaView mediaView;
 
     Stage stage;
     String symbole;
@@ -202,7 +202,10 @@ public class GameFxmlBase extends AnchorPane {
         imageView0.setLayoutY(210.0);
         imageView0.setPickOnBounds(true);
         imageView0.setPreserveRatio(true);
-        imageView0.setImage(new Image(getClass().getResource("/resources/images/player2.png").toExternalForm()));
+        if((level.equals("easy") ||level.equals("medium") || level.equals("hard")) ) {
+           imageView0.setImage(new Image(getClass().getResource("/resources/images/bot.png").toExternalForm()));
+        }else
+            imageView0.setImage(new Image(getClass().getResource("/resources/images/player2.png").toExternalForm()));
 
         pane.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
         pane.setId("paneX");
@@ -558,12 +561,12 @@ public class GameFxmlBase extends AnchorPane {
         pane1.getChildren().add(line2);
         getChildren().add(pane1);
         getChildren().add(newGame_btn);
-        getChildren().add(round_btn);
+   //     getChildren().add(round_btn);
         getChildren().add(exit_btn);
-        pane2.getChildren().add(player1Score);
-        getChildren().add(pane2);
-        pane3.getChildren().add(player2Score);
-        getChildren().add(pane3);
+//        pane2.getChildren().add(player1Score);
+//        getChildren().add(pane2);
+//        pane3.getChildren().add(player2Score);
+//        getChildren().add(pane3);
         addBtns();
 
         myTurn(level, symbole);
@@ -658,9 +661,11 @@ public class GameFxmlBase extends AnchorPane {
             y.setStyle("-fx-background-color:#FFEB3B;");
             z.setStyle("-fx-background-color:#FFEB3B;");
             //setRound(x.getText());
-            if(level.equals("easy") || level.equals("local"))
-                if(x.getText() == symbole)
-                    ViewVedio();
+            if( level.equals("local"))
+                 ViewVedio();
+            else if(x.getText().equals(symbole)){
+                 ViewVedio();
+            }
             return true;
         }
         //setRound("t");
@@ -669,24 +674,22 @@ public class GameFxmlBase extends AnchorPane {
     
     public void ViewVedio()
     {
+        MusicPlayer.PauseMusic();
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("You are The Winner");
-
         Label label = new Label("Yaaaaay!!!");
         VBox content = new VBox(10, label, mediaView);
         content.setAlignment(Pos.CENTER);
         alert.getDialogPane().setContent(content);
-
         alert.setOnShowing(e -> player.play());
-        MusicPlayer.PauseMusic();
         Window window = alert.getDialogPane().getScene().getWindow();
         window.setOnCloseRequest(e -> 
         {
             player.stop();
+            if(MusicPlayer.streaming)
+                 MusicPlayer.ResumeMusic();
             alert.hide();
         });
-        
-        MusicPlayer.ResumeMusic();
         alert.showAndWait();
     }
 
@@ -866,7 +869,7 @@ public class GameFxmlBase extends AnchorPane {
                     easyGameStep(s,n);
                     stepCounter++;
                 }
-                writeStepToFile();
+               
             }
         }
     }
@@ -934,16 +937,16 @@ public class GameFxmlBase extends AnchorPane {
               int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                       writeStateOnFile("tie");
+                      // writeStateOnFile("tie");
                  }
                 else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                        writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
+                       // writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
                 }
                 else{
                     System.out.println("playing");
                  }
-                writeStepToFile();
+               
           }
       });
             btn2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -992,16 +995,16 @@ public class GameFxmlBase extends AnchorPane {
                int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                       writeStateOnFile("tie");
+                    //   writeStateOnFile("tie");
                  }
                 else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                        writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
+                    //    writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
                 }
                 else{
                     System.out.println("playing");
                  }
-                writeStepToFile();
+               
          }
       });
             btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1050,16 +1053,16 @@ public class GameFxmlBase extends AnchorPane {
                int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                       writeStateOnFile("tie");
+                    //   writeStateOnFile("tie");
                  }
                 else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                        writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
+                      //  writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
                 }
                 else{
                     System.out.println("playing");
                  }
-                writeStepToFile();
+               
          }
       });
             btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1107,16 +1110,16 @@ public class GameFxmlBase extends AnchorPane {
                int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                       writeStateOnFile("tie");
+                      // writeStateOnFile("tie");
                  }
                 else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                        writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
+                       // writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
                 }
                 else{
                     System.out.println("playing");
                  }
-                writeStepToFile();
+               
          }
       });
             btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1165,16 +1168,16 @@ public class GameFxmlBase extends AnchorPane {
                int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                       writeStateOnFile("tie");
+                      // writeStateOnFile("tie");
                  }
                 else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                        writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
+                       // writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
                 }
                 else{
                     System.out.println("playing");
                  }
-                writeStepToFile();
+               
          }
       });
             btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1223,16 +1226,16 @@ public class GameFxmlBase extends AnchorPane {
                int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                       writeStateOnFile("tie");
+                     //  writeStateOnFile("tie");
                  }
                 else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                        writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
+                     //   writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
                 }
                 else{
                     System.out.println("playing");
                  }
-                writeStepToFile();
+               
          }
       });
             btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1280,16 +1283,16 @@ public class GameFxmlBase extends AnchorPane {
                int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                       writeStateOnFile("tie");
+                       //writeStateOnFile("tie");
                  }
                 else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                        writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
+                       // writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
                 }
                 else{
                     System.out.println("playing");
                  }
-                writeStepToFile();
+               
          }
       });
             btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1338,16 +1341,16 @@ public class GameFxmlBase extends AnchorPane {
                int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                       writeStateOnFile("tie");
+                      // writeStateOnFile("tie");
                  }
                 else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                        writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
+                       // writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
                 }
                 else{
                     System.out.println("playing");
                  }
-                writeStepToFile();
+               
          }
       });
             btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
@@ -1395,21 +1398,21 @@ public class GameFxmlBase extends AnchorPane {
                int result = checkWinner(board);
                 if(result == 0) {
                        System.out.print("Tie \n");
-                       writeStateOnFile("tie");
+                    //   writeStateOnFile("tie");
                  }
                 else if(result == 2 || result==-2 ){
                         System.out.print( ((result == 2) ? "X" : "O") + " player wins \n");
-                        writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
+                       // writeStateOnFile(((result == 2) ? "X" : "O") + " player wins");
                 }
                 else{
                     System.out.println("playing");
                  }
-                writeStepToFile();
+               
          }
       });
     }
 
-      public void playEasy(String level, String s) {
+    public void playEasy(String level, String s) {
         btn1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -1424,7 +1427,7 @@ public class GameFxmlBase extends AnchorPane {
                     computerTurn(level, computerSympole,1);
 
                 }
-                writeStepToFile();
+               
             }
         });
 
@@ -1443,7 +1446,7 @@ public class GameFxmlBase extends AnchorPane {
 
                     computerTurn(level, computerSympole,2);
                 }
-                writeStepToFile();
+                
             }
         });
         btn3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
@@ -1462,7 +1465,7 @@ public class GameFxmlBase extends AnchorPane {
                     computerTurn(level, computerSympole,3);
 
                 }
-                writeStepToFile();
+                
             }
         });
         btn4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
@@ -1481,7 +1484,7 @@ public class GameFxmlBase extends AnchorPane {
                     computerTurn(level, computerSympole,4);
 
                 }
-                writeStepToFile();
+                
             }
         });
         btn5.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
@@ -1500,7 +1503,7 @@ public class GameFxmlBase extends AnchorPane {
                     computerTurn(level, computerSympole,5);
 
                 }
-                writeStepToFile();
+               
             }
         });
         btn6.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
@@ -1519,7 +1522,7 @@ public class GameFxmlBase extends AnchorPane {
                     computerTurn(level, computerSympole,6);
 
                 }
-                writeStepToFile();
+               
             }
         });
         btn7.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
@@ -1538,7 +1541,7 @@ public class GameFxmlBase extends AnchorPane {
                     computerTurn(level, computerSympole,7);
 
                 }
-                writeStepToFile();
+                
             }
         });
         btn8.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
@@ -1556,7 +1559,7 @@ public class GameFxmlBase extends AnchorPane {
                     computerTurn(level, computerSympole,8);
 
                 }
-                writeStepToFile();
+                
             }
         });
         btn9.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
@@ -1574,7 +1577,7 @@ public class GameFxmlBase extends AnchorPane {
                     computerTurn(level, computerSympole,9);
 
                 }
-                writeStepToFile();
+                
             }
         });
 
@@ -1888,7 +1891,7 @@ public class GameFxmlBase extends AnchorPane {
             }});       
 
     }
-     public void returnColor(){
+    public void returnColor(){
       btn1.setStyle("-fx-background-color:#4D0DA5;");
       btn2.setStyle("-fx-background-color:#4D0DA5;");
       btn3.setStyle("-fx-background-color:#4D0DA5;");
@@ -1936,20 +1939,7 @@ public class GameFxmlBase extends AnchorPane {
             gameStepForPlayer2(n);
         
     }
-    void writeStepToFile(){
-        WriteLine.set(2, gameSteps);
-
-        try {
-            Files.write(gamefile.toPath(), WriteLine);
-            //handleGame();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-    void writeStateOnFile(String state){
- 
-        WriteLine.set(3, state);
-    }
+   
     
     public void setRound(String winer){
         if (roundCounter<=2){

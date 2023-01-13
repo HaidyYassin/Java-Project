@@ -188,6 +188,10 @@ public class HomeScreenBase extends AnchorPane {
         mutedMusicImg.setPickOnBounds(true);
         mutedMusicImg.setPreserveRatio(true);
         mutedMusicImg.setVisible(false);
+        if(MusicPlayer.streaming)
+             mutedMusicImg.setVisible(false);
+        else
+            mutedMusicImg.setVisible(true);
         mutedMusicImg.setImage(new Image(getClass().getResource("/resources/images/musicMuted.png").toExternalForm()));
         mutedMusicImg.setOnMouseClicked(event
                 ->{
@@ -203,6 +207,10 @@ public class HomeScreenBase extends AnchorPane {
         soundImg.setLayoutY(45.0);
         soundImg.setPickOnBounds(true);
         soundImg.setPreserveRatio(true);
+        if(MusicPlayer.streaming)
+            soundImg.setVisible(true);
+        else
+            soundImg.setVisible(false);
         soundImg.setImage(new Image(getClass().getResource("/resources/images/sound.png").toExternalForm()));
         soundImg.setOnMouseClicked(event
                 ->{
