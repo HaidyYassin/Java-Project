@@ -21,6 +21,7 @@ public class XOScreenBase extends AnchorPane {
     protected final ImageView BackArrow;
     Stage stage;
     String level;
+    String symbol;
     boolean isrecord;
 
     public XOScreenBase(Stage stage, String level,boolean isrecord) {
@@ -107,14 +108,27 @@ public class XOScreenBase extends AnchorPane {
         XImg.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord ,"x");
-        
+                symbol = "x";
+                GameFxmlBase gameScreen = new GameFxmlBase(stage, level, isrecord, symbol);
+                if(level == "local")
+                {
+                    gameScreen.text2.setText("You");
+                    gameScreen.text0.setText(HomeScreenBase.name);
+                    gameScreen.text0.setLayoutX(19.0);
+                }
+                else
+                {
+                    gameScreen.text0.setText("You");
+                    gameScreen.text2.setText("Computer");
+                    gameScreen.text2.setLayoutX(17.0);
+                }
+                
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);
                 stage.show();
-                
+
             }
-            
+
             
         });
     }
@@ -123,8 +137,21 @@ public class XOScreenBase extends AnchorPane {
         OImg.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord, "o");
-        
+                symbol = "o";
+                GameFxmlBase gameScreen = new GameFxmlBase(stage, level,isrecord, symbol);
+                if(level == "local")
+                {
+                    gameScreen.text0.setText("You");
+                    gameScreen.text2.setText(HomeScreenBase.name);
+                    gameScreen.text2.setLayoutX(19.0);
+                }
+                else
+                {
+                    gameScreen.text2.setText("You");
+                    gameScreen.text0.setText("Computer");
+                    gameScreen.text0.setLayoutX(17.0);
+                }
+                
                 Scene scene = new Scene(gameScreen);
                 stage.setScene(scene);
                 stage.show();

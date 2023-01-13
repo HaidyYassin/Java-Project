@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public  class OnlineGame extends AnchorPane {
 
@@ -26,7 +27,7 @@ public  class OnlineGame extends AnchorPane {
     protected final Pane pane0;
     protected final Blend blend1;
     protected final Text text1;
-    protected final Text text2;
+    protected final Text contender_txtview;
     protected final ImageView imageView2;
     protected final Label label;
     protected final Pane pane1;
@@ -50,9 +51,10 @@ public  class OnlineGame extends AnchorPane {
     protected final Pane pane3;
     protected final ImageView player2Score;
     protected final Blend blend2;
+    String email;
 
-    public OnlineGame() {
-
+    public OnlineGame(Stage stage,String email,String name,String imgUrl) {
+        this.email=email;
         imageView = new ImageView();
         blend = new Blend();
         imageView0 = new ImageView();
@@ -64,7 +66,7 @@ public  class OnlineGame extends AnchorPane {
         pane0 = new Pane();
         blend1 = new Blend();
         text1 = new Text();
-        text2 = new Text();
+        contender_txtview = new Text();
         imageView2 = new ImageView();
         label = new Label();
         pane1 = new Pane();
@@ -180,14 +182,14 @@ public  class OnlineGame extends AnchorPane {
         text1.setWrappingWidth(88.0);
         text1.setFont(new Font("Arial Bold", 24.0));
 
-        text2.setFill(javafx.scene.paint.Color.WHITE);
-        text2.setLayoutX(40.0);
-        text2.setLayoutY(59.0);
-        text2.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
-        text2.setStrokeWidth(0.0);
-        text2.setText("Omar");
-        text2.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        text2.setFont(new Font("Britannic Bold", 18.0));
+        contender_txtview.setFill(javafx.scene.paint.Color.WHITE);
+        contender_txtview.setLayoutX(40.0);
+        contender_txtview.setLayoutY(59.0);
+        contender_txtview.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
+        contender_txtview.setStrokeWidth(0.0);
+        contender_txtview.setText(name);
+        contender_txtview.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        contender_txtview.setFont(new Font("Britannic Bold", 18.0));
 
         imageView2.setFitHeight(62.0);
         imageView2.setFitWidth(117.0);
@@ -312,7 +314,7 @@ public  class OnlineGame extends AnchorPane {
         btn9.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         btn9.setTextFill(javafx.scene.paint.Color.valueOf("#fffdfd"));
 
-        newGame_btn.setCache(true);
+        /*newGame_btn.setCache(true);
         newGame_btn.setId("but_ClearAll");
         newGame_btn.setLayoutX(413.0);
         newGame_btn.setLayoutY(637.0);
@@ -322,10 +324,10 @@ public  class OnlineGame extends AnchorPane {
         newGame_btn.setStyle("-fx-background-color: #4D0DA5; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-size: 24;");
         newGame_btn.getStylesheets().add("/resources/cssFiles/CSS.css");
         newGame_btn.setText("New Game");
-        newGame_btn.setTextFill(javafx.scene.paint.Color.valueOf("#efefef"));
+        newGame_btn.setTextFill(javafx.scene.paint.Color.valueOf("#efefef"));*/
 
         exit_btn.setCache(true);
-        exit_btn.setId("but_ClearAll");
+        exit_btn.setId("exitGame_btn");
         exit_btn.setLayoutX(752.0);
         exit_btn.setLayoutY(637.0);
         exit_btn.setMnemonicParsing(false);
@@ -334,6 +336,9 @@ public  class OnlineGame extends AnchorPane {
         exit_btn.setStyle("-fx-background-color: #4D0DA5; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-size: 24;");
         exit_btn.getStylesheets().add("/resources/cssFiles/CSS.css");
         exit_btn.setText("Exit");
+        exit_btn.setOnAction((event) -> {
+            
+        });
         exit_btn.setTextFill(javafx.scene.paint.Color.valueOf("#efefef"));
 
         pane2.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
@@ -379,7 +384,7 @@ public  class OnlineGame extends AnchorPane {
         pane.getChildren().add(imageView1);
         getChildren().add(pane);
         pane0.getChildren().add(text1);
-        pane0.getChildren().add(text2);
+        pane0.getChildren().add(contender_txtview);
         pane0.getChildren().add(imageView2);
         getChildren().add(pane0);
         getChildren().add(label);

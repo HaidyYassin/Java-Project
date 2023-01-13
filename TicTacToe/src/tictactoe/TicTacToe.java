@@ -32,15 +32,15 @@ public class TicTacToe extends Application {
     @Override
     public void start(Stage stage) throws Exception { 
        
-        Parent root = new UsersFxml1Base(stage);
+        Parent root = new SignInBase(stage);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        /*
+        
+       /*
         stage.setResizable(false); 
         Thread.sleep(3000);   
-        
-        scene = new Scene(new HomeScreenBase(stage));
+        Scene scene = new Scene(new HomeScreenBase(stage));
         stage.setScene(scene);
         stage.show();   */
     }
