@@ -17,6 +17,7 @@ import javax.sound.sampled.Clip;
 public class MusicPlayer {
     static Clip clip ;
     static long clipTimePosition;
+    public static boolean streaming = true;
     public static void PlayMusic()
     {
         try
@@ -29,6 +30,7 @@ public class MusicPlayer {
                 clip.open(audio);
                 clip.start();
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
+                streaming = true;
             }
             else
             {
@@ -44,10 +46,12 @@ public class MusicPlayer {
     public static void PauseMusic(){
        clipTimePosition = clip.getMicrosecondPosition();
        clip.stop();
+       streaming = false;
     }
     
     public static void ResumeMusic(){
        clip.setMicrosecondPosition(clipTimePosition);
        clip.start();
+       streaming = true;
     }
 }

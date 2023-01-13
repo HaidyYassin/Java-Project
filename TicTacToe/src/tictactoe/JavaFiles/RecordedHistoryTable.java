@@ -95,8 +95,8 @@ public class RecordedHistoryTable extends AnchorPane {
         File[] listOfFiles = folder.listFiles();
 
     for (File file : listOfFiles) {
-     if (file.isFile()) {
-        // System.out.println(folder.list().length);
+     if (file.isFile()&&!Files.readAllLines(file.toPath()).get(3).equals(" ")) {
+         System.out.println(Files.readAllLines(file.toPath()).get(3));
         tableData.add(new HistoryTableModel(file));
     }
      
@@ -127,6 +127,9 @@ public class RecordedHistoryTable extends AnchorPane {
             alert.getButtonTypes().setAll(buttonTypeDelete, buttonTypeNo, buttonTypeCancel);
             Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == buttonTypeDelete){
+                    for(HistoryTableModel data:RecordsMatchesList.tableData){
+                            data.RemoveFile();
+                    }         
                      table_view.getItems().clear();
                 } else if (result.get() == buttonTypeCancel) {
                     alert.close();
@@ -193,6 +196,8 @@ public class RecordedHistoryTable extends AnchorPane {
                  alert.getButtonTypes().setAll(buttonTypeDelete, buttonTypeNo, buttonTypeCancel);
                  Optional<ButtonType> result = alert.showAndWait();
                      if (result.get() == buttonTypeDelete){
+                           for(HistoryTableModel i:selectedDataToRemoveList)
+                               i.RemoveFile();
                            RecordsMatchesList.tableData.removeAll(selectedDataToRemoveList);
                      } else if (result.get() == buttonTypeCancel) {
                          alert.close();
@@ -219,7 +224,7 @@ public class RecordedHistoryTable extends AnchorPane {
                         if (table_view.getSelectionModel().getSelectedItem() != null) {
                             
                             HistoryTableModel selectedPerson = (HistoryTableModel) table_view.getSelectionModel().getSelectedItem();
-                            String gc = selectedPerson.getGameContender().substring(0, selectedPerson.getGameContender().indexOf(" "));
+                            String gc = selectedPerson.getGameContender();
                             String gs = selectedPerson.getGameStatus();
                             String recordSteps=selectedPerson.getGameSteps();
                             RecordedMatchScreenBase rmsb = new RecordedMatchScreenBase(gs, gc,recordSteps,stage);

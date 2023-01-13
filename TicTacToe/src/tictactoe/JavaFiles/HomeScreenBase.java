@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class HomeScreenBase extends AnchorPane {
 
@@ -188,6 +189,10 @@ public class HomeScreenBase extends AnchorPane {
         mutedMusicImg.setPickOnBounds(true);
         mutedMusicImg.setPreserveRatio(true);
         mutedMusicImg.setVisible(false);
+        if(MusicPlayer.streaming)
+             mutedMusicImg.setVisible(false);
+        else
+            mutedMusicImg.setVisible(true);
         mutedMusicImg.setImage(new Image(getClass().getResource("/resources/images/musicMuted.png").toExternalForm()));
         mutedMusicImg.setOnMouseClicked(event
                 ->{
@@ -468,6 +473,7 @@ public class HomeScreenBase extends AnchorPane {
             
         });
 
+
         pane.getChildren().add(SMBtn);
         pane.getChildren().add(singleModeImg);
         pane.getChildren().add(MMBtn);
@@ -531,7 +537,6 @@ public class HomeScreenBase extends AnchorPane {
 
             isrecord = true;
             System.out.println("alertYes");
-
         } else if (a.getResult() == No) {
             isrecord = false;
             System.out.println("alertNo");

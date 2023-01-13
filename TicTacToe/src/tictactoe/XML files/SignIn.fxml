@@ -34,11 +34,6 @@
             </ImageView>
             <Text id="donthave" fill="#fffdfd" layoutX="146.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have account?" wrappingWidth="329.2890625" />
             <Text id="signuptxt" fx:id="SignUpText" fill="#1bdaf1" layoutX="414.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: #1BDAF1; -fx-font-family: Britannic Bold;" text="Sign Up" wrappingWidth="172.6396484375" />
-            <ImageView fx:id="BackArrow" fitHeight="50.0" fitWidth="50.0" layoutX="42.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../resources/images/backArrow.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
    </children>

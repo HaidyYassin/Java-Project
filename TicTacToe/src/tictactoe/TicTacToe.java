@@ -17,8 +17,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import tictactoe.JavaFiles.HomeScreenBase;
 import tictactoe.JavaFiles.MusicPlayer;
+import tictactoe.JavaFiles.OnlineGame;
 import tictactoe.JavaFiles.SignInBase;
 import tictactoe.JavaFiles.SplashScreenBase;
+import tictactoe.JavaFiles.UsersFxml1Base;
 
 /**
  *
@@ -26,27 +28,24 @@ import tictactoe.JavaFiles.SplashScreenBase;
  */
 public class TicTacToe extends Application {
     
+    MediaPlayer mediaPlayer;
     
     @Override
-    public void start(Stage stage) throws Exception {      
-        Parent root = new SplashScreenBase( stage);
+    public void start(Stage stage) throws Exception { 
+       
+        Parent root = new SplashScreenBase(stage);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         
-        stage.setResizable(false); 
+       stage.setResizable(false); 
         Thread.sleep(3000);   
         
         scene = new Scene(new HomeScreenBase(stage));
         stage.setScene(scene);
         stage.show();  
-        
-        
         MusicPlayer.PlayMusic();
     }
-    
-
-    
     /**
      * @param args the command line arguments
      */

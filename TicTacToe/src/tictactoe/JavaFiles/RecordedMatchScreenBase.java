@@ -403,9 +403,9 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         text3.setStrokeWidth(0.0);
         text3.setText("You "+gameState);
         text3.setFont(new Font("Britannic Bold", 62.0));
-        if(gameState=="Win")
+        if(gameState.trim()=="Win")
             text3.setFill(javafx.scene.paint.Color.valueOf("#07ee41fa"));
-        else if(gameState=="Draw")
+        else if(gameState.trim()=="Tie")
         {
             text3.setFill(javafx.scene.paint.Color.valueOf("#FFEE58"));
             text3.setText(gameState);
@@ -716,8 +716,6 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
                      btn9.setGraphic(drawOIcon());
                  } );
                     break;
-               
-               
                
                }
            
