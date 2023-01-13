@@ -1,6 +1,6 @@
-2023/01/12 09:25:38
-Bot
-1.ahd : X1 , 1.You : X1 , 2.ahd : X4 , 2.You : X4 , 3.ahd : X2 , 3.You : X2 , 4.ahd : X5 , 4.You : X5 , 5.ahd : X3 , 5.You : X3 , 
-X player wins
+
+
+
+
 
 

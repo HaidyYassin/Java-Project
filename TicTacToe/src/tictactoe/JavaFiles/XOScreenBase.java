@@ -118,9 +118,8 @@ public class XOScreenBase extends AnchorPane {
                 }
                 else
                 {
-                    gameScreen.text0.setText("You");
-                    gameScreen.text2.setText("Computer");
-                    gameScreen.text2.setLayoutX(17.0);
+                    gameScreen.imageView1.setImage(new Image(getClass().getResource("/resources/images/xImage.png").toExternalForm()));
+                    gameScreen.imageView2.setImage(new Image(getClass().getResource("/resources/images/oImage.png").toExternalForm()));
                 }
                 
                 Scene scene = new Scene(gameScreen);
@@ -147,9 +146,9 @@ public class XOScreenBase extends AnchorPane {
                 }
                 else
                 {
-                    gameScreen.text2.setText("You");
-                    gameScreen.text0.setText("Computer");
-                    gameScreen.text0.setLayoutX(17.0);
+                    gameScreen.imageView2.setImage(new Image(getClass().getResource("/resources/images/xImage.png").toExternalForm()));
+                    gameScreen.imageView1.setImage(new Image(getClass().getResource("/resources/images/oImage.png").toExternalForm()));
+
                 }
                 
                 Scene scene = new Scene(gameScreen);

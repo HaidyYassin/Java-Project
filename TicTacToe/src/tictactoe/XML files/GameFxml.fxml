@@ -59,7 +59,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="40.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Omar" textAlignment="CENTER">
+            <Text fill="WHITE" layoutX="23.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Computer" textAlignment="CENTER">
                <font>
                   <Font name="Britannic Bold" size="18.0" />
                </font>
@@ -91,25 +91,6 @@
       </Pane>
       <Button id="but_ClearAll" fx:id="newGame_btn" cache="true" layoutX="335.0" layoutY="629.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="210.0" style="-fx-background-color: #ECC216; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-size: 24;" stylesheets="@../../resources/cssFiles/CSS.css" text="New Game" textFill="#efefef" />
       <Button id="but_ClearAll" fx:id="exit_btn" cache="true" layoutX="837.0" layoutY="629.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="210.0" style="-fx-background-color: #4D0DA5; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-size: 24;" stylesheets="@../../resources/cssFiles/CSS.css" text="Exit" textFill="#efefef" />
-      <Pane id="paneX" blendMode="HARD_LIGHT" layoutX="166.0" layoutY="515.0" opacity="0.87" prefHeight="44.0" prefWidth="55.0" stylesheets="@../../resources/cssFiles/CSS.css">
-         <children>
-            <ImageView fx:id="player1Score" fitHeight="59.0" fitWidth="63.0" layoutX="-1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../resources/images/1.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane id="paneX" blendMode="HARD_LIGHT" layoutX="1122.0" layoutY="515.0" prefHeight="44.0" prefWidth="55.0" stylesheets="@../../resources/cssFiles/CSS.css">
-         <children>
-            <ImageView fx:id="player2Score" fitHeight="59.0" fitWidth="63.0" layoutX="-1.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../resources/images/2.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Button id="but_ClearAll" fx:id="round_btn" blendMode="MULTIPLY" cache="true" layoutX="592.0" layoutY="629.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="210.0" style="-fx-background-color: #4D0DA5; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-size: 24;" stylesheets="@../../resources/cssFiles/CSS.css" text="First round" textFill="#efefef" />
    </children>
    <effect>
       <Blend />
