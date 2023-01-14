@@ -21,15 +21,14 @@ import java.util.prefs.Preferences;
     
 public class ConnectWithServer {
     static Socket socket;
-    static DataInputStream dis;
-    static PrintStream ps;
+    public static DataInputStream dis;
+    public static PrintStream ps;
     static boolean  serverIsConnected=false;
-     static HashMap<String, String>dataFromServer = new HashMap<>();
+    static HashMap<String, String>currentPlayerData = new HashMap<>();
     public ConnectWithServer() {
         
-        
     }
-      public  boolean Isconnected(){
+      public static boolean Isconnected(){
                 try {
                     
                     if(socket == null || socket.isClosed()){

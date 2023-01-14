@@ -120,7 +120,7 @@ public class UsersList extends HBox{
             @Override
             public void handle(ActionEvent event) {
                 System.out.println(name);
-                ConnectWithServer.ps.println("request###"+email+"###"+ConnectWithServer.dataFromServer.get("email")+"###"+ConnectWithServer.dataFromServer.get("name")+"###"+0);
+               // ConnectWithServer.ps.println("request###"+email+"###"+ConnectWithServer.currentPlayerData.get("email")+"###"+ConnectWithServer.currentPlayerData.get("name")+"###"+0);
                 ButtonType Yes = new ButtonType("Ok"); // can use an Alert, Dialog, or PopupWindow as needed...
                                 alert = new Alert(Alert.AlertType.NONE);
                                 alert.setTitle("Send Request to play");

@@ -15,6 +15,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 import java.util.StringTokenizer;
@@ -24,6 +25,9 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -70,10 +74,16 @@ public class UsersFxml1Base extends AnchorPane{
     String url;
     List<UsersList> viewlist;
     StringTokenizer token;
-    private ArrayList<PlayerData> onlinePlayers;
-
-    public UsersFxml1Base(Stage stage) {
-        
+    PlayerData player;
+   // ConnectWithServer conn;
+     ArrayList<PlayerData> onlinePlayers;
+    ObservableList<UsersList> list;
+   
+    public UsersFxml1Base(Stage stage){
+        System.out.println("listttttt");
+       th=new Thread();
+       onlinePlayers=new ArrayList<>();
+         
         this.name=name;
         this.url=url;
         this.email=email;
@@ -83,6 +93,7 @@ public class UsersFxml1Base extends AnchorPane{
         text = new Text();
         BackArrow = new ImageView();
         usesListView = new ListView<UsersList>();
+        list= FXCollections.observableList(viewlist);
         hBox = new HBox();
         imageView = new ImageView();
         vBox = new VBox();
@@ -162,48 +173,97 @@ public class UsersFxml1Base extends AnchorPane{
         ServerPane.getChildren().add(usesListView);
         ServerPane.getChildren().add(hBox3);
         getChildren().add(ServerPane);
-        
-       
-        Platform.runLater(new Runnable() {
-    @Override
-    public void run() {
-        try {
-            while(true){
-                System.out.println("true");
-             if(ConnectWithServer.serverIsConnected&&ConnectWithServer.dis.readLine()=="SignUp"||ConnectWithServer.dis.readLine()=="SignIn")
-            {
-                String  data = ConnectWithServer.dis.readLine();
-                
+        ConnectWithServer.ps.println("playerlist");
+        th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                         onlinePlayers.clear();
+                    do{
+                        try{
+                            String data = ConnectWithServer.dis.readLine();
+                            if(data.equals("NoMorePlayer")){
+                                break;
+                            }
+                            switch(data){
+                                
+                                case "close":
+                                    Close();
+                                    System.out.println("System closed");
+                                default :
+                                    System.out.println("default: "+data);
+                                    readData(data);
+                            }
+                        } catch (IOException ex) {
+                            Close();
+                            System.out.println("Lost connection");
+                        }
+                    }while(true);
+                    listOnlinePlayers();
+                    try{
+                           th.sleep(300);
+                        }catch(InterruptedException ex){
+                            th.stop();
+                        }
+                    
+                }                   
+            }
+        });
+        th.start();
+          
+    
+    }
+    void listOnlinePlayers(){
+    
+    usesListView.getItems().removeAll();
+            list.clear();
+             for(int i=0;i<onlinePlayers.size();i++){
+               // viewlist.add(new UsersList(stage,playex.getEmail(),playex.getName(),"/resources/images/hendi-removebg-preview.png"));
+                System.out.println(onlinePlayers.get(i).getName());
+                usesListView.getItems().add(new UsersList(stage,onlinePlayers.get(i).getEmail(),onlinePlayers.get(i).getName(),"/resources/images/hendi-removebg-preview.png"));
+                list = FXCollections.observableList(viewlist);
+                usesListView.setItems(list);
+                onlinePlayers.clear();
+    }
+    }
+    
+    
+    void readData(String data){
+              System.out.println("Data: "+data);
             token = new StringTokenizer(data, "###");
-            PlayerData player= new PlayerData();
+             player= new PlayerData();
             player.setName(token.nextToken());
             player.setEmail(token.nextToken());
             player.setIsOnline(Boolean.parseBoolean(token.nextToken()));
+            //player.setIs(Boolean.parseBoolean(token.nextToken()));
             player.setScore(Integer.parseInt(token.nextToken()));
-            //System.out.println(ConnectWithServer.dataFromServer.get("email"));
-            System.out.println(player.getEmail());
-            
-            if(!ConnectWithServer.dataFromServer.get("email").equals(player.getEmail())){
-                System.out.println("Add list");
-                onlinePlayers.add(player);
-              }
-            }
-             for(PlayerData playex : onlinePlayers){
-                viewlist.add(new UsersList(stage,playex.getEmail(),playex.getName(),"/resources/images/hendi-removebg-preview.png"));
-                System.out.println(playex.getName());
-                usesListView.getItems().addAll(viewlist);
-                ObservableList<UsersList> list = FXCollections.observableList(viewlist);
-                usesListView.setItems(list);
-            }
-            
-            }
-            
-           // onlinePlayers.clear();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println("The email is"+player.getEmail());
+            if(!ConnectWithServer.currentPlayerData.get("email").equals(player.getEmail())){
+            System.out.println("Add list");
+            onlinePlayers.add(player);
         }
-    }});
     
+    }
+    
+    private void Close(){
+        System.out.println("Server Colsed");
+                            
+        Platform.runLater(() -> {
+        ButtonType yes = new ButtonType("Yes"); 
+        Alert a = new Alert(Alert.AlertType.NONE); 
+        a.setTitle("Alert Issue");
+        a.getDialogPane().getButtonTypes().add(yes);
+        a.setHeaderText("Sorry,internet issue ,please try later");
+
+         //a.setContentText(s);
+        DialogPane dialogPane = a.getDialogPane();
+        dialogPane.getStylesheets().add(
+        getClass().getResource("/css/fullpackstyling.css").toExternalForm());
+        dialogPane.getStyleClass().add("infoDialog");
+
+        a.showAndWait();    
+        });
+        th.stop();
     }
 
 

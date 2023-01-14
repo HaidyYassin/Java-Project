@@ -1,6 +1,6 @@
-2023/01/13 15:43:42
+2023/01/14 09:29:34
 Bot
-1.You: X5 , 2.Bot: O4 , 3.You: X3 , 4.Bot: O2 , 5.You: X7 , 6.You: X5 , 7.Bot: O1 , 8.You: X8 , 9.Bot: O2 , 10.You: X3 , 11.Bot: O7 , 12.You: X4 , 13.Bot: O6 , 14.You: X9 , 
-Tie
-5
+ 1.You: X5 , 2.Bot: O8 , 3.You: X3 , 4.Bot: O2 , 5.You: X9 , 6.Bot: O6 , 7.You: X1 , 
+Win
+10
  

@@ -8,6 +8,8 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -147,6 +149,7 @@ public  class SignInBase extends Pane {
         signInBtn.setStyle("-fx-background-color: white; -fx-text-fill: #6E3071; -fx-background-radius: 22;");
         signInBtn.getStylesheets().add("/resources/cssFiles/CSS.css");
         signInBtn.setText("Sign in");
+        boolean conn= ConnectWithServer.Isconnected();
         signInBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() 
         {
             @Override
@@ -159,34 +162,31 @@ public  class SignInBase extends Pane {
                    alert.setHeaderText("Incomplete Data !!");
                    alert.showAndWait();    
                }else{
-                         try {
-                        socket = new Socket(InetAddress.getLocalHost(),5005);
-                         dis = new DataInputStream(socket.getInputStream());
-                         ps = new PrintStream(socket.getOutputStream());
-                         ps.println("SignIn###"+email+"###"+password);
-                    } catch (IOException ex) {
-                            ex.printStackTrace();
-                    }
-                    thread =   new Thread(){
+                   if(conn){
+                       ConnectWithServer.ps.println("SignIn###"+email+"###"+password);
+                    thread = new Thread(){
                     String state,playerData;
                     @Override
                     public void run(){
                         try {
                             
-                            state = dis.readLine();
+                            state = ConnectWithServer.dis.readLine();
                             token = new StringTokenizer(state,"###");
                             String receivedState = token.nextToken();
                             System.out.println("sign in page "+receivedState);
         
                             switch(receivedState){
                                 case "Logged in successfully":
-                                    playerData = dis.readLine();
+                                    playerData = ConnectWithServer.dis.readLine();
                                     System.out.println("player data "+playerData);
                             
                                     StringTokenizer token2 = new StringTokenizer(playerData,"###");
-                                    player.setPass(token2.nextToken());
+                                    player.setName(token2.nextToken());
                                     player.setEmail(token2.nextToken());
                                     player.setScore(Integer.parseInt(token2.nextToken()));
+                                    ConnectWithServer.currentPlayerData.put("username", player.getName());
+                                    ConnectWithServer.currentPlayerData.put("email",player.getEmail());
+                                    ConnectWithServer.currentPlayerData.put("score", player.getScore()+"");
 //                                     System.out.println(player.getPass());
 //                                     System.out.println( player.getEmail())   ;
 //                                     System.out.println(player.getScore());
@@ -268,19 +268,20 @@ public  class SignInBase extends Pane {
                                     alert.showAndWait(); 
                                   
                                     this.stop();
-                                    socket.close();
-                                    dis.close();
-                                    ps.close();
+                                    ConnectWithServer.socket.close();
+                                    ConnectWithServer.dis.close();
+                                    ConnectWithServer.ps.close();
                                 } catch (IOException ex1) {
                                     ex1.printStackTrace();
                                 }
 
                                 });
-                            System.out.println("111111111");
+                            
                         }
                     }
                 };   
-              thread.start();   
+              thread.start();  
+                   } 
                }
                    
             }
@@ -345,11 +346,11 @@ public  class SignInBase extends Pane {
     
     
      private void signIn(Stage stage){
-            UsersFxml1Base userScreen = new UsersFxml1Base(stage);
-            Scene scene = new Scene(userScreen);
-            stage.setScene(scene);
-            stage.show();
-            System.out.println("Emial " + player.getEmail());
-            ProfileBase profile = new ProfileBase(stage);
+         UsersFxml1Base userScreen = new UsersFxml1Base(stage);
+         Scene scene = new Scene(userScreen);
+         stage.setScene(scene);
+         stage.show();
+         System.out.println("Emial " + player.getEmail());
+         ProfileBase profile = new ProfileBase(stage);
     }
 }

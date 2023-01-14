@@ -36,6 +36,9 @@ public class TicTacToe extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest((event) -> {
+            System.exit(1);
+        });    
         
        /*
         stage.setResizable(false); 
