@@ -130,7 +130,8 @@ public class UsersFxml1Base extends AnchorPane implements Runnable{
         BackArrow.setPreserveRatio(true);
         BackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
         BackArrow.setOnMouseClicked(event -> 
-            {    
+            {  
+                Sound.clicksound();
                 HomeScreenBase homeScreen = new HomeScreenBase(stage);
         
                 Scene scene = new Scene(homeScreen);

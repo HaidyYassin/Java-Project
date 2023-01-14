@@ -187,6 +187,7 @@ public  class SignUpBase extends Pane {
         BackArrow.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.clicksound();
                 SignInBase signInScreen = new SignInBase(stage);
 
                 Scene scene = new Scene(signInScreen);
@@ -207,6 +208,7 @@ public  class SignUpBase extends Pane {
         signUpBtn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                Sound.clicksound();
                 if(checkdata()){
                     try {
                         socket = new Socket(InetAddress.getLocalHost(),5005);

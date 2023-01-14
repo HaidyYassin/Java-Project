@@ -1,6 +1,0 @@
-2023/01/12 05:52:57
-Bot
-1.You: X1 , 2.You: X4 , 3.You: X5 , 4.You: X2 , 5.You: X6 , 6.You: X3 , 7.You: X9 , 
-X player wins
-
-

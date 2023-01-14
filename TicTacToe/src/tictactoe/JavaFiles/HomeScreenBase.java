@@ -1,6 +1,9 @@
 package tictactoe.JavaFiles;
 
 import Models.PlayerData;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -18,6 +21,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import static tictactoe.JavaFiles.SignInBase.SignedIn;
 
 public class HomeScreenBase extends AnchorPane {
 
@@ -44,10 +49,12 @@ public class HomeScreenBase extends AnchorPane {
     protected final Pane player2Namepanal;
     protected final Button okBtn;
     protected final ImageView BackArrow;
+    protected final ImageView BackArrowGames;
     protected final Text text;
     protected final Text text0;
     protected final TextField nameFieldtxt;
     protected final ImageView mutedSoundImg;
+    protected final ImageView videoIcon;
     Stage stage;
     static String name;
    PlayerData player;
@@ -78,10 +85,12 @@ public class HomeScreenBase extends AnchorPane {
         player2Namepanal = new Pane();
         okBtn = new Button();
         BackArrow = new ImageView();
+        BackArrowGames = new ImageView();
         text = new Text();
         text0 = new Text();
         nameFieldtxt = new TextField();
         mutedSoundImg = new ImageView();
+        videoIcon = new ImageView();
 
         setId("APane");
         setMaxHeight(USE_PREF_SIZE);
@@ -114,6 +123,7 @@ public class HomeScreenBase extends AnchorPane {
         SMBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                Sound.clicksound();
                 MMpanal.setVisible(false);
                 SMpanal.setVisible(true);
             }});
@@ -128,6 +138,7 @@ public class HomeScreenBase extends AnchorPane {
         singleModeImg.setImage(new Image(getClass().getResource("/resources/images/singleMode.png").toExternalForm()));
         singleModeImg.setOnMouseClicked(event
                 ->{
+            Sound.clicksound();
             MMpanal.setVisible(false);
             SMpanal.setVisible(true);
         });
@@ -146,6 +157,7 @@ public class HomeScreenBase extends AnchorPane {
         MMBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                Sound.clicksound();
                 SMpanal.setVisible(false);
                 MMpanal.setVisible(true);          
             }});
@@ -160,6 +172,7 @@ public class HomeScreenBase extends AnchorPane {
         multiModeImg.setImage(new Image(getClass().getResource("/resources/images/multiMode.png").toExternalForm()));
         multiModeImg.setOnMouseClicked(event
                 ->{
+            Sound.clicksound();
             SMpanal.setVisible(false);
             MMpanal.setVisible(true);
         });
@@ -174,6 +187,7 @@ public class HomeScreenBase extends AnchorPane {
         musicImg.setImage(new Image(getClass().getResource("/resources/images/music.png").toExternalForm()));
         musicImg.setOnMouseClicked(event
                 ->{
+            Sound.clicksound();
             musicImg.setVisible(false);
             mutedMusicImg.setVisible(true);
             MusicPlayer.PauseMusic();
@@ -195,6 +209,7 @@ public class HomeScreenBase extends AnchorPane {
         mutedMusicImg.setImage(new Image(getClass().getResource("/resources/images/musicMuted.png").toExternalForm()));
         mutedMusicImg.setOnMouseClicked(event
                 ->{
+            Sound.clicksound();
             musicImg.setVisible(true);
             mutedMusicImg.setVisible(false);
             MusicPlayer.ResumeMusic();
@@ -207,14 +222,11 @@ public class HomeScreenBase extends AnchorPane {
         soundImg.setLayoutY(45.0);
         soundImg.setPickOnBounds(true);
         soundImg.setPreserveRatio(true);
-        if(MusicPlayer.streaming)
-            soundImg.setVisible(true);
-        else
-            soundImg.setVisible(false);
         soundImg.setImage(new Image(getClass().getResource("/resources/images/sound.png").toExternalForm()));
         soundImg.setOnMouseClicked(event
                 ->{
-           soundImg.setVisible(false);
+            Sound.clicksound();
+            soundImg.setVisible(false);
             mutedSoundImg.setVisible(true);
             
         });
@@ -230,16 +242,19 @@ public class HomeScreenBase extends AnchorPane {
         profileImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-//                if(ConnectWithServer.dataFromServer.get("ISACTIVE") == null){
-//                    System.out.println("can't show profile");
-//                }
-//                else
-//                {
+                Sound.clicksound();
+                if(!SignInBase.SignedIn){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Sign In please to view your profile");
+                    alert.showAndWait();
+                }
+                else
+                {
                     ProfileBase profileScreen = new ProfileBase(stage);
                     Scene scene = new Scene(profileScreen);
                     stage.setScene(scene);
                     stage.show();
-//                }
+                }
             }
         });
 
@@ -266,6 +281,7 @@ public class HomeScreenBase extends AnchorPane {
         easyBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                Sound.clicksound();
                  navigetToNextScreen("easy");
             
             }});
@@ -284,6 +300,7 @@ public class HomeScreenBase extends AnchorPane {
         mediumBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                Sound.clicksound();
                  navigetToNextScreen("medium");
             
             }});
@@ -302,6 +319,7 @@ public class HomeScreenBase extends AnchorPane {
         hardBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                Sound.clicksound();
                  navigetToNextScreen("hard");
             
             }});
@@ -313,7 +331,9 @@ public class HomeScreenBase extends AnchorPane {
         SMpanalBackArrow.setPickOnBounds(true);
         SMpanalBackArrow.setPreserveRatio(true);
         SMpanalBackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
-        SMpanalBackArrow.setOnMouseClicked(event -> { SMpanal.setVisible(false);});
+        SMpanalBackArrow.setOnMouseClicked(event -> { 
+            Sound.clicksound();
+            SMpanal.setVisible(false);});
 
         MMpanal.setId("MMpanal");
         MMpanal.setLayoutX(151.0);
@@ -337,6 +357,7 @@ public class HomeScreenBase extends AnchorPane {
         localBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                Sound.clicksound();
                 player2Namepanal.setVisible(true);
                  //navigetToNextScreen("local");
             
@@ -355,9 +376,19 @@ public class HomeScreenBase extends AnchorPane {
         onlineBtn.addEventHandler(ActionEvent.ACTION,new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                 Scene scene = new Scene(new SignInBase(stage));
-                 stage.setScene(scene);
-                 stage.show();
+                Sound.clicksound();
+                
+                if(SignInBase.SignedIn){
+                    UsersFxml1Base userScreen = new UsersFxml1Base(stage);
+                    Scene scene = new Scene(userScreen);
+                    stage.setScene(scene);
+                    stage.show();
+                }else{
+                    Scene scene = new Scene(new SignInBase(stage));
+                    stage.setScene(scene);
+                    stage.show();
+                }
+                 
             
             }});
 
@@ -370,6 +401,7 @@ public class HomeScreenBase extends AnchorPane {
         localImg.setImage(new Image(getClass().getResource("/resources/images/local.png").toExternalForm()));
         localImg.setOnMouseClicked(event
                 ->{
+            Sound.clicksound();
             player2Namepanal.setVisible(true);
             //navigetToNextScreen("local");
         });
@@ -382,6 +414,7 @@ public class HomeScreenBase extends AnchorPane {
         onlineImg.setPreserveRatio(true);
         onlineImg.setImage(new Image(getClass().getResource("/resources/images/online.png").toExternalForm()));
         onlineImg.setOnMouseClicked(event -> { 
+            Sound.clicksound();
             Scene scene = new Scene(new SignInBase(stage));
             stage.setScene(scene);
             stage.show();
@@ -395,7 +428,9 @@ public class HomeScreenBase extends AnchorPane {
         MMpanalBackArrow.setPickOnBounds(true);
         MMpanalBackArrow.setPreserveRatio(true);
         MMpanalBackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
-        MMpanalBackArrow.setOnMouseClicked(event -> { MMpanal.setVisible(false);});
+        MMpanalBackArrow.setOnMouseClicked(event -> {
+            Sound.clicksound();
+            MMpanal.setVisible(false);});
 
         player2Namepanal.setId("MMpanal");
         player2Namepanal.setLayoutX(116.0);
@@ -418,6 +453,7 @@ public class HomeScreenBase extends AnchorPane {
         okBtn.setTextFill(javafx.scene.paint.Color.valueOf("#6e3071"));
         okBtn.setOnMouseClicked(event
                 ->{
+            Sound.clicksound();
             player2Namepanal.setVisible(false);
             name = nameFieldtxt.getText();
             navigetToNextScreen("local");
@@ -430,7 +466,23 @@ public class HomeScreenBase extends AnchorPane {
         BackArrow.setPickOnBounds(true);
         BackArrow.setPreserveRatio(true);
         BackArrow.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
-        BackArrow.setOnMouseClicked(event -> { player2Namepanal.setVisible(false);});
+        BackArrow.setOnMouseClicked(event -> { 
+            Sound.clicksound();
+            player2Namepanal.setVisible(false);});
+
+        BackArrowGames.setFitHeight(50.0);
+        BackArrowGames.setFitWidth(50.0);
+        BackArrowGames.setLayoutX(43.0);
+        BackArrowGames.setLayoutY(42.0);
+        BackArrowGames.setPickOnBounds(true);
+        BackArrowGames.setPreserveRatio(true);
+        BackArrowGames.setImage(new Image(getClass().getResource("/resources/images/backArrow.png").toExternalForm()));
+        BackArrowGames.setOnMouseClicked(event -> { 
+            Sound.clicksound();
+            Scene scene = new Scene(new gamesScreenBase(stage));
+            stage.setScene(scene);
+            stage.show();
+        });
 
         text.setFill(javafx.scene.paint.Color.WHITE);
         text.setId("signintxt");
@@ -471,10 +523,20 @@ public class HomeScreenBase extends AnchorPane {
         mutedSoundImg.setVisible(false);
         mutedSoundImg.setOnMouseClicked(event
                 ->{
-           soundImg.setVisible(true);
+            Sound.clicksound();
+            soundImg.setVisible(true);
             mutedSoundImg.setVisible(false);
             
         });
+        
+        videoIcon.setFitHeight(50.0);
+        videoIcon.setFitWidth(50.0);
+        videoIcon.setLayoutX(603.0);
+        videoIcon.setLayoutY(43.0);
+        videoIcon.setPickOnBounds(true);
+        videoIcon.setPreserveRatio(true);
+        videoIcon.setImage(new Image(getClass().getResource("/resources/images/video_icon.png").toExternalForm()));
+        setVideoIconAction();
 
         pane.getChildren().add(SMBtn);
         pane.getChildren().add(singleModeImg);
@@ -484,6 +546,8 @@ public class HomeScreenBase extends AnchorPane {
         pane.getChildren().add(mutedMusicImg);
         pane.getChildren().add(soundImg);
         pane.getChildren().add(profileImg);
+        pane.getChildren().add(videoIcon);
+        pane.getChildren().add(BackArrowGames);
         SMpanal.getChildren().add(easyBtn);
         SMpanal.getChildren().add(mediumBtn);
         SMpanal.getChildren().add(hardBtn);
@@ -539,7 +603,6 @@ public class HomeScreenBase extends AnchorPane {
 
             isrecord = true;
             System.out.println("alertYes");
-
         } else if (a.getResult() == No) {
             isrecord = false;
             System.out.println("alertNo");
@@ -559,5 +622,22 @@ public class HomeScreenBase extends AnchorPane {
         }
         stage.setScene(scene);
         stage.show();
+    }
+    
+    public void setVideoIconAction(){
+        videoIcon.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            try {
+                RecordedHistoryTable history  = new RecordedHistoryTable(stage);
+                Scene scene = new Scene(history);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(HomeScreenBase.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    });
+        
     }
 }

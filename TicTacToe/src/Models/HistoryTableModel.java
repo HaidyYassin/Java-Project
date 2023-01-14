@@ -34,6 +34,7 @@ public class HistoryTableModel implements Serializable {
     private final SimpleStringProperty Contender;
     private  CheckBox checkBox;
     private String gameSteps;
+    File file;
     
     public HistoryTableModel(File file) throws IOException  {
             this.num = new SimpleStringProperty(file.getName().substring(0, file.getName().indexOf('.')));
@@ -43,7 +44,7 @@ public class HistoryTableModel implements Serializable {
             this.score = new SimpleStringProperty(Files.readAllLines(file.toPath()).get(4));
             this.checkBox=new CheckBox();
             this.gameSteps=Files.readAllLines(file.toPath()).get(2);
-        
+            this.file=file;
     }
 
     public String getDate() {
@@ -102,6 +103,10 @@ public class HistoryTableModel implements Serializable {
     public void setGameContender(String con){
     
         Contender.set(con);
+    }
+    
+    public void RemoveFile(){
+        file.delete();
     }
   
     

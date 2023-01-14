@@ -135,6 +135,7 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         BackArrow.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.clicksound();
                 try {
                     RecordedHistoryTable RecTableScreen = new RecordedHistoryTable(stage);
                     
@@ -155,7 +156,10 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         imageView0.setLayoutY(210.0);
         imageView0.setPickOnBounds(true);
         imageView0.setPreserveRatio(true);
-        imageView0.setImage(new Image(getClass().getResource("/resources/images/player2.png").toExternalForm()));
+        if(GameFxmlBase.Rlevel.equals("easy")||GameFxmlBase.Rlevel.equals("medium")||GameFxmlBase.Rlevel.equals("hard"))
+            imageView0.setImage(new Image(getClass().getResource("/resources/images/robot.png").toExternalForm()));
+        else
+            imageView0.setImage(new Image(getClass().getResource("/resources/images/player2.png").toExternalForm()));
 
         pane.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
         pane.setCache(true);
@@ -226,6 +230,14 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         text2.setStrokeWidth(0.0);
         text2.setText(gameContender);
         text2.setFont(new Font("Britannic Bold", 18.0));
+        if(GameFxmlBase.Rlevel.equals("local"))
+        {
+            text2.setText(HomeScreenBase.name);
+        }
+        else if(GameFxmlBase.Rlevel.equals("easy")||GameFxmlBase.Rlevel.equals("medium") || GameFxmlBase.Rlevel.equals("hard"))
+        {
+            text2.setText("Computer");
+        }
 
         imageView2.setFitHeight(62.0);
         imageView2.setFitWidth(117.0);
@@ -401,11 +413,11 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         text3.setLayoutY(90.0);
         text3.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         text3.setStrokeWidth(0.0);
-        text3.setText("You "+gameState);
+        text3.setText(gameState);
         text3.setFont(new Font("Britannic Bold", 62.0));
-        if(gameState=="Win")
+        if(gameState.trim()=="Win")
             text3.setFill(javafx.scene.paint.Color.valueOf("#07ee41fa"));
-        else if(gameState=="Draw")
+        else if(gameState.trim()=="Tie")
         {
             text3.setFill(javafx.scene.paint.Color.valueOf("#FFEE58"));
             text3.setText(gameState);
@@ -716,8 +728,6 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
                      btn9.setGraphic(drawOIcon());
                  } );
                     break;
-               
-               
                
                }
            

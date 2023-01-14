@@ -100,6 +100,16 @@
                   </Pane>
                </children>
             </Pane>
+            <ImageView fx:id="videoIcon" fitHeight="50.0" fitWidth="66.0" layoutX="603.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/video_icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="BackArrowGames" fitHeight="50.0" fitWidth="50.0" layoutX="42.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images/backArrow.png" />
+               </image>
+            </ImageView>
          </children></Pane>
    </children>
 </AnchorPane>

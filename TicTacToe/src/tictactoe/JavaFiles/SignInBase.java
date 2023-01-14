@@ -48,8 +48,8 @@ public  class SignInBase extends Pane {
     protected final Text SignUpText;
     protected final ImageView BackArrow;
     
-    PlayerData player;
-   
+    public static PlayerData player;
+    public static boolean SignedIn;
 
     public SignInBase(Stage stage) {
 
@@ -64,6 +64,7 @@ public  class SignInBase extends Pane {
         text0 = new Text();
         SignUpText = new Text();
         BackArrow = new ImageView();
+        SignedIn = false;
 
         setId("APane");
         setMaxHeight(USE_PREF_SIZE);
@@ -130,6 +131,7 @@ public  class SignInBase extends Pane {
         BackArrow.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.clicksound();
                 HomeScreenBase homeScreen = new HomeScreenBase(stage);
 
                 Scene scene = new Scene(homeScreen);
@@ -151,7 +153,8 @@ public  class SignInBase extends Pane {
         {
             @Override
             public void handle(ActionEvent event) 
-            {     
+            {   
+                 Sound.clicksound();
                  email = emailTFSignIn.getText().trim();
                  password = passTFSignIn.getText().trim();
                if(email.equals("") || password.equals("")){
@@ -184,14 +187,15 @@ public  class SignInBase extends Pane {
                                     System.out.println("player data "+playerData);
                             
                                     StringTokenizer token2 = new StringTokenizer(playerData,"###");
-                                    player.setPass(token2.nextToken());
+                                    player.setName(token2.nextToken());
                                     player.setEmail(token2.nextToken());
                                     player.setScore(Integer.parseInt(token2.nextToken()));
 //                                     System.out.println(player.getPass());
 //                                     System.out.println( player.getEmail())   ;
 //                                     System.out.println(player.getScore());
                                      Platform.runLater(()->{
-                                        signIn(stage);
+                                         SignedIn = true;
+                                         signIn(stage);
                                          thread.stop();
                                       
                                       });
@@ -321,6 +325,7 @@ public  class SignInBase extends Pane {
         SignUpText.setText("Sign Up");
         SignUpText.setOnMouseClicked(new EventHandler<MouseEvent>(){
             public void handle(MouseEvent event) {
+                Sound.clicksound();
                 SignUpBase signUp = new SignUpBase(stage);
                 Scene scene = new Scene(signUp);
                 stage.setScene(scene);
