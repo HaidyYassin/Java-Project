@@ -1,6 +1,6 @@
- 
- 
- 
- 
- 
+2023/01/14 11:16:15
+Bot
+ 1.You: X1 , 2.ahdx4 , 3.You: X7 , 4.ahdx2 , 5.You: X5 , 6.ahdx8 , 7.You: X3 , 
+Win
+10
  

@@ -135,11 +135,11 @@ public class UsersList extends HBox{
                                 delay.setOnFinished(e -> alert.hide());
                                 alert.show();
                                  delay.play();
-                     OnlineGame onlineGame = new OnlineGame(stage,email,name,imgUrl);
-        
-                Scene scene = new Scene(onlineGame);
-                stage.setScene(scene);
-                stage.show();
+//                     OnlineGame onlineGame = new OnlineGame(stage,email,name,imgUrl);
+//        
+//                Scene scene = new Scene(onlineGame);
+//                stage.setScene(scene);
+//                stage.show();
              }
             
         });

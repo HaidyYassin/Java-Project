@@ -354,6 +354,8 @@ public class HomeScreenBase extends AnchorPane {
             public void handle(ActionEvent event) {
                  Scene scene = new Scene(new SignInBase(stage));
                  stage.setScene(scene);
+//                 onlineGameFile online = new onlineGameFile(stage, "online", false, "x");
+//                 scene = new Scene(online.game);
                  stage.show();
             
             }});

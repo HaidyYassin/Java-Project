@@ -83,7 +83,7 @@ public class UsersFxmlBase extends AnchorPane {
 
         BackArrow.setFitHeight(50.0);
         BackArrow.setFitWidth(50.0);
-        BackArrow.setLayoutX(59.0);
+        BackArrow.setLayoutX(90.0);
         BackArrow.setLayoutY(43.0);
         BackArrow.setPickOnBounds(true);
         BackArrow.setPreserveRatio(true);

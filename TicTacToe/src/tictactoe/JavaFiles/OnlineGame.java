@@ -51,10 +51,8 @@ public  class OnlineGame extends AnchorPane {
     protected final Pane pane3;
     protected final ImageView player2Score;
     protected final Blend blend2;
-    String email;
 
-    public OnlineGame(Stage stage,String email,String name,String imgUrl) {
-        this.email=email;
+    public OnlineGame() {
         imageView = new ImageView();
         blend = new Blend();
         imageView0 = new ImageView();
@@ -187,7 +185,7 @@ public  class OnlineGame extends AnchorPane {
         contender_txtview.setLayoutY(59.0);
         contender_txtview.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         contender_txtview.setStrokeWidth(0.0);
-        contender_txtview.setText(name);
+        contender_txtview.setText("");
         contender_txtview.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         contender_txtview.setFont(new Font("Britannic Bold", 18.0));
 

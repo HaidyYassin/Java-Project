@@ -122,7 +122,6 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
         imageView.setImage(new Image(getClass().getResource("/resources/images/player1.png").toExternalForm()));
-
         imageView.setEffect(blend);
         
         BackArrow.setFitHeight(50.0);
@@ -155,7 +154,10 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         imageView0.setLayoutY(210.0);
         imageView0.setPickOnBounds(true);
         imageView0.setPreserveRatio(true);
-        imageView0.setImage(new Image(getClass().getResource("/resources/images/player2.png").toExternalForm()));
+        if(GameFxmlBase.Rlevel.equals("easy")||GameFxmlBase.Rlevel.equals("medium")||GameFxmlBase.Rlevel.equals("hard"))
+            imageView0.setImage(new Image(getClass().getResource("/resources/images/robot.png").toExternalForm()));
+        else
+            imageView0.setImage(new Image(getClass().getResource("/resources/images/player2.png").toExternalForm()));
 
         pane.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
         pane.setCache(true);
@@ -205,7 +207,6 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         pane0.setPrefWidth(123.02623191958844);
         pane0.setStyle("-fx-background-radius: 7;");
         pane0.getStylesheets().add("/resources/cssFiles/CSS.css");
-
         pane0.setEffect(blend1);
 
         text1.setBlendMode(javafx.scene.effect.BlendMode.SCREEN);
@@ -226,6 +227,14 @@ public class RecordedMatchScreenBase extends AnchorPane implements Runnable{
         text2.setStrokeWidth(0.0);
         text2.setText(gameContender);
         text2.setFont(new Font("Britannic Bold", 18.0));
+        if(GameFxmlBase.Rlevel.equals("local"))
+        {
+            text2.setText(HomeScreenBase.name);
+        }
+        else if(GameFxmlBase.Rlevel.equals("easy")||GameFxmlBase.Rlevel.equals("medium") || GameFxmlBase.Rlevel.equals("hard"))
+        {
+            text2.setText("Computer");
+        }
 
         imageView2.setFitHeight(62.0);
         imageView2.setFitWidth(117.0);

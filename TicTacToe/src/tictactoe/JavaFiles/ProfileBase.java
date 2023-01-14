@@ -244,4 +244,3 @@ public class ProfileBase extends AnchorPane {
        return false;
     }
 }
-

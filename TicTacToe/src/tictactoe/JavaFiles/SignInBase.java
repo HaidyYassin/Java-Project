@@ -190,6 +190,10 @@ public  class SignInBase extends Pane {
 //                                     System.out.println(player.getPass());
 //                                     System.out.println( player.getEmail())   ;
 //                                     System.out.println(player.getScore());
+//                                    ConnectWithServer.dataFromServer.put("username", player.getName());
+//                                    ConnectWithServer.dataFromServer.put("email",player.getEmail());
+//                                    ConnectWithServer.dataFromServer.put("score", player.getScore()+"");
+                                    
                                      Platform.runLater(()->{
                                         signIn(stage);
                                          thread.stop();
@@ -345,8 +349,10 @@ public  class SignInBase extends Pane {
     
     
      private void signIn(Stage stage){
-            UsersFxml1Base userScreen = new UsersFxml1Base(stage);
-            Scene scene = new Scene(userScreen);
+//            UsersFxml1Base userScreen = new UsersFxml1Base(stage);
+//            Scene scene = new Scene(userScreen);
+            onlineGameFile online = new onlineGameFile(stage, "online", false, "x");
+            Scene scene = new Scene(online.game);
             stage.setScene(scene);
             stage.show();
             System.out.println("Emial " + player.getEmail());

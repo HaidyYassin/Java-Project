@@ -25,7 +25,7 @@
       </ImageView>
       <ImageView id="player2" fitHeight="130.0" fitWidth="100.0" layoutX="143.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../resources/images/player2.png" />
+            <Image url="@../../resources/images/robot.png" />
          </image>
       </ImageView>
       <Pane id="paneX" blendMode="HARD_LIGHT" layoutX="1094.0" layoutY="360.0" opacity="0.85" prefHeight="146.99999999999997" prefWidth="123.02623191958844" style="-fx-background-radius: 7;" stylesheets="@../../resources/cssFiles/CSS.css">
@@ -60,7 +60,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="40.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Omar">
+            <Text fill="WHITE" layoutX="24.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="computer">
                <font>
                   <Font name="Britannic Bold" size="18.0" />
                </font>
