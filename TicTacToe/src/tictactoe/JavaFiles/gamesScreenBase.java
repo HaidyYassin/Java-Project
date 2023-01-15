@@ -1,5 +1,6 @@
 package tictactoe.JavaFiles;
 
+import MemoryGameJavaFiles.CardGameFxmlBase;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Parent;
@@ -55,7 +56,8 @@ public class gamesScreenBase extends Pane {
                 scene = new Scene(new HomeScreenBase(stage));
                 stage.setScene(scene);
                 stage.show(); 
-                MusicPlayer.PlayMusic();
+                if(MusicPlayer.firstTime)
+                    MusicPlayer.PlayMusic();
             } catch (InterruptedException ex) {
                 Logger.getLogger(gamesScreenBase.class.getName()).log(Level.SEVERE, null, ex);
             }

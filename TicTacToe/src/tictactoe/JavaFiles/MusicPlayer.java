@@ -17,7 +17,8 @@ import javax.sound.sampled.Clip;
 public class MusicPlayer {
     static Clip clip ;
     static long clipTimePosition;
-    public static boolean streaming = true;
+    public static boolean streaming= true;
+    public static boolean firstTime = true;
     public static void PlayMusic()
     {
         try
@@ -31,6 +32,8 @@ public class MusicPlayer {
                 clip.start();
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
                 streaming = true;
+                firstTime = false;
+                
             }
             else
             {

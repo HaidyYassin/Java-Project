@@ -57,7 +57,7 @@ public class HomeScreenBase extends AnchorPane {
     protected final ImageView videoIcon;
     Stage stage;
     static String name;
-   PlayerData player;
+    PlayerData player;
 
     public HomeScreenBase(Stage stage) {
 

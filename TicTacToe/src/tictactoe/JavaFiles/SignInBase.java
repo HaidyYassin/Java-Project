@@ -34,9 +34,7 @@ public  class SignInBase extends Pane {
     Socket socket;
     DataInputStream dis;
     PrintStream ps;
-    
-    
-    
+
     protected final Pane pane;
     protected final Text text;
     protected final TextField emailTFSignIn;
@@ -50,9 +48,10 @@ public  class SignInBase extends Pane {
     
     public static PlayerData player;
     public static boolean SignedIn;
+    boolean conn;
 
     public SignInBase(Stage stage) {
-
+        conn = ConnectWithServer.Isconnected();
         pane = new Pane();
         text = new Text();
         player = new PlayerData();
@@ -119,8 +118,7 @@ public  class SignInBase extends Pane {
         passTFSignIn.setStyle("-fx-background-radius: 22; -fx-text-fill: #FFFFFF;");
         passTFSignIn.getStylesheets().add("/resources/cssFiles/CSS.css");
         passTFSignIn.setPadding(new Insets(0.0, 0.0, 0.0, 85.0));
-        //passTFSignIn.setSkin();
-        
+
         BackArrow.setFitHeight(50.0);
         BackArrow.setFitWidth(50.0);
         BackArrow.setLayoutX(42.0);
@@ -162,40 +160,34 @@ public  class SignInBase extends Pane {
                    alert.setHeaderText("Incomplete Data !!");
                    alert.showAndWait();    
                }else{
-                         try {
-                        socket = new Socket(InetAddress.getLocalHost(),5005);
-                         dis = new DataInputStream(socket.getInputStream());
-                         ps = new PrintStream(socket.getOutputStream());
-                         ps.println("SignIn###"+email+"###"+password);
-                    } catch (IOException ex) {
-                            ex.printStackTrace();
-                    }
-                    thread =   new Thread(){
+                     if(conn){
+                     ConnectWithServer.ps.println("SignIn###"+email+"###"+password);
+                    thread = new Thread(){
                     String state,playerData;
                     @Override
                     public void run(){
                         try {
                             
-                            state = dis.readLine();
+                            state = ConnectWithServer.dis.readLine();
                             token = new StringTokenizer(state,"###");
                             String receivedState = token.nextToken();
                             System.out.println("sign in page "+receivedState);
         
                             switch(receivedState){
                                 case "Logged in successfully":
-                                    playerData = dis.readLine();
+                                    playerData = ConnectWithServer.dis.readLine();
                                     System.out.println("player data "+playerData);
                             
                                     StringTokenizer token2 = new StringTokenizer(playerData,"###");
                                     player.setName(token2.nextToken());
                                     player.setEmail(token2.nextToken());
                                     player.setScore(Integer.parseInt(token2.nextToken()));
-//                                     System.out.println(player.getPass());
-//                                     System.out.println( player.getEmail())   ;
-//                                     System.out.println(player.getScore());
+                                    ConnectWithServer.currentPlayerData.put("username", player.getName());
+                                    ConnectWithServer.currentPlayerData.put("email",player.getEmail());
+                                    ConnectWithServer.currentPlayerData.put("score", player.getScore()+"");
                                      Platform.runLater(()->{
                                          SignedIn = true;
-                                         signIn(stage);
+                                        signIn(stage);
                                          thread.stop();
                                       
                                       });
@@ -209,10 +201,7 @@ public  class SignInBase extends Pane {
                                             alert.setHeaderText("This Email is " +receivedState);
                                             alert.showAndWait();
                                         }
-                                    });
-//                                    Platform.runLater(()->{
-//                                       txtAlret.setText(receivedState);
-//                                      });                                
+                                    });                              
                                     break;
                                 case "Email is incorrect":
                                     Platform.runLater(new Runnable() {
@@ -222,10 +211,7 @@ public  class SignInBase extends Pane {
                                             alert.setHeaderText(receivedState);
                                             alert.showAndWait();
                                         }
-                                    });
-//                                    Platform.runLater(()->{
-//                                       txtAlret.setText(receivedState);
-//                                      });                                
+                                    });                                
                                     break;
                                 case "Password is incorrect":
                                     Platform.runLater(new Runnable() {
@@ -235,10 +221,7 @@ public  class SignInBase extends Pane {
                                             alert.setHeaderText(receivedState);
                                             alert.showAndWait();
                                         }
-                                    });
-//                                     Platform.runLater(()->{
-//                                       txtAlret.setText(receivedState);
-//                                      });                                 
+                                    });                                
                                     break;
                                 case "Connection issue, please try again later":
                                     Platform.runLater(new Runnable() {
@@ -249,9 +232,6 @@ public  class SignInBase extends Pane {
                                             alert.showAndWait();
                                         }
                                     });
-//                                     Platform.runLater(()->{
-//                                       txtAlret.setText(receivedState);
-//                                      }); 
                                     break;
                                 default :
                                     Platform.runLater(new Runnable() {
@@ -272,19 +252,19 @@ public  class SignInBase extends Pane {
                                     alert.showAndWait(); 
                                   
                                     this.stop();
-                                    socket.close();
-                                    dis.close();
-                                    ps.close();
+                                    ConnectWithServer.socket.close();
+                                    ConnectWithServer.dis.close();
+                                    ConnectWithServer.ps.close();
                                 } catch (IOException ex1) {
                                     ex1.printStackTrace();
                                 }
 
-                                });
-                            System.out.println("111111111");
+                                });  
                         }
                     }
                 };   
-              thread.start();   
+              thread.start();  
+                   } 
                }
                    
             }
@@ -354,7 +334,5 @@ public  class SignInBase extends Pane {
             Scene scene = new Scene(userScreen);
             stage.setScene(scene);
             stage.show();
-            System.out.println("Emial " + player.getEmail());
-            ProfileBase profile = new ProfileBase(stage);
     }
 }

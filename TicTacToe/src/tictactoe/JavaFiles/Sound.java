@@ -18,7 +18,7 @@ public class Sound {
  {
    try 
    {
-    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("D:\\iti material\\java project\\java project\\Java-Project\\TicTacToe\\src\\resources\\music\\click.wav").getAbsoluteFile( ));
+    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("..\\TicTacToe\\src\\resources\\music\\click.wav").getAbsoluteFile( ));
     Clip clip = AudioSystem.getClip( );
     clip.open(audioInputStream);
     clip.start( );

@@ -30,6 +30,7 @@ import java.util.regex.Pattern;
 import javafx.application.Platform;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
+import static tictactoe.JavaFiles.SignInBase.player;
 
 public  class SignUpBase extends Pane {
     
@@ -41,11 +42,10 @@ public  class SignUpBase extends Pane {
     String password ;
     String Cpassword ;
     boolean isvalid=false;
-    Socket socket;
-    DataInputStream dis;
-    PrintStream ps;
     
-    PlayerData playerData = new PlayerData();
+    
+    public static PlayerData player = new PlayerData();
+    boolean conn;
 
     protected final Pane pane;
     protected final Text text;
@@ -62,6 +62,7 @@ public  class SignUpBase extends Pane {
     
     public SignUpBase(Stage stage) {
 
+        conn = ConnectWithServer.Isconnected();
         
         pane = new Pane();
         text = new Text();
@@ -209,35 +210,29 @@ public  class SignUpBase extends Pane {
             @Override
             public void handle(ActionEvent event) {
                 Sound.clicksound();
-                if(checkdata()){
-                    try {
-                        socket = new Socket(InetAddress.getLocalHost(),5005);
-                         dis = new DataInputStream(socket.getInputStream());
-                         ps = new PrintStream(socket.getOutputStream());
-                         ps.println("SignUp###"+userName+"###"+email+"###"+password);
-                    } catch (IOException ex) {
-                            ex.printStackTrace();
-                    }
-                    thread =   new Thread(){
+                if(checkdata() && conn){
+                    
+                    ConnectWithServer.ps.println("SignUp###"+userName+"###"+email+"###"+password); 
+                    thread = new Thread(){
                     String state,playerData;
-                    HashMap<String, String> hash = new HashMap<>(); 
                     @Override
                     public void run(){
                         try {
                             
-                            state = dis.readLine();
+                            state = ConnectWithServer.dis.readLine();
                             token = new StringTokenizer(state,"###");
                             String receivedState = token.nextToken();
-                            
                             System.out.println(receivedState);
                             
                             switch(receivedState){
                                 case "Registered Successfully":
-                                     playerData = dis.readLine();
+                                     playerData = ConnectWithServer.dis.readLine();
                                      token = new StringTokenizer(playerData,"###");
-                                     hash.put("name", token.nextToken());
-                                     hash.put("email",token.nextToken());
-                                     hash.put("score", "0");
+                                     ConnectWithServer.currentPlayerData.put("name", token.nextToken());
+                                     ConnectWithServer.currentPlayerData.put("email",token.nextToken());
+                                     ConnectWithServer.currentPlayerData.put("score", "0");
+                                     
+                                     
                                         
                                      Platform.runLater(()->{
                                          signup(stage);
@@ -265,9 +260,9 @@ public  class SignUpBase extends Pane {
                                     alert.showAndWait(); 
                                   
                                     this.stop();
-                                    socket.close();
-                                    dis.close();
-                                    ps.close();
+                                    ConnectWithServer.socket.close();
+                                    ConnectWithServer.dis.close();
+                                    ConnectWithServer.ps.close();
                                 } catch (IOException ex1) {
                                     ex1.printStackTrace();
                                 }

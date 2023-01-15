@@ -46,16 +46,8 @@ public class ProfileBase extends AnchorPane {
     protected final Blend blend;
     Stage stage;
     StringTokenizer token;
-    private Thread thread;
     String Name;
-    
    
-    Socket socket;
-    DataInputStream dis;
-    PrintStream ps;
-    
-
-
     public ProfileBase(Stage stage) {
 
         this.stage=stage;
@@ -71,16 +63,7 @@ public class ProfileBase extends AnchorPane {
         BackArrow = new ImageView();
         blend = new Blend();
         
-         try {
-                        socket = new Socket(InetAddress.getLocalHost(),5005);
-                         dis = new DataInputStream(socket.getInputStream());
-                         ps = new PrintStream(socket.getOutputStream());
-                         
-                    } catch (IOException ex) {
-                            ex.printStackTrace();
-                    }
-         thread =   new Thread();
-         thread.start();
+         
 
         setId("APane");
         setPrefHeight(768.0);
@@ -172,10 +155,8 @@ public class ProfileBase extends AnchorPane {
         Prof_User_Name.setStyle("-fx-background-color: #000000; -fx-background-radius: 15;");
         Prof_User_Name.getStylesheets().add("/resources/cssFiles/CSS.css");
         Prof_User_Name.setCursor(Cursor.DEFAULT);
-        Prof_User_Name.setText(SignInBase.player.getName());
         Prof_User_Name.setEditable(false);
-
-
+        
         Prof_score.setAlignment(javafx.geometry.Pos.CENTER);
         Prof_score.setId("ProfileTxt");
         Prof_score.setLayoutX(184.0);
@@ -185,8 +166,10 @@ public class ProfileBase extends AnchorPane {
         Prof_score.setDisable(true);
         Prof_score.setStyle("-fx-background-color: #000000; -fx-background-radius: 15;");
         Prof_score.getStylesheets().add("/resources/cssFiles/CSS.css");
-        Prof_score.setText(Integer.toString(SignInBase.player.getScore()));
         Prof_score.setEditable(false);
+        
+        Prof_User_Name.setText(ConnectWithServer.currentPlayerData.get("userName"));
+        Prof_score.setText(ConnectWithServer.currentPlayerData.get("score"));
 
         BackArrow.setFitHeight(50.0);
         BackArrow.setFitWidth(50.0);
@@ -241,23 +224,15 @@ public class ProfileBase extends AnchorPane {
         System.out.println("backToSignIn: called");
         if(SignInBase.SignedIn){     //ConnectWithServer.dataFromServer.get("email")!= null
             System.out.println("Send to server to logout");
-            ps.println("logout###"+SignInBase.player.getEmail());
-            thread.stop();
+            ConnectWithServer.ps.println("logout###"+ConnectWithServer.currentPlayerData.get("email"));
             try {
-                socket.close();
-                dis.close();
-                ps.close();
+                ConnectWithServer.socket.close();
+                ConnectWithServer.dis.close();
+                ConnectWithServer.ps.close();
             } catch (IOException ex) {
                 ex.printStackTrace(); 
             }   
         }
     }
-
-//    private boolean HasEmail() {
-//       if(ConnectWithServer.dataFromServer.get("email")!= null)
-//       {Name= ConnectWithServer.dataFromServer.get("userName");
-//            return true;}
-//       return false;
-//    }
 }
 
