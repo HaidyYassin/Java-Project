@@ -85,6 +85,66 @@
                   <Image url="@../../resources/images/mark.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="pic1" fitHeight="150.0" fitWidth="200.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/strawberry.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic6" fitHeight="150.0" fitWidth="200.0" layoutX="230.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/watermelon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic3" fitHeight="150.0" fitWidth="200.0" layoutX="435.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/watermelon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic2" fitHeight="150.0" fitWidth="200.0" layoutX="230.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/creaz.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic4" fitHeight="150.0" fitWidth="200.0" layoutX="634.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/mango.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic11" fitHeight="150.0" fitWidth="200.0" layoutX="435.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/strawberry.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic8" fitHeight="150.0" fitWidth="200.0" layoutX="641.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/creaz.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic12" fitHeight="150.0" fitWidth="200.0" layoutX="634.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/mango.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic5" fitHeight="150.0" fitWidth="200.0" layoutX="30.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/mango.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic10" fitHeight="150.0" fitWidth="200.0" layoutX="230.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/mango.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic9" fitHeight="150.0" fitWidth="200.0" layoutX="37.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/apple.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pic7" fitHeight="150.0" fitWidth="200.0" layoutX="435.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../resources/images/apple.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
