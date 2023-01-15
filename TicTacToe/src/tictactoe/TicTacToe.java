@@ -72,11 +72,9 @@ public class TicTacToe extends Application {
             e.printStackTrace();
         }
     }
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) { 
-        music("..\\Java-Project\\TicTacToe\\src\\resources\\cssFiles\\bensound-bluebay.wav");
+       // music("..\\TicTacToe\\src\\resources\\cssFiles\\bensound-bluebay.wav");
         launch(args);
     }  
 }

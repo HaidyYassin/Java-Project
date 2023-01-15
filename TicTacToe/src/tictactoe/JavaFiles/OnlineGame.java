@@ -118,7 +118,7 @@ public  class OnlineGame extends AnchorPane {
         imageView0.setLayoutY(210.0);
         imageView0.setPickOnBounds(true);
         imageView0.setPreserveRatio(true);
-        imageView0.setImage(new Image(getClass().getResource("/resources/images/player2.png").toExternalForm()));
+        imageView0.setImage(new Image(getClass().getResource(imgUrl).toExternalForm()));
 
         pane.setBlendMode(javafx.scene.effect.BlendMode.HARD_LIGHT);
         pane.setId("paneX");

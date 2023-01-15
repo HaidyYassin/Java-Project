@@ -1,6 +1,6 @@
-2023/01/13 15:43:10
+2023/01/15 11:38:12
 Bot
-1.You: X5 , 2.Bot: O6 , 3.You: X8 , 4.Bot: O1 , 5.You: X2 , 
+ 1.You: X9 , 2.Bot: O1 , 3.You: X8 , 4.Bot: O7 , 5.You: X6 , 6.Bot: O5 , 7.You: X3 , 
 Win
 10
  

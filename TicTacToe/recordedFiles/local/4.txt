@@ -1,0 +1,6 @@
+2023/01/15 11:38:07
+Bot
+ 1.You: X9 , 2.Bot: O6 , 3.You: X8 , 4.Bot: O3 , 5.You: X1 , 6.Bot: O2 , 7.You: X5 , 8.You: X5 , 9.Bot: O2 , 10.You: X8 , 11.Bot: O4 , 12.You: X3 , 13.Bot: O9 , 14.You: X7 , 
+Win
+10
+ 
