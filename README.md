@@ -11,3 +11,5 @@ TicTacToe Game is a XO game that has 3 modes:
 
 #### First Screen 
 ![s1](https://user-images.githubusercontent.com/92337458/212682783-53772ba2-3b78-46cd-93ea-fd8febabfb40.PNG)
+
+#### Home Screen of TicTacToe
