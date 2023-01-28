@@ -33,23 +33,25 @@ TicTacToe Game is a XO game that has 3 modes:
 #### Recorded list
 ![s11](https://user-images.githubusercontent.com/92337458/212689900-739d41a6-d84d-4aa7-aa61-e81bca3c249f.PNG)
 
-#### Multi Online Users 
+#### Local Players
 ![s10](https://user-images.githubusercontent.com/92337458/212689889-eb7d158e-336e-40e7-8ea7-b728d7d9a512.PNG)
 
+#### Multi Online Users 
+![s12](https://user-images.githubusercontent.com/92337458/212689927-8e046028-b3c2-43c0-8623-2c5dbf5c24cb.PNG)
+
 ## we also add Card game 
-![server](https://user-images.githubusercontent.com/92337458/212689953-cf8d28a3-f73f-492d-9f9f-0ac954b5e4a1.PNG)
+
 
 #### Game Card Board 
 ![s2](https://user-images.githubusercontent.com/92337458/212689969-c5b89abc-2091-47a8-9a0b-298fcedbc28e.PNG)
 
-#### Palying
+#### Palying Game Card
 ![s3](https://user-images.githubusercontent.com/92337458/212689987-407c067e-b8c5-4570-98eb-67b4a5c8c6bd.PNG)
-
-
 
 ### Server Side 
 Server Handel users and discribe online and ofline users
 #### Server Screen
+![server](https://user-images.githubusercontent.com/92337458/212689953-cf8d28a3-f73f-492d-9f9f-0ac954b5e4a1.PNG)
 ![s12](https://user-images.githubusercontent.com/92337458/212689927-8e046028-b3c2-43c0-8623-2c5dbf5c24cb.PNG)
 
 
