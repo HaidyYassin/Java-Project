@@ -31,10 +31,10 @@ TicTacToe Game is a XO game that has 3 modes:
 ![s9](https://user-images.githubusercontent.com/92337458/212689873-db9d0105-eebb-4d6a-b36b-ca3bfcf53984.PNG)
 
 #### Recorded list
-![s10](https://user-images.githubusercontent.com/92337458/212689889-eb7d158e-336e-40e7-8ea7-b728d7d9a512.PNG)
+![s11](https://user-images.githubusercontent.com/92337458/212689900-739d41a6-d84d-4aa7-aa61-e81bca3c249f.PNG)
 
 #### Multi Online Users 
-![s11](https://user-images.githubusercontent.com/92337458/212689900-739d41a6-d84d-4aa7-aa61-e81bca3c249f.PNG)
+![s10](https://user-images.githubusercontent.com/92337458/212689889-eb7d158e-336e-40e7-8ea7-b728d7d9a512.PNG)
 
 ## we also add Card game 
 ![server](https://user-images.githubusercontent.com/92337458/212689953-cf8d28a3-f73f-492d-9f9f-0ac954b5e4a1.PNG)
