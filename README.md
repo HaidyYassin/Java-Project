@@ -24,7 +24,7 @@ TicTacToe Game is a XO game that has 3 modes:
 #### Game Board Screen
 ![s7](https://user-images.githubusercontent.com/92337458/212689842-67ecc4f0-01d4-405b-99b8-b891d28ae335.PNG)
 
-#### Playing 
+#### Playing TicTacToe Game
 ![s8](https://user-images.githubusercontent.com/92337458/212689858-e957b9ec-a0e0-4bd5-97fa-f4a3fc6caa9a.PNG)
 
 #### Video to the Winner 
